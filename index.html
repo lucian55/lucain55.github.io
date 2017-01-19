@@ -243,6 +243,284 @@
             
               
                 
+                <a class="post-title-link" href="/2017/01/19/react-jsx语法规范/" itemprop="url">
+                  react/jsx语法规范
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-19T19:36:50+08:00" content="2017-01-19">
+              2017-01-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/react/" itemprop="url" rel="index">
+                    <span itemprop="name">react</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><p>组件命名已大写开头</p>
+<h2 id="组件声明"><a href="#组件声明" class="headerlink" title="组件声明"></a>组件声明</h2><p>尽量不使用 <code>displayName</code>，通过引用来命名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">export defalut React.createClass(&#123;</div><div class="line">	displayName:&apos;MyCom&apos;</div><div class="line">&#125;);//不使用</div><div class="line"></div><div class="line">const MyCom = React.createClass(&#123;</div><div class="line"></div><div class="line">&#125;);</div><div class="line">export defalut MyCom;//使用</div></pre></td></tr></table></figure></p>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><ul>
+<li>在组件中，使用<code>className</code>代替<code>class</code></li>
+<li>在组件中，使用<code>htmlFor</code>代替<code>for</code></li>
+<li>自定义属性需要加<code>data-</code>前缀，否则react不会渲染</li>
+<li><code>aria-</code>可以正常使用</li>
+</ul>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
+<li>多行的JSX使用 () 包裹，有组件嵌套时使用多行模式</li>
+<li>单行的JSX 省略 ()</li>
+<li>JSX中所有的标签必须闭合</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/19/react-组件/" itemprop="url">
+                  react-组件定义以及es5与es6在react中的不同写法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-19T18:40:09+08:00" content="2017-01-19">
+              2017-01-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/react/" itemprop="url" rel="index">
+                    <span itemprop="name">react</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>组件定义以及es5与es6在react中的不同写法</p>
+</blockquote>
+<h2 id="es5组件"><a href="#es5组件" class="headerlink" title="es5组件"></a>es5组件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/babel&quot;&gt;</div><div class="line">    var Cm=React.createClass(&#123;</div><div class="line">        getDefaultProps:function()&#123;</div><div class="line">          return &#123;</div><div class="line">              title:&apos;title&apos;</div><div class="line">          &#125;</div><div class="line">        &#125;,</div><div class="line">        getInitialState:function()&#123;</div><div class="line">            return &#123;key:true&#125;</div><div class="line">        &#125;,</div><div class="line">        handleClick:function()&#123;</div><div class="line">            this.setState(&#123;</div><div class="line">                key:!this.state.key</div><div class="line">            &#125;)</div><div class="line">        &#125;,</div><div class="line">        render:function()&#123;</div><div class="line">            var text=this.state.key?&apos;+&apos;:&apos;-&apos;;</div><div class="line">            return(</div><div class="line">                    &lt;span onClick=&#123;this.handleClick&#125; title=&apos;title&apos;&gt;1&#123;text&#125;1&lt;/span&gt;</div><div class="line">            )</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    ReactDOM.render(&lt;Cm/&gt;,document.getElementById(&apos;b&apos;));</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<h2 id="es6组件"><a href="#es6组件" class="headerlink" title="es6组件"></a>es6组件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/babel&quot;&gt;</div><div class="line">    class CmEs extends React.Component&#123;</div><div class="line">        constructor(props)&#123;</div><div class="line">            super(props);</div><div class="line">            this.state=&#123;</div><div class="line">                key:true</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        handleClick(e)&#123;</div><div class="line">            this.setState(&#123;</div><div class="line">                key:!this.state.key</div><div class="line">            &#125;)</div><div class="line">        &#125;</div><div class="line">        render()&#123;</div><div class="line">            var text=this.state.key?&apos;+&apos;:&apos;-&apos;;</div><div class="line">            return(</div><div class="line">                    &lt;span onClick=&#123;this.handleClick.bind(this)&#125; title=&apos;title&apos;&gt;1&#123;text&#125;1&lt;/span&gt;</div><div class="line">            )</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    CmEs.defaultProps=&#123;</div><div class="line">        title:&apos;title&apos;</div><div class="line">    &#125;;</div><div class="line">    ReactDOM.render(&lt;CmEs/&gt;,document.getElementById(&apos;c&apos;));</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<h2 id="es5与es6-react写法的不同"><a href="#es5与es6-react写法的不同" class="headerlink" title="es5与es6 react写法的不同"></a>es5与es6 react写法的不同</h2><ol>
+<li>引入模块<br>es5写法： <code>var React=require(&#39;react&#39;);</code><br>es6写法： <code>var React,{Component,PropTypes} from &#39;react&#39;;</code></li>
+<li>导出模块<br>es5写法：用define和return实现<br>es6写法：<code>export default 组件名称</code></li>
+<li><p>组件</p>
+<ol>
+<li><p>定义组件<br>es5写法 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var Cm=React.createClass(&#123;</div><div class="line">       render:function()&#123;</div><div class="line">           return(</div><div class="line">                   &lt;span&gt;hello word&lt;/span&gt;</div><div class="line">           )</div><div class="line">       &#125;</div><div class="line">   &#125;);</div></pre></td></tr></table></figure>
+<p>es6写法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">class CmEs extends React.Component &#123;  </div><div class="line">    render:function()&#123;</div><div class="line">           return(</div><div class="line">                   &lt;span&gt;hello word&lt;/span&gt;</div><div class="line">           )</div><div class="line">       &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>定义组件的属性类型和默认属性(Props)<br>es5写法：写在组件内部</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var Cm=React.createClass(&#123;</div><div class="line">	getDefaultProps:function()&#123;</div><div class="line">         return &#123;</div><div class="line">             title:&apos;title&apos;</div><div class="line">         &#125;</div><div class="line">       &#125;,</div><div class="line">       render:function()&#123;</div><div class="line">           return(</div><div class="line">                   &lt;span title=&apos;title&apos;&gt;hello word&lt;/span&gt;</div><div class="line">           )</div><div class="line">       &#125;</div><div class="line">   &#125;);</div></pre></td></tr></table></figure>
+<p>es6写法：写在组件外边</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">class CmEs extends React.Component &#123;  </div><div class="line">    render:function()&#123;</div><div class="line">           return(</div><div class="line">                   &lt;span title=&apos;title&apos;&gt;hello word&lt;/span&gt;</div><div class="line">           )</div><div class="line">       &#125;</div><div class="line">&#125;</div><div class="line">	CmEs.defaultProps=&#123;</div><div class="line">       title:&apos;title&apos;</div><div class="line">   &#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>初始化state<br>es5写法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var Cm=React.createClass(&#123;</div><div class="line">		getInitialState:function()&#123;</div><div class="line">           return &#123;key:true&#125;</div><div class="line">       &#125;,</div><div class="line">       render:function()&#123;</div><div class="line">           return(</div><div class="line">                   &lt;span&gt;hello word&lt;/span&gt;</div><div class="line">           )</div><div class="line">       &#125;</div><div class="line">   &#125;);</div></pre></td></tr></table></figure>
+<p>es6写法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">class CmEs extends React.Component &#123;  </div><div class="line">	constructor(props)&#123;</div><div class="line">           super(props);</div><div class="line">           this.state=&#123;</div><div class="line">               key:true</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">    render:function()&#123;</div><div class="line">           return(</div><div class="line">                   &lt;span&gt;hello word&lt;/span&gt;</div><div class="line">           )</div><div class="line">       &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>绑定方法<br>es5写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var Cm=React.createClass(&#123;</div><div class="line">		 handleClick:function()&#123;</div><div class="line">           this.setState(&#123;</div><div class="line">               key:!this.state.key</div><div class="line">           &#125;)</div><div class="line">       &#125;,</div><div class="line">       render:function()&#123;</div><div class="line">           return(</div><div class="line">                   &lt;span onClick=&#123;this.handleClick&#125;&gt;hello word&lt;/span&gt;</div><div class="line">           )</div><div class="line">       &#125;</div><div class="line">   &#125;);</div></pre></td></tr></table></figure>
+<p>es6写法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">class CmEs extends React.Component &#123;  </div><div class="line">	handleClick(e)&#123;</div><div class="line">           this.setState(&#123;</div><div class="line">               key:!this.state.key</div><div class="line">           &#125;)</div><div class="line">       &#125;</div><div class="line">    render:function()&#123;</div><div class="line">           return(</div><div class="line">                   &lt;span onClick=&#123;this.handleClick.bind(this)&#125;&gt;hello word&lt;/span&gt;</div><div class="line">           )</div><div class="line">       &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>Mixins<br>使用ES6语法来创建组件是不支持React mixins的，如果一定要使用React mixins就只能使用React.createClass方法来创建组件了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">import React,&#123; Component &#125; from &apos;react&apos;;</div><div class="line"></div><div class="line">var SetIntervalMixin = &#123;</div><div class="line">  doSomething: function() &#123;</div><div class="line">    console.log(&apos;do somethis...&apos;);</div><div class="line">  &#125;,</div><div class="line">&#125;;</div><div class="line">const Contacts = React.createClass(&#123;</div><div class="line">  mixins: [SetIntervalMixin],</div><div class="line">  </div><div class="line">  handleClick() &#123;</div><div class="line">    this.doSomething(); //使用mixin</div><div class="line">  &#125;,</div><div class="line">  render() &#123;</div><div class="line">    return (</div><div class="line">      &lt;div onClick=&#123;this.handleClick&#125;&gt;&lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">export default Contacts;</div></pre></td></tr></table></figure>
+</li>
+<li><p>解构赋值与属性传递<br>利用es6语法中的 … 运算符进行传递</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">class AutoloadingPostsGrid extends React.Component &#123;</div><div class="line">    render() &#123;</div><div class="line">        var &#123;</div><div class="line">            className,</div><div class="line">            ...others,  // contains all properties of this.props except for className</div><div class="line">        &#125; = this.props;</div><div class="line">        return (</div><div class="line">            &lt;div className=&#123;className&#125;&gt;</div><div class="line">                &lt;PostsGrid &#123;...others&#125; /&gt;</div><div class="line">                &lt;button onClick=&#123;this.handleLoadMoreClick&#125;&gt;Load more&lt;/button&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>下面这种写法，则是传递所有属性的同时，用新的className值进行覆盖（{…this.props}写在前边）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div &#123;...this.props&#125; className=&quot;override&quot;&gt;</div><div class="line">    …</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>这个例子则相反，如果属性中没有包含className，则提供默认的值，而如果属性中已经包含了，则使用属性中的值（{…this.props}写在后边）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div className=&quot;base&quot; &#123;...this.props&#125;&gt;</div><div class="line">    …</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/01/19/近期要写/" itemprop="url">
                   近期要写
                 </a>
@@ -344,8 +622,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/19/react爬坑之路（一）/" itemprop="url">
-                  react爬坑之路（一）
+                <a class="post-title-link" href="/2017/01/19/react-基本使用/" itemprop="url">
+                  react-基本使用
                 </a>
               
             
@@ -410,7 +688,24 @@
             <blockquote>
 <p>react的基本使用</p>
 </blockquote>
-<h2 id="获取-react"><a href="#获取-react" class="headerlink" title="获取 react"></a>获取 react</h2><p>先占个坑，有时间在写</p>
+<h2 id="获取-react"><a href="#获取-react" class="headerlink" title="获取 react"></a>获取 react</h2><ul>
+<li><p>npm下载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install react --save</div></pre></td></tr></table></figure>
+</li>
+<li><p>bower下载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bower install react --save</div></pre></td></tr></table></figure>
+</li>
+<li><p>直接去下载zip包</p>
+</li>
+</ul>
+<h2 id="react使用简单用例"><a href="#react使用简单用例" class="headerlink" title="react使用简单用例"></a>react使用简单用例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;script src=&quot;../vendors/react/react.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;script src=&quot;../vendors/react/react-dom.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;!-- browser.js 的作用是将 JSX 语法转为 JavaScript 语法 --&gt;</div><div class="line">    &lt;script src=&quot;../vendors/babel/browser.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;div id=&quot;example&quot;&gt;&lt;/div&gt;</div><div class="line">    &lt;!-- JSX 语法，跟 JavaScript 不兼容。凡是使用 JSX 的地方，都要加上 type=&quot;text/babel&quot; --&gt;</div><div class="line">    &lt;script type=&quot;text/babel&quot;&gt;</div><div class="line">      var MyComponent = React.createClass(&#123;</div><div class="line">          render: function ()&#123;</div><div class="line">            return (</div><div class="line">              &lt;h1 className=&quot;header&quot;&gt;我的第一个组件&lt;/h1&gt;</div><div class="line">            )</div><div class="line">          &#125;</div><div class="line">      &#125;);</div><div class="line">      ReactDOM.render(&lt;MyComponent /&gt;, document.getElementById(&apos;example&apos;));</div><div class="line">    &lt;/script&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>说明：</p>
+<ul>
+<li>需要用 bowser.js 将jsx语法转换为javascript语法。script标签的type写为 text/babel</li>
+<li>render的方法中return的顶级元素只能是一个</li>
+<li>如果要定义样式的时候，style=”opacity:{this.state.opacity};”</li>
+<li>使用 className 和 htmlFor 来替代对应的class 和 for</li>
+</ul>
 
           
         
@@ -460,8 +755,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/19/react爬坑之路/" itemprop="url">
-                  react爬坑之路
+                <a class="post-title-link" href="/2017/01/19/react-复合组件/" itemprop="url">
+                  react-复合组件
                 </a>
               
             
@@ -1316,352 +1611,6 @@ hexo deploy
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/14/hexo基本使用/" itemprop="url">
-                  hexo基本使用
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-14T19:23:17+08:00" content="2016-08-14">
-              2016-08-14
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
-</blockquote>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
-<li>1.安装node.js和git</li>
-<li>2.使用npm安装hexo <code>$ npm install -g hexo-cli</code>  </li>
-</ul>
-<h2 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h2><p>安装 Hexo 完成后，请执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo init      </div><div class="line">   $ npm install</div></pre></td></tr></table></figure>
-<p>新建完成后，指定文件夹的目录如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">├── _config.yml</div><div class="line">├── package.json</div><div class="line">├── scaffolds</div><div class="line">├── scripts</div><div class="line">├── source</div><div class="line">|   ├── _drafts</div><div class="line">|   └── _posts</div><div class="line">└── themes</div></pre></td></tr></table></figure>
-<p>文件说明：</p>
-<ul>
-<li>_config.yml 网站的配置信息，可以在此配置大部分的参数。</li>
-<li>package.json 应用程序的信息</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&#123;  </div><div class="line">  &quot;name&quot;: &quot;hexo-site&quot;,  </div><div class="line">  &quot;version&quot;: &quot;&quot;,  </div><div class="line">  &quot;private&quot;: true,  </div><div class="line">  &quot;hexo&quot;: &#123;  </div><div class="line">    &quot;version&quot;: &quot;&quot;  </div><div class="line">  &#125;,  </div><div class="line">  &quot;dependencies&quot;: &#123;  </div><div class="line">    &quot;hexo-renderer-ejs&quot;: &quot;*&quot;,  </div><div class="line">    &quot;hexo-renderer-stylus&quot;: &quot;*&quot;,  </div><div class="line">    &quot;hexo-renderer-marked&quot;: &quot;*&quot;  </div><div class="line">  &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>scaffolds 模版文件夹,新建文章时，Hexo会根据scaffold来建立文件。</li>
-<li>scripts 脚本文件夹。脚本是扩展 Hexo 最简易的方式，在此文件夹内的 JavaScript 文件会被自动执行。</li>
-<li>source 资源文件夹是存放用户资源的地方</li>
-<li>themes 主题文件夹。Hexo 会根据主题来生成静态页面。</li>
-</ul>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>可以在 _config.yml 中修改大部份的配置。</p>
-<h3 id="网站"><a href="#网站" class="headerlink" title="网站"></a>网站</h3><ul>
-<li>title 网站标题</li>
-<li>subtitle 网站副标题</li>
-<li>description    网站描述</li>
-<li>author     名字</li>
-<li>language    网站使用的语言</li>
-<li>timezone    网站时区。Hexo 预设使用您电脑的时区</li>
-</ul>
-<h3 id="网址"><a href="#网址" class="headerlink" title="网址"></a>网址</h3><ul>
-<li>url    网址    </li>
-<li>root    网站根目录    </li>
-<li>permalink    文章的永久链接</li>
-<li>permalink_default    永久链接中各部分的默认值</li>
-</ul>
-<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><ul>
-<li>source_dir    资源文件夹，这个文件夹用来存放内容。    </li>
-<li>public_dir    公共文件夹，这个文件夹用于存放生成的站点文件。    </li>
-<li>tag_dir    标签文件夹    </li>
-<li>archive_dir    归档文件夹    </li>
-<li>category_dir    分类文件夹    </li>
-<li>code_dir    Include code 文件夹    </li>
-<li>i18n_dir    国际化（i18n）文件夹    :</li>
-<li>skip_render    跳过指定文件的渲染，可使用 glob 来配置路径。    </li>
-</ul>
-<h3 id="文章"><a href="#文章" class="headerlink" title="文章"></a>文章</h3><ul>
-<li>new_post_name    新文章的文件名称     </li>
-<li>default_layout    预设布局     </li>
-<li>auto_spacing    在中文和英文之间加入空格    </li>
-<li>titlecase    把标题转换为 title case    </li>
-<li>external_link    在新标签中打开链接     </li>
-<li>filename_case    把文件名称转换为 (1) 小写或 (2) 大写    </li>
-<li>render_drafts    显示草稿     </li>
-<li>post_asset_folder    启动 Asset 文件夹     </li>
-<li>relative_link    把链接改为与根目录的相对位址     </li>
-<li>future    显示未来的文章     </li>
-<li>highlight    代码块的设置</li>
-</ul>
-<h3 id="分类-amp-标签"><a href="#分类-amp-标签" class="headerlink" title="分类 &amp; 标签"></a>分类 &amp; 标签</h3><ul>
-<li>default_category    默认分类     </li>
-<li>category_map    分类别名    </li>
-<li>tag_map    标签别名</li>
-</ul>
-<h3 id="日期-时间格式"><a href="#日期-时间格式" class="headerlink" title="日期 / 时间格式"></a>日期 / 时间格式</h3><ul>
-<li>date_format    日期格式    MMM D YYYY</li>
-<li>time_format    时间格式    H:mm:ss</li>
-</ul>
-<h3 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h3><ul>
-<li>per_page    每页显示的文章量 (0 = 关闭分页功能)     </li>
-<li>pagination_dir     </li>
-</ul>
-<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><ul>
-<li>theme    当前主题名称</li>
-<li>deploy    部署</li>
-</ul>
-<h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><pre><code>$ hexo init [folder]
-</code></pre><p>新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站。</p>
-<pre><code>$ hexo new [layout] &lt;title&gt;
-</code></pre><p>新建一篇文章。如果没有设置 layout 的话，默认使用 _config.yml 中的 default_layout 参数代替。如果标题包含空格的话，请使用引号括起来。</p>
-<pre><code>$ hexo generate
-</code></pre><p>生成静态文件。</p>
-<pre><code>$ hexo publish [layout] &lt;filename&gt;
-</code></pre><p>发表草稿。</p>
-<pre><code>$ hexo server
-</code></pre><p>启动服务器。</p>
-<pre><code>$ hexo deploy
-</code></pre><p>部署网站。</p>
-<pre><code>$ hexo render &lt;file&gt; ...
-</code></pre><p>渲染文件。</p>
-<pre><code>$ hexo clean
-</code></pre><p>清除缓存文件 (db.json) 和已生成的静态文件 </p>
-<pre><code>$ hexo list &lt;type&gt;
-</code></pre><p>列出网站资料。</p>
-<pre><code>$ hexo version
-</code></pre><p>显示 Hexo 版本。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/06/cookie的使用场景及方法/" itemprop="url">
-                  cookie的使用场景及方法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-06T19:36:37+08:00" content="2016-08-06">
-              2016-08-06
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>cookie是浏览器提供的一种机制，它将document 对象的cookie属性提供给JavaScript。可以由JavaScript对其进行控制，而并不是JavaScript本身的性质。cookie是存于用户硬盘的一个文件，这个文件通常对应一个域名，当浏览器再次访问这个域名时，便使这个cookie可用。因此，cookie可以跨越一个域名下的多个网页，但不能跨越多个域名使用。 不同的浏览器对cookie的实现也不一样，但其性质是相同的。cookie机制将信息存储于用户硬盘，因此可以作为全局变量，这是它最大的一个优点。它可以用于以下几种场合。</p>
-</blockquote>
-<h2 id="保存用户登录状态"><a href="#保存用户登录状态" class="headerlink" title="保存用户登录状态"></a>保存用户登录状态</h2><p>例如将用户id存储于一个cookie内，这样当用户下次访问该页面时就不需要重新登录了，现在很多论坛和社区都提供这样的功能。cookie还可以设置过期时间，当超过时间期限后，cookie就会自动消失。因此，系统往往可以提示用户保持登录状态的时间：常见选项有一个月、三个月、一年等。 </p>
-<h2 id="跟踪用户行为"><a href="#跟踪用户行为" class="headerlink" title="跟踪用户行为"></a>跟踪用户行为</h2><p>例如一个天气预报网站，能够根据用户选择的地区显示当地的天气情况。如果每次都需要选择所在地是烦琐的，当利用了 cookie后就会显得很人性化了，系统能够记住上一次访问的地区，当下次再打开该页面时，它就会自动显示上次用户所在地区的天气情况。因为一切都是在后台完成，所以这样的页面就像为某个用户所定制的一样，使用起来非常方便。 </p>
-<h2 id="定制页面"><a href="#定制页面" class="headerlink" title="定制页面"></a>定制页面</h2><p>如果网站提供了换肤或更换布局的功能，那么可以使用cookie来记录用户的选项，例如：背景色、分辨率等。当用户下次访问时，仍然可以保存上一次访问的界面风格</p>
-<h2 id="创建购物车"><a href="#创建购物车" class="headerlink" title="创建购物车"></a>创建购物车</h2><p>使用cookie来记录用户需要购买的商品一样，在结账的时候可以统一提交。例如淘宝网就使用cookie记录了用户曾经浏览过的商品，方便随时进行比较</p>
-<blockquote>
-<p>当然，上述应用仅仅是cookie能完成的部分应用，还有更多的功能需要全局变量。cookie的缺点主要集中于安全性和隐私保护。主要包括以下几种： </p>
-<ul>
-<li>cookie可能被禁用。当用户非常注重个人隐私保护时，他很可能禁用浏览器的cookie功能； </li>
-<li>cookie是与浏览器相关的。这意味着即使访问的是同一个页面，不同浏览器之间所保存的cookie也是不能互相访问的； </li>
-<li>cookie可能被删除。因为每个cookie都是硬盘上的一个文件，因此很有可能被用户删除； </li>
-<li>cookie安全性不够高。所有的cookie都是以纯文本的形式记录于文件中，因此如果要保存用户名密码等信息时，最好事先经过加密处理。 </li>
-</ul>
-</blockquote>
-<h2 id="cookie的使用"><a href="#cookie的使用" class="headerlink" title="cookie的使用"></a>cookie的使用</h2><h3 id="设置cookie"><a href="#设置cookie" class="headerlink" title="设置cookie"></a>设置cookie</h3><pre><code>document.cookie=&quot;userId=828&quot;; 
-document.cookie=&quot;userId=828; userName=hulk&quot;; 
-</code></pre><h3 id="获取cookie的值"><a href="#获取cookie的值" class="headerlink" title="获取cookie的值"></a>获取cookie的值</h3><pre><code>document.cookie
-</code></pre><h3 id="给cookie设置终止日期"><a href="#给cookie设置终止日期" class="headerlink" title="给cookie设置终止日期"></a>给cookie设置终止日期</h3><pre><code>document.cookie=&quot;userId=828; expiress=GMT_String&quot;; 
-</code></pre><p>其中GMT_String是以GMT格式表示的时间字符串</p>
-<h3 id="删除cookie"><a href="#删除cookie" class="headerlink" title="删除cookie"></a>删除cookie</h3><p>为了删除一个cookie，可以将其过期时间设定为一个过去的时间</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">   //获取当前时间 </div><div class="line">var date=new Date(); </div><div class="line">//将date设置为过去的时间 </div><div class="line">date.setTime(date.getTime()-10000); </div><div class="line">//将userId这个cookie删除 </div><div class="line">document.cookie=&quot;userId=828; expires=&quot;+date.toGMTString();</div></pre></td></tr></table></figure>
-<h2 id="js对cookie操作方法代码"><a href="#js对cookie操作方法代码" class="headerlink" title="js对cookie操作方法代码"></a>js对cookie操作方法代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 添加cookie</div><div class="line"> * @param name cookie名称</div><div class="line"> * @param value cookie值</div><div class="line"> * @param expiresHours 多少小时后过期</div><div class="line"> */</div><div class="line">function addCookie(name,value,expiresHours)&#123;</div><div class="line">    var cookieString=name+&quot;=&quot;+escape(value);</div><div class="line">    //判断是否设置过期时间</div><div class="line">    if(expiresHours&gt;0)&#123;</div><div class="line">        var date=new Date();</div><div class="line">        date.setTime(date.getTime+expiresHours*3600*1000);</div><div class="line">        cookieString=cookieString+&quot;; expires=&quot;+date.toGMTString();</div><div class="line">    &#125;</div><div class="line">    document.cookie=cookieString;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 获得指定名称的cookie</div><div class="line"> * @param name cookie名称</div><div class="line"> * @returns  返回cookie值</div><div class="line"> */</div><div class="line">function getCookie(name)&#123;</div><div class="line">    var strCookie=document.cookie;</div><div class="line">    var arrCookie=strCookie.split(&quot;; &quot;);</div><div class="line">    for(var i=0;i&lt;arrCookie.length;i++)&#123;</div><div class="line">        var arr=arrCookie[i].split(&quot;=&quot;);</div><div class="line">        if(arr[0]==name)return arr[1];</div><div class="line">    &#125;</div><div class="line">    return &quot;&quot;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 删除指定名称的cookie</div><div class="line"> * @param name cookie名称</div><div class="line"> */</div><div class="line">function deleteCookie(name)&#123;</div><div class="line">    var date=new Date();</div><div class="line">    date.setTime(date.getTime()-10000);</div><div class="line">    document.cookie=name+&quot;=v; expires=&quot;+date.toGMTString();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1707,7 +1656,7 @@ document.cookie=&quot;userId=828; userName=hulk&quot;;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
