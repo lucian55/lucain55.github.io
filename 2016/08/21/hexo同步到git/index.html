@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="hexo," />
 
 
 
@@ -84,13 +84,22 @@
 
 
 
+<meta name="description" content="配置Github建立Repository建立与你用户名对应的仓库，仓库名必须为【yourname.github.io】，固定写法，例如：我的用户名是 liushaozhen，则我的仓库名必须为 liushaozhen.github.io
+修改hexo配置文件 建立关联修改_config.yml文件
+1234deploy:	type: git	repo: https://github.com/liu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="first">
-<meta property="og:url" content="http://yoursite.com/2017/01/17/first/index.html">
+<meta property="og:title" content="hexo同步到git">
+<meta property="og:url" content="http://yoursite.com/2016/08/21/hexo同步到git/index.html">
 <meta property="og:site_name" content="lucian">
-<meta property="og:updated_time" content="2017-01-17T07:56:29.736Z">
+<meta property="og:description" content="配置Github建立Repository建立与你用户名对应的仓库，仓库名必须为【yourname.github.io】，固定写法，例如：我的用户名是 liushaozhen，则我的仓库名必须为 liushaozhen.github.io
+修改hexo配置文件 建立关联修改_config.yml文件
+1234deploy:	type: git	repo: https://github.com/liu">
+<meta property="og:updated_time" content="2017-01-19T01:51:51.056Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="first">
+<meta name="twitter:title" content="hexo同步到git">
+<meta name="twitter:description" content="配置Github建立Repository建立与你用户名对应的仓库，仓库名必须为【yourname.github.io】，固定写法，例如：我的用户名是 liushaozhen，则我的仓库名必须为 liushaozhen.github.io
+修改hexo配置文件 建立关联修改_config.yml文件
+1234deploy:	type: git	repo: https://github.com/liu">
 
 
 
@@ -108,7 +117,7 @@
   };
 </script>
 
-  <title> first | lucian </title>
+  <title> hexo同步到git | lucian </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -238,7 +247,7 @@
             
             
               
-                first
+                hexo同步到git
               
             
           </h1>
@@ -250,11 +259,30 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-17T15:02:37+08:00" content="2017-01-17">
-              2017-01-17
+            <time itemprop="dateCreated" datetime="2016-08-21T11:29:01+08:00" content="2016-08-21">
+              2016-08-21
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/工具/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -278,7 +306,18 @@
       
 
       
-        
+        <h2 id="配置Github"><a href="#配置Github" class="headerlink" title="配置Github"></a>配置Github</h2><p>建立Repository<br>建立与你用户名对应的仓库，仓库名必须为【yourname.github.io】，固定写法，例如：我的用户名是 liushaozhen，则我的仓库名必须为 liushaozhen.github.io</p>
+<h2 id="修改hexo配置文件-建立关联"><a href="#修改hexo配置文件-建立关联" class="headerlink" title="修改hexo配置文件 建立关联"></a>修改hexo配置文件 建立关联</h2><p>修改_config.yml文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">	type: git</div><div class="line">	repo: https://github.com/liushaozhen/liushaozhen.github.io.git</div><div class="line">	branch: master</div></pre></td></tr></table></figure>
+<p>网上会有很多说法，有的type是github, 还有repository最后面的后缀也不一样，是github.com.git，我也踩了很多坑，我现在的版本是hexo: 3.2.2，执行命令hexo -vsersion就出来了,貌似3.0后全部改成我上面这种格式了。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>执行命令</p>
+<pre><code>hexo deploy
+</code></pre><h2 id="部署步骤"><a href="#部署步骤" class="headerlink" title="部署步骤"></a>部署步骤</h2><pre><code>hexo clean
+
+hexo generate
+
+hexo deploy 
+</code></pre>
       
     </div>
 
@@ -297,21 +336,27 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/hexo/" rel="tag">#hexo</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/16/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2016/08/14/hexo基本使用/" rel="next" title="hexo基本使用">
+                <i class="fa fa-chevron-left"></i> hexo基本使用
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/01/17/JS四种数据类型检测的方法/" rel="prev" title="javaScript四种数据类型检测的方法">
-                javaScript四种数据类型检测的方法 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/08/28/hexo主题更换/" rel="prev" title="hexo主题更换">
+                hexo主题更换 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -375,12 +420,12 @@
                src="/images/avatar.jpg"
                alt="lucian" />
           <p class="site-author-name" itemprop="name">lucian</p>
-          <p class="site-description motion-element" itemprop="description"></p>
+          <p class="site-description motion-element" itemprop="description">不太可能的事也许今天实现，根本不可能的事也许明天会实现</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -388,7 +433,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -397,7 +442,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -437,7 +482,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置Github"><span class="nav-number">1.</span> <span class="nav-text">配置Github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改hexo配置文件-建立关联"><span class="nav-number">2.</span> <span class="nav-text">修改hexo配置文件 建立关联</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">3.</span> <span class="nav-text">最后</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署步骤"><span class="nav-number">4.</span> <span class="nav-text">部署步骤</span></a></li></ol></div>
             
           </div>
         </section>
