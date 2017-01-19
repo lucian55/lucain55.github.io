@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="js技巧," />
+  <meta name="keywords" content="webpack," />
 
 
 
@@ -84,28 +84,22 @@
 
 
 
-<meta name="description" content="js中常用的四种数据类型检测的方法：typeof、instanceof、constructor、Object.prototype.toString.call()
+<meta name="description" content="废话不多说，直接上代码
 
-1、typeof用来检测数据类型的运算符例子：
-console.log(typeof 12);//&amp;quot;number&amp;quot;
-console.log(typeof [&amp;apos;a&amp;apos;,&amp;apos;b&amp;apos;])">
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051var htmlWebpackPlugin=require(&amp;apos;html-webpack-plugin&amp;apos;);var openBrowserWebpackPlugin=r">
 <meta property="og:type" content="article">
-<meta property="og:title" content="javaScript四种数据类型检测的方法">
-<meta property="og:url" content="http://yoursite.com/2017/01/17/JS四种数据类型检测的方法/index.html">
+<meta property="og:title" content="webpack配置说明">
+<meta property="og:url" content="http://yoursite.com/2017/01/19/webpack配置说明/index.html">
 <meta property="og:site_name" content="lucian">
-<meta property="og:description" content="js中常用的四种数据类型检测的方法：typeof、instanceof、constructor、Object.prototype.toString.call()
+<meta property="og:description" content="废话不多说，直接上代码
 
-1、typeof用来检测数据类型的运算符例子：
-console.log(typeof 12);//&amp;quot;number&amp;quot;
-console.log(typeof [&amp;apos;a&amp;apos;,&amp;apos;b&amp;apos;])">
-<meta property="og:updated_time" content="2017-01-17T08:05:22.373Z">
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051var htmlWebpackPlugin=require(&amp;apos;html-webpack-plugin&amp;apos;);var openBrowserWebpackPlugin=r">
+<meta property="og:updated_time" content="2017-01-19T05:14:07.306Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="javaScript四种数据类型检测的方法">
-<meta name="twitter:description" content="js中常用的四种数据类型检测的方法：typeof、instanceof、constructor、Object.prototype.toString.call()
+<meta name="twitter:title" content="webpack配置说明">
+<meta name="twitter:description" content="废话不多说，直接上代码
 
-1、typeof用来检测数据类型的运算符例子：
-console.log(typeof 12);//&amp;quot;number&amp;quot;
-console.log(typeof [&amp;apos;a&amp;apos;,&amp;apos;b&amp;apos;])">
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051var htmlWebpackPlugin=require(&amp;apos;html-webpack-plugin&amp;apos;);var openBrowserWebpackPlugin=r">
 
 
 
@@ -123,7 +117,7 @@ console.log(typeof [&amp;apos;a&amp;apos;,&amp;apos;b&amp;apos;])">
   };
 </script>
 
-  <title> javaScript四种数据类型检测的方法 | lucian </title>
+  <title> webpack配置说明 | lucian </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -253,7 +247,7 @@ console.log(typeof [&amp;apos;a&amp;apos;,&amp;apos;b&amp;apos;])">
             
             
               
-                javaScript四种数据类型检测的方法
+                webpack配置说明
               
             
           </h1>
@@ -265,8 +259,8 @@ console.log(typeof [&amp;apos;a&amp;apos;,&amp;apos;b&amp;apos;])">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-17T15:02:37+08:00" content="2017-01-17">
-              2017-01-17
+            <time itemprop="dateCreated" datetime="2017-01-19T11:29:58+08:00" content="2017-01-19">
+              2017-01-19
             </time>
           </span>
 
@@ -279,8 +273,8 @@ console.log(typeof [&amp;apos;a&amp;apos;,&amp;apos;b&amp;apos;])">
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
+                  <a href="/categories/webpack/" itemprop="url" rel="index">
+                    <span itemprop="name">webpack</span>
                   </a>
                 </span>
 
@@ -313,38 +307,9 @@ console.log(typeof [&amp;apos;a&amp;apos;,&amp;apos;b&amp;apos;])">
 
       
         <blockquote>
-<p>js中常用的四种数据类型检测的方法：typeof、instanceof、constructor、Object.prototype.toString.call()</p>
+<p>废话不多说，直接上代码</p>
 </blockquote>
-<h2 id="1、typeof用来检测数据类型的运算符"><a href="#1、typeof用来检测数据类型的运算符" class="headerlink" title="1、typeof用来检测数据类型的运算符"></a>1、typeof用来检测数据类型的运算符</h2><p>例子：</p>
-<pre><code>console.log(typeof 12);//&quot;number&quot;
-console.log(typeof [&apos;a&apos;,&apos;b&apos;]);//&quot;object&quot;
-console.log(typeof /\d+/);//&quot;object&quot;
-console.log(typeof &apos;a&apos;);//&quot;string&quot;
-console.log(typeof undefined);//&quot;undefined&quot;
-</code></pre><p>说明：typeof检测数据类型返回一个字符串。可以检测到的数据类型为：”number”、“string”、“boolean”，“undefined”，“function”、“object”。由以上代码可以看出，typeof不可以检测出数组，正则等具体的数据类型。会将对象数据类型的值都返回“object”</p>
-<h2 id="2、instanceof检测某一个实例是否属于某个类"><a href="#2、instanceof检测某一个实例是否属于某个类" class="headerlink" title="2、instanceof检测某一个实例是否属于某个类"></a>2、instanceof检测某一个实例是否属于某个类</h2><p>例子：</p>
-<pre><code>var ary=[1,2]; 
-console.log(ary instanceof Array);//true
-console.log(ary instanceof Object);//true
-console.log(1 instanceof Number);//false
-console.log(new Number(1) instanceof Number);//true
-</code></pre><p>说明：由以上代码可以说明instanceof不能用来处理字面量方式创建出来的基本数据类型的值。只要在当前实例的原型链上，我们用其检测出来的结果都是true。instanceof不可以检测null和undefined</p>
-<h2 id="3、constructor"><a href="#3、constructor" class="headerlink" title="3、constructor"></a>3、constructor</h2><p>例子：</p>
-<pre><code>var aa=[1,2];
-console.log(aa.constructor==Array);//true
-console.log(aa.constructor==RegExp);//false
-console.log((1).constructor==Number);//true
-var reg=/^$/;
-console.log(reg.constructor==RegExp);//true
-console.log(reg.constructor==Object);//false
-</code></pre><p>说明：constructor作用和instanceof非常相似。但是我们可以把类的原型进行重写，在重写的过程中很有可能把之前的constructor给覆盖了，所以这样检测出来的结果是不准确的。constructor不可以检测null和undefined</p>
-<h2 id="4、Object-prototype-toString-call-最准确最常用的方式。"><a href="#4、Object-prototype-toString-call-最准确最常用的方式。" class="headerlink" title="4、Object.prototype.toString.call() 最准确最常用的方式。"></a>4、Object.prototype.toString.call() 最准确最常用的方式。</h2><p>例子：</p>
-<pre><code>var aaa=[];
-console.log(Object.prototype.toString.call(aaa));//[object Array]
-console.log(({}).toString.call(aaa));//[object Array]
-console.log(Object.prototype.toString.call(aaa)===&quot;[object Array]&quot;);//true
-</code></pre><p>说明：Object.prototype.toString.call() 最准确最常用的方式。 首先获取Object原型上的toString方法，让方法执行，让toString方法中的this指向第一个参数的值。Object上的toString并不是用来转换为字符串的。Object上的toSting它的作用是返回当前方法执行的主体（方法中的this）所属类的详细信息——&gt;”[object Object]”:第一个object代表当前实例是对象数据类型的，这个是固定死的，第二个Object代表的是this所属的类是Object。 Object可以检测null和undefined，第二和第三种方法不可以检测null和undefined</p>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">var htmlWebpackPlugin=require(&apos;html-webpack-plugin&apos;);</div><div class="line">var openBrowserWebpackPlugin=require(&apos;open-browser-webpack-plugin&apos;);//打开浏览器插件</div><div class="line">var extractTextWebpackPlugin=require(&apos;extract-text-webpack-plugin&apos;);//文件单独加载插件</div><div class="line">var webpack=require(&apos;webpack&apos;);</div><div class="line">module.exports=&#123;</div><div class="line">  //entry:&apos;./app/index.js&apos;,//入口文件</div><div class="line">  //配置多个入口文件</div><div class="line">  entry:&#123;</div><div class="line">    index:[&apos;./app/a.js&apos;,&apos;./app/b.js&apos;],//将a和b同时打包在一起生成index.js</div><div class="line">    bundle:&apos;./app/index.js&apos;</div><div class="line">  &#125;,</div><div class="line">  output:&#123;//出口文件</div><div class="line">    path:&apos;./build/&apos;,//出口路径</div><div class="line">    filename:&apos;[name].js?[hash:8]&apos;//出口文件名。[name]对于entry中的属性名。?[hash:8]加8位的hash值，防止缓存</div><div class="line">  &#125;,</div><div class="line">  plugins:[</div><div class="line">    //自动创建plugin</div><div class="line">    new htmlWebpackPlugin(&#123;</div><div class="line">      title:&apos;标题&apos;,</div><div class="line">      //filename:&apos;index.html&apos;,//自动生成一个新的html</div><div class="line">      template:&apos;./index.html&apos;,//在index.html模板上增加js</div><div class="line">      chunks:[&apos;index&apos;,&apos;bundle&apos;,&apos;common.js&apos;]//需要哪些js文件,即依赖的js。 common是提取的js文件，必须加后缀</div><div class="line">    &#125;),</div><div class="line">    //自动打开浏览器</div><div class="line">    new openBrowserWebpackPlugin(&#123;</div><div class="line">      url:&apos;http://localhost:8081&apos;</div><div class="line">    &#125;),</div><div class="line">    new extractTextWebpackPlugin(&apos;bundle.css&apos;),//文件单独加载，命名打包后的css文件</div><div class="line">    new webpack.optimize.CommonsChunkPlugin(&apos;common.js&apos;),//抽取chunks下所有的js相同的代码，并合并为common.js</div><div class="line">    new webpack.optimize.UglifyJsPlugin(&#123;//压缩js文件</div><div class="line">        compress: &#123;</div><div class="line">          warnings: false</div><div class="line">          &#125;</div><div class="line">    &#125;),</div><div class="line">  ],</div><div class="line">  module:&#123;//模块的导入方式，即为了简化index.js中的require(&apos;style!css!./style.css&apos;)这句话。配置完一个这句话可以改为require(&apos;./style.css&apos;)</div><div class="line">    loaders:[//所有的加载器</div><div class="line">      //&#123;test:/\.css$/,loaders:[&apos;style&apos;,&apos;css&apos;]&#125;,//匹配所有的css，进行css和style的配置</div><div class="line">      &#123;test:/\.css$/,loader:extractTextWebpackPlugin.extract(&apos;style&apos;,&apos;css&apos;)&#125;,//配置需要单独单独加载的文件</div><div class="line">      &#123;test:/\.(jpg|png|gif)$/,loaders:[&apos;url?limit=8000&apos;]&#125;//匹配所有的图片，用url-loader加载。 ?limit=8000 8K以下的不转BASE64</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">  resolve:&#123;//请求重定向</div><div class="line">    //在编写的时候去掉扩展名</div><div class="line">    extensions:[&apos;&apos;,&apos;.js&apos;,&apos;.css&apos;,&apos;.jsx&apos;],//顺序必须是 空  js  css jsx</div><div class="line">    //配置名称简写。即把index.js中的require(&apos;./a/b/index.js&apos;)的写法改为pack</div><div class="line">    alias:&#123;</div><div class="line">      pack:&apos;./a/b/index.js&apos;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -365,7 +330,7 @@ console.log(Object.prototype.toString.call(aaa)===&quot;[object Array]&quot;);//
       
         <div class="post-tags">
           
-            <a href="/tags/js技巧/" rel="tag">#js技巧</a>
+            <a href="/tags/webpack/" rel="tag">#webpack</a>
           
         </div>
       
@@ -374,16 +339,16 @@ console.log(Object.prototype.toString.call(aaa)===&quot;[object Array]&quot;);//
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/16/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2017/01/17/JS四种数据类型检测的方法/" rel="next" title="javaScript四种数据类型检测的方法">
+                <i class="fa fa-chevron-left"></i> javaScript四种数据类型检测的方法
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/01/19/webpack配置说明/" rel="prev" title="webpack配置说明">
-                webpack配置说明 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/01/19/react爬坑之路/" rel="prev" title="react爬坑之路">
+                react爬坑之路 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -509,7 +474,7 @@ console.log(Object.prototype.toString.call(aaa)===&quot;[object Array]&quot;);//
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、typeof用来检测数据类型的运算符"><span class="nav-number">1.</span> <span class="nav-text">1、typeof用来检测数据类型的运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、instanceof检测某一个实例是否属于某个类"><span class="nav-number">2.</span> <span class="nav-text">2、instanceof检测某一个实例是否属于某个类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、constructor"><span class="nav-number">3.</span> <span class="nav-text">3、constructor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、Object-prototype-toString-call-最准确最常用的方式。"><span class="nav-number">4.</span> <span class="nav-text">4、Object.prototype.toString.call() 最准确最常用的方式。</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
