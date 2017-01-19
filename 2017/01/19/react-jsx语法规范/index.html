@@ -84,19 +84,31 @@
 
 
 
-<meta name="description" content="命名规范组件命名已大写开头
-组件声明尽量不使用 displayName，通过引用来命名12345678export defalut React.createClass(&amp;#123;	displayName:&amp;apos;MyCom&amp;apos;&amp;#125;);//不使用const MyCom = React.createClass(&amp;#123;&amp;#125;);export defalut MyCom;">
+<meta name="description" content="命名规范
+组件命名已大写开头
+
+组件声明
+return的根元素只能是一个
+尽量不使用 displayName，通过引用来命名12345678export defalut React.createClass(&amp;#123;	displayName:&amp;apos;MyCom&amp;apos;&amp;#125;);//不使用const MyCom = React.createClass(&amp;#123;&amp;#125;);ex">
 <meta property="og:type" content="article">
 <meta property="og:title" content="react/jsx语法规范">
 <meta property="og:url" content="http://yoursite.com/2017/01/19/react-jsx语法规范/index.html">
 <meta property="og:site_name" content="lucian">
-<meta property="og:description" content="命名规范组件命名已大写开头
-组件声明尽量不使用 displayName，通过引用来命名12345678export defalut React.createClass(&amp;#123;	displayName:&amp;apos;MyCom&amp;apos;&amp;#125;);//不使用const MyCom = React.createClass(&amp;#123;&amp;#125;);export defalut MyCom;">
-<meta property="og:updated_time" content="2017-01-19T11:57:53.160Z">
+<meta property="og:description" content="命名规范
+组件命名已大写开头
+
+组件声明
+return的根元素只能是一个
+尽量不使用 displayName，通过引用来命名12345678export defalut React.createClass(&amp;#123;	displayName:&amp;apos;MyCom&amp;apos;&amp;#125;);//不使用const MyCom = React.createClass(&amp;#123;&amp;#125;);ex">
+<meta property="og:updated_time" content="2017-01-19T12:31:30.187Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react/jsx语法规范">
-<meta name="twitter:description" content="命名规范组件命名已大写开头
-组件声明尽量不使用 displayName，通过引用来命名12345678export defalut React.createClass(&amp;#123;	displayName:&amp;apos;MyCom&amp;apos;&amp;#125;);//不使用const MyCom = React.createClass(&amp;#123;&amp;#125;);export defalut MyCom;">
+<meta name="twitter:description" content="命名规范
+组件命名已大写开头
+
+组件声明
+return的根元素只能是一个
+尽量不使用 displayName，通过引用来命名12345678export defalut React.createClass(&amp;#123;	displayName:&amp;apos;MyCom&amp;apos;&amp;#125;);//不使用const MyCom = React.createClass(&amp;#123;&amp;#125;);ex">
 
 
 
@@ -303,14 +315,21 @@
       
 
       
-        <h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><p>组件命名已大写开头</p>
-<h2 id="组件声明"><a href="#组件声明" class="headerlink" title="组件声明"></a>组件声明</h2><p>尽量不使用 <code>displayName</code>，通过引用来命名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">export defalut React.createClass(&#123;</div><div class="line">	displayName:&apos;MyCom&apos;</div><div class="line">&#125;);//不使用</div><div class="line"></div><div class="line">const MyCom = React.createClass(&#123;</div><div class="line"></div><div class="line">&#125;);</div><div class="line">export defalut MyCom;//使用</div></pre></td></tr></table></figure></p>
+        <h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><ul>
+<li>组件命名已大写开头</li>
+</ul>
+<h2 id="组件声明"><a href="#组件声明" class="headerlink" title="组件声明"></a>组件声明</h2><ul>
+<li>return的根元素只能是一个</li>
+<li>尽量不使用 <code>displayName</code>，通过引用来命名<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">export defalut React.createClass(&#123;</div><div class="line">	displayName:&apos;MyCom&apos;</div><div class="line">&#125;);//不使用</div><div class="line"></div><div class="line">const MyCom = React.createClass(&#123;</div><div class="line"></div><div class="line">&#125;);</div><div class="line">export defalut MyCom;//使用</div></pre></td></tr></table></figure>
+</li>
+</ul>
 <h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><ul>
 <li>在组件中，使用<code>className</code>代替<code>class</code></li>
 <li>在组件中，使用<code>htmlFor</code>代替<code>for</code></li>
 <li>自定义属性需要加<code>data-</code>前缀，否则react不会渲染</li>
 <li><code>aria-</code>可以正常使用</li>
 </ul>
+<h2 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h2><p>可以在组件中定义样式对象，然后直接使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">import React, &#123; Component &#125; from &apos;react&apos;;</div><div class="line"></div><div class="line">class StyleDemo extends Component &#123;</div><div class="line">  render()&#123;</div><div class="line">    // 5. 在JS文件里面给组件定义样式</div><div class="line">    var MyComponentStyles = &#123;</div><div class="line">        color: &apos;blue&apos;,</div><div class="line">        fontSize: &apos;28px&apos;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    return (</div><div class="line">      &lt;div style=&#123;MyComponentStyles&#125;&gt;</div><div class="line">          可以直接这样写行内样式</div><div class="line">      &lt;/div&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">export default StyleDemo;</div></pre></td></tr></table></figure></p>
 <h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
 <li>多行的JSX使用 () 包裹，有组件嵌套时使用多行模式</li>
 <li>单行的JSX 省略 ()</li>
@@ -477,7 +496,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#命名规范"><span class="nav-number">1.</span> <span class="nav-text">命名规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组件声明"><span class="nav-number">2.</span> <span class="nav-text">组件声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性"><span class="nav-number">3.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它"><span class="nav-number">4.</span> <span class="nav-text">其它</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#命名规范"><span class="nav-number">1.</span> <span class="nav-text">命名规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组件声明"><span class="nav-number">2.</span> <span class="nav-text">组件声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性"><span class="nav-number">3.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样式"><span class="nav-number">4.</span> <span class="nav-text">样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它"><span class="nav-number">5.</span> <span class="nav-text">其它</span></a></li></ol></div>
             
           </div>
         </section>
