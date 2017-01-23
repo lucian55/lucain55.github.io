@@ -243,6 +243,342 @@
             
               
                 
+                <a class="post-title-link" href="/2017/01/23/ES6入门/" itemprop="url">
+                  ES6入门
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-23T08:59:23+08:00" content="2017-01-23">
+              2017-01-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/javascript/ES6/" itemprop="url" rel="index">
+                    <span itemprop="name">ES6</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>参考 <a href="http://es6.ruanyifeng.com/#README" target="_blank" rel="external">ECMAScript 6 入门</a></p>
+</blockquote>
+<h2 id="一、let、const定义变量"><a href="#一、let、const定义变量" class="headerlink" title="一、let、const定义变量"></a>一、let、const定义变量</h2><p>现在一般定义变量都用<code>var</code>，但是<code>var</code>会有很多的问题：</p>
+<ul>
+<li><code>var</code>没有块级作用域，定义后在当前闭包中都可以访问，如果变量名重复，就会覆盖前面定义的变量，并且也有可能被其他人更改。</li>
+<li><code>var</code>在<code>for</code>循环标记变量共享，一般在循环中使用的<code>i</code>会被共享，其本质上也是由于没有块级作用域造成的，由于情况比较多见和特殊，单独算一个问题。</li>
+</ul>
+<p>因此有了两种新的变量定义方式<code>let</code>和<code>const</code>。</p>
+<p>用<code>let</code>定义的变量具有块级作用域。<br>用<code>const</code>定义的变量是静态变量，定义以后不可修改。</p>
+<h3 id="let的好处和用法"><a href="#let的好处和用法" class="headerlink" title="let的好处和用法"></a><code>let</code>的好处和用法</h3><ul>
+<li><code>let</code>拥有块级作用域</li>
+<li><code>let</code>生命的全局变量不会影响<code>window</code></li>
+<li>循环时不会共享<code>let</code>定义的变量</li>
+</ul>
+<h4 id="友好的报错"><a href="#友好的报错" class="headerlink" title="友好的报错"></a>友好的报错</h4><p><strong><code>&#39;use strict&#39;;</code></strong> 用了严格模式才有有友好的报错</p>
+<ul>
+<li>重新定义<code>let</code>的变量会报错</li>
+<li>使用未定义的变量会报错（包括不在自己作用域中的变量）</li>
+<li><code>let</code>没有变量提升(变量预定义)，在一个块级作用域中，不可以先使用未定义的变量。</li>
+</ul>
+<h4 id="块级作用域是什么"><a href="#块级作用域是什么" class="headerlink" title="块级作用域是什么"></a>块级作用域是什么</h4><p>在用<code>var</code>定义变量的时候，变量是通过闭包进行隔离的，现在用了<code>let</code>，不仅仅可以通过闭包隔离，还增加了一些块级作用域隔离。</p>
+<p> <code>{}</code></p>
+<p>在<code>for</code>、<code>if</code>、<code>switch</code>、<code>function</code>等的大括号都会当成一个独立的块级作用域。</p>
+<p>闭包的新写法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>不必再是：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">;(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<h3 id="const的好处和用法"><a href="#const的好处和用法" class="headerlink" title="const的好处和用法"></a>const的好处和用法</h3><p><code>const</code>是静态变量，定以后不允许再被修改或者重新定义。</p>
+<ul>
+<li>在严格模式下，重新定义或者修改静态变量会报错。</li>
+<li>不同的块级作用域下，可以定义相同名字的静态变量。</li>
+</ul>
+<h2 id="二、解构赋值"><a href="#二、解构赋值" class="headerlink" title="二、解构赋值"></a>二、解构赋值</h2><blockquote>
+<p>ES6 允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构</p>
+</blockquote>
+<ul>
+<li>数组的解构赋值</li>
+<li>对象的解构赋值</li>
+<li>字符串的解构赋值</li>
+<li>数值和布尔值的解构赋值</li>
+<li>函数参数的解构赋值</li>
+<li>圆括号问题</li>
+</ul>
+<h2 id="三、字符串的扩展"><a href="#三、字符串的扩展" class="headerlink" title="三、字符串的扩展"></a>三、字符串的扩展</h2><ul>
+<li>字符的Unicode表示法</li>
+<li>codePointAt()</li>
+<li>String.fromCodePoint()</li>
+<li>字符串的遍历器接口</li>
+<li>at()</li>
+<li>normalize()</li>
+<li>includes(), startsWith(), endsWith()</li>
+<li>repeat()</li>
+<li>padStart()，padEnd()</li>
+<li>模板字符串</li>
+<li>标签模板</li>
+<li>String.raw()</li>
+<li>模板字符串的限制</li>
+</ul>
+<h2 id="四、正则的扩展"><a href="#四、正则的扩展" class="headerlink" title="四、正则的扩展"></a>四、正则的扩展</h2><ul>
+<li>RegExp构造函数</li>
+<li>字符串的正则方法</li>
+<li>u 修饰符</li>
+<li>y 修饰符</li>
+<li>sticky属性</li>
+<li>flags属性</li>
+<li>RegExp.escape()</li>
+<li>s 修饰符：dotAll 模式</li>
+<li>后行断言</li>
+<li>Unicode属性类</li>
+</ul>
+<h2 id="五、数值的扩展"><a href="#五、数值的扩展" class="headerlink" title="五、数值的扩展"></a>五、数值的扩展</h2><ul>
+<li>Number.isFinite(), Number.isNaN()</li>
+<li>Number.parseInt(), Number.parseFloat()</li>
+<li>Number.isInteger()</li>
+<li>Number.EPSILON</li>
+<li>安全整数和Number.isSafeInteger()</li>
+<li>Math对象的扩展</li>
+<li>指数运算符</li>
+</ul>
+<h2 id="六、函数的扩展"><a href="#六、函数的扩展" class="headerlink" title="六、函数的扩展"></a>六、函数的扩展</h2><ul>
+<li>函数参数的默认值</li>
+<li>rest参数</li>
+<li>扩展运算符</li>
+<li>严格模式</li>
+<li>name 属性</li>
+<li>箭头函数</li>
+<li>绑定 this</li>
+<li>尾调用优化</li>
+<li>函数参数的尾逗号</li>
+</ul>
+<h2 id="七、对象的扩展"><a href="#七、对象的扩展" class="headerlink" title="七、对象的扩展"></a>七、对象的扩展</h2><ul>
+<li>属性的简洁表示法</li>
+<li>属性名表达式</li>
+<li>方法的 name 属性</li>
+<li>Object.is()</li>
+<li>Object.assign()</li>
+<li>属性的可枚举性</li>
+<li>属性的遍历</li>
+<li><strong>proto</strong>属性，Object.setPrototypeOf()，Object.getPrototypeOf()</li>
+<li>Object.keys()，Object.values()，Object.entries()</li>
+<li>对象的扩展运算符</li>
+<li>Object.getOwnPropertyDescriptors()</li>
+</ul>
+<h2 id="八、Symbol"><a href="#八、Symbol" class="headerlink" title="八、Symbol"></a>八、Symbol</h2><blockquote>
+<p>JavaScript语言的第七种数据类型</p>
+</blockquote>
+<p>Symbol值通过Symbol函数生成。这就是说，对象的属性名现在可以有两种类型，一种是原来就有的字符串，另一种就是新增的Symbol类型。凡是属性名属于Symbol类型，就都是独一无二的，可以保证不会与其他属性名产生冲突。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let s = Symbol();</div><div class="line">typeof s</div><div class="line">// &quot;symbol&quot;</div></pre></td></tr></table></figure></p>
+<p>上面代码中，变量s就是一个独一无二的值。typeof运算符的结果，表明变量s是Symbol数据类型，而不是字符串之类的其他类型。<br>注意，Symbol函数前不能使用new命令，否则会报错。这是因为生成的Symbol是一个原始类型的值，不是对象。也就是说，由于Symbol值不是对象，所以不能添加属性。基本上，它是一种类似于字符串的数据类型。<br>………</p>
+<h2 id="九、Set和Map数据结构"><a href="#九、Set和Map数据结构" class="headerlink" title="九、Set和Map数据结构"></a>九、Set和Map数据结构</h2><ul>
+<li>Set</li>
+<li>WeakSet</li>
+<li>Map</li>
+<li>WeakMap</li>
+</ul>
+<h2 id="十、Class"><a href="#十、Class" class="headerlink" title="十、Class"></a>十、Class</h2><p>JavaScript语言的传统方法是通过构造函数，定义并生成新对象。下面是一个例子。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function Point(x, y) &#123;</div><div class="line">  this.x = x;</div><div class="line">  this.y = y;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Point.prototype.toString = function () &#123;</div><div class="line">  return &apos;(&apos; + this.x + &apos;, &apos; + this.y + &apos;)&apos;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">var p = new Point(1, 2);</div></pre></td></tr></table></figure></p>
+<p>上面这种写法跟传统的面向对象语言（比如C++和Java）差异很大，很容易让新学习这门语言的程序员感到困惑。</p>
+<p>ES6提供了更接近传统语言的写法，引入了Class（类）这个概念，作为对象的模板。通过class关键字，可以定义类。基本上，ES6的class可以看作只是一个语法糖，它的绝大部分功能，ES5都可以做到，新的class写法只是让对象原型的写法更加清晰、更像面向对象编程的语法而已。上面的代码用ES6的“类”改写，就是下面这样。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//定义类</div><div class="line">class Point &#123;</div><div class="line">  constructor(x, y) &#123;</div><div class="line">    this.x = x;</div><div class="line">    this.y = y;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  toString() &#123;</div><div class="line">    return &apos;(&apos; + this.x + &apos;, &apos; + this.y + &apos;)&apos;;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上面代码定义了一个“类”，可以看到里面有一个constructor方法，这就是构造方法，而this关键字则代表实例对象。也就是说，ES5的构造函数Point，对应ES6的Point类的构造方法。<br>Point类除了构造方法，还定义了一个toString方法。注意，定义“类”的方法的时候，前面不需要加上function这个关键字，直接把函数定义放进去了就可以了。另外，方法之间不需要逗号分隔，加了会报错。<br>ES6的类，完全可以看作构造函数的另一种写法。类的数据类型就是函数，类本身就指向构造函数。使用的时候，也是直接对类使用new命令，跟构造函数的用法完全一致。</p>
+<h2 id="十一、Module模块"><a href="#十一、Module模块" class="headerlink" title="十一、Module模块"></a>十一、Module模块</h2><blockquote>
+<p>模块功能主要由两个命令构成：export和import。export命令用于规定模块的对外接口，import命令用于输入其他模块提供的功能。</p>
+</blockquote>
+<h3 id="export-命令"><a href="#export-命令" class="headerlink" title="export 命令"></a>export 命令</h3><p>一个模块就是一个独立的文件。该文件内部的所有变量，外部无法获取。如果你希望外部能够读取模块内部的某个变量，就必须使用export关键字输出该变量。下面是一个 JS 文件，里面使用export命令输出变量。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// profile.js</div><div class="line">export var firstName = &apos;Michael&apos;;</div><div class="line">export var lastName = &apos;Jackson&apos;;</div><div class="line">export var year = 1958;</div></pre></td></tr></table></figure></p>
+<p>上面代码是profile.js文件，保存了用户信息。ES6将其视为一个模块，里面用export命令对外部输出了三个变量。<br>export的写法，除了像上面这样，还有另外一种。</p>
+<p>// profile.js<br>var firstName = ‘Michael’;<br>var lastName = ‘Jackson’;<br>var year = 1958;</p>
+<p>export {firstName, lastName, year};<br>上面代码在export命令后面，使用大括号指定所要输出的一组变量。它与前一种写法（直接放置在var语句前）是等价的，但是应该优先考虑使用这种写法。因为这样就可以在脚本尾部，一眼看清楚输出了哪些变量。<br>export命令除了输出变量，还可以输出函数或类（class）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">export function multiply(x, y) &#123;</div><div class="line">  return x * y;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>上面代码对外输出一个函数multiply。</p>
+<p>通常情况下，export输出的变量就是本来的名字，但是可以使用as关键字重命名。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function v1() &#123; ... &#125;</div><div class="line">function v2() &#123; ... &#125;</div><div class="line"></div><div class="line">export &#123;</div><div class="line">  v1 as streamV1,</div><div class="line">  v2 as streamV2,</div><div class="line">  v2 as streamLatestVersion</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>上面代码使用as关键字，重命名了函数v1和v2的对外接口。重命名后，v2可以用不同的名字输出两次。<br>需要特别注意的是，export命令规定的是对外的接口，必须与模块内部的变量建立一一对应关系。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 报错</div><div class="line">export 1;</div><div class="line"></div><div class="line">// 报错</div><div class="line">var m = 1;</div><div class="line">export m;</div></pre></td></tr></table></figure></p>
+<p>上面两种写法都会报错，因为没有提供对外的接口。第一种写法直接输出1，第二种写法通过变量m，还是直接输出1。1只是一个值，不是接口。正确的写法是下面这样。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// 写法一</div><div class="line">export var m = 1;</div><div class="line"></div><div class="line">// 写法二</div><div class="line">var m = 1;</div><div class="line">export &#123;m&#125;;</div><div class="line"></div><div class="line">// 写法三</div><div class="line">var n = 1;</div><div class="line">export &#123;n as m&#125;;</div></pre></td></tr></table></figure></p>
+<p>上面三种写法都是正确的，规定了对外的接口m。其他脚本可以通过这个接口，取到值1。它们的实质是，在接口名与模块内部变量之间，建立了一一对应的关系。<br>同样的，function和class的输出，也必须遵守这样的写法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// 报错</div><div class="line">function f() &#123;&#125;</div><div class="line">export f;</div><div class="line"></div><div class="line">// 正确</div><div class="line">export function f() &#123;&#125;;</div><div class="line"></div><div class="line">// 正确</div><div class="line">function f() &#123;&#125;</div><div class="line">export &#123;f&#125;;</div></pre></td></tr></table></figure></p>
+<p>另外，export语句输出的接口，与其对应的值是动态绑定关系，即通过该接口，可以取到模块内部实时的值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export var foo = &apos;bar&apos;;</div><div class="line">setTimeout(() =&gt; foo = &apos;baz&apos;, 500);</div></pre></td></tr></table></figure></p>
+<p>上面代码输出变量foo，值为bar，500毫秒之后变成baz。</p>
+<h3 id="import-命令"><a href="#import-命令" class="headerlink" title="import 命令"></a>import 命令</h3><p>使用export命令定义了模块的对外接口以后，其他 JS 文件就可以通过import命令加载这个模块。</p>
+<pre><code>// main.js
+import {firstName, lastName, year} from &apos;./profile&apos;;
+
+function setName(element) {
+  element.textContent = firstName + &apos; &apos; + lastName;
+}
+</code></pre><p>上面代码的import命令，用于加载profile.js文件，并从中输入变量。import命令接受一对大括号，里面指定要从其他模块导入的变量名。大括号里面的变量名，必须与被导入模块（profile.js）对外接口的名称相同。</p>
+<p>如果想为输入的变量重新取一个名字，import命令要使用as关键字，将输入的变量重命名。</p>
+<pre><code>import { lastName as surname } from &apos;./profile&apos;;
+</code></pre><p>import后面的from指定模块文件的位置，可以是相对路径，也可以是绝对路径，.js路径可以省略。如果只是模块名，不带有路径，那么必须有配置文件，告诉 JavaScript 引擎该模块的位置。</p>
+<pre><code>import {myMethod} from &apos;util&apos;;
+</code></pre><p>上面代码中，util是模块文件名，由于不带有路径，必须通过配置，告诉引擎怎么取到这个模块。</p>
+<p>注意，import命令具有提升效果，会提升到整个模块的头部，首先执行。</p>
+<pre><code>foo();
+
+import { foo } from &apos;my_module&apos;;
+</code></pre><p>上面的代码不会报错，因为import的执行早于foo的调用。这种行为的本质是，import命令是编译阶段执行的，在代码运行之前。</p>
+<p>由于import是静态执行，所以不能使用表达式和变量，这些只有在运行时才能得到结果的语法结构。</p>
+<pre><code>// 报错
+import { &apos;f&apos; + &apos;oo&apos; } from &apos;my_module&apos;;
+
+// 报错
+let module = &apos;my_module&apos;;
+import { foo } from module;
+
+// 报错
+if (x === 1) {
+  import { foo } from &apos;module1&apos;;
+} else {
+  import { foo } from &apos;module2&apos;;
+}
+</code></pre><p>上面三种写法都会报错，因为它们用到了表达式、变量和if结构。在静态分析阶段，这些语法都是没法得到值的。</p>
+<p>最后，import语句会执行所加载的模块，因此可以有下面的写法。</p>
+<pre><code>import &apos;lodash&apos;;
+</code></pre><p>上面代码仅仅执行lodash模块，但是不输入任何值。</p>
+<p>如果多次重复执行同一句import语句，那么只会执行一次，而不会执行多次。</p>
+<pre><code>import &apos;lodash&apos;;
+import &apos;lodash&apos;;
+</code></pre><p>上面代码加载了两次lodash，但是只会执行一次。</p>
+<pre><code>import { foo } from &apos;my_module&apos;;
+import { bar } from &apos;my_module&apos;;
+
+// 等同于
+import { foo, bar } from &apos;my_module&apos;;
+</code></pre><p>上面代码中，虽然foo和bar在两个语句中加载，但是它们对应的是同一个my_module实例。<br>除了指定加载某个输出值，还可以使用整体加载，即用星号（*）指定一个对象，所有输出值都加载在这个对象上面。</p>
+<p>下面是一个circle.js文件，它输出两个方法area和circumference。</p>
+<pre><code>// circle.js
+
+export function area(radius) {
+  return Math.PI * radius * radius;
+}
+
+export function circumference(radius) {
+  return 2 * Math.PI * radius;
+}
+</code></pre><p>现在，加载这个模块。</p>
+<pre><code>// main.js
+
+import { area, circumference } from &apos;./circle&apos;;
+
+console.log(&apos;圆面积：&apos; + area(4));
+console.log(&apos;圆周长：&apos; + circumference(14));
+</code></pre><p>上面写法是逐一指定要加载的方法，整体加载的写法如下。</p>
+<pre><code>import * as circle from &apos;./circle&apos;;
+
+console.log(&apos;圆面积：&apos; + circle.area(4));
+console.log(&apos;圆周长：&apos; + circle.circumference(14));
+</code></pre><p>从前面的例子可以看出，使用import命令的时候，用户需要知道所要加载的变量名或函数名，否则无法加载。但是，用户肯定希望快速上手，未必愿意阅读文档，去了解模块有哪些属性和方法。</p>
+<p>为了给用户提供方便，让他们不用阅读文档就能加载模块，就要用到export default命令，为模块指定默认输出。</p>
+<pre><code>// export-default.js
+export default function () {
+  console.log(&apos;foo&apos;);
+}
+</code></pre><p>上面代码是一个模块文件export-default.js，它的默认输出是一个函数。<br>其他模块加载该模块时，import命令可以为该匿名函数指定任意名字。</p>
+<pre><code>// import-default.js
+import customName from &apos;./export-default&apos;;
+customName(); // &apos;foo&apos;
+</code></pre><p>上面代码的import命令，可以用任意名称指向export-default.js输出的方法，这时就不需要知道原模块输出的函数名。需要注意的是，这时import命令后面，不使用大括号。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/01/19/react-jsx语法规范/" itemprop="url">
                   react/jsx语法规范
                 </a>
@@ -1495,129 +1831,6 @@ console.log(Object.prototype.toString.call(aaa)===&quot;[object Array]&quot;);//
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/21/hexo同步到git/" itemprop="url">
-                  hexo同步到git
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-21T11:29:01+08:00" content="2016-08-21">
-              2016-08-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="配置Github"><a href="#配置Github" class="headerlink" title="配置Github"></a>配置Github</h2><p>建立Repository<br>建立与你用户名对应的仓库，仓库名必须为【yourname.github.io】，固定写法，例如：我的用户名是 liushaozhen，则我的仓库名必须为 liushaozhen.github.io</p>
-<h2 id="修改hexo配置文件-建立关联"><a href="#修改hexo配置文件-建立关联" class="headerlink" title="修改hexo配置文件 建立关联"></a>修改hexo配置文件 建立关联</h2><p>修改_config.yml文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">	type: git</div><div class="line">	repo: https://github.com/liushaozhen/liushaozhen.github.io.git</div><div class="line">	branch: master</div></pre></td></tr></table></figure>
-<p>网上会有很多说法，有的type是github, 还有repository最后面的后缀也不一样，是github.com.git，我也踩了很多坑，我现在的版本是hexo: 3.2.2，执行命令hexo -vsersion就出来了,貌似3.0后全部改成我上面这种格式了。</p>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>执行命令</p>
-<pre><code>hexo deploy
-</code></pre><h2 id="部署步骤"><a href="#部署步骤" class="headerlink" title="部署步骤"></a>部署步骤</h2><pre><code>hexo clean
-
-hexo generate
-
-hexo deploy 
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1663,7 +1876,7 @@ hexo deploy
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1671,7 +1884,7 @@ hexo deploy
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1680,7 +1893,7 @@ hexo deploy
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
