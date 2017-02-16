@@ -243,7 +243,865 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/23/ES6入门/" itemprop="url">
+                <a class="post-title-link" href="/2017/02/16/近期要写/" itemprop="url">
+                  近期要写
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-16T19:44:35+08:00" content="2017-02-16">
+              2017-02-16
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li>es6 </li>
+<li>react</li>
+<li>react+redux</li>
+<li>axio</li>
+<li>webpack详细配置解析</li>
+<li>VUE    </li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/16/webpack配置说明/" itemprop="url">
+                  webpack配置说明
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-16T19:44:35+08:00" content="2017-02-16">
+              2017-02-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/webpack/" itemprop="url" rel="index">
+                    <span itemprop="name">webpack</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>废话不多说，直接上代码</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">var htmlWebpackPlugin=require(&apos;html-webpack-plugin&apos;);</div><div class="line">var openBrowserWebpackPlugin=require(&apos;open-browser-webpack-plugin&apos;);//打开浏览器插件</div><div class="line">var extractTextWebpackPlugin=require(&apos;extract-text-webpack-plugin&apos;);//文件单独加载插件</div><div class="line">var webpack=require(&apos;webpack&apos;);</div><div class="line">module.exports=&#123;</div><div class="line">  //entry:&apos;./app/index.js&apos;,//入口文件</div><div class="line">  //配置多个入口文件</div><div class="line">  entry:&#123;</div><div class="line">    index:[&apos;./app/a.js&apos;,&apos;./app/b.js&apos;],//将a和b同时打包在一起生成index.js</div><div class="line">    bundle:&apos;./app/index.js&apos;</div><div class="line">  &#125;,</div><div class="line">  output:&#123;//出口文件</div><div class="line">    path:&apos;./build/&apos;,//出口路径</div><div class="line">    filename:&apos;[name].js?[hash:8]&apos;//出口文件名。[name]对于entry中的属性名。?[hash:8]加8位的hash值，防止缓存</div><div class="line">  &#125;,</div><div class="line">  plugins:[</div><div class="line">    //自动创建plugin</div><div class="line">    new htmlWebpackPlugin(&#123;</div><div class="line">      title:&apos;标题&apos;,</div><div class="line">      //filename:&apos;index.html&apos;,//自动生成一个新的html</div><div class="line">      template:&apos;./index.html&apos;,//在index.html模板上增加js</div><div class="line">      chunks:[&apos;index&apos;,&apos;bundle&apos;,&apos;common.js&apos;]//需要哪些js文件,即依赖的js。 common是提取的js文件，必须加后缀</div><div class="line">    &#125;),</div><div class="line">    //自动打开浏览器</div><div class="line">    new openBrowserWebpackPlugin(&#123;</div><div class="line">      url:&apos;http://localhost:8081&apos;</div><div class="line">    &#125;),</div><div class="line">    new extractTextWebpackPlugin(&apos;bundle.css&apos;),//文件单独加载，命名打包后的css文件</div><div class="line">    new webpack.optimize.CommonsChunkPlugin(&apos;common.js&apos;),//抽取chunks下所有的js相同的代码，并合并为common.js</div><div class="line">    new webpack.optimize.UglifyJsPlugin(&#123;//压缩js文件</div><div class="line">        compress: &#123;</div><div class="line">          warnings: false</div><div class="line">          &#125;</div><div class="line">    &#125;),</div><div class="line">  ],</div><div class="line">  module:&#123;//模块的导入方式，即为了简化index.js中的require(&apos;style!css!./style.css&apos;)这句话。配置完一个这句话可以改为require(&apos;./style.css&apos;)</div><div class="line">    loaders:[//所有的加载器</div><div class="line">      //&#123;test:/\.css$/,loaders:[&apos;style&apos;,&apos;css&apos;]&#125;,//匹配所有的css，进行css和style的配置</div><div class="line">      &#123;test:/\.css$/,loader:extractTextWebpackPlugin.extract(&apos;style&apos;,&apos;css&apos;)&#125;,//配置需要单独单独加载的文件</div><div class="line">      &#123;test:/\.(jpg|png|gif)$/,loaders:[&apos;url?limit=8000&apos;]&#125;//匹配所有的图片，用url-loader加载。 ?limit=8000 8K以下的不转BASE64</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">  resolve:&#123;//请求重定向</div><div class="line">    //在编写的时候去掉扩展名</div><div class="line">    extensions:[&apos;&apos;,&apos;.js&apos;,&apos;.css&apos;,&apos;.jsx&apos;],//顺序必须是 空  js  css jsx</div><div class="line">    //配置名称简写。即把index.js中的require(&apos;./a/b/index.js&apos;)的写法改为pack</div><div class="line">    alias:&#123;</div><div class="line">      pack:&apos;./a/b/index.js&apos;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/16/react-组件/" itemprop="url">
+                  react-组件定义以及es5与es6在react中的不同写法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-16T19:44:35+08:00" content="2017-02-16">
+              2017-02-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/react/" itemprop="url" rel="index">
+                    <span itemprop="name">react</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>组件定义以及es5与es6在react中的不同写法</p>
+</blockquote>
+<h2 id="es5组件"><a href="#es5组件" class="headerlink" title="es5组件"></a>es5组件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/babel&quot;&gt;</div><div class="line">    var Cm=React.createClass(&#123;</div><div class="line">        getDefaultProps:function()&#123;</div><div class="line">          return &#123;</div><div class="line">              title:&apos;title&apos;</div><div class="line">          &#125;</div><div class="line">        &#125;,</div><div class="line">        getInitialState:function()&#123;</div><div class="line">            return &#123;key:true&#125;</div><div class="line">        &#125;,</div><div class="line">        handleClick:function()&#123;</div><div class="line">            this.setState(&#123;</div><div class="line">                key:!this.state.key</div><div class="line">            &#125;)</div><div class="line">        &#125;,</div><div class="line">        render:function()&#123;</div><div class="line">            var text=this.state.key?&apos;+&apos;:&apos;-&apos;;</div><div class="line">            return(</div><div class="line">                    &lt;span onClick=&#123;this.handleClick&#125; title=&apos;title&apos;&gt;1&#123;text&#125;1&lt;/span&gt;</div><div class="line">            )</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    ReactDOM.render(&lt;Cm/&gt;,document.getElementById(&apos;b&apos;));</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<h2 id="es6组件"><a href="#es6组件" class="headerlink" title="es6组件"></a>es6组件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/babel&quot;&gt;</div><div class="line">    class CmEs extends React.Component&#123;</div><div class="line">        constructor(props)&#123;</div><div class="line">            super(props);</div><div class="line">            this.state=&#123;</div><div class="line">                key:true</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        handleClick(e)&#123;</div><div class="line">            this.setState(&#123;</div><div class="line">                key:!this.state.key</div><div class="line">            &#125;)</div><div class="line">        &#125;</div><div class="line">        render()&#123;</div><div class="line">            var text=this.state.key?&apos;+&apos;:&apos;-&apos;;</div><div class="line">            return(</div><div class="line">                    &lt;span onClick=&#123;this.handleClick.bind(this)&#125; title=&apos;title&apos;&gt;1&#123;text&#125;1&lt;/span&gt;</div><div class="line">            )</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    CmEs.defaultProps=&#123;</div><div class="line">        title:&apos;title&apos;</div><div class="line">    &#125;;</div><div class="line">    ReactDOM.render(&lt;CmEs/&gt;,document.getElementById(&apos;c&apos;));</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<h2 id="es5与es6-react写法的不同"><a href="#es5与es6-react写法的不同" class="headerlink" title="es5与es6 react写法的不同"></a>es5与es6 react写法的不同</h2><ol>
+<li>引入模块<br>es5写法： <code>var React=require(&#39;react&#39;);</code><br>es6写法： <code>var React,{Component,PropTypes} from &#39;react&#39;;</code></li>
+<li>导出模块<br>es5写法：用define和return实现<br>es6写法：<code>export default 组件名称</code></li>
+<li><p>组件</p>
+<ol>
+<li><p>定义组件<br>es5写法 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var Cm=React.createClass(&#123;</div><div class="line">       render:function()&#123;</div><div class="line">           return(</div><div class="line">                   &lt;span&gt;hello word&lt;/span&gt;</div><div class="line">           )</div><div class="line">       &#125;</div><div class="line">   &#125;);</div></pre></td></tr></table></figure>
+<p>es6写法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">class CmEs extends React.Component &#123;  </div><div class="line">    render:function()&#123;</div><div class="line">           return(</div><div class="line">                   &lt;span&gt;hello word&lt;/span&gt;</div><div class="line">           )</div><div class="line">       &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>定义组件的属性类型和默认属性(Props)<br>es5写法：写在组件内部</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var Cm=React.createClass(&#123;</div><div class="line">	getDefaultProps:function()&#123;</div><div class="line">         return &#123;</div><div class="line">             title:&apos;title&apos;</div><div class="line">         &#125;</div><div class="line">       &#125;,</div><div class="line">       render:function()&#123;</div><div class="line">           return(</div><div class="line">                   &lt;span title=&apos;title&apos;&gt;hello word&lt;/span&gt;</div><div class="line">           )</div><div class="line">       &#125;</div><div class="line">   &#125;);</div></pre></td></tr></table></figure>
+<p>es6写法：写在组件外边</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">class CmEs extends React.Component &#123;  </div><div class="line">    render:function()&#123;</div><div class="line">           return(</div><div class="line">                   &lt;span title=&apos;title&apos;&gt;hello word&lt;/span&gt;</div><div class="line">           )</div><div class="line">       &#125;</div><div class="line">&#125;</div><div class="line">	CmEs.defaultProps=&#123;</div><div class="line">       title:&apos;title&apos;</div><div class="line">   &#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>初始化state<br>es5写法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var Cm=React.createClass(&#123;</div><div class="line">		getInitialState:function()&#123;</div><div class="line">           return &#123;key:true&#125;</div><div class="line">       &#125;,</div><div class="line">       render:function()&#123;</div><div class="line">           return(</div><div class="line">                   &lt;span&gt;hello word&lt;/span&gt;</div><div class="line">           )</div><div class="line">       &#125;</div><div class="line">   &#125;);</div></pre></td></tr></table></figure>
+<p>es6写法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">class CmEs extends React.Component &#123;  </div><div class="line">	constructor(props)&#123;</div><div class="line">           super(props);</div><div class="line">           this.state=&#123;</div><div class="line">               key:true</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">    render:function()&#123;</div><div class="line">           return(</div><div class="line">                   &lt;span&gt;hello word&lt;/span&gt;</div><div class="line">           )</div><div class="line">       &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>绑定方法<br>es5写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var Cm=React.createClass(&#123;</div><div class="line">		 handleClick:function()&#123;</div><div class="line">           this.setState(&#123;</div><div class="line">               key:!this.state.key</div><div class="line">           &#125;)</div><div class="line">       &#125;,</div><div class="line">       render:function()&#123;</div><div class="line">           return(</div><div class="line">                   &lt;span onClick=&#123;this.handleClick&#125;&gt;hello word&lt;/span&gt;</div><div class="line">           )</div><div class="line">       &#125;</div><div class="line">   &#125;);</div></pre></td></tr></table></figure>
+<p>es6写法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">class CmEs extends React.Component &#123;  </div><div class="line">	handleClick(e)&#123;</div><div class="line">           this.setState(&#123;</div><div class="line">               key:!this.state.key</div><div class="line">           &#125;)</div><div class="line">       &#125;</div><div class="line">    render:function()&#123;</div><div class="line">           return(</div><div class="line">                   &lt;span onClick=&#123;this.handleClick.bind(this)&#125;&gt;hello word&lt;/span&gt;</div><div class="line">           )</div><div class="line">       &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>Mixins<br>使用ES6语法来创建组件是不支持React mixins的，如果一定要使用React mixins就只能使用React.createClass方法来创建组件了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">import React,&#123; Component &#125; from &apos;react&apos;;</div><div class="line"></div><div class="line">var SetIntervalMixin = &#123;</div><div class="line">  doSomething: function() &#123;</div><div class="line">    console.log(&apos;do somethis...&apos;);</div><div class="line">  &#125;,</div><div class="line">&#125;;</div><div class="line">const Contacts = React.createClass(&#123;</div><div class="line">  mixins: [SetIntervalMixin],</div><div class="line">  </div><div class="line">  handleClick() &#123;</div><div class="line">    this.doSomething(); //使用mixin</div><div class="line">  &#125;,</div><div class="line">  render() &#123;</div><div class="line">    return (</div><div class="line">      &lt;div onClick=&#123;this.handleClick&#125;&gt;&lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">export default Contacts;</div></pre></td></tr></table></figure>
+</li>
+<li><p>解构赋值与属性传递<br>利用es6语法中的 … 运算符进行传递</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">class AutoloadingPostsGrid extends React.Component &#123;</div><div class="line">    render() &#123;</div><div class="line">        var &#123;</div><div class="line">            className,</div><div class="line">            ...others,  // contains all properties of this.props except for className</div><div class="line">        &#125; = this.props;</div><div class="line">        return (</div><div class="line">            &lt;div className=&#123;className&#125;&gt;</div><div class="line">                &lt;PostsGrid &#123;...others&#125; /&gt;</div><div class="line">                &lt;button onClick=&#123;this.handleLoadMoreClick&#125;&gt;Load more&lt;/button&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>下面这种写法，则是传递所有属性的同时，用新的className值进行覆盖（{…this.props}写在前边）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div &#123;...this.props&#125; className=&quot;override&quot;&gt;</div><div class="line">    …</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>这个例子则相反，如果属性中没有包含className，则提供默认的值，而如果属性中已经包含了，则使用属性中的值（{…this.props}写在后边）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div className=&quot;base&quot; &#123;...this.props&#125;&gt;</div><div class="line">    …</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/16/react-复合组件/" itemprop="url">
+                  react-复合组件
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-16T19:44:35+08:00" content="2017-02-16">
+              2017-02-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/react/" itemprop="url" rel="index">
+                    <span itemprop="name">react</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>react 复合组件，增加样式，自定义属性的使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;Title&lt;/title&gt;</div><div class="line">    &lt;style type=&quot;text/css&quot;&gt;</div><div class="line">        .a&#123;</div><div class="line">            margin-left: 10px;</div><div class="line">        &#125;</div><div class="line">    &lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;script src=&quot;lib/react/react.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;lib/react/react-dom.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;lib/browser.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;div id=&quot;a&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;script type=&quot;text/babel&quot;&gt;</div><div class="line">    var bg=&#123;</div><div class="line">        background:&apos;red&apos;</div><div class="line">    &#125;;</div><div class="line">    var A=React.createClass(&#123;</div><div class="line">        render:function()&#123;</div><div class="line">            return (</div><div class="line">                    &lt;div&gt;</div><div class="line">                            &lt;B b=&#123;this.props.b&#125;/&gt;</div><div class="line">                            &lt;C c=&#123;this.props.c&#125;/&gt;</div><div class="line">                    &lt;/div&gt;</div><div class="line">            )</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    var B=React.createClass(&#123;</div><div class="line">        getInitialState:function()&#123;</div><div class="line">            return &#123;</div><div class="line">                name:&apos;哈哈B&apos;,</div><div class="line">                style:&#123;color:&apos;blue&apos;&#125;</div><div class="line">            &#125;</div><div class="line">        &#125;,</div><div class="line">        render:function()&#123;</div><div class="line">            return(</div><div class="line">                    &lt;span data-spanb=&#123;this.props.b&#125; className =&apos;a&apos; style=&#123;this.state.style&#125;&gt;&#123;this.state.name&#125;&lt;/span&gt;</div><div class="line">            )</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    var C=React.createClass(&#123;</div><div class="line">        getInitialState:function()&#123;</div><div class="line">          return &#123;name:&apos;哈哈C&apos;&#125;</div><div class="line">        &#125;,</div><div class="line">        render:function()&#123;</div><div class="line">            return(</div><div class="line">                    &lt;span data-spanc=&#123;this.props.c&#125; className =&apos;a&apos; style=&#123;bg&#125;&gt;&#123;this.state.name&#125;&lt;/span&gt;</div><div class="line">            )</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    ReactDOM.render(&lt;A b=&quot;b&quot; c=&quot;c&quot;/&gt;,document.getElementById(&apos;a&apos;));</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>说明：</p>
+<ol>
+<li>react组件中的类名用 className增加，不可直接写为类似 <code>style=&quot;color:red&quot;</code>这样的错误代码。 </li>
+<li>this.props：react的数据流传递是单项的，只能从父级传到子集，this.props代表父级dom中的属性</li>
+<li>this.state: react每个组件都会有state，可以在getInitialState中初始化组件的state</li>
+<li>组件自定义属性：react支持 data-<em>*</em> 这样自定义属性</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/16/react-基本使用/" itemprop="url">
+                  react-基本使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-16T19:44:35+08:00" content="2017-02-16">
+              2017-02-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/react/" itemprop="url" rel="index">
+                    <span itemprop="name">react</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>react的基本使用</p>
+</blockquote>
+<h2 id="获取-react"><a href="#获取-react" class="headerlink" title="获取 react"></a>获取 react</h2><ul>
+<li><p>npm下载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install react --save</div></pre></td></tr></table></figure>
+</li>
+<li><p>bower下载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bower install react --save</div></pre></td></tr></table></figure>
+</li>
+<li><p>直接去下载zip包</p>
+</li>
+</ul>
+<h2 id="react使用简单用例"><a href="#react使用简单用例" class="headerlink" title="react使用简单用例"></a>react使用简单用例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;script src=&quot;../vendors/react/react.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;script src=&quot;../vendors/react/react-dom.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;!-- browser.js 的作用是将 JSX 语法转为 JavaScript 语法 --&gt;</div><div class="line">    &lt;script src=&quot;../vendors/babel/browser.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;div id=&quot;example&quot;&gt;&lt;/div&gt;</div><div class="line">    &lt;!-- JSX 语法，跟 JavaScript 不兼容。凡是使用 JSX 的地方，都要加上 type=&quot;text/babel&quot; --&gt;</div><div class="line">    &lt;script type=&quot;text/babel&quot;&gt;</div><div class="line">      var MyComponent = React.createClass(&#123;</div><div class="line">          render: function ()&#123;</div><div class="line">            return (</div><div class="line">              &lt;h1 className=&quot;header&quot;&gt;我的第一个组件&lt;/h1&gt;</div><div class="line">            )</div><div class="line">          &#125;</div><div class="line">      &#125;);</div><div class="line">      ReactDOM.render(&lt;MyComponent /&gt;, document.getElementById(&apos;example&apos;));</div><div class="line">    &lt;/script&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>说明：</p>
+<ul>
+<li>需要用 bowser.js 将jsx语法转换为javascript语法。script标签的type写为 text/babel</li>
+<li>render的方法中return的顶级元素只能是一个</li>
+<li>如果要定义样式的时候，style=”opacity:{this.state.opacity};”</li>
+<li>使用 className 和 htmlFor 来替代对应的class 和 for</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/16/react-jsx语法规范/" itemprop="url">
+                  react/jsx语法规范
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-16T19:44:35+08:00" content="2017-02-16">
+              2017-02-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/react/" itemprop="url" rel="index">
+                    <span itemprop="name">react</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><ul>
+<li>组件命名已大写开头</li>
+</ul>
+<h2 id="组件声明"><a href="#组件声明" class="headerlink" title="组件声明"></a>组件声明</h2><ul>
+<li>return的根元素只能是一个</li>
+<li>尽量不使用 <code>displayName</code>，通过引用来命名<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">export defalut React.createClass(&#123;</div><div class="line">	displayName:&apos;MyCom&apos;</div><div class="line">&#125;);//不使用</div><div class="line"></div><div class="line">const MyCom = React.createClass(&#123;</div><div class="line"></div><div class="line">&#125;);</div><div class="line">export defalut MyCom;//使用</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><ul>
+<li>在组件中，使用<code>className</code>代替<code>class</code></li>
+<li>在组件中，使用<code>htmlFor</code>代替<code>for</code></li>
+<li>自定义属性需要加<code>data-</code>前缀，否则react不会渲染</li>
+<li><code>aria-</code>可以正常使用</li>
+</ul>
+<h2 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h2><p>可以在组件中定义样式对象，然后直接使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">import React, &#123; Component &#125; from &apos;react&apos;;</div><div class="line"></div><div class="line">class StyleDemo extends Component &#123;</div><div class="line">  render()&#123;</div><div class="line">    // 5. 在JS文件里面给组件定义样式</div><div class="line">    var MyComponentStyles = &#123;</div><div class="line">        color: &apos;blue&apos;,</div><div class="line">        fontSize: &apos;28px&apos;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    return (</div><div class="line">      &lt;div style=&#123;MyComponentStyles&#125;&gt;</div><div class="line">          可以直接这样写行内样式</div><div class="line">      &lt;/div&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">export default StyleDemo;</div></pre></td></tr></table></figure></p>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
+<li>多行的JSX使用 () 包裹，有组件嵌套时使用多行模式</li>
+<li>单行的JSX 省略 ()</li>
+<li>JSX中所有的标签必须闭合</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/16/hello-world/" itemprop="url">
+                  Hello World
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-16T19:44:35+08:00" content="2017-02-16">
+              2017-02-16
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/16/ES6入门/" itemprop="url">
                   ES6入门
                 </a>
               
@@ -257,8 +1115,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-23T08:59:23+08:00" content="2017-01-23">
-              2017-01-23
+            <time itemprop="dateCreated" datetime="2017-02-16T19:44:35+08:00" content="2017-02-16">
+              2017-02-16
             </time>
           </span>
 
@@ -579,762 +1437,6 @@ customName(); // &apos;foo&apos;
             
               
                 
-                <a class="post-title-link" href="/2017/01/19/react-jsx语法规范/" itemprop="url">
-                  react/jsx语法规范
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-19T19:36:50+08:00" content="2017-01-19">
-              2017-01-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/react/" itemprop="url" rel="index">
-                    <span itemprop="name">react</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><ul>
-<li>组件命名已大写开头</li>
-</ul>
-<h2 id="组件声明"><a href="#组件声明" class="headerlink" title="组件声明"></a>组件声明</h2><ul>
-<li>return的根元素只能是一个</li>
-<li>尽量不使用 <code>displayName</code>，通过引用来命名<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">export defalut React.createClass(&#123;</div><div class="line">	displayName:&apos;MyCom&apos;</div><div class="line">&#125;);//不使用</div><div class="line"></div><div class="line">const MyCom = React.createClass(&#123;</div><div class="line"></div><div class="line">&#125;);</div><div class="line">export defalut MyCom;//使用</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><ul>
-<li>在组件中，使用<code>className</code>代替<code>class</code></li>
-<li>在组件中，使用<code>htmlFor</code>代替<code>for</code></li>
-<li>自定义属性需要加<code>data-</code>前缀，否则react不会渲染</li>
-<li><code>aria-</code>可以正常使用</li>
-</ul>
-<h2 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h2><p>可以在组件中定义样式对象，然后直接使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">import React, &#123; Component &#125; from &apos;react&apos;;</div><div class="line"></div><div class="line">class StyleDemo extends Component &#123;</div><div class="line">  render()&#123;</div><div class="line">    // 5. 在JS文件里面给组件定义样式</div><div class="line">    var MyComponentStyles = &#123;</div><div class="line">        color: &apos;blue&apos;,</div><div class="line">        fontSize: &apos;28px&apos;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    return (</div><div class="line">      &lt;div style=&#123;MyComponentStyles&#125;&gt;</div><div class="line">          可以直接这样写行内样式</div><div class="line">      &lt;/div&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">export default StyleDemo;</div></pre></td></tr></table></figure></p>
-<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
-<li>多行的JSX使用 () 包裹，有组件嵌套时使用多行模式</li>
-<li>单行的JSX 省略 ()</li>
-<li>JSX中所有的标签必须闭合</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/19/react-组件/" itemprop="url">
-                  react-组件定义以及es5与es6在react中的不同写法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-19T18:40:09+08:00" content="2017-01-19">
-              2017-01-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/react/" itemprop="url" rel="index">
-                    <span itemprop="name">react</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>组件定义以及es5与es6在react中的不同写法</p>
-</blockquote>
-<h2 id="es5组件"><a href="#es5组件" class="headerlink" title="es5组件"></a>es5组件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/babel&quot;&gt;</div><div class="line">    var Cm=React.createClass(&#123;</div><div class="line">        getDefaultProps:function()&#123;</div><div class="line">          return &#123;</div><div class="line">              title:&apos;title&apos;</div><div class="line">          &#125;</div><div class="line">        &#125;,</div><div class="line">        getInitialState:function()&#123;</div><div class="line">            return &#123;key:true&#125;</div><div class="line">        &#125;,</div><div class="line">        handleClick:function()&#123;</div><div class="line">            this.setState(&#123;</div><div class="line">                key:!this.state.key</div><div class="line">            &#125;)</div><div class="line">        &#125;,</div><div class="line">        render:function()&#123;</div><div class="line">            var text=this.state.key?&apos;+&apos;:&apos;-&apos;;</div><div class="line">            return(</div><div class="line">                    &lt;span onClick=&#123;this.handleClick&#125; title=&apos;title&apos;&gt;1&#123;text&#125;1&lt;/span&gt;</div><div class="line">            )</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    ReactDOM.render(&lt;Cm/&gt;,document.getElementById(&apos;b&apos;));</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
-<h2 id="es6组件"><a href="#es6组件" class="headerlink" title="es6组件"></a>es6组件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/babel&quot;&gt;</div><div class="line">    class CmEs extends React.Component&#123;</div><div class="line">        constructor(props)&#123;</div><div class="line">            super(props);</div><div class="line">            this.state=&#123;</div><div class="line">                key:true</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        handleClick(e)&#123;</div><div class="line">            this.setState(&#123;</div><div class="line">                key:!this.state.key</div><div class="line">            &#125;)</div><div class="line">        &#125;</div><div class="line">        render()&#123;</div><div class="line">            var text=this.state.key?&apos;+&apos;:&apos;-&apos;;</div><div class="line">            return(</div><div class="line">                    &lt;span onClick=&#123;this.handleClick.bind(this)&#125; title=&apos;title&apos;&gt;1&#123;text&#125;1&lt;/span&gt;</div><div class="line">            )</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    CmEs.defaultProps=&#123;</div><div class="line">        title:&apos;title&apos;</div><div class="line">    &#125;;</div><div class="line">    ReactDOM.render(&lt;CmEs/&gt;,document.getElementById(&apos;c&apos;));</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
-<h2 id="es5与es6-react写法的不同"><a href="#es5与es6-react写法的不同" class="headerlink" title="es5与es6 react写法的不同"></a>es5与es6 react写法的不同</h2><ol>
-<li>引入模块<br>es5写法： <code>var React=require(&#39;react&#39;);</code><br>es6写法： <code>var React,{Component,PropTypes} from &#39;react&#39;;</code></li>
-<li>导出模块<br>es5写法：用define和return实现<br>es6写法：<code>export default 组件名称</code></li>
-<li><p>组件</p>
-<ol>
-<li><p>定义组件<br>es5写法 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var Cm=React.createClass(&#123;</div><div class="line">       render:function()&#123;</div><div class="line">           return(</div><div class="line">                   &lt;span&gt;hello word&lt;/span&gt;</div><div class="line">           )</div><div class="line">       &#125;</div><div class="line">   &#125;);</div></pre></td></tr></table></figure>
-<p>es6写法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">class CmEs extends React.Component &#123;  </div><div class="line">    render:function()&#123;</div><div class="line">           return(</div><div class="line">                   &lt;span&gt;hello word&lt;/span&gt;</div><div class="line">           )</div><div class="line">       &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>定义组件的属性类型和默认属性(Props)<br>es5写法：写在组件内部</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var Cm=React.createClass(&#123;</div><div class="line">	getDefaultProps:function()&#123;</div><div class="line">         return &#123;</div><div class="line">             title:&apos;title&apos;</div><div class="line">         &#125;</div><div class="line">       &#125;,</div><div class="line">       render:function()&#123;</div><div class="line">           return(</div><div class="line">                   &lt;span title=&apos;title&apos;&gt;hello word&lt;/span&gt;</div><div class="line">           )</div><div class="line">       &#125;</div><div class="line">   &#125;);</div></pre></td></tr></table></figure>
-<p>es6写法：写在组件外边</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">class CmEs extends React.Component &#123;  </div><div class="line">    render:function()&#123;</div><div class="line">           return(</div><div class="line">                   &lt;span title=&apos;title&apos;&gt;hello word&lt;/span&gt;</div><div class="line">           )</div><div class="line">       &#125;</div><div class="line">&#125;</div><div class="line">	CmEs.defaultProps=&#123;</div><div class="line">       title:&apos;title&apos;</div><div class="line">   &#125;;</div></pre></td></tr></table></figure>
-</li>
-<li><p>初始化state<br>es5写法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var Cm=React.createClass(&#123;</div><div class="line">		getInitialState:function()&#123;</div><div class="line">           return &#123;key:true&#125;</div><div class="line">       &#125;,</div><div class="line">       render:function()&#123;</div><div class="line">           return(</div><div class="line">                   &lt;span&gt;hello word&lt;/span&gt;</div><div class="line">           )</div><div class="line">       &#125;</div><div class="line">   &#125;);</div></pre></td></tr></table></figure>
-<p>es6写法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">class CmEs extends React.Component &#123;  </div><div class="line">	constructor(props)&#123;</div><div class="line">           super(props);</div><div class="line">           this.state=&#123;</div><div class="line">               key:true</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">    render:function()&#123;</div><div class="line">           return(</div><div class="line">                   &lt;span&gt;hello word&lt;/span&gt;</div><div class="line">           )</div><div class="line">       &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>绑定方法<br>es5写法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var Cm=React.createClass(&#123;</div><div class="line">		 handleClick:function()&#123;</div><div class="line">           this.setState(&#123;</div><div class="line">               key:!this.state.key</div><div class="line">           &#125;)</div><div class="line">       &#125;,</div><div class="line">       render:function()&#123;</div><div class="line">           return(</div><div class="line">                   &lt;span onClick=&#123;this.handleClick&#125;&gt;hello word&lt;/span&gt;</div><div class="line">           )</div><div class="line">       &#125;</div><div class="line">   &#125;);</div></pre></td></tr></table></figure>
-<p>es6写法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">class CmEs extends React.Component &#123;  </div><div class="line">	handleClick(e)&#123;</div><div class="line">           this.setState(&#123;</div><div class="line">               key:!this.state.key</div><div class="line">           &#125;)</div><div class="line">       &#125;</div><div class="line">    render:function()&#123;</div><div class="line">           return(</div><div class="line">                   &lt;span onClick=&#123;this.handleClick.bind(this)&#125;&gt;hello word&lt;/span&gt;</div><div class="line">           )</div><div class="line">       &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><p>Mixins<br>使用ES6语法来创建组件是不支持React mixins的，如果一定要使用React mixins就只能使用React.createClass方法来创建组件了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">import React,&#123; Component &#125; from &apos;react&apos;;</div><div class="line"></div><div class="line">var SetIntervalMixin = &#123;</div><div class="line">  doSomething: function() &#123;</div><div class="line">    console.log(&apos;do somethis...&apos;);</div><div class="line">  &#125;,</div><div class="line">&#125;;</div><div class="line">const Contacts = React.createClass(&#123;</div><div class="line">  mixins: [SetIntervalMixin],</div><div class="line">  </div><div class="line">  handleClick() &#123;</div><div class="line">    this.doSomething(); //使用mixin</div><div class="line">  &#125;,</div><div class="line">  render() &#123;</div><div class="line">    return (</div><div class="line">      &lt;div onClick=&#123;this.handleClick&#125;&gt;&lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">export default Contacts;</div></pre></td></tr></table></figure>
-</li>
-<li><p>解构赋值与属性传递<br>利用es6语法中的 … 运算符进行传递</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">class AutoloadingPostsGrid extends React.Component &#123;</div><div class="line">    render() &#123;</div><div class="line">        var &#123;</div><div class="line">            className,</div><div class="line">            ...others,  // contains all properties of this.props except for className</div><div class="line">        &#125; = this.props;</div><div class="line">        return (</div><div class="line">            &lt;div className=&#123;className&#125;&gt;</div><div class="line">                &lt;PostsGrid &#123;...others&#125; /&gt;</div><div class="line">                &lt;button onClick=&#123;this.handleLoadMoreClick&#125;&gt;Load more&lt;/button&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>下面这种写法，则是传递所有属性的同时，用新的className值进行覆盖（{…this.props}写在前边）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div &#123;...this.props&#125; className=&quot;override&quot;&gt;</div><div class="line">    …</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
-<p>这个例子则相反，如果属性中没有包含className，则提供默认的值，而如果属性中已经包含了，则使用属性中的值（{…this.props}写在后边）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div className=&quot;base&quot; &#123;...this.props&#125;&gt;</div><div class="line">    …</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/19/近期要写/" itemprop="url">
-                  近期要写
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-19T16:08:41+08:00" content="2017-01-19">
-              2017-01-19
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li>es6 </li>
-<li>react</li>
-<li>react+redux</li>
-<li>axio</li>
-<li>webpack详细配置解析</li>
-<li>VUE    </li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/19/react-基本使用/" itemprop="url">
-                  react-基本使用
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-19T15:32:00+08:00" content="2017-01-19">
-              2017-01-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/react/" itemprop="url" rel="index">
-                    <span itemprop="name">react</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>react的基本使用</p>
-</blockquote>
-<h2 id="获取-react"><a href="#获取-react" class="headerlink" title="获取 react"></a>获取 react</h2><ul>
-<li><p>npm下载</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install react --save</div></pre></td></tr></table></figure>
-</li>
-<li><p>bower下载</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bower install react --save</div></pre></td></tr></table></figure>
-</li>
-<li><p>直接去下载zip包</p>
-</li>
-</ul>
-<h2 id="react使用简单用例"><a href="#react使用简单用例" class="headerlink" title="react使用简单用例"></a>react使用简单用例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;script src=&quot;../vendors/react/react.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;script src=&quot;../vendors/react/react-dom.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;!-- browser.js 的作用是将 JSX 语法转为 JavaScript 语法 --&gt;</div><div class="line">    &lt;script src=&quot;../vendors/babel/browser.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;div id=&quot;example&quot;&gt;&lt;/div&gt;</div><div class="line">    &lt;!-- JSX 语法，跟 JavaScript 不兼容。凡是使用 JSX 的地方，都要加上 type=&quot;text/babel&quot; --&gt;</div><div class="line">    &lt;script type=&quot;text/babel&quot;&gt;</div><div class="line">      var MyComponent = React.createClass(&#123;</div><div class="line">          render: function ()&#123;</div><div class="line">            return (</div><div class="line">              &lt;h1 className=&quot;header&quot;&gt;我的第一个组件&lt;/h1&gt;</div><div class="line">            )</div><div class="line">          &#125;</div><div class="line">      &#125;);</div><div class="line">      ReactDOM.render(&lt;MyComponent /&gt;, document.getElementById(&apos;example&apos;));</div><div class="line">    &lt;/script&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<p>说明：</p>
-<ul>
-<li>需要用 bowser.js 将jsx语法转换为javascript语法。script标签的type写为 text/babel</li>
-<li>render的方法中return的顶级元素只能是一个</li>
-<li>如果要定义样式的时候，style=”opacity:{this.state.opacity};”</li>
-<li>使用 className 和 htmlFor 来替代对应的class 和 for</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/19/react-复合组件/" itemprop="url">
-                  react-复合组件
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-19T13:36:59+08:00" content="2017-01-19">
-              2017-01-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/react/" itemprop="url" rel="index">
-                    <span itemprop="name">react</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>react 复合组件，增加样式，自定义属性的使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;Title&lt;/title&gt;</div><div class="line">    &lt;style type=&quot;text/css&quot;&gt;</div><div class="line">        .a&#123;</div><div class="line">            margin-left: 10px;</div><div class="line">        &#125;</div><div class="line">    &lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;script src=&quot;lib/react/react.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;lib/react/react-dom.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;lib/browser.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;div id=&quot;a&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;script type=&quot;text/babel&quot;&gt;</div><div class="line">    var bg=&#123;</div><div class="line">        background:&apos;red&apos;</div><div class="line">    &#125;;</div><div class="line">    var A=React.createClass(&#123;</div><div class="line">        render:function()&#123;</div><div class="line">            return (</div><div class="line">                    &lt;div&gt;</div><div class="line">                            &lt;B b=&#123;this.props.b&#125;/&gt;</div><div class="line">                            &lt;C c=&#123;this.props.c&#125;/&gt;</div><div class="line">                    &lt;/div&gt;</div><div class="line">            )</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    var B=React.createClass(&#123;</div><div class="line">        getInitialState:function()&#123;</div><div class="line">            return &#123;</div><div class="line">                name:&apos;哈哈B&apos;,</div><div class="line">                style:&#123;color:&apos;blue&apos;&#125;</div><div class="line">            &#125;</div><div class="line">        &#125;,</div><div class="line">        render:function()&#123;</div><div class="line">            return(</div><div class="line">                    &lt;span data-spanb=&#123;this.props.b&#125; className =&apos;a&apos; style=&#123;this.state.style&#125;&gt;&#123;this.state.name&#125;&lt;/span&gt;</div><div class="line">            )</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    var C=React.createClass(&#123;</div><div class="line">        getInitialState:function()&#123;</div><div class="line">          return &#123;name:&apos;哈哈C&apos;&#125;</div><div class="line">        &#125;,</div><div class="line">        render:function()&#123;</div><div class="line">            return(</div><div class="line">                    &lt;span data-spanc=&#123;this.props.c&#125; className =&apos;a&apos; style=&#123;bg&#125;&gt;&#123;this.state.name&#125;&lt;/span&gt;</div><div class="line">            )</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    ReactDOM.render(&lt;A b=&quot;b&quot; c=&quot;c&quot;/&gt;,document.getElementById(&apos;a&apos;));</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
-</blockquote>
-<p>说明：</p>
-<ol>
-<li>react组件中的类名用 className增加，不可直接写为类似 <code>style=&quot;color:red&quot;</code>这样的错误代码。 </li>
-<li>this.props：react的数据流传递是单项的，只能从父级传到子集，this.props代表父级dom中的属性</li>
-<li>this.state: react每个组件都会有state，可以在getInitialState中初始化组件的state</li>
-<li>组件自定义属性：react支持 data-<em>*</em> 这样自定义属性</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/19/webpack配置说明/" itemprop="url">
-                  webpack配置说明
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-19T11:29:58+08:00" content="2017-01-19">
-              2017-01-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/webpack/" itemprop="url" rel="index">
-                    <span itemprop="name">webpack</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>废话不多说，直接上代码</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">var htmlWebpackPlugin=require(&apos;html-webpack-plugin&apos;);</div><div class="line">var openBrowserWebpackPlugin=require(&apos;open-browser-webpack-plugin&apos;);//打开浏览器插件</div><div class="line">var extractTextWebpackPlugin=require(&apos;extract-text-webpack-plugin&apos;);//文件单独加载插件</div><div class="line">var webpack=require(&apos;webpack&apos;);</div><div class="line">module.exports=&#123;</div><div class="line">  //entry:&apos;./app/index.js&apos;,//入口文件</div><div class="line">  //配置多个入口文件</div><div class="line">  entry:&#123;</div><div class="line">    index:[&apos;./app/a.js&apos;,&apos;./app/b.js&apos;],//将a和b同时打包在一起生成index.js</div><div class="line">    bundle:&apos;./app/index.js&apos;</div><div class="line">  &#125;,</div><div class="line">  output:&#123;//出口文件</div><div class="line">    path:&apos;./build/&apos;,//出口路径</div><div class="line">    filename:&apos;[name].js?[hash:8]&apos;//出口文件名。[name]对于entry中的属性名。?[hash:8]加8位的hash值，防止缓存</div><div class="line">  &#125;,</div><div class="line">  plugins:[</div><div class="line">    //自动创建plugin</div><div class="line">    new htmlWebpackPlugin(&#123;</div><div class="line">      title:&apos;标题&apos;,</div><div class="line">      //filename:&apos;index.html&apos;,//自动生成一个新的html</div><div class="line">      template:&apos;./index.html&apos;,//在index.html模板上增加js</div><div class="line">      chunks:[&apos;index&apos;,&apos;bundle&apos;,&apos;common.js&apos;]//需要哪些js文件,即依赖的js。 common是提取的js文件，必须加后缀</div><div class="line">    &#125;),</div><div class="line">    //自动打开浏览器</div><div class="line">    new openBrowserWebpackPlugin(&#123;</div><div class="line">      url:&apos;http://localhost:8081&apos;</div><div class="line">    &#125;),</div><div class="line">    new extractTextWebpackPlugin(&apos;bundle.css&apos;),//文件单独加载，命名打包后的css文件</div><div class="line">    new webpack.optimize.CommonsChunkPlugin(&apos;common.js&apos;),//抽取chunks下所有的js相同的代码，并合并为common.js</div><div class="line">    new webpack.optimize.UglifyJsPlugin(&#123;//压缩js文件</div><div class="line">        compress: &#123;</div><div class="line">          warnings: false</div><div class="line">          &#125;</div><div class="line">    &#125;),</div><div class="line">  ],</div><div class="line">  module:&#123;//模块的导入方式，即为了简化index.js中的require(&apos;style!css!./style.css&apos;)这句话。配置完一个这句话可以改为require(&apos;./style.css&apos;)</div><div class="line">    loaders:[//所有的加载器</div><div class="line">      //&#123;test:/\.css$/,loaders:[&apos;style&apos;,&apos;css&apos;]&#125;,//匹配所有的css，进行css和style的配置</div><div class="line">      &#123;test:/\.css$/,loader:extractTextWebpackPlugin.extract(&apos;style&apos;,&apos;css&apos;)&#125;,//配置需要单独单独加载的文件</div><div class="line">      &#123;test:/\.(jpg|png|gif)$/,loaders:[&apos;url?limit=8000&apos;]&#125;//匹配所有的图片，用url-loader加载。 ?limit=8000 8K以下的不转BASE64</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">  resolve:&#123;//请求重定向</div><div class="line">    //在编写的时候去掉扩展名</div><div class="line">    extensions:[&apos;&apos;,&apos;.js&apos;,&apos;.css&apos;,&apos;.jsx&apos;],//顺序必须是 空  js  css jsx</div><div class="line">    //配置名称简写。即把index.js中的require(&apos;./a/b/index.js&apos;)的写法改为pack</div><div class="line">    alias:&#123;</div><div class="line">      pack:&apos;./a/b/index.js&apos;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2017/01/17/JS四种数据类型检测的方法/" itemprop="url">
                   javaScript四种数据类型检测的方法
                 </a>
@@ -1430,108 +1532,6 @@ console.log(Object.prototype.toString.call(aaa));//[object Array]
 console.log(({}).toString.call(aaa));//[object Array]
 console.log(Object.prototype.toString.call(aaa)===&quot;[object Array]&quot;);//true
 </code></pre><p>说明：Object.prototype.toString.call() 最准确最常用的方式。 首先获取Object原型上的toString方法，让方法执行，让toString方法中的this指向第一个参数的值。Object上的toString并不是用来转换为字符串的。Object上的toSting它的作用是返回当前方法执行的主体（方法中的this）所属类的详细信息——&gt;”[object Object]”:第一个object代表当前实例是对象数据类型的，这个是固定死的，第二个Object代表的是this所属的类是Object。 Object可以检测null和undefined，第二和第三种方法不可以检测null和undefined</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/16/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-16T09:11:34+08:00" content="2017-01-16">
-              2017-01-16
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 
           
         
