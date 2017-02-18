@@ -1,5 +1,5 @@
 ---
-title: react-使用echarts，已经使用echats的地图
+title: react-使用echarts，以及使用echats的地图
 date: 2017年2月16日15:58:39
 tags: ["react","echarts"]
 categories: "react"
