@@ -1,0 +1,619 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="react,echarts," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="百度的echart是一个很好用的图标工具，在js中的简单使用很容易上手，不再多说，这里说一下在react组件中使用echarts
+
+使用echarts首先下载echart是资源，项目中一般在package.json中加入echarts包，然后执行 npm install 即可。也可以执行 npm install echarts --save，然后在组件中引入 echarts, import ec">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react-使用echarts，以及使用echats的地图">
+<meta property="og:url" content="http://yoursite.com/2017/02/18/react-echarts/index.html">
+<meta property="og:site_name" content="lucian">
+<meta property="og:description" content="百度的echart是一个很好用的图标工具，在js中的简单使用很容易上手，不再多说，这里说一下在react组件中使用echarts
+
+使用echarts首先下载echart是资源，项目中一般在package.json中加入echarts包，然后执行 npm install 即可。也可以执行 npm install echarts --save，然后在组件中引入 echarts, import ec">
+<meta property="og:updated_time" content="2017-02-18T06:59:10.072Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="react-使用echarts，以及使用echats的地图">
+<meta name="twitter:description" content="百度的echart是一个很好用的图标工具，在js中的简单使用很容易上手，不再多说，这里说一下在react组件中使用echarts
+
+使用echarts首先下载echart是资源，项目中一般在package.json中加入echarts包，然后执行 npm install 即可。也可以执行 npm install echarts --save，然后在组件中引入 echarts, import ec">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> react-使用echarts，以及使用echats的地图 | lucian </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">lucian</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                react-使用echarts，以及使用echats的地图
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-18T14:54:00+08:00" content="2017-02-18">
+              2017-02-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/react/" itemprop="url" rel="index">
+                    <span itemprop="name">react</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>百度的echart是一个很好用的图标工具，在js中的简单使用很容易上手，不再多说，这里说一下在react组件中使用echarts</p>
+</blockquote>
+<h2 id="使用echarts"><a href="#使用echarts" class="headerlink" title="使用echarts"></a>使用echarts</h2><p>首先下载echart是资源，项目中一般在package.json中加入echarts包，然后执行 <code>npm install</code> 即可。也可以执行 <code>npm install echarts --save</code>，然后在组件中引入 echarts, <code>import echarts form &#39;echarts&#39;</code></p>
+<p>直接贴代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div></pre></td><td class="code"><pre><div class="line">import echarts from &apos;echarts&apos;;</div><div class="line">class Main extends Component&#123;</div><div class="line">	componentDidMount()&#123;</div><div class="line">		let option=&#123;</div><div class="line">			tooltip : &#123;</div><div class="line">                trigger: &apos;axis&apos;</div><div class="line">            &#125;,</div><div class="line">            legend: &#123;</div><div class="line">                data:[&apos;满意&apos;,&apos;非常满意&apos;,&apos;可以忍受&apos;,&apos;无法忍受&apos;,&apos;抓狂&apos;],</div><div class="line">                bottom:&apos;1%&apos;</div><div class="line">            &#125;,</div><div class="line">            backgroundColor: &apos;#fff&apos;,</div><div class="line">            grid: &#123;</div><div class="line">                left: &apos;3%&apos;,</div><div class="line">                right: &apos;4%&apos;,</div><div class="line">                top: &apos;4%&apos;,</div><div class="line">                containLabel: true</div><div class="line">            &#125;,</div><div class="line">            xAxis : [</div><div class="line">                &#123;</div><div class="line">                    type : &apos;category&apos;,</div><div class="line">                    boundaryGap : false,</div><div class="line">                    data : [&apos;周一&apos;,&apos;周二&apos;,&apos;周三&apos;,&apos;周四&apos;,&apos;周五&apos;,&apos;周六&apos;,&apos;周日&apos;]</div><div class="line">                &#125;</div><div class="line">            ],</div><div class="line">            yAxis : [</div><div class="line">                &#123;</div><div class="line">                    type : &apos;value&apos;</div><div class="line">                &#125;</div><div class="line">            ],</div><div class="line">            color:colorList,</div><div class="line">            series : [</div><div class="line">                &#123;</div><div class="line">                    name:&apos;满意&apos;,</div><div class="line">                    type:&apos;line&apos;,</div><div class="line">                    stack: &apos;总量&apos;,</div><div class="line">                    areaStyle: &#123;normal: &#123;&#125;&#125;,</div><div class="line">                    data:[120, 132, 101, 134, 90, 230, 210]</div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    name:&apos;可以忍受&apos;,</div><div class="line">                    type:&apos;line&apos;,</div><div class="line">                    stack: &apos;总量&apos;,</div><div class="line">                    areaStyle: &#123;normal: &#123;&#125;&#125;,</div><div class="line">                    data:[220, 182, 191, 234, 290, 330, 310]</div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    name:&apos;非常满意&apos;,</div><div class="line">                    type:&apos;line&apos;,</div><div class="line">                    stack: &apos;总量&apos;,</div><div class="line">                    areaStyle: &#123;normal: &#123;&#125;&#125;,</div><div class="line">                    data:[150, 232, 201, 154, 190, 330, 410]</div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    name:&apos;无法忍受&apos;,</div><div class="line">                    type:&apos;line&apos;,</div><div class="line">                    stack: &apos;总量&apos;,</div><div class="line">                    areaStyle: &#123;normal: &#123;&#125;&#125;,</div><div class="line">                    data:[320, 332, 301, 334, 390, 330, 320]</div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    name:&apos;抓狂&apos;,</div><div class="line">                    type:&apos;line&apos;,</div><div class="line">                    stack: &apos;总量&apos;,</div><div class="line">                    label: &#123;</div><div class="line">                        normal: &#123;</div><div class="line">                            show: true,</div><div class="line">                            position: &apos;top&apos;</div><div class="line">                        &#125;</div><div class="line">                    &#125;,</div><div class="line">                    areaStyle: &#123;normal: &#123;&#125;&#125;,</div><div class="line">                    data:[820, 932, 901, 934, 1290, 1330, 1320]</div><div class="line">                &#125;</div><div class="line">            ]</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		let myCharts=echarts.init(document.getElementById(&apos;demo&apos;));</div><div class="line">        myCharts.setOption(option);</div><div class="line"></div><div class="line">		//在此处可以请求后台数据，动态设置option</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	render:function() &#123;</div><div class="line">	      </div><div class="line">	        return (    </div><div class="line">	            &lt;div id=&quot;demo&quot; style=&#123;&#123;&apos;height&apos;:&apos;250px&apos;&#125;&#125;&gt;</div><div class="line">	</div><div class="line">	             &lt;/div&gt;</div><div class="line">	        )</div><div class="line">	    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">export default Main;</div></pre></td></tr></table></figure>
+<p>以上就是一个简单的在react中使用echarts的demo</p>
+<h2 id="使用echarts的地图"><a href="#使用echarts的地图" class="headerlink" title="使用echarts的地图"></a>使用echarts的地图</h2><p>官方文档说明，使用地图需要引入对应的js，或者json文件。如下</p>
+<p>JavaScript 引入示例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;echarts.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;map/js/china.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script&gt;</div><div class="line">var chart = echarts.init(document.getElementById(&apos;main&apos;));</div><div class="line">chart.setOption(&#123;</div><div class="line">    series: [&#123;</div><div class="line">        type: &apos;map&apos;,</div><div class="line">        map: &apos;china&apos;</div><div class="line">    &#125;]</div><div class="line">&#125;);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>或者</p>
+<p>JSON 引入示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$.get(&apos;map/json/china.json&apos;, function (chinaJson) &#123;</div><div class="line">    echarts.registerMap(&apos;china&apos;, chinaJson);</div><div class="line">    var chart = echarts.init(document.getElementById(&apos;main&apos;));</div><div class="line">    chart.setOption(&#123;</div><div class="line">        series: [&#123;</div><div class="line">            type: &apos;map&apos;,</div><div class="line">            map: &apos;china&apos;</div><div class="line">        &#125;]</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>在普通的页面中可以使用，但是在react组件中，并不一定好用。我做的项目中，option和组件不是在同一个js文件中，我的option配置文件单独写的一个js文件，使用的时候 <code>important</code>到组件中，所以这两种办法对我的项目来说不怎么适应，经过一番查找，尝试，找到如下解决办法：</p>
+<p>引入 <code>echarts-for-react</code> 包，<code>echarts-for-react</code>是开源的npm包，其实就是对echarts进行了封装，使echarts更加适用于react。<br>引入 <code>echarts-for-react</code> 包之后，例如想使用中国地图，则只需要 <code>important echarts/map/js/china</code> 即可。实例代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div><div class="line">295</div><div class="line">296</div><div class="line">297</div><div class="line">298</div><div class="line">299</div><div class="line">300</div><div class="line">301</div><div class="line">302</div><div class="line">303</div><div class="line">304</div><div class="line">305</div><div class="line">306</div><div class="line">307</div><div class="line">308</div><div class="line">309</div><div class="line">310</div><div class="line">311</div><div class="line">312</div><div class="line">313</div><div class="line">314</div><div class="line">315</div><div class="line">316</div><div class="line">317</div><div class="line">318</div><div class="line">319</div><div class="line">320</div><div class="line">321</div><div class="line">322</div><div class="line">323</div><div class="line">324</div><div class="line">325</div><div class="line">326</div><div class="line">327</div><div class="line">328</div><div class="line">329</div><div class="line">330</div><div class="line">331</div><div class="line">332</div><div class="line">333</div><div class="line">334</div><div class="line">335</div><div class="line">336</div><div class="line">337</div><div class="line">338</div><div class="line">339</div><div class="line">340</div><div class="line">341</div><div class="line">342</div><div class="line">343</div><div class="line">344</div><div class="line">345</div><div class="line">346</div><div class="line">347</div><div class="line">348</div><div class="line">349</div><div class="line">350</div><div class="line">351</div><div class="line">352</div><div class="line">353</div><div class="line">354</div><div class="line">355</div><div class="line">356</div><div class="line">357</div><div class="line">358</div><div class="line">359</div><div class="line">360</div><div class="line">361</div><div class="line">362</div><div class="line">363</div><div class="line">364</div><div class="line">365</div><div class="line">366</div><div class="line">367</div><div class="line">368</div><div class="line">369</div><div class="line">370</div><div class="line">371</div><div class="line">372</div><div class="line">373</div><div class="line">374</div><div class="line">375</div><div class="line">376</div><div class="line">377</div><div class="line">378</div><div class="line">379</div><div class="line">380</div><div class="line">381</div><div class="line">382</div><div class="line">383</div><div class="line">384</div><div class="line">385</div><div class="line">386</div><div class="line">387</div><div class="line">388</div><div class="line">389</div><div class="line">390</div><div class="line">391</div><div class="line">392</div><div class="line">393</div><div class="line">394</div><div class="line">395</div><div class="line">396</div><div class="line">397</div><div class="line">398</div><div class="line">399</div><div class="line">400</div><div class="line">401</div><div class="line">402</div><div class="line">403</div><div class="line">404</div><div class="line">405</div><div class="line">406</div><div class="line">407</div><div class="line">408</div><div class="line">409</div><div class="line">410</div><div class="line">411</div><div class="line">412</div><div class="line">413</div><div class="line">414</div><div class="line">415</div><div class="line">416</div><div class="line">417</div><div class="line">418</div><div class="line">419</div><div class="line">420</div><div class="line">421</div><div class="line">422</div><div class="line">423</div><div class="line">424</div><div class="line">425</div><div class="line">426</div><div class="line">427</div><div class="line">428</div><div class="line">429</div><div class="line">430</div><div class="line">431</div><div class="line">432</div><div class="line">433</div><div class="line">434</div><div class="line">435</div><div class="line">436</div><div class="line">437</div><div class="line">438</div><div class="line">439</div><div class="line">440</div><div class="line">441</div><div class="line">442</div><div class="line">443</div><div class="line">444</div><div class="line">445</div><div class="line">446</div><div class="line">447</div><div class="line">448</div><div class="line">449</div><div class="line">450</div><div class="line">451</div><div class="line">452</div><div class="line">453</div><div class="line">454</div><div class="line">455</div><div class="line">456</div><div class="line">457</div><div class="line">458</div><div class="line">459</div><div class="line">460</div><div class="line">461</div><div class="line">462</div><div class="line">463</div><div class="line">464</div><div class="line">465</div><div class="line">466</div><div class="line">467</div><div class="line">468</div><div class="line">469</div><div class="line">470</div><div class="line">471</div><div class="line">472</div><div class="line">473</div><div class="line">474</div><div class="line">475</div><div class="line">476</div><div class="line">477</div><div class="line">478</div><div class="line">479</div><div class="line">480</div><div class="line">481</div><div class="line">482</div><div class="line">483</div><div class="line">484</div><div class="line">485</div><div class="line">486</div><div class="line">487</div><div class="line">488</div><div class="line">489</div><div class="line">490</div><div class="line">491</div><div class="line">492</div><div class="line">493</div><div class="line">494</div><div class="line">495</div><div class="line">496</div><div class="line">497</div><div class="line">498</div><div class="line">499</div><div class="line">500</div><div class="line">501</div><div class="line">502</div><div class="line">503</div><div class="line">504</div><div class="line">505</div><div class="line">506</div><div class="line">507</div><div class="line">508</div><div class="line">509</div><div class="line">510</div><div class="line">511</div><div class="line">512</div><div class="line">513</div></pre></td><td class="code"><pre><div class="line">import ReactEcharts from &apos;echarts-for-react&apos;;</div><div class="line">import &apos;echarts/map/js/china&apos;;</div><div class="line">class Main extends Component&#123;</div><div class="line"></div><div class="line">	constructor(props)&#123;</div><div class="line">		super(props);</div><div class="line">       	this.state=&#123;</div><div class="line">            regionOption:resource.region.option,</div><div class="line">        &#125;;</div><div class="line">    &#125;</div><div class="line">	componentDidMount()&#123;</div><div class="line">		let geoCoordMap=&#123;</div><div class="line">        &apos;海门&apos;:[121.15,31.89],</div><div class="line">        &apos;鄂尔多斯&apos;:[109.781327,39.608266],</div><div class="line">        &apos;招远&apos;:[120.38,37.35],</div><div class="line">        &apos;舟山&apos;:[122.207216,29.985295],</div><div class="line">        &apos;齐齐哈尔&apos;:[123.97,47.33],</div><div class="line">        &apos;盐城&apos;:[120.13,33.38],</div><div class="line">        &apos;赤峰&apos;:[118.87,42.28],</div><div class="line">        &apos;青岛&apos;:[120.33,36.07],</div><div class="line">        &apos;乳山&apos;:[121.52,36.89],</div><div class="line">        &apos;金昌&apos;:[102.188043,38.520089],</div><div class="line">        &apos;泉州&apos;:[118.58,24.93],</div><div class="line">        &apos;莱西&apos;:[120.53,36.86],</div><div class="line">        &apos;日照&apos;:[119.46,35.42],</div><div class="line">        &apos;胶南&apos;:[119.97,35.88],</div><div class="line">        &apos;南通&apos;:[121.05,32.08],</div><div class="line">        &apos;拉萨&apos;:[91.11,29.97],</div><div class="line">        &apos;云浮&apos;:[112.02,22.93],</div><div class="line">        &apos;梅州&apos;:[116.1,24.55],</div><div class="line">        &apos;文登&apos;:[122.05,37.2],</div><div class="line">        &apos;上海&apos;:[121.48,31.22],</div><div class="line">        &apos;攀枝花&apos;:[101.718637,26.582347],</div><div class="line">        &apos;威海&apos;:[122.1,37.5],</div><div class="line">        &apos;承德&apos;:[117.93,40.97],</div><div class="line">        &apos;厦门&apos;:[118.1,24.46],</div><div class="line">        &apos;汕尾&apos;:[115.375279,22.786211],</div><div class="line">        &apos;潮州&apos;:[116.63,23.68],</div><div class="line">        &apos;丹东&apos;:[124.37,40.13],</div><div class="line">        &apos;太仓&apos;:[121.1,31.45],</div><div class="line">        &apos;曲靖&apos;:[103.79,25.51],</div><div class="line">        &apos;烟台&apos;:[121.39,37.52],</div><div class="line">        &apos;福州&apos;:[119.3,26.08],</div><div class="line">        &apos;瓦房店&apos;:[121.979603,39.627114],</div><div class="line">        &apos;即墨&apos;:[120.45,36.38],</div><div class="line">        &apos;抚顺&apos;:[123.97,41.97],</div><div class="line">        &apos;玉溪&apos;:[102.52,24.35],</div><div class="line">        &apos;张家口&apos;:[114.87,40.82],</div><div class="line">        &apos;阳泉&apos;:[113.57,37.85],</div><div class="line">        &apos;莱州&apos;:[119.942327,37.177017],</div><div class="line">        &apos;湖州&apos;:[120.1,30.86],</div><div class="line">        &apos;汕头&apos;:[116.69,23.39],</div><div class="line">        &apos;昆山&apos;:[120.95,31.39],</div><div class="line">        &apos;宁波&apos;:[121.56,29.86],</div><div class="line">        &apos;湛江&apos;:[110.359377,21.270708],</div><div class="line">        &apos;揭阳&apos;:[116.35,23.55],</div><div class="line">        &apos;荣成&apos;:[122.41,37.16],</div><div class="line">        &apos;连云港&apos;:[119.16,34.59],</div><div class="line">        &apos;葫芦岛&apos;:[120.836932,40.711052],</div><div class="line">        &apos;常熟&apos;:[120.74,31.64],</div><div class="line">        &apos;东莞&apos;:[113.75,23.04],</div><div class="line">        &apos;河源&apos;:[114.68,23.73],</div><div class="line">        &apos;淮安&apos;:[119.15,33.5],</div><div class="line">        &apos;泰州&apos;:[119.9,32.49],</div><div class="line">        &apos;南宁&apos;:[108.33,22.84],</div><div class="line">        &apos;营口&apos;:[122.18,40.65],</div><div class="line">        &apos;惠州&apos;:[114.4,23.09],</div><div class="line">        &apos;江阴&apos;:[120.26,31.91],</div><div class="line">        &apos;蓬莱&apos;:[120.75,37.8],</div><div class="line">        &apos;韶关&apos;:[113.62,24.84],</div><div class="line">        &apos;嘉峪关&apos;:[98.289152,39.77313],</div><div class="line">        &apos;广州&apos;:[113.23,23.16],</div><div class="line">        &apos;延安&apos;:[109.47,36.6],</div><div class="line">        &apos;太原&apos;:[112.53,37.87],</div><div class="line">        &apos;清远&apos;:[113.01,23.7],</div><div class="line">        &apos;中山&apos;:[113.38,22.52],</div><div class="line">        &apos;昆明&apos;:[102.73,25.04],</div><div class="line">        &apos;寿光&apos;:[118.73,36.86],</div><div class="line">        &apos;盘锦&apos;:[122.070714,41.119997],</div><div class="line">        &apos;长治&apos;:[113.08,36.18],</div><div class="line">        &apos;深圳&apos;:[114.07,22.62],</div><div class="line">        &apos;珠海&apos;:[113.52,22.3],</div><div class="line">        &apos;宿迁&apos;:[118.3,33.96],</div><div class="line">        &apos;咸阳&apos;:[108.72,34.36],</div><div class="line">        &apos;铜川&apos;:[109.11,35.09],</div><div class="line">        &apos;平度&apos;:[119.97,36.77],</div><div class="line">        &apos;佛山&apos;:[113.11,23.05],</div><div class="line">        &apos;海口&apos;:[110.35,20.02],</div><div class="line">        &apos;江门&apos;:[113.06,22.61],</div><div class="line">        &apos;章丘&apos;:[117.53,36.72],</div><div class="line">        &apos;肇庆&apos;:[112.44,23.05],</div><div class="line">        &apos;大连&apos;:[121.62,38.92],</div><div class="line">        &apos;临汾&apos;:[111.5,36.08],</div><div class="line">        &apos;吴江&apos;:[120.63,31.16],</div><div class="line">        &apos;石嘴山&apos;:[106.39,39.04],</div><div class="line">        &apos;沈阳&apos;:[123.38,41.8],</div><div class="line">        &apos;苏州&apos;:[120.62,31.32],</div><div class="line">        &apos;茂名&apos;:[110.88,21.68],</div><div class="line">        &apos;嘉兴&apos;:[120.76,30.77],</div><div class="line">        &apos;长春&apos;:[125.35,43.88],</div><div class="line">        &apos;胶州&apos;:[120.03336,36.264622],</div><div class="line">        &apos;银川&apos;:[106.27,38.47],</div><div class="line">        &apos;张家港&apos;:[120.555821,31.875428],</div><div class="line">        &apos;三门峡&apos;:[111.19,34.76],</div><div class="line">        &apos;锦州&apos;:[121.15,41.13],</div><div class="line">        &apos;南昌&apos;:[115.89,28.68],</div><div class="line">        &apos;柳州&apos;:[109.4,24.33],</div><div class="line">        &apos;三亚&apos;:[109.511909,18.252847],</div><div class="line">        &apos;自贡&apos;:[104.778442,29.33903],</div><div class="line">        &apos;吉林&apos;:[126.57,43.87],</div><div class="line">        &apos;阳江&apos;:[111.95,21.85],</div><div class="line">        &apos;泸州&apos;:[105.39,28.91],</div><div class="line">        &apos;西宁&apos;:[101.74,36.56],</div><div class="line">        &apos;宜宾&apos;:[104.56,29.77],</div><div class="line">        &apos;呼和浩特&apos;:[111.65,40.82],</div><div class="line">        &apos;成都&apos;:[104.06,30.67],</div><div class="line">        &apos;大同&apos;:[113.3,40.12],</div><div class="line">        &apos;镇江&apos;:[119.44,32.2],</div><div class="line">        &apos;桂林&apos;:[110.28,25.29],</div><div class="line">        &apos;张家界&apos;:[110.479191,29.117096],</div><div class="line">        &apos;宜兴&apos;:[119.82,31.36],</div><div class="line">        &apos;北海&apos;:[109.12,21.49],</div><div class="line">        &apos;西安&apos;:[108.95,34.27],</div><div class="line">        &apos;金坛&apos;:[119.56,31.74],</div><div class="line">        &apos;东营&apos;:[118.49,37.46],</div><div class="line">        &apos;牡丹江&apos;:[129.58,44.6],</div><div class="line">        &apos;遵义&apos;:[106.9,27.7],</div><div class="line">        &apos;绍兴&apos;:[120.58,30.01],</div><div class="line">        &apos;扬州&apos;:[119.42,32.39],</div><div class="line">        &apos;常州&apos;:[119.95,31.79],</div><div class="line">        &apos;潍坊&apos;:[119.1,36.62],</div><div class="line">        &apos;重庆&apos;:[106.54,29.59],</div><div class="line">        &apos;台州&apos;:[121.420757,28.656386],</div><div class="line">        &apos;南京&apos;:[118.78,32.04],</div><div class="line">        &apos;滨州&apos;:[118.03,37.36],</div><div class="line">        &apos;贵阳&apos;:[106.71,26.57],</div><div class="line">        &apos;无锡&apos;:[120.29,31.59],</div><div class="line">        &apos;本溪&apos;:[123.73,41.3],</div><div class="line">        &apos;克拉玛依&apos;:[84.77,45.59],</div><div class="line">        &apos;渭南&apos;:[109.5,34.52],</div><div class="line">        &apos;马鞍山&apos;:[118.48,31.56],</div><div class="line">        &apos;宝鸡&apos;:[107.15,34.38],</div><div class="line">        &apos;焦作&apos;:[113.21,35.24],</div><div class="line">        &apos;句容&apos;:[119.16,31.95],</div><div class="line">        &apos;北京&apos;:[116.46,39.92],</div><div class="line">        &apos;徐州&apos;:[117.2,34.26],</div><div class="line">        &apos;衡水&apos;:[115.72,37.72],</div><div class="line">        &apos;包头&apos;:[110,40.58],</div><div class="line">        &apos;绵阳&apos;:[104.73,31.48],</div><div class="line">        &apos;乌鲁木齐&apos;:[87.68,43.77],</div><div class="line">        &apos;枣庄&apos;:[117.57,34.86],</div><div class="line">        &apos;杭州&apos;:[120.19,30.26],</div><div class="line">        &apos;淄博&apos;:[118.05,36.78],</div><div class="line">        &apos;鞍山&apos;:[122.85,41.12],</div><div class="line">        &apos;溧阳&apos;:[119.48,31.43],</div><div class="line">        &apos;库尔勒&apos;:[86.06,41.68],</div><div class="line">        &apos;安阳&apos;:[114.35,36.1],</div><div class="line">        &apos;开封&apos;:[114.35,34.79],</div><div class="line">        &apos;济南&apos;:[117,36.65],</div><div class="line">        &apos;德阳&apos;:[104.37,31.13],</div><div class="line">        &apos;温州&apos;:[120.65,28.01],</div><div class="line">        &apos;九江&apos;:[115.97,29.71],</div><div class="line">        &apos;邯郸&apos;:[114.47,36.6],</div><div class="line">        &apos;临安&apos;:[119.72,30.23],</div><div class="line">        &apos;兰州&apos;:[103.73,36.03],</div><div class="line">        &apos;沧州&apos;:[116.83,38.33],</div><div class="line">        &apos;临沂&apos;:[118.35,35.05],</div><div class="line">        &apos;南充&apos;:[106.110698,30.837793],</div><div class="line">        &apos;天津&apos;:[117.2,39.13],</div><div class="line">        &apos;富阳&apos;:[119.95,30.07],</div><div class="line">        &apos;泰安&apos;:[117.13,36.18],</div><div class="line">        &apos;诸暨&apos;:[120.23,29.71],</div><div class="line">        &apos;郑州&apos;:[113.65,34.76],</div><div class="line">        &apos;哈尔滨&apos;:[126.63,45.75],</div><div class="line">        &apos;聊城&apos;:[115.97,36.45],</div><div class="line">        &apos;芜湖&apos;:[118.38,31.33],</div><div class="line">        &apos;唐山&apos;:[118.02,39.63],</div><div class="line">        &apos;平顶山&apos;:[113.29,33.75],</div><div class="line">        &apos;邢台&apos;:[114.48,37.05],</div><div class="line">        &apos;德州&apos;:[116.29,37.45],</div><div class="line">        &apos;济宁&apos;:[116.59,35.38],</div><div class="line">        &apos;荆州&apos;:[112.239741,30.335165],</div><div class="line">        &apos;宜昌&apos;:[111.3,30.7],</div><div class="line">        &apos;义乌&apos;:[120.06,29.32],</div><div class="line">        &apos;丽水&apos;:[119.92,28.45],</div><div class="line">        &apos;洛阳&apos;:[112.44,34.7],</div><div class="line">        &apos;秦皇岛&apos;:[119.57,39.95],</div><div class="line">        &apos;株洲&apos;:[113.16,27.83],</div><div class="line">        &apos;石家庄&apos;:[114.48,38.03],</div><div class="line">        &apos;莱芜&apos;:[117.67,36.19],</div><div class="line">        &apos;常德&apos;:[111.69,29.05],</div><div class="line">        &apos;保定&apos;:[115.48,38.85],</div><div class="line">        &apos;湘潭&apos;:[112.91,27.87],</div><div class="line">        &apos;金华&apos;:[119.64,29.12],</div><div class="line">        &apos;岳阳&apos;:[113.09,29.37],</div><div class="line">        &apos;长沙&apos;:[113,28.21],</div><div class="line">        &apos;衢州&apos;:[118.88,28.97],</div><div class="line">        &apos;廊坊&apos;:[116.7,39.53],</div><div class="line">        &apos;菏泽&apos;:[115.480656,35.23375],</div><div class="line">        &apos;合肥&apos;:[117.27,31.86],</div><div class="line">        &apos;武汉&apos;:[114.31,30.52],</div><div class="line">        &apos;大庆&apos;:[125.03,46.58]</div><div class="line">    &#125;;</div><div class="line">let convertData=function (data) &#123;</div><div class="line">    let res = [];</div><div class="line">    for (let i = 0; i &lt; data.length; i++) &#123;</div><div class="line">        let geoCoord = geoCoordMap[data[i].name];</div><div class="line">        if (geoCoord) &#123;</div><div class="line">            res.push(&#123;</div><div class="line">                name: data[i].name,</div><div class="line">                value: geoCoord.concat(data[i].value)</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return res;</div><div class="line">&#125;;</div><div class="line">let dataRegion = [</div><div class="line">    &#123;name: &apos;海门&apos;, value: 9&#125;,</div><div class="line">    &#123;name: &apos;鄂尔多斯&apos;, value: 12&#125;,</div><div class="line">    &#123;name: &apos;招远&apos;, value: 12&#125;,</div><div class="line">    &#123;name: &apos;舟山&apos;, value: 12&#125;,</div><div class="line">    &#123;name: &apos;齐齐哈尔&apos;, value: 14&#125;,</div><div class="line">    &#123;name: &apos;盐城&apos;, value: 15&#125;,</div><div class="line">    &#123;name: &apos;赤峰&apos;, value: 16&#125;,</div><div class="line">    &#123;name: &apos;青岛&apos;, value: 18&#125;,</div><div class="line">    &#123;name: &apos;乳山&apos;, value: 18&#125;,</div><div class="line">    &#123;name: &apos;金昌&apos;, value: 19&#125;,</div><div class="line">    &#123;name: &apos;泉州&apos;, value: 21&#125;,</div><div class="line">    &#123;name: &apos;莱西&apos;, value: 21&#125;,</div><div class="line">    &#123;name: &apos;日照&apos;, value: 21&#125;,</div><div class="line">    &#123;name: &apos;胶南&apos;, value: 22&#125;,</div><div class="line">    &#123;name: &apos;南通&apos;, value: 23&#125;,</div><div class="line">    &#123;name: &apos;拉萨&apos;, value: 24&#125;,</div><div class="line">    &#123;name: &apos;云浮&apos;, value: 24&#125;,</div><div class="line">    &#123;name: &apos;梅州&apos;, value: 25&#125;,</div><div class="line">    &#123;name: &apos;文登&apos;, value: 25&#125;,</div><div class="line">    &#123;name: &apos;上海&apos;, value: 25&#125;,</div><div class="line">    &#123;name: &apos;攀枝花&apos;, value: 25&#125;,</div><div class="line">    &#123;name: &apos;威海&apos;, value: 25&#125;,</div><div class="line">    &#123;name: &apos;承德&apos;, value: 25&#125;,</div><div class="line">    &#123;name: &apos;厦门&apos;, value: 26&#125;,</div><div class="line">    &#123;name: &apos;汕尾&apos;, value: 26&#125;,</div><div class="line">    &#123;name: &apos;潮州&apos;, value: 26&#125;,</div><div class="line">    &#123;name: &apos;丹东&apos;, value: 27&#125;,</div><div class="line">    &#123;name: &apos;太仓&apos;, value: 27&#125;,</div><div class="line">    &#123;name: &apos;曲靖&apos;, value: 27&#125;,</div><div class="line">    &#123;name: &apos;烟台&apos;, value: 28&#125;,</div><div class="line">    &#123;name: &apos;福州&apos;, value: 29&#125;,</div><div class="line">    &#123;name: &apos;瓦房店&apos;, value: 30&#125;,</div><div class="line">    &#123;name: &apos;即墨&apos;, value: 30&#125;,</div><div class="line">    &#123;name: &apos;抚顺&apos;, value: 31&#125;,</div><div class="line">    &#123;name: &apos;玉溪&apos;, value: 31&#125;,</div><div class="line">    &#123;name: &apos;张家口&apos;, value: 31&#125;,</div><div class="line">    &#123;name: &apos;阳泉&apos;, value: 31&#125;,</div><div class="line">    &#123;name: &apos;莱州&apos;, value: 32&#125;,</div><div class="line">    &#123;name: &apos;湖州&apos;, value: 32&#125;,</div><div class="line">    &#123;name: &apos;汕头&apos;, value: 32&#125;,</div><div class="line">    &#123;name: &apos;昆山&apos;, value: 33&#125;,</div><div class="line">    &#123;name: &apos;宁波&apos;, value: 33&#125;,</div><div class="line">    &#123;name: &apos;湛江&apos;, value: 33&#125;,</div><div class="line">    &#123;name: &apos;揭阳&apos;, value: 34&#125;,</div><div class="line">    &#123;name: &apos;荣成&apos;, value: 34&#125;,</div><div class="line">    &#123;name: &apos;连云港&apos;, value: 35&#125;,</div><div class="line">    &#123;name: &apos;葫芦岛&apos;, value: 35&#125;,</div><div class="line">    &#123;name: &apos;常熟&apos;, value: 36&#125;,</div><div class="line">    &#123;name: &apos;东莞&apos;, value: 36&#125;,</div><div class="line">    &#123;name: &apos;河源&apos;, value: 36&#125;,</div><div class="line">    &#123;name: &apos;淮安&apos;, value: 36&#125;,</div><div class="line">    &#123;name: &apos;泰州&apos;, value: 36&#125;,</div><div class="line">    &#123;name: &apos;南宁&apos;, value: 37&#125;,</div><div class="line">    &#123;name: &apos;营口&apos;, value: 37&#125;,</div><div class="line">    &#123;name: &apos;惠州&apos;, value: 37&#125;,</div><div class="line">    &#123;name: &apos;江阴&apos;, value: 37&#125;,</div><div class="line">    &#123;name: &apos;蓬莱&apos;, value: 37&#125;,</div><div class="line">    &#123;name: &apos;韶关&apos;, value: 38&#125;,</div><div class="line">    &#123;name: &apos;嘉峪关&apos;, value: 38&#125;,</div><div class="line">    &#123;name: &apos;广州&apos;, value: 38&#125;,</div><div class="line">    &#123;name: &apos;延安&apos;, value: 38&#125;,</div><div class="line">    &#123;name: &apos;太原&apos;, value: 39&#125;,</div><div class="line">    &#123;name: &apos;清远&apos;, value: 39&#125;,</div><div class="line">    &#123;name: &apos;中山&apos;, value: 39&#125;,</div><div class="line">    &#123;name: &apos;昆明&apos;, value: 39&#125;,</div><div class="line">    &#123;name: &apos;寿光&apos;, value: 40&#125;,</div><div class="line">    &#123;name: &apos;盘锦&apos;, value: 40&#125;,</div><div class="line">    &#123;name: &apos;长治&apos;, value: 41&#125;,</div><div class="line">    &#123;name: &apos;深圳&apos;, value: 41&#125;,</div><div class="line">    &#123;name: &apos;珠海&apos;, value: 42&#125;,</div><div class="line">    &#123;name: &apos;宿迁&apos;, value: 43&#125;,</div><div class="line">    &#123;name: &apos;咸阳&apos;, value: 43&#125;,</div><div class="line">    &#123;name: &apos;铜川&apos;, value: 44&#125;,</div><div class="line">    &#123;name: &apos;平度&apos;, value: 44&#125;,</div><div class="line">    &#123;name: &apos;佛山&apos;, value: 44&#125;,</div><div class="line">    &#123;name: &apos;海口&apos;, value: 44&#125;,</div><div class="line">    &#123;name: &apos;江门&apos;, value: 45&#125;,</div><div class="line">    &#123;name: &apos;章丘&apos;, value: 45&#125;,</div><div class="line">    &#123;name: &apos;肇庆&apos;, value: 46&#125;,</div><div class="line">    &#123;name: &apos;大连&apos;, value: 47&#125;,</div><div class="line">    &#123;name: &apos;临汾&apos;, value: 47&#125;,</div><div class="line">    &#123;name: &apos;吴江&apos;, value: 47&#125;,</div><div class="line">    &#123;name: &apos;石嘴山&apos;, value: 49&#125;,</div><div class="line">    &#123;name: &apos;沈阳&apos;, value: 50&#125;,</div><div class="line">    &#123;name: &apos;苏州&apos;, value: 50&#125;,</div><div class="line">    &#123;name: &apos;茂名&apos;, value: 50&#125;,</div><div class="line">    &#123;name: &apos;嘉兴&apos;, value: 51&#125;,</div><div class="line">    &#123;name: &apos;长春&apos;, value: 51&#125;,</div><div class="line">    &#123;name: &apos;胶州&apos;, value: 52&#125;,</div><div class="line">    &#123;name: &apos;银川&apos;, value: 52&#125;,</div><div class="line">    &#123;name: &apos;张家港&apos;, value: 52&#125;,</div><div class="line">    &#123;name: &apos;三门峡&apos;, value: 53&#125;,</div><div class="line">    &#123;name: &apos;锦州&apos;, value: 54&#125;,</div><div class="line">    &#123;name: &apos;南昌&apos;, value: 54&#125;,</div><div class="line">    &#123;name: &apos;柳州&apos;, value: 54&#125;,</div><div class="line">    &#123;name: &apos;三亚&apos;, value: 54&#125;,</div><div class="line">    &#123;name: &apos;自贡&apos;, value: 56&#125;,</div><div class="line">    &#123;name: &apos;吉林&apos;, value: 56&#125;,</div><div class="line">    &#123;name: &apos;阳江&apos;, value: 57&#125;,</div><div class="line">    &#123;name: &apos;泸州&apos;, value: 57&#125;,</div><div class="line">    &#123;name: &apos;西宁&apos;, value: 57&#125;,</div><div class="line">    &#123;name: &apos;宜宾&apos;, value: 58&#125;,</div><div class="line">    &#123;name: &apos;呼和浩特&apos;, value: 58&#125;,</div><div class="line">    &#123;name: &apos;成都&apos;, value: 58&#125;,</div><div class="line">    &#123;name: &apos;大同&apos;, value: 58&#125;,</div><div class="line">    &#123;name: &apos;镇江&apos;, value: 59&#125;,</div><div class="line">    &#123;name: &apos;桂林&apos;, value: 59&#125;,</div><div class="line">    &#123;name: &apos;张家界&apos;, value: 59&#125;,</div><div class="line">    &#123;name: &apos;宜兴&apos;, value: 59&#125;,</div><div class="line">    &#123;name: &apos;北海&apos;, value: 60&#125;,</div><div class="line">    &#123;name: &apos;西安&apos;, value: 61&#125;,</div><div class="line">    &#123;name: &apos;金坛&apos;, value: 62&#125;,</div><div class="line">    &#123;name: &apos;东营&apos;, value: 62&#125;,</div><div class="line">    &#123;name: &apos;牡丹江&apos;, value: 63&#125;,</div><div class="line">    &#123;name: &apos;遵义&apos;, value: 63&#125;,</div><div class="line">    &#123;name: &apos;绍兴&apos;, value: 63&#125;,</div><div class="line">    &#123;name: &apos;扬州&apos;, value: 64&#125;,</div><div class="line">    &#123;name: &apos;常州&apos;, value: 64&#125;,</div><div class="line">    &#123;name: &apos;潍坊&apos;, value: 65&#125;,</div><div class="line">    &#123;name: &apos;重庆&apos;, value: 66&#125;,</div><div class="line">    &#123;name: &apos;台州&apos;, value: 67&#125;,</div><div class="line">    &#123;name: &apos;南京&apos;, value: 67&#125;,</div><div class="line">    &#123;name: &apos;滨州&apos;, value: 70&#125;,</div><div class="line">    &#123;name: &apos;贵阳&apos;, value: 71&#125;,</div><div class="line">    &#123;name: &apos;无锡&apos;, value: 71&#125;,</div><div class="line">    &#123;name: &apos;本溪&apos;, value: 71&#125;,</div><div class="line">    &#123;name: &apos;克拉玛依&apos;, value: 72&#125;,</div><div class="line">    &#123;name: &apos;渭南&apos;, value: 72&#125;,</div><div class="line">    &#123;name: &apos;马鞍山&apos;, value: 72&#125;,</div><div class="line">    &#123;name: &apos;宝鸡&apos;, value: 72&#125;,</div><div class="line">    &#123;name: &apos;焦作&apos;, value: 75&#125;,</div><div class="line">    &#123;name: &apos;句容&apos;, value: 75&#125;,</div><div class="line">    &#123;name: &apos;北京&apos;, value: 79&#125;,</div><div class="line">    &#123;name: &apos;徐州&apos;, value: 79&#125;,</div><div class="line">    &#123;name: &apos;衡水&apos;, value: 80&#125;,</div><div class="line">    &#123;name: &apos;包头&apos;, value: 80&#125;,</div><div class="line">    &#123;name: &apos;绵阳&apos;, value: 80&#125;,</div><div class="line">    &#123;name: &apos;乌鲁木齐&apos;, value: 84&#125;,</div><div class="line">    &#123;name: &apos;枣庄&apos;, value: 84&#125;,</div><div class="line">    &#123;name: &apos;杭州&apos;, value: 84&#125;,</div><div class="line">    &#123;name: &apos;淄博&apos;, value: 85&#125;,</div><div class="line">    &#123;name: &apos;鞍山&apos;, value: 86&#125;,</div><div class="line">    &#123;name: &apos;溧阳&apos;, value: 86&#125;,</div><div class="line">    &#123;name: &apos;库尔勒&apos;, value: 86&#125;,</div><div class="line">    &#123;name: &apos;安阳&apos;, value: 90&#125;,</div><div class="line">    &#123;name: &apos;开封&apos;, value: 90&#125;,</div><div class="line">    &#123;name: &apos;济南&apos;, value: 92&#125;,</div><div class="line">    &#123;name: &apos;德阳&apos;, value: 93&#125;,</div><div class="line">    &#123;name: &apos;温州&apos;, value: 95&#125;,</div><div class="line">    &#123;name: &apos;九江&apos;, value: 96&#125;,</div><div class="line">    &#123;name: &apos;邯郸&apos;, value: 98&#125;,</div><div class="line">    &#123;name: &apos;临安&apos;, value: 99&#125;,</div><div class="line">    &#123;name: &apos;兰州&apos;, value: 99&#125;,</div><div class="line">    &#123;name: &apos;沧州&apos;, value: 100&#125;,</div><div class="line">    &#123;name: &apos;临沂&apos;, value: 103&#125;,</div><div class="line">    &#123;name: &apos;南充&apos;, value: 104&#125;,</div><div class="line">    &#123;name: &apos;天津&apos;, value: 105&#125;,</div><div class="line">    &#123;name: &apos;富阳&apos;, value: 106&#125;,</div><div class="line">    &#123;name: &apos;泰安&apos;, value: 112&#125;,</div><div class="line">    &#123;name: &apos;诸暨&apos;, value: 112&#125;,</div><div class="line">    &#123;name: &apos;郑州&apos;, value: 113&#125;,</div><div class="line">    &#123;name: &apos;哈尔滨&apos;, value: 114&#125;,</div><div class="line">    &#123;name: &apos;聊城&apos;, value: 116&#125;,</div><div class="line">    &#123;name: &apos;芜湖&apos;, value: 117&#125;,</div><div class="line">    &#123;name: &apos;唐山&apos;, value: 119&#125;,</div><div class="line">    &#123;name: &apos;平顶山&apos;, value: 119&#125;,</div><div class="line">    &#123;name: &apos;邢台&apos;, value: 119&#125;,</div><div class="line">    &#123;name: &apos;德州&apos;, value: 120&#125;,</div><div class="line">    &#123;name: &apos;济宁&apos;, value: 120&#125;,</div><div class="line">    &#123;name: &apos;荆州&apos;, value: 127&#125;,</div><div class="line">    &#123;name: &apos;宜昌&apos;, value: 130&#125;,</div><div class="line">    &#123;name: &apos;义乌&apos;, value: 132&#125;,</div><div class="line">    &#123;name: &apos;丽水&apos;, value: 133&#125;,</div><div class="line">    &#123;name: &apos;洛阳&apos;, value: 134&#125;,</div><div class="line">    &#123;name: &apos;秦皇岛&apos;, value: 136&#125;,</div><div class="line">    &#123;name: &apos;株洲&apos;, value: 143&#125;,</div><div class="line">    &#123;name: &apos;石家庄&apos;, value: 147&#125;,</div><div class="line">    &#123;name: &apos;莱芜&apos;, value: 148&#125;,</div><div class="line">    &#123;name: &apos;常德&apos;, value: 152&#125;,</div><div class="line">    &#123;name: &apos;保定&apos;, value: 153&#125;,</div><div class="line">    &#123;name: &apos;湘潭&apos;, value: 154&#125;,</div><div class="line">    &#123;name: &apos;金华&apos;, value: 157&#125;,</div><div class="line">    &#123;name: &apos;岳阳&apos;, value: 169&#125;,</div><div class="line">    &#123;name: &apos;长沙&apos;, value: 175&#125;,</div><div class="line">    &#123;name: &apos;衢州&apos;, value: 177&#125;,</div><div class="line">    &#123;name: &apos;廊坊&apos;, value: 193&#125;,</div><div class="line">    &#123;name: &apos;菏泽&apos;, value: 194&#125;,</div><div class="line">    &#123;name: &apos;合肥&apos;, value: 229&#125;,</div><div class="line">    &#123;name: &apos;武汉&apos;, value: 273&#125;,</div><div class="line">    &#123;name: &apos;大庆&apos;, value: 279&#125;</div><div class="line">];</div><div class="line">let option=option:&#123;</div><div class="line">            backgroundColor: &apos;#fff&apos;,</div><div class="line">            title: &#123;</div><div class="line">                text: &apos;全国地区访问量&apos;,</div><div class="line">                //subtext: &apos;&apos;,</div><div class="line">                left: &apos;center&apos;,</div><div class="line">                top:&quot;10%&quot;,</div><div class="line">                textStyle: &#123;</div><div class="line">                    color: &apos;black&apos;,</div><div class="line">                    fontSize:20</div><div class="line">                &#125;</div><div class="line">            &#125;,</div><div class="line">            tooltip : &#123;</div><div class="line">                trigger: &apos;item&apos;</div><div class="line">            &#125;,</div><div class="line">            geo: &#123;</div><div class="line">                map: &apos;china&apos;,</div><div class="line">                label: &#123;</div><div class="line">                    emphasis: &#123;</div><div class="line">                        show: false</div><div class="line">                    &#125;</div><div class="line">                &#125;,</div><div class="line">                roam: false,</div><div class="line">                itemStyle: &#123;</div><div class="line">                    normal: &#123;</div><div class="line">                        areaColor: &apos;#068cef&apos;,</div><div class="line">                        borderColor: &apos;#111&apos;</div><div class="line">                    &#125;,</div><div class="line">                    emphasis: &#123;</div><div class="line">                        areaColor: &apos;#2a333d&apos;</div><div class="line">                    &#125;</div><div class="line">                &#125;,</div><div class="line">                zoom:1.15,</div><div class="line">                top:&quot;7%&quot;</div><div class="line">            &#125;,</div><div class="line">            series : [</div><div class="line">                &#123;</div><div class="line">                    name: &apos;pm2.5&apos;,</div><div class="line">                    type: &apos;scatter&apos;,</div><div class="line">                    coordinateSystem: &apos;geo&apos;,</div><div class="line">                    data: convertData(dataRegion),</div><div class="line">                    symbolSize: function (val) &#123;</div><div class="line">                        return val[2] / 10;</div><div class="line">                    &#125;,</div><div class="line">                    label: &#123;</div><div class="line">                        normal: &#123;</div><div class="line">                            formatter: &apos;&#123;b&#125;&apos;,</div><div class="line">                            position: &apos;right&apos;,</div><div class="line">                            show: false</div><div class="line">                        &#125;,</div><div class="line">                        emphasis: &#123;</div><div class="line">                            show: true</div><div class="line">                        &#125;</div><div class="line">                    &#125;,</div><div class="line">                    itemStyle: &#123;</div><div class="line">                        normal: &#123;</div><div class="line">                            color: &apos;#ddb926&apos;</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    name: &apos;Top 5&apos;,</div><div class="line">                    type: &apos;effectScatter&apos;,</div><div class="line">                    coordinateSystem: &apos;geo&apos;,</div><div class="line">                    data: convertData(dataRegion.sort(function (a, b) &#123;</div><div class="line">                        return b.value - a.value;</div><div class="line">                    &#125;).slice(0, 6)),</div><div class="line">                    symbolSize: function (val) &#123;</div><div class="line">                        return val[2] / 10;</div><div class="line">                    &#125;,</div><div class="line">                    showEffectOn: &apos;render&apos;,</div><div class="line">                    rippleEffect: &#123;</div><div class="line">                        brushType: &apos;stroke&apos;</div><div class="line">                    &#125;,</div><div class="line">                    hoverAnimation: true,</div><div class="line">                    label: &#123;</div><div class="line">                        normal: &#123;</div><div class="line">                            formatter: &apos;&#123;b&#125;&apos;,</div><div class="line">                            position: &apos;bottom&apos;,</div><div class="line">                            show: true</div><div class="line">                        &#125;</div><div class="line">                    &#125;,</div><div class="line">                    itemStyle: &#123;</div><div class="line">                        normal: &#123;</div><div class="line">                            color: &apos;#f4e925&apos;,</div><div class="line">                            //shadowBlur: 10,</div><div class="line">                            // shadowColor: &apos;#333&apos;</div><div class="line">                        &#125;</div><div class="line">                    &#125;,</div><div class="line">                    zlevel: 1</div><div class="line">                &#125;,</div><div class="line">            ]</div><div class="line">        &#125;</div><div class="line"></div><div class="line">		this.setState(&#123;regionOption,option&#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">	 render()&#123;</div><div class="line">        return(</div><div class="line">			&lt;ReactEcharts id=&quot;region&quot; style=&#123;&#123;&apos;height&apos;:&apos;500px&apos;&#125;&#125; option=&#123;this.state.regionOption&#125;&gt;</div><div class="line"></div><div class="line">             &lt;/ReactEcharts&gt;</div><div class="line">		)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/react/" rel="tag">#react</a>
+          
+            <a href="/tags/echarts/" rel="tag">#echarts</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/16/近期要写/" rel="next" title="近期要写">
+                <i class="fa fa-chevron-left"></i> 近期要写
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/18/css 遇见单词空格自动换行的方法/" rel="prev" title="css 遇见单词空格自动换行的方法">
+                css 遇见单词空格自动换行的方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="lucian" />
+          <p class="site-author-name" itemprop="name">lucian</p>
+          <p class="site-description motion-element" itemprop="description">不太可能的事也许今天实现，根本不可能的事也许明天会实现</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/liushaozhen" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用echarts"><span class="nav-number">1.</span> <span class="nav-text">使用echarts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用echarts的地图"><span class="nav-number">2.</span> <span class="nav-text">使用echarts的地图</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lucian</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,622 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="js技巧," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="一、cookie相关操作1、添加cookie12345678910111213141516/** * 添加cookie * @param name cookie名称 * @param value cookie值 * @param expiresHours 多少小时后过期 */function addCookie(name,value,expiresHours)&amp;#123;    var cooki">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js常用方法-持续更新">
+<meta property="og:url" content="http://yoursite.com/2017/02/18/js常用方法-持续更新/index.html">
+<meta property="og:site_name" content="lucian">
+<meta property="og:description" content="一、cookie相关操作1、添加cookie12345678910111213141516/** * 添加cookie * @param name cookie名称 * @param value cookie值 * @param expiresHours 多少小时后过期 */function addCookie(name,value,expiresHours)&amp;#123;    var cooki">
+<meta property="og:updated_time" content="2017-02-18T06:59:10.071Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js常用方法-持续更新">
+<meta name="twitter:description" content="一、cookie相关操作1、添加cookie12345678910111213141516/** * 添加cookie * @param name cookie名称 * @param value cookie值 * @param expiresHours 多少小时后过期 */function addCookie(name,value,expiresHours)&amp;#123;    var cooki">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> js常用方法-持续更新 | lucian </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">lucian</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                js常用方法-持续更新
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-18T14:59:36+08:00" content="2017-02-18">
+              2017-02-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一、cookie相关操作"><a href="#一、cookie相关操作" class="headerlink" title="一、cookie相关操作"></a>一、cookie相关操作</h2><h3 id="1、添加cookie"><a href="#1、添加cookie" class="headerlink" title="1、添加cookie"></a>1、添加cookie</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 添加cookie</div><div class="line"> * @param name cookie名称</div><div class="line"> * @param value cookie值</div><div class="line"> * @param expiresHours 多少小时后过期</div><div class="line"> */</div><div class="line">function addCookie(name,value,expiresHours)&#123;</div><div class="line">    var cookieString=name+&quot;=&quot;+escape(value);</div><div class="line">    //判断是否设置过期时间</div><div class="line">    if(expiresHours&gt;0)&#123;</div><div class="line">        var date=new Date();</div><div class="line">        date.setTime(date.getTime+expiresHours*3600*1000);</div><div class="line">        cookieString=cookieString+&quot;; expires=&quot;+date.toGMTString();</div><div class="line">    &#125;</div><div class="line">    document.cookie=cookieString;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="2、获得指定名称的cookie"><a href="#2、获得指定名称的cookie" class="headerlink" title="2、获得指定名称的cookie"></a>2、获得指定名称的cookie</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获得指定名称的cookie</div><div class="line"> * @param name cookie名称</div><div class="line"> * @returns  返回cookie值</div><div class="line"> */</div><div class="line">function getCookie(name)&#123;</div><div class="line">    var strCookie=document.cookie;</div><div class="line">    var arrCookie=strCookie.split(&quot;; &quot;);</div><div class="line">    for(var i=0;i&lt;arrCookie.length;i++)&#123;</div><div class="line">        var arr=arrCookie[i].split(&quot;=&quot;);</div><div class="line">        if(arr[0]==name)return arr[1];</div><div class="line">    &#125;</div><div class="line">    return &quot;&quot;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="3、删除指定名称的cookie"><a href="#3、删除指定名称的cookie" class="headerlink" title="3、删除指定名称的cookie"></a>3、删除指定名称的cookie</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 删除指定名称的cookie</div><div class="line"> * @param name cookie名称</div><div class="line"> */</div><div class="line">function deleteCookie(name)&#123;</div><div class="line">    var date=new Date();</div><div class="line">    date.setTime(date.getTime()-10000);</div><div class="line">    document.cookie=name+&quot;=v; expires=&quot;+date.toGMTString();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="二、获得url参数"><a href="#二、获得url参数" class="headerlink" title="二、获得url参数"></a>二、获得url参数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获得url参数</div><div class="line"> * @param name 参数名称</div><div class="line"> * @returns &#123;*&#125;</div><div class="line"> */</div><div class="line">function getQueryString(name) &#123;</div><div class="line">  var after = window.location.hash.split(&quot;?&quot;)[1];</div><div class="line">  if (after) &#123;</div><div class="line">    var reg = new RegExp(&quot;(^|&amp;)&quot; + name + &quot;=([^&amp;]*)(&amp;|$)&quot;);</div><div class="line">    var r = after.match(reg);</div><div class="line">    if (r != null) &#123;</div><div class="line">      return decodeURIComponent(r[2])</div><div class="line">    &#125;</div><div class="line">    else &#123;</div><div class="line">      return null;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="三、日期时间相关"><a href="#三、日期时间相关" class="headerlink" title="三、日期时间相关"></a>三、日期时间相关</h2><h3 id="1、日期格式化"><a href="#1、日期格式化" class="headerlink" title="1、日期格式化"></a>1、日期格式化</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 日期格式化</div><div class="line"> * @param data  日期</div><div class="line"> * @param fmt 格式  y年，M月，d日，h时，m分，s秒，q季度，S毫秒</div><div class="line"> * @returns &#123;*&#125;</div><div class="line"> */</div><div class="line">function dataPart(data,fmt)&#123;</div><div class="line">    let o = &#123;</div><div class="line">        &quot;M+&quot;: data.getMonth() + 1, //月份</div><div class="line">        &quot;d+&quot;: data.getDate(), //日</div><div class="line">        &quot;h+&quot;: data.getHours(), //小时</div><div class="line">        &quot;m+&quot;: data.getMinutes(), //分</div><div class="line">        &quot;s+&quot;: data.getSeconds(), //秒</div><div class="line">        &quot;q+&quot;: Math.floor((data.getMonth() + 3) / 3), //季度</div><div class="line">        &quot;S&quot;: data.getMilliseconds() //毫秒</div><div class="line">    &#125;;</div><div class="line">    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (data.getFullYear() + &quot;&quot;).substr(4 - RegExp.$1.length));</div><div class="line">    for (let k in o)</div><div class="line">        if (new RegExp(&quot;(&quot; + k + &quot;)&quot;).test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : ((&quot;00&quot; + o[k]).substr((&quot;&quot; + o[k]).length)));</div><div class="line">    return fmt;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="日期加减法"><a href="#日期加减法" class="headerlink" title="日期加减法"></a>日期加减法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line"> *   功能:日期减的功能</div><div class="line"> *   参数:interval,字符串表达式，表示要添加的时间间隔.y年，q季度，mon月，w周，d天，h时，min分，s秒</div><div class="line"> *   参数:number,数值表达式，表示要添加的时间间隔的个数. 加法传正数，减法传负数</div><div class="line"> *   参数:date,时间对象.</div><div class="line"> *   返回:新的时间对象.</div><div class="line"> *   </div><div class="line"> */</div><div class="line">export function dateSubtract(interval,number,date) &#123;</div><div class="line">    switch (interval) &#123;</div><div class="line">        case   &quot;y&quot;   : &#123;</div><div class="line">            date.setFullYear(date.getFullYear() + number);</div><div class="line">            return date;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">        case   &quot;q&quot;   : &#123;</div><div class="line">            date.setMonth(date.getMonth() + number * 3);</div><div class="line">            return date;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">        case   &quot;mon&quot;   : &#123;</div><div class="line">            date.setMonth(date.getMonth() + number);</div><div class="line">            return date;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">        case   &quot;w&quot;   : &#123;</div><div class="line">            date.setDate(date.getDate() + number * 7);</div><div class="line">            return date;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">        case   &quot;d&quot;   : &#123;</div><div class="line">            date.setDate(date.getDate() + number);</div><div class="line">            return date;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">        case   &quot;h&quot;   : &#123;</div><div class="line">            date.setHours(date.getHours() + number);</div><div class="line">            return date;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">        case   &quot;min&quot;   : &#123;</div><div class="line">            date.setMinutes(date.getMinutes() + number);</div><div class="line">            return date;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">        case   &quot;s&quot;   : &#123;</div><div class="line">            date.setSeconds(date.getSeconds() + number);</div><div class="line">            return date;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">        default   : &#123;</div><div class="line">            date.setDate(date.getDate() + number);</div><div class="line">            return date;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="四、获得ie浏览器版本"><a href="#四、获得ie浏览器版本" class="headerlink" title="四、获得ie浏览器版本"></a>四、获得ie浏览器版本</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">function getBrowserVersion() &#123;</div><div class="line">			var userAgent = navigator.userAgent.toLowerCase();</div><div class="line">			if (userAgent.match(/msie ([\d.]+)/) != null) &#123;//ie6--ie9</div><div class="line">				uaMatch = userAgent.match(/msie ([\d.]+)/);</div><div class="line">				return &apos;IE&apos; + uaMatch[1].match(/\d/);</div><div class="line">			&#125; else if(userAgent.match(/(trident)\/([\w.]+)/)) &#123;</div><div class="line">				uaMatch = userAgent.match(/trident\/([\w.]+)/);</div><div class="line">				switch (uaMatch[1]) &#123;</div><div class="line">					case &quot;4.0&quot;:</div><div class="line">						return &quot;IE8&quot;;</div><div class="line">						break;</div><div class="line">					case &quot;5.0&quot;:</div><div class="line">						return &quot;IE9&quot;;</div><div class="line">						break;</div><div class="line">					case &quot;6.0&quot;:</div><div class="line">						return &quot;IE10&quot;;</div><div class="line">						break;</div><div class="line">					case &quot;7.0&quot;:</div><div class="line">						return &quot;IE11&quot;;</div><div class="line">						break;</div><div class="line">					default:</div><div class="line">						return &quot;undefined&quot;;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			return &quot;undefined&quot;;</div><div class="line">		&#125;</div></pre></td></tr></table></figure>
+<h2 id="五、原生js，DOM元素相关操作"><a href="#五、原生js，DOM元素相关操作" class="headerlink" title="五、原生js，DOM元素相关操作"></a>五、原生js，DOM元素相关操作</h2><h3 id="1、获得指定元素的索引"><a href="#1、获得指定元素的索引" class="headerlink" title="1、获得指定元素的索引"></a>1、获得指定元素的索引</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获得指定元素的索引</div><div class="line"> * @param ele 指定元素</div><div class="line"> * @returns &#123;number&#125; 索引</div><div class="line"> */</div><div class="line">function getIndex(ele) &#123;</div><div class="line">    var index = 0;</div><div class="line">    var p = ele.previousSibling;</div><div class="line">    while (p) &#123;</div><div class="line">        if (p.nodeType === 1) &#123;</div><div class="line">            index++;</div><div class="line">        &#125;</div><div class="line">        p = p.previousSibling;</div><div class="line">    &#125;</div><div class="line">    return index;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="2、计算任意元素距离文档上边和左边的绝对偏移量"><a href="#2、计算任意元素距离文档上边和左边的绝对偏移量" class="headerlink" title="2、计算任意元素距离文档上边和左边的绝对偏移量"></a>2、计算任意元素距离文档上边和左边的绝对偏移量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 计算任意元素距离文档上边和左边的绝对偏移量</div><div class="line"> * @param ele</div><div class="line"> * @returns &#123;&#123;t: (*|Number|number)距离上边的偏移量, l: (*|Number|number)距离左边的偏移量&#125;&#125;</div><div class="line"> */</div><div class="line">function offset(ele) &#123;</div><div class="line">    var top = ele.offsetTop;</div><div class="line">    var left = ele.offsetLeft;</div><div class="line">    var parent = ele.offsetParent;</div><div class="line">    while (parent) &#123;</div><div class="line">        if (window.navigator.userAgent(&quot;MSIE 8&quot;) == -1) &#123;</div><div class="line">            top += parent.offsetTop + parent.clientTop;</div><div class="line">            left += parent.offsetLeft + parent.clientLeft</div><div class="line">        &#125; else &#123;</div><div class="line">            top += parent.offsetTop;</div><div class="line">            left += parent.offsetLeft;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return &#123;t: top, l: left&#125;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="3、类数组转换为数组"><a href="#3、类数组转换为数组" class="headerlink" title="3、类数组转换为数组"></a>3、类数组转换为数组</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 类数组转换为数组</div><div class="line"> * @param likeArray 类数组</div><div class="line"> * @returns &#123;Array&#125; 数组</div><div class="line"> */</div><div class="line">function listToArray(likeArray) &#123;</div><div class="line">    try &#123;</div><div class="line">        return [].slice.call(likeArray);</div><div class="line">    &#125; catch (e) &#123;</div><div class="line">        var ary = [];</div><div class="line">        for (var i = 0; i &lt; likeArray; i++) &#123;</div><div class="line">            ary[ary.length] = likeArray[i];</div><div class="line">        &#125;</div><div class="line">        return ary;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="4、获得指定元素的所有的元素哥哥弟弟节点"><a href="#4、获得指定元素的所有的元素哥哥弟弟节点" class="headerlink" title="4、获得指定元素的所有的元素哥哥弟弟节点"></a>4、获得指定元素的所有的元素哥哥弟弟节点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获得指定元素的所有的元素哥哥弟弟节点</div><div class="line"> * @param ele 指定元素</div><div class="line"> * @returns &#123;Array&#125; 哥哥弟弟，顺序和文档顺序相同</div><div class="line"> */</div><div class="line">function siblings(ele) &#123;</div><div class="line">    var parent = ele.parentNode;</div><div class="line">    var children = parent.children;//所有元素节点，在ie中还会包括注释节点</div><div class="line">    var ary = [];</div><div class="line">    for (var i = 0; i &lt; children.length; i++) &#123;</div><div class="line">        if (children[i].nodeType === 1 &amp;&amp; children[i] != ele) &#123;</div><div class="line">            ary.push(children[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return ary;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="5、获得指定元素相邻的哥哥元素节点"><a href="#5、获得指定元素相邻的哥哥元素节点" class="headerlink" title="5、获得指定元素相邻的哥哥元素节点"></a>5、获得指定元素相邻的哥哥元素节点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获得指定元素相邻的哥哥元素节点</div><div class="line"> * @param ele 指定元素</div><div class="line"> * @returns &#123;Object&#125; 元素节点</div><div class="line"> */</div><div class="line">function previous(ele) &#123;</div><div class="line">    if (typeof ele.previousElementSibling == &quot;object&quot;) &#123;//如果没有哥哥元素节点，或者支持这个方法  if里直接写 ele.previousElementSibling会有问题</div><div class="line">        return ele.previousElementSibling;</div><div class="line">    &#125; else &#123;</div><div class="line">        var p = ele.previousSibling;</div><div class="line">        while (p) &#123;</div><div class="line">            if (p.nodeType === 1) &#123;</div><div class="line">                return p;</div><div class="line">            &#125;</div><div class="line">            p = p.previousSibling;</div><div class="line">        &#125;</div><div class="line">        return null;//如果没有哥哥节点，返回null</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="6、获得指定元素相邻的弟弟元素节点"><a href="#6、获得指定元素相邻的弟弟元素节点" class="headerlink" title="6、获得指定元素相邻的弟弟元素节点"></a>6、获得指定元素相邻的弟弟元素节点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获得指定元素相邻的弟弟元素节点</div><div class="line"> * @param ele 指定元素</div><div class="line"> * @returns &#123;Object&#125;</div><div class="line"> */</div><div class="line">function next(ele) &#123;</div><div class="line">    if (typeof ele.nextElementSibling == &quot;object&quot;) &#123;</div><div class="line">        return ele.nextElementSibling;</div><div class="line">    &#125;</div><div class="line">    var next = ele.nextSibling;</div><div class="line">    while (next) &#123;</div><div class="line">        if (next.nodeType === 1) &#123;</div><div class="line">            return next;</div><div class="line">        &#125;</div><div class="line">        next = next.nextSibling;</div><div class="line">    &#125;</div><div class="line">    return null;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="7、获得指定元素所有的哥哥元素节点"><a href="#7、获得指定元素所有的哥哥元素节点" class="headerlink" title="7、获得指定元素所有的哥哥元素节点"></a>7、获得指定元素所有的哥哥元素节点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获得指定元素所有的哥哥元素节点</div><div class="line"> * @param ele 指定元素</div><div class="line"> * @returns &#123;Array&#125; 哥哥元素节点数组</div><div class="line"> */</div><div class="line">function previousAll(ele) &#123;</div><div class="line">    var ary = [];</div><div class="line">    var p = ele.previousSibling;</div><div class="line">    while (p) &#123;</div><div class="line">        if (p.nodeType === 1) &#123;</div><div class="line">            ary.push(p);</div><div class="line">        &#125;</div><div class="line">        p = p.previousSibling;</div><div class="line">    &#125;</div><div class="line">    return ary;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="8、获得指定元素所有的弟弟元素节点"><a href="#8、获得指定元素所有的弟弟元素节点" class="headerlink" title="8、获得指定元素所有的弟弟元素节点"></a>8、获得指定元素所有的弟弟元素节点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获得指定元素所有的弟弟元素节点</div><div class="line"> * @param ele 指定元素</div><div class="line"> * @returns &#123;Array&#125; 弟弟元素节点数组</div><div class="line"> */</div><div class="line">function nextAll(ele) &#123;</div><div class="line">    var ary = [];</div><div class="line">    var next = ele.nextSibling;</div><div class="line">    while (next) &#123;</div><div class="line">        if (next.nodeType === 1) &#123;</div><div class="line">            ary.push(next);</div><div class="line">        &#125;</div><div class="line">        next = next.nextSibling;</div><div class="line">    &#125;</div><div class="line">    return ary;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>###　9、获得指定元素的第一个元素子节点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获得指定元素的第一个元素子节点</div><div class="line"> * @param parent 指定元素</div><div class="line"> * @returns &#123;Object&#125; 元素节点</div><div class="line"> */</div><div class="line">function firstChild(parent) &#123;</div><div class="line">    if (typeof parent.firstElementChild == &quot;object&quot;) &#123;</div><div class="line">        return parent.firstElementChild;</div><div class="line">    &#125;</div><div class="line">    var first = parent.firstChild;</div><div class="line">    while (first) &#123;</div><div class="line">        if (first.nodeType === 1) &#123;</div><div class="line">            return first;</div><div class="line">        &#125;</div><div class="line">        first = first.nextSibling;</div><div class="line">    &#125;</div><div class="line">    return null;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="10、获得指定元素的最后一个元素子节点"><a href="#10、获得指定元素的最后一个元素子节点" class="headerlink" title="10、获得指定元素的最后一个元素子节点"></a>10、获得指定元素的最后一个元素子节点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获得指定元素的最后一个元素子节点</div><div class="line"> * @param parent 指定元素</div><div class="line"> * @returns &#123;Object&#125; 元素节点</div><div class="line"> */</div><div class="line">function lastChild(parent) &#123;</div><div class="line">    if (typeof parent.lastElementChild == &quot;object&quot;) &#123;</div><div class="line">        return parent.lastElementChild;</div><div class="line">    &#125;</div><div class="line">    var last = parent.lastChild;</div><div class="line">    while (last) &#123;</div><div class="line">        if (last.nodeType === 1) &#123;</div><div class="line">            return last;</div><div class="line">        &#125;</div><div class="line">        last = last.previousSibling;</div><div class="line">    &#125;</div><div class="line">    return null;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="11、获得parent所有的子元素节点"><a href="#11、获得parent所有的子元素节点" class="headerlink" title="11、获得parent所有的子元素节点"></a>11、获得parent所有的子元素节点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获得parent所有的子元素节点,兼容ie，还可以获得指定标签名tagName的子元素</div><div class="line"> * @param parent 父元素</div><div class="line"> * @param tagName 子元素的名称</div><div class="line"> * @returns &#123;Array&#125; 数组</div><div class="line"> */</div><div class="line">function children(parent, tagName) &#123;</div><div class="line">    var ary = [];</div><div class="line">    var child = parent.children;//children在ie67中会包括注释节点</div><div class="line">    if (typeof tagName == &quot;string&quot;) &#123;</div><div class="line">        for (var i = 0; i &lt; child.length; i++) &#123;</div><div class="line">            //if(child[i].nodeType===1&amp;&amp;child[i].nodeName==tagName.toUpperCase())&#123;</div><div class="line">            //if(child[i].nodeType===1&amp;&amp;child[i].tagName==tagName.toUpperCase())&#123;nodeName和tagName：tagName只是元素节点的属性（其它节点是undefined），nodeName是所有的节点</div><div class="line">            if (child[i].tagName === tagName.toUpperCase()) &#123;</div><div class="line">                ary.push(child[i]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125; else if (tagName === undefined) &#123;</div><div class="line">        for (var i = 0; i &lt; child.length; i++) &#123;</div><div class="line">            if (child[i].nodeType === 1) &#123;</div><div class="line">                ary.push(child[i]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125; else &#123;</div><div class="line">        throw new Error(&quot;第二个参数标签名错误&quot;);</div><div class="line">    &#125;</div><div class="line">    return ary;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="12、根据类名获得元素"><a href="#12、根据类名获得元素" class="headerlink" title="12、根据类名获得元素"></a>12、根据类名获得元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 根据类名获得元素</div><div class="line"> * @param className  类名，字符串，多个类名以空格分隔</div><div class="line"> * @param parent  父级，可以不写，不写为整个文档</div><div class="line"> * @returns &#123;Array&#125; 数组</div><div class="line"> */</div><div class="line">function getByClassName(className, parent) &#123;</div><div class="line">    parent = parent || document;</div><div class="line">    if (parent.getElementsByClassName) &#123;</div><div class="line">        return parent.getElementsByClassName(className);</div><div class="line">    &#125;</div><div class="line">    var regTrim = /^ +| +$/g;</div><div class="line">    className = className.replace(regTrim, &quot;&quot;);</div><div class="line">    var allTag = parent.getElementsByTagName(&quot;*&quot;);</div><div class="line">    var classNameAry = className.split(/ +/);</div><div class="line">    for (var i = 0; i &lt; classNameAry.length; i++) &#123;</div><div class="line">        var reg = new RegExp(&quot;(?:^| )&quot; + classNameAry[i] + &quot;(?: |$)&quot;);</div><div class="line">        var ary = [];</div><div class="line">        for (var k = 0; k &lt; allTag.length; k++) &#123;</div><div class="line">            if (reg.test(allTag[k].className)) &#123;</div><div class="line">                ary.push(allTag[k]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        allTag = ary;</div><div class="line">    &#125;</div><div class="line">    return allTag;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="13、新增class类名"><a href="#13、新增class类名" class="headerlink" title="13、新增class类名"></a>13、新增class类名</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 新增class类名</div><div class="line"> * @param ele 元素</div><div class="line"> * @param className 要新增的类名</div><div class="line"> */</div><div class="line">function addClass(ele, className) &#123;</div><div class="line">    if (ele &amp;&amp; ele.nodeType &amp;&amp; ele.nodeType === 1 &amp;&amp; className &amp;&amp; typeof className === &quot;string&quot;) &#123;</div><div class="line">        var reg = new RegExp(&quot;(?:^| )&quot; + className + &quot;(?: |$)&quot;);</div><div class="line">        if (!reg.test(ele.className)) &#123;</div><div class="line">            ele.className = ele.className + &quot; &quot; + className;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="14、移除class类名"><a href="#14、移除class类名" class="headerlink" title="14、移除class类名"></a>14、移除class类名</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 移除class类名</div><div class="line"> * @param ele 元素</div><div class="line"> * @param className 要移除的类名</div><div class="line"> */</div><div class="line">function removeClass(ele, className) &#123;</div><div class="line">    if (ele &amp;&amp; ele.nodeType &amp;&amp; ele.nodeType === 1 &amp;&amp; className &amp;&amp; typeof className === &quot;string&quot;) &#123;</div><div class="line">        var reg = new RegExp(&quot;(?:^| )&quot; + className + &quot;(?: |$)&quot;, &quot;g&quot;);</div><div class="line">        //ele.className = ele.className.replace(/ /g, &quot;   &quot;);//加空格</div><div class="line">        ele.className = ele.className.replace(reg, &quot; &quot;);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="15、将新元素添加到老元素后边"><a href="#15、将新元素添加到老元素后边" class="headerlink" title="15、将新元素添加到老元素后边"></a>15、将新元素添加到老元素后边</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 将新元素添加到老元素后边</div><div class="line"> * @param newEle 新元素</div><div class="line"> * @param oldEle 老元素</div><div class="line"> */</div><div class="line">function insetAfter(newEle, oldEle) &#123;</div><div class="line">    //ele.insertBefore(newEle,oldEle);//如果第二个参数为null，或者不写，相当于appendChild</div><div class="line">    //把newEle添加到oldEle的弟弟的前边</div><div class="line">    oldEle.parentNode.insertBefore(newEle, oldEle.nextSibling);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="16、将子元素添加到父元素的第一个位置"><a href="#16、将子元素添加到父元素的第一个位置" class="headerlink" title="16、将子元素添加到父元素的第一个位置"></a>16、将子元素添加到父元素的第一个位置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 将子元素添加到父元素的第一个位置</div><div class="line"> * @param parent 父元素</div><div class="line"> * @param child 子元素</div><div class="line"> */</div><div class="line">function prepend(parent, child) &#123;</div><div class="line">    //appendChile是在最后</div><div class="line">    parent.insertBefore(child, parent.firstChild);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="17、获得内敛式或者外嵌式css属性值"><a href="#17、获得内敛式或者外嵌式css属性值" class="headerlink" title="17、获得内敛式或者外嵌式css属性值"></a>17、获得内敛式或者外嵌式css属性值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获得内敛式或者外嵌式css属性值。带单位的属性值去掉单位，不带单位直接返回</div><div class="line"> * @param ele  元素</div><div class="line"> * @param attr  属性名 例如 &quot;left&quot;、&quot;margin&quot;</div><div class="line"> * @returns &#123;Number&#125;</div><div class="line"> */</div><div class="line">function getCss(ele, attr) &#123;</div><div class="line">    var value, reg;</div><div class="line">    if (typeof window.getComputedStyle == &quot;function&quot;) &#123;</div><div class="line">        value = window.getComputedStyle(ele)[attr];</div><div class="line">    &#125; else &#123;</div><div class="line">        if(attr==&quot;opacity&quot;)&#123;</div><div class="line">            var opacity=ele.currentStyle[&quot;filter&quot;];//alpha(opacity=80)</div><div class="line">            var regOpacity=/alpha\(opacity *= *(\d+(\.\d+)?)\)/;</div><div class="line">            value=regOpacity.test(opacity)?parseFloat(RegExp.$1)/100:1;</div><div class="line">        &#125;else&#123;</div><div class="line">            value = ele.currentStyle[attr];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    reg = /^[+-]?\d+(\.\d+)?(px|pt|em|rem)?$/;</div><div class="line">    if (reg.test(value)) &#123;</div><div class="line">        return parseFloat(value);</div><div class="line">    &#125; else &#123;</div><div class="line">        return value;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="18、设置css属性"><a href="#18、设置css属性" class="headerlink" title="18、设置css属性"></a>18、设置css属性</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 设置css属性 兼容ie的透明度</div><div class="line"> * @param ele  元素</div><div class="line"> * @param attr  属性名</div><div class="line"> * @param value  属性值</div><div class="line"> */</div><div class="line">DOM.setCss=function setCss(ele,attr,value)&#123;</div><div class="line">    if(attr==&quot;opacity&quot;)&#123;</div><div class="line">        ele.style[&quot;opacity&quot;]=value;</div><div class="line">        ele.style[&quot;filter&quot;]=&quot;alpha(opacity=&quot;+value+&quot;)&quot;;</div><div class="line">    &#125;else&#123;</div><div class="line">        if(isNaN(value))&#123;</div><div class="line">            ele.style[attr]=value;</div><div class="line">        &#125;else&#123;</div><div class="line">            ele.style[attr]=value+&quot;px&quot;;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/js技巧/" rel="tag">#js技巧</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/18/git打开慢的解决办法/" rel="next" title="git bash打开慢的解决办法">
+                <i class="fa fa-chevron-left"></i> git bash打开慢的解决办法
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/18/常用正则/" rel="prev" title="常用正则">
+                常用正则 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="lucian" />
+          <p class="site-author-name" itemprop="name">lucian</p>
+          <p class="site-description motion-element" itemprop="description">不太可能的事也许今天实现，根本不可能的事也许明天会实现</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/liushaozhen" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、cookie相关操作"><span class="nav-number">1.</span> <span class="nav-text">一、cookie相关操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、添加cookie"><span class="nav-number">1.1.</span> <span class="nav-text">1、添加cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、获得指定名称的cookie"><span class="nav-number">1.2.</span> <span class="nav-text">2、获得指定名称的cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、删除指定名称的cookie"><span class="nav-number">1.3.</span> <span class="nav-text">3、删除指定名称的cookie</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、获得url参数"><span class="nav-number">2.</span> <span class="nav-text">二、获得url参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、日期时间相关"><span class="nav-number">3.</span> <span class="nav-text">三、日期时间相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、日期格式化"><span class="nav-number">3.1.</span> <span class="nav-text">1、日期格式化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日期加减法"><span class="nav-number">3.2.</span> <span class="nav-text">日期加减法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、获得ie浏览器版本"><span class="nav-number">4.</span> <span class="nav-text">四、获得ie浏览器版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、原生js，DOM元素相关操作"><span class="nav-number">5.</span> <span class="nav-text">五、原生js，DOM元素相关操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、获得指定元素的索引"><span class="nav-number">5.1.</span> <span class="nav-text">1、获得指定元素的索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、计算任意元素距离文档上边和左边的绝对偏移量"><span class="nav-number">5.2.</span> <span class="nav-text">2、计算任意元素距离文档上边和左边的绝对偏移量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、类数组转换为数组"><span class="nav-number">5.3.</span> <span class="nav-text">3、类数组转换为数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、获得指定元素的所有的元素哥哥弟弟节点"><span class="nav-number">5.4.</span> <span class="nav-text">4、获得指定元素的所有的元素哥哥弟弟节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、获得指定元素相邻的哥哥元素节点"><span class="nav-number">5.5.</span> <span class="nav-text">5、获得指定元素相邻的哥哥元素节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、获得指定元素相邻的弟弟元素节点"><span class="nav-number">5.6.</span> <span class="nav-text">6、获得指定元素相邻的弟弟元素节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、获得指定元素所有的哥哥元素节点"><span class="nav-number">5.7.</span> <span class="nav-text">7、获得指定元素所有的哥哥元素节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8、获得指定元素所有的弟弟元素节点"><span class="nav-number">5.8.</span> <span class="nav-text">8、获得指定元素所有的弟弟元素节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10、获得指定元素的最后一个元素子节点"><span class="nav-number">5.9.</span> <span class="nav-text">10、获得指定元素的最后一个元素子节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11、获得parent所有的子元素节点"><span class="nav-number">5.10.</span> <span class="nav-text">11、获得parent所有的子元素节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12、根据类名获得元素"><span class="nav-number">5.11.</span> <span class="nav-text">12、根据类名获得元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13、新增class类名"><span class="nav-number">5.12.</span> <span class="nav-text">13、新增class类名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14、移除class类名"><span class="nav-number">5.13.</span> <span class="nav-text">14、移除class类名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15、将新元素添加到老元素后边"><span class="nav-number">5.14.</span> <span class="nav-text">15、将新元素添加到老元素后边</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16、将子元素添加到父元素的第一个位置"><span class="nav-number">5.15.</span> <span class="nav-text">16、将子元素添加到父元素的第一个位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17、获得内敛式或者外嵌式css属性值"><span class="nav-number">5.16.</span> <span class="nav-text">17、获得内敛式或者外嵌式css属性值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18、设置css属性"><span class="nav-number">5.17.</span> <span class="nav-text">18、设置css属性</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lucian</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

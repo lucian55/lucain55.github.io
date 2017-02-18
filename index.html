@@ -243,6 +243,614 @@
             
               
                 
+                <a class="post-title-link" href="/2017/02/18/常用正则/" itemprop="url">
+                  常用正则
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-18T14:59:36+08:00" content="2017-02-18">
+              2017-02-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/正则/" itemprop="url" rel="index">
+                    <span itemprop="name">正则</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>有效数字的正则，不可以以0开头，可以是小数，可以有+或—号<br>    <code>reg=/^[+-]?(\d|([1-9]\d+))(\.\d+)?$/;</code><br>汉字<br>    <code>reg=/\u4e00-\u9fa5/;</code><br>五位回文数<br>    <code>reg=/(\w)(\w)\w\2\1/;</code><br>去掉连续的重复的数字和字符<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">str=&quot;723328744737393hdsdsfjjjjhhhiusaafsdfnjv&quot;;</div><div class="line">reg=/(\w)\1+/g;</div><div class="line">str=str.replace(reg,&quot;$1&quot;);</div></pre></td></tr></table></figure></p>
+<p>匹配18-65<br>    <code>reg=/^((1[8-9])|([2-5]\d)|(6[0-5]))$/;</code><br>同时包含数字和字母的用户名 长度在8-15之间<br>    <code>reg=/^(?!\d+$)(?![a-zA-Z]+$)[a-zA-Z0-9]{8,15}$/;</code><br>去掉首位空格<br>    <code>reg=/^ +| +$/g;</code><br>去掉中间多余空格<br>    <code>reg=/ +/g</code><br>验证邮箱<br>    <code>reg=/^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/</code><br>验证url<br>    <code>regUrl=new RegExp(&#39;(https?|ftp|file)://[-A-Za-z0-9+&amp;@#/%?=~_|!:,.;]+[-A-Za-z0-9+&amp;@#/%=~_|]&#39;);</code></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/18/js常用方法-持续更新/" itemprop="url">
+                  js常用方法-持续更新
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-18T14:59:36+08:00" content="2017-02-18">
+              2017-02-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一、cookie相关操作"><a href="#一、cookie相关操作" class="headerlink" title="一、cookie相关操作"></a>一、cookie相关操作</h2><h3 id="1、添加cookie"><a href="#1、添加cookie" class="headerlink" title="1、添加cookie"></a>1、添加cookie</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 添加cookie</div><div class="line"> * @param name cookie名称</div><div class="line"> * @param value cookie值</div><div class="line"> * @param expiresHours 多少小时后过期</div><div class="line"> */</div><div class="line">function addCookie(name,value,expiresHours)&#123;</div><div class="line">    var cookieString=name+&quot;=&quot;+escape(value);</div><div class="line">    //判断是否设置过期时间</div><div class="line">    if(expiresHours&gt;0)&#123;</div><div class="line">        var date=new Date();</div><div class="line">        date.setTime(date.getTime+expiresHours*3600*1000);</div><div class="line">        cookieString=cookieString+&quot;; expires=&quot;+date.toGMTString();</div><div class="line">    &#125;</div><div class="line">    document.cookie=cookieString;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="2、获得指定名称的cookie"><a href="#2、获得指定名称的cookie" class="headerlink" title="2、获得指定名称的cookie"></a>2、获得指定名称的cookie</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获得指定名称的cookie</div><div class="line"> * @param name cookie名称</div><div class="line"> * @returns  返回cookie值</div><div class="line"> */</div><div class="line">function getCookie(name)&#123;</div><div class="line">    var strCookie=document.cookie;</div><div class="line">    var arrCookie=strCookie.split(&quot;; &quot;);</div><div class="line">    for(var i=0;i&lt;arrCookie.length;i++)&#123;</div><div class="line">        var arr=arrCookie[i].split(&quot;=&quot;);</div><div class="line">        if(arr[0]==name)return arr[1];</div><div class="line">    &#125;</div><div class="line">    return &quot;&quot;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="3、删除指定名称的cookie"><a href="#3、删除指定名称的cookie" class="headerlink" title="3、删除指定名称的cookie"></a>3、删除指定名称的cookie</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 删除指定名称的cookie</div><div class="line"> * @param name cookie名称</div><div class="line"> */</div><div class="line">function deleteCookie(name)&#123;</div><div class="line">    var date=new Date();</div><div class="line">    date.setTime(date.getTime()-10000);</div><div class="line">    document.cookie=name+&quot;=v; expires=&quot;+date.toGMTString();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="二、获得url参数"><a href="#二、获得url参数" class="headerlink" title="二、获得url参数"></a>二、获得url参数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获得url参数</div><div class="line"> * @param name 参数名称</div><div class="line"> * @returns &#123;*&#125;</div><div class="line"> */</div><div class="line">function getQueryString(name) &#123;</div><div class="line">  var after = window.location.hash.split(&quot;?&quot;)[1];</div><div class="line">  if (after) &#123;</div><div class="line">    var reg = new RegExp(&quot;(^|&amp;)&quot; + name + &quot;=([^&amp;]*)(&amp;|$)&quot;);</div><div class="line">    var r = after.match(reg);</div><div class="line">    if (r != null) &#123;</div><div class="line">      return decodeURIComponent(r[2])</div><div class="line">    &#125;</div><div class="line">    else &#123;</div><div class="line">      return null;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="三、日期时间相关"><a href="#三、日期时间相关" class="headerlink" title="三、日期时间相关"></a>三、日期时间相关</h2><h3 id="1、日期格式化"><a href="#1、日期格式化" class="headerlink" title="1、日期格式化"></a>1、日期格式化</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 日期格式化</div><div class="line"> * @param data  日期</div><div class="line"> * @param fmt 格式  y年，M月，d日，h时，m分，s秒，q季度，S毫秒</div><div class="line"> * @returns &#123;*&#125;</div><div class="line"> */</div><div class="line">function dataPart(data,fmt)&#123;</div><div class="line">    let o = &#123;</div><div class="line">        &quot;M+&quot;: data.getMonth() + 1, //月份</div><div class="line">        &quot;d+&quot;: data.getDate(), //日</div><div class="line">        &quot;h+&quot;: data.getHours(), //小时</div><div class="line">        &quot;m+&quot;: data.getMinutes(), //分</div><div class="line">        &quot;s+&quot;: data.getSeconds(), //秒</div><div class="line">        &quot;q+&quot;: Math.floor((data.getMonth() + 3) / 3), //季度</div><div class="line">        &quot;S&quot;: data.getMilliseconds() //毫秒</div><div class="line">    &#125;;</div><div class="line">    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (data.getFullYear() + &quot;&quot;).substr(4 - RegExp.$1.length));</div><div class="line">    for (let k in o)</div><div class="line">        if (new RegExp(&quot;(&quot; + k + &quot;)&quot;).test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : ((&quot;00&quot; + o[k]).substr((&quot;&quot; + o[k]).length)));</div><div class="line">    return fmt;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="日期加减法"><a href="#日期加减法" class="headerlink" title="日期加减法"></a>日期加减法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line"> *   功能:日期减的功能</div><div class="line"> *   参数:interval,字符串表达式，表示要添加的时间间隔.y年，q季度，mon月，w周，d天，h时，min分，s秒</div><div class="line"> *   参数:number,数值表达式，表示要添加的时间间隔的个数. 加法传正数，减法传负数</div><div class="line"> *   参数:date,时间对象.</div><div class="line"> *   返回:新的时间对象.</div><div class="line"> *   </div><div class="line"> */</div><div class="line">export function dateSubtract(interval,number,date) &#123;</div><div class="line">    switch (interval) &#123;</div><div class="line">        case   &quot;y&quot;   : &#123;</div><div class="line">            date.setFullYear(date.getFullYear() + number);</div><div class="line">            return date;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">        case   &quot;q&quot;   : &#123;</div><div class="line">            date.setMonth(date.getMonth() + number * 3);</div><div class="line">            return date;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">        case   &quot;mon&quot;   : &#123;</div><div class="line">            date.setMonth(date.getMonth() + number);</div><div class="line">            return date;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">        case   &quot;w&quot;   : &#123;</div><div class="line">            date.setDate(date.getDate() + number * 7);</div><div class="line">            return date;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">        case   &quot;d&quot;   : &#123;</div><div class="line">            date.setDate(date.getDate() + number);</div><div class="line">            return date;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">        case   &quot;h&quot;   : &#123;</div><div class="line">            date.setHours(date.getHours() + number);</div><div class="line">            return date;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">        case   &quot;min&quot;   : &#123;</div><div class="line">            date.setMinutes(date.getMinutes() + number);</div><div class="line">            return date;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">        case   &quot;s&quot;   : &#123;</div><div class="line">            date.setSeconds(date.getSeconds() + number);</div><div class="line">            return date;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">        default   : &#123;</div><div class="line">            date.setDate(date.getDate() + number);</div><div class="line">            return date;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="四、获得ie浏览器版本"><a href="#四、获得ie浏览器版本" class="headerlink" title="四、获得ie浏览器版本"></a>四、获得ie浏览器版本</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">function getBrowserVersion() &#123;</div><div class="line">			var userAgent = navigator.userAgent.toLowerCase();</div><div class="line">			if (userAgent.match(/msie ([\d.]+)/) != null) &#123;//ie6--ie9</div><div class="line">				uaMatch = userAgent.match(/msie ([\d.]+)/);</div><div class="line">				return &apos;IE&apos; + uaMatch[1].match(/\d/);</div><div class="line">			&#125; else if(userAgent.match(/(trident)\/([\w.]+)/)) &#123;</div><div class="line">				uaMatch = userAgent.match(/trident\/([\w.]+)/);</div><div class="line">				switch (uaMatch[1]) &#123;</div><div class="line">					case &quot;4.0&quot;:</div><div class="line">						return &quot;IE8&quot;;</div><div class="line">						break;</div><div class="line">					case &quot;5.0&quot;:</div><div class="line">						return &quot;IE9&quot;;</div><div class="line">						break;</div><div class="line">					case &quot;6.0&quot;:</div><div class="line">						return &quot;IE10&quot;;</div><div class="line">						break;</div><div class="line">					case &quot;7.0&quot;:</div><div class="line">						return &quot;IE11&quot;;</div><div class="line">						break;</div><div class="line">					default:</div><div class="line">						return &quot;undefined&quot;;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			return &quot;undefined&quot;;</div><div class="line">		&#125;</div></pre></td></tr></table></figure>
+<h2 id="五、原生js，DOM元素相关操作"><a href="#五、原生js，DOM元素相关操作" class="headerlink" title="五、原生js，DOM元素相关操作"></a>五、原生js，DOM元素相关操作</h2><h3 id="1、获得指定元素的索引"><a href="#1、获得指定元素的索引" class="headerlink" title="1、获得指定元素的索引"></a>1、获得指定元素的索引</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获得指定元素的索引</div><div class="line"> * @param ele 指定元素</div><div class="line"> * @returns &#123;number&#125; 索引</div><div class="line"> */</div><div class="line">function getIndex(ele) &#123;</div><div class="line">    var index = 0;</div><div class="line">    var p = ele.previousSibling;</div><div class="line">    while (p) &#123;</div><div class="line">        if (p.nodeType === 1) &#123;</div><div class="line">            index++;</div><div class="line">        &#125;</div><div class="line">        p = p.previousSibling;</div><div class="line">    &#125;</div><div class="line">    return index;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="2、计算任意元素距离文档上边和左边的绝对偏移量"><a href="#2、计算任意元素距离文档上边和左边的绝对偏移量" class="headerlink" title="2、计算任意元素距离文档上边和左边的绝对偏移量"></a>2、计算任意元素距离文档上边和左边的绝对偏移量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 计算任意元素距离文档上边和左边的绝对偏移量</div><div class="line"> * @param ele</div><div class="line"> * @returns &#123;&#123;t: (*|Number|number)距离上边的偏移量, l: (*|Number|number)距离左边的偏移量&#125;&#125;</div><div class="line"> */</div><div class="line">function offset(ele) &#123;</div><div class="line">    var top = ele.offsetTop;</div><div class="line">    var left = ele.offsetLeft;</div><div class="line">    var parent = ele.offsetParent;</div><div class="line">    while (parent) &#123;</div><div class="line">        if (window.navigator.userAgent(&quot;MSIE 8&quot;) == -1) &#123;</div><div class="line">            top += parent.offsetTop + parent.clientTop;</div><div class="line">            left += parent.offsetLeft + parent.clientLeft</div><div class="line">        &#125; else &#123;</div><div class="line">            top += parent.offsetTop;</div><div class="line">            left += parent.offsetLeft;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return &#123;t: top, l: left&#125;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="3、类数组转换为数组"><a href="#3、类数组转换为数组" class="headerlink" title="3、类数组转换为数组"></a>3、类数组转换为数组</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 类数组转换为数组</div><div class="line"> * @param likeArray 类数组</div><div class="line"> * @returns &#123;Array&#125; 数组</div><div class="line"> */</div><div class="line">function listToArray(likeArray) &#123;</div><div class="line">    try &#123;</div><div class="line">        return [].slice.call(likeArray);</div><div class="line">    &#125; catch (e) &#123;</div><div class="line">        var ary = [];</div><div class="line">        for (var i = 0; i &lt; likeArray; i++) &#123;</div><div class="line">            ary[ary.length] = likeArray[i];</div><div class="line">        &#125;</div><div class="line">        return ary;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="4、获得指定元素的所有的元素哥哥弟弟节点"><a href="#4、获得指定元素的所有的元素哥哥弟弟节点" class="headerlink" title="4、获得指定元素的所有的元素哥哥弟弟节点"></a>4、获得指定元素的所有的元素哥哥弟弟节点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获得指定元素的所有的元素哥哥弟弟节点</div><div class="line"> * @param ele 指定元素</div><div class="line"> * @returns &#123;Array&#125; 哥哥弟弟，顺序和文档顺序相同</div><div class="line"> */</div><div class="line">function siblings(ele) &#123;</div><div class="line">    var parent = ele.parentNode;</div><div class="line">    var children = parent.children;//所有元素节点，在ie中还会包括注释节点</div><div class="line">    var ary = [];</div><div class="line">    for (var i = 0; i &lt; children.length; i++) &#123;</div><div class="line">        if (children[i].nodeType === 1 &amp;&amp; children[i] != ele) &#123;</div><div class="line">            ary.push(children[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return ary;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="5、获得指定元素相邻的哥哥元素节点"><a href="#5、获得指定元素相邻的哥哥元素节点" class="headerlink" title="5、获得指定元素相邻的哥哥元素节点"></a>5、获得指定元素相邻的哥哥元素节点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获得指定元素相邻的哥哥元素节点</div><div class="line"> * @param ele 指定元素</div><div class="line"> * @returns &#123;Object&#125; 元素节点</div><div class="line"> */</div><div class="line">function previous(ele) &#123;</div><div class="line">    if (typeof ele.previousElementSibling == &quot;object&quot;) &#123;//如果没有哥哥元素节点，或者支持这个方法  if里直接写 ele.previousElementSibling会有问题</div><div class="line">        return ele.previousElementSibling;</div><div class="line">    &#125; else &#123;</div><div class="line">        var p = ele.previousSibling;</div><div class="line">        while (p) &#123;</div><div class="line">            if (p.nodeType === 1) &#123;</div><div class="line">                return p;</div><div class="line">            &#125;</div><div class="line">            p = p.previousSibling;</div><div class="line">        &#125;</div><div class="line">        return null;//如果没有哥哥节点，返回null</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="6、获得指定元素相邻的弟弟元素节点"><a href="#6、获得指定元素相邻的弟弟元素节点" class="headerlink" title="6、获得指定元素相邻的弟弟元素节点"></a>6、获得指定元素相邻的弟弟元素节点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获得指定元素相邻的弟弟元素节点</div><div class="line"> * @param ele 指定元素</div><div class="line"> * @returns &#123;Object&#125;</div><div class="line"> */</div><div class="line">function next(ele) &#123;</div><div class="line">    if (typeof ele.nextElementSibling == &quot;object&quot;) &#123;</div><div class="line">        return ele.nextElementSibling;</div><div class="line">    &#125;</div><div class="line">    var next = ele.nextSibling;</div><div class="line">    while (next) &#123;</div><div class="line">        if (next.nodeType === 1) &#123;</div><div class="line">            return next;</div><div class="line">        &#125;</div><div class="line">        next = next.nextSibling;</div><div class="line">    &#125;</div><div class="line">    return null;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="7、获得指定元素所有的哥哥元素节点"><a href="#7、获得指定元素所有的哥哥元素节点" class="headerlink" title="7、获得指定元素所有的哥哥元素节点"></a>7、获得指定元素所有的哥哥元素节点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获得指定元素所有的哥哥元素节点</div><div class="line"> * @param ele 指定元素</div><div class="line"> * @returns &#123;Array&#125; 哥哥元素节点数组</div><div class="line"> */</div><div class="line">function previousAll(ele) &#123;</div><div class="line">    var ary = [];</div><div class="line">    var p = ele.previousSibling;</div><div class="line">    while (p) &#123;</div><div class="line">        if (p.nodeType === 1) &#123;</div><div class="line">            ary.push(p);</div><div class="line">        &#125;</div><div class="line">        p = p.previousSibling;</div><div class="line">    &#125;</div><div class="line">    return ary;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="8、获得指定元素所有的弟弟元素节点"><a href="#8、获得指定元素所有的弟弟元素节点" class="headerlink" title="8、获得指定元素所有的弟弟元素节点"></a>8、获得指定元素所有的弟弟元素节点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获得指定元素所有的弟弟元素节点</div><div class="line"> * @param ele 指定元素</div><div class="line"> * @returns &#123;Array&#125; 弟弟元素节点数组</div><div class="line"> */</div><div class="line">function nextAll(ele) &#123;</div><div class="line">    var ary = [];</div><div class="line">    var next = ele.nextSibling;</div><div class="line">    while (next) &#123;</div><div class="line">        if (next.nodeType === 1) &#123;</div><div class="line">            ary.push(next);</div><div class="line">        &#125;</div><div class="line">        next = next.nextSibling;</div><div class="line">    &#125;</div><div class="line">    return ary;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>###　9、获得指定元素的第一个元素子节点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获得指定元素的第一个元素子节点</div><div class="line"> * @param parent 指定元素</div><div class="line"> * @returns &#123;Object&#125; 元素节点</div><div class="line"> */</div><div class="line">function firstChild(parent) &#123;</div><div class="line">    if (typeof parent.firstElementChild == &quot;object&quot;) &#123;</div><div class="line">        return parent.firstElementChild;</div><div class="line">    &#125;</div><div class="line">    var first = parent.firstChild;</div><div class="line">    while (first) &#123;</div><div class="line">        if (first.nodeType === 1) &#123;</div><div class="line">            return first;</div><div class="line">        &#125;</div><div class="line">        first = first.nextSibling;</div><div class="line">    &#125;</div><div class="line">    return null;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="10、获得指定元素的最后一个元素子节点"><a href="#10、获得指定元素的最后一个元素子节点" class="headerlink" title="10、获得指定元素的最后一个元素子节点"></a>10、获得指定元素的最后一个元素子节点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获得指定元素的最后一个元素子节点</div><div class="line"> * @param parent 指定元素</div><div class="line"> * @returns &#123;Object&#125; 元素节点</div><div class="line"> */</div><div class="line">function lastChild(parent) &#123;</div><div class="line">    if (typeof parent.lastElementChild == &quot;object&quot;) &#123;</div><div class="line">        return parent.lastElementChild;</div><div class="line">    &#125;</div><div class="line">    var last = parent.lastChild;</div><div class="line">    while (last) &#123;</div><div class="line">        if (last.nodeType === 1) &#123;</div><div class="line">            return last;</div><div class="line">        &#125;</div><div class="line">        last = last.previousSibling;</div><div class="line">    &#125;</div><div class="line">    return null;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="11、获得parent所有的子元素节点"><a href="#11、获得parent所有的子元素节点" class="headerlink" title="11、获得parent所有的子元素节点"></a>11、获得parent所有的子元素节点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获得parent所有的子元素节点,兼容ie，还可以获得指定标签名tagName的子元素</div><div class="line"> * @param parent 父元素</div><div class="line"> * @param tagName 子元素的名称</div><div class="line"> * @returns &#123;Array&#125; 数组</div><div class="line"> */</div><div class="line">function children(parent, tagName) &#123;</div><div class="line">    var ary = [];</div><div class="line">    var child = parent.children;//children在ie67中会包括注释节点</div><div class="line">    if (typeof tagName == &quot;string&quot;) &#123;</div><div class="line">        for (var i = 0; i &lt; child.length; i++) &#123;</div><div class="line">            //if(child[i].nodeType===1&amp;&amp;child[i].nodeName==tagName.toUpperCase())&#123;</div><div class="line">            //if(child[i].nodeType===1&amp;&amp;child[i].tagName==tagName.toUpperCase())&#123;nodeName和tagName：tagName只是元素节点的属性（其它节点是undefined），nodeName是所有的节点</div><div class="line">            if (child[i].tagName === tagName.toUpperCase()) &#123;</div><div class="line">                ary.push(child[i]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125; else if (tagName === undefined) &#123;</div><div class="line">        for (var i = 0; i &lt; child.length; i++) &#123;</div><div class="line">            if (child[i].nodeType === 1) &#123;</div><div class="line">                ary.push(child[i]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125; else &#123;</div><div class="line">        throw new Error(&quot;第二个参数标签名错误&quot;);</div><div class="line">    &#125;</div><div class="line">    return ary;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="12、根据类名获得元素"><a href="#12、根据类名获得元素" class="headerlink" title="12、根据类名获得元素"></a>12、根据类名获得元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 根据类名获得元素</div><div class="line"> * @param className  类名，字符串，多个类名以空格分隔</div><div class="line"> * @param parent  父级，可以不写，不写为整个文档</div><div class="line"> * @returns &#123;Array&#125; 数组</div><div class="line"> */</div><div class="line">function getByClassName(className, parent) &#123;</div><div class="line">    parent = parent || document;</div><div class="line">    if (parent.getElementsByClassName) &#123;</div><div class="line">        return parent.getElementsByClassName(className);</div><div class="line">    &#125;</div><div class="line">    var regTrim = /^ +| +$/g;</div><div class="line">    className = className.replace(regTrim, &quot;&quot;);</div><div class="line">    var allTag = parent.getElementsByTagName(&quot;*&quot;);</div><div class="line">    var classNameAry = className.split(/ +/);</div><div class="line">    for (var i = 0; i &lt; classNameAry.length; i++) &#123;</div><div class="line">        var reg = new RegExp(&quot;(?:^| )&quot; + classNameAry[i] + &quot;(?: |$)&quot;);</div><div class="line">        var ary = [];</div><div class="line">        for (var k = 0; k &lt; allTag.length; k++) &#123;</div><div class="line">            if (reg.test(allTag[k].className)) &#123;</div><div class="line">                ary.push(allTag[k]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        allTag = ary;</div><div class="line">    &#125;</div><div class="line">    return allTag;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="13、新增class类名"><a href="#13、新增class类名" class="headerlink" title="13、新增class类名"></a>13、新增class类名</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 新增class类名</div><div class="line"> * @param ele 元素</div><div class="line"> * @param className 要新增的类名</div><div class="line"> */</div><div class="line">function addClass(ele, className) &#123;</div><div class="line">    if (ele &amp;&amp; ele.nodeType &amp;&amp; ele.nodeType === 1 &amp;&amp; className &amp;&amp; typeof className === &quot;string&quot;) &#123;</div><div class="line">        var reg = new RegExp(&quot;(?:^| )&quot; + className + &quot;(?: |$)&quot;);</div><div class="line">        if (!reg.test(ele.className)) &#123;</div><div class="line">            ele.className = ele.className + &quot; &quot; + className;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="14、移除class类名"><a href="#14、移除class类名" class="headerlink" title="14、移除class类名"></a>14、移除class类名</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 移除class类名</div><div class="line"> * @param ele 元素</div><div class="line"> * @param className 要移除的类名</div><div class="line"> */</div><div class="line">function removeClass(ele, className) &#123;</div><div class="line">    if (ele &amp;&amp; ele.nodeType &amp;&amp; ele.nodeType === 1 &amp;&amp; className &amp;&amp; typeof className === &quot;string&quot;) &#123;</div><div class="line">        var reg = new RegExp(&quot;(?:^| )&quot; + className + &quot;(?: |$)&quot;, &quot;g&quot;);</div><div class="line">        //ele.className = ele.className.replace(/ /g, &quot;   &quot;);//加空格</div><div class="line">        ele.className = ele.className.replace(reg, &quot; &quot;);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="15、将新元素添加到老元素后边"><a href="#15、将新元素添加到老元素后边" class="headerlink" title="15、将新元素添加到老元素后边"></a>15、将新元素添加到老元素后边</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 将新元素添加到老元素后边</div><div class="line"> * @param newEle 新元素</div><div class="line"> * @param oldEle 老元素</div><div class="line"> */</div><div class="line">function insetAfter(newEle, oldEle) &#123;</div><div class="line">    //ele.insertBefore(newEle,oldEle);//如果第二个参数为null，或者不写，相当于appendChild</div><div class="line">    //把newEle添加到oldEle的弟弟的前边</div><div class="line">    oldEle.parentNode.insertBefore(newEle, oldEle.nextSibling);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="16、将子元素添加到父元素的第一个位置"><a href="#16、将子元素添加到父元素的第一个位置" class="headerlink" title="16、将子元素添加到父元素的第一个位置"></a>16、将子元素添加到父元素的第一个位置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 将子元素添加到父元素的第一个位置</div><div class="line"> * @param parent 父元素</div><div class="line"> * @param child 子元素</div><div class="line"> */</div><div class="line">function prepend(parent, child) &#123;</div><div class="line">    //appendChile是在最后</div><div class="line">    parent.insertBefore(child, parent.firstChild);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="17、获得内敛式或者外嵌式css属性值"><a href="#17、获得内敛式或者外嵌式css属性值" class="headerlink" title="17、获得内敛式或者外嵌式css属性值"></a>17、获得内敛式或者外嵌式css属性值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获得内敛式或者外嵌式css属性值。带单位的属性值去掉单位，不带单位直接返回</div><div class="line"> * @param ele  元素</div><div class="line"> * @param attr  属性名 例如 &quot;left&quot;、&quot;margin&quot;</div><div class="line"> * @returns &#123;Number&#125;</div><div class="line"> */</div><div class="line">function getCss(ele, attr) &#123;</div><div class="line">    var value, reg;</div><div class="line">    if (typeof window.getComputedStyle == &quot;function&quot;) &#123;</div><div class="line">        value = window.getComputedStyle(ele)[attr];</div><div class="line">    &#125; else &#123;</div><div class="line">        if(attr==&quot;opacity&quot;)&#123;</div><div class="line">            var opacity=ele.currentStyle[&quot;filter&quot;];//alpha(opacity=80)</div><div class="line">            var regOpacity=/alpha\(opacity *= *(\d+(\.\d+)?)\)/;</div><div class="line">            value=regOpacity.test(opacity)?parseFloat(RegExp.$1)/100:1;</div><div class="line">        &#125;else&#123;</div><div class="line">            value = ele.currentStyle[attr];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    reg = /^[+-]?\d+(\.\d+)?(px|pt|em|rem)?$/;</div><div class="line">    if (reg.test(value)) &#123;</div><div class="line">        return parseFloat(value);</div><div class="line">    &#125; else &#123;</div><div class="line">        return value;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="18、设置css属性"><a href="#18、设置css属性" class="headerlink" title="18、设置css属性"></a>18、设置css属性</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 设置css属性 兼容ie的透明度</div><div class="line"> * @param ele  元素</div><div class="line"> * @param attr  属性名</div><div class="line"> * @param value  属性值</div><div class="line"> */</div><div class="line">DOM.setCss=function setCss(ele,attr,value)&#123;</div><div class="line">    if(attr==&quot;opacity&quot;)&#123;</div><div class="line">        ele.style[&quot;opacity&quot;]=value;</div><div class="line">        ele.style[&quot;filter&quot;]=&quot;alpha(opacity=&quot;+value+&quot;)&quot;;</div><div class="line">    &#125;else&#123;</div><div class="line">        if(isNaN(value))&#123;</div><div class="line">            ele.style[attr]=value;</div><div class="line">        &#125;else&#123;</div><div class="line">            ele.style[attr]=value+&quot;px&quot;;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/18/git打开慢的解决办法/" itemprop="url">
+                  git bash打开慢的解决办法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-18T14:59:36+08:00" content="2017-02-18">
+              2017-02-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/工具/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>前段时间更换新电脑，安装的git，但是git bash here的时候，打开很慢很慢，电脑配置足够，网速足够。在同一个地方，公司的老电脑打开就很快，排除网速和电脑的问题，想了一下两个电脑软件环境的不同。 新电脑犹豫之前在配置hexo(这个东西很坑，报一些乱七八糟的错误，老电脑可以正常运行，新电脑就不可以，尤其是发布到gitpage的时候 hexo d ，老是报错，老电脑经过一番折腾终于好了，新的电脑又折腾一番，还是不好)，犹豫各种出错，就根据网上的方法配置了git的环境变量，我尝试着把环境变量删除，结果git bash 反应就很快了，完全正常。</p>
+<p>总之：去掉手动配置的git环境变量即可</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/18/css 遇见单词空格自动换行的方法/" itemprop="url">
+                  css 遇见单词空格自动换行的方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-18T14:59:36+08:00" content="2017-02-18">
+              2017-02-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/css/" itemprop="url" rel="index">
+                    <span itemprop="name">css</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>项目中在做sidebar左侧导航栏的时候，要实现多语，本来很正常的东西，遇到英文单词就不正常了，犹豫单词长度问题，经常会把单词截断，导致很难看，下边的属性可以解决这个问题</p>
+<p><code>word-wrap:break-word</code>  这个不仅可以把超长的英文单词截断，还可以根据空格区分单词，保持单词的可读性</p>
+<p>与之相反的是下边的属性</p>
+<p><code>word-break:break-all</code>  这个是不管三七二十一把单词弄断，影响单词的可读性</p>
+<p>总结：这种小的属性不经常用，很容易被忽略，本以为以上问题很难，没想到已经有配置可以解决，没事多看看API，会少走很多弯路哦</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/18/react-echarts/" itemprop="url">
+                  react-使用echarts，以及使用echats的地图
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-18T14:54:00+08:00" content="2017-02-18">
+              2017-02-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/react/" itemprop="url" rel="index">
+                    <span itemprop="name">react</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>百度的echart是一个很好用的图标工具，在js中的简单使用很容易上手，不再多说，这里说一下在react组件中使用echarts</p>
+</blockquote>
+<h2 id="使用echarts"><a href="#使用echarts" class="headerlink" title="使用echarts"></a>使用echarts</h2><p>首先下载echart是资源，项目中一般在package.json中加入echarts包，然后执行 <code>npm install</code> 即可。也可以执行 <code>npm install echarts --save</code>，然后在组件中引入 echarts, <code>import echarts form &#39;echarts&#39;</code></p>
+<p>直接贴代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div></pre></td><td class="code"><pre><div class="line">import echarts from &apos;echarts&apos;;</div><div class="line">class Main extends Component&#123;</div><div class="line">	componentDidMount()&#123;</div><div class="line">		let option=&#123;</div><div class="line">			tooltip : &#123;</div><div class="line">                trigger: &apos;axis&apos;</div><div class="line">            &#125;,</div><div class="line">            legend: &#123;</div><div class="line">                data:[&apos;满意&apos;,&apos;非常满意&apos;,&apos;可以忍受&apos;,&apos;无法忍受&apos;,&apos;抓狂&apos;],</div><div class="line">                bottom:&apos;1%&apos;</div><div class="line">            &#125;,</div><div class="line">            backgroundColor: &apos;#fff&apos;,</div><div class="line">            grid: &#123;</div><div class="line">                left: &apos;3%&apos;,</div><div class="line">                right: &apos;4%&apos;,</div><div class="line">                top: &apos;4%&apos;,</div><div class="line">                containLabel: true</div><div class="line">            &#125;,</div><div class="line">            xAxis : [</div><div class="line">                &#123;</div><div class="line">                    type : &apos;category&apos;,</div><div class="line">                    boundaryGap : false,</div><div class="line">                    data : [&apos;周一&apos;,&apos;周二&apos;,&apos;周三&apos;,&apos;周四&apos;,&apos;周五&apos;,&apos;周六&apos;,&apos;周日&apos;]</div><div class="line">                &#125;</div><div class="line">            ],</div><div class="line">            yAxis : [</div><div class="line">                &#123;</div><div class="line">                    type : &apos;value&apos;</div><div class="line">                &#125;</div><div class="line">            ],</div><div class="line">            color:colorList,</div><div class="line">            series : [</div><div class="line">                &#123;</div><div class="line">                    name:&apos;满意&apos;,</div><div class="line">                    type:&apos;line&apos;,</div><div class="line">                    stack: &apos;总量&apos;,</div><div class="line">                    areaStyle: &#123;normal: &#123;&#125;&#125;,</div><div class="line">                    data:[120, 132, 101, 134, 90, 230, 210]</div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    name:&apos;可以忍受&apos;,</div><div class="line">                    type:&apos;line&apos;,</div><div class="line">                    stack: &apos;总量&apos;,</div><div class="line">                    areaStyle: &#123;normal: &#123;&#125;&#125;,</div><div class="line">                    data:[220, 182, 191, 234, 290, 330, 310]</div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    name:&apos;非常满意&apos;,</div><div class="line">                    type:&apos;line&apos;,</div><div class="line">                    stack: &apos;总量&apos;,</div><div class="line">                    areaStyle: &#123;normal: &#123;&#125;&#125;,</div><div class="line">                    data:[150, 232, 201, 154, 190, 330, 410]</div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    name:&apos;无法忍受&apos;,</div><div class="line">                    type:&apos;line&apos;,</div><div class="line">                    stack: &apos;总量&apos;,</div><div class="line">                    areaStyle: &#123;normal: &#123;&#125;&#125;,</div><div class="line">                    data:[320, 332, 301, 334, 390, 330, 320]</div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    name:&apos;抓狂&apos;,</div><div class="line">                    type:&apos;line&apos;,</div><div class="line">                    stack: &apos;总量&apos;,</div><div class="line">                    label: &#123;</div><div class="line">                        normal: &#123;</div><div class="line">                            show: true,</div><div class="line">                            position: &apos;top&apos;</div><div class="line">                        &#125;</div><div class="line">                    &#125;,</div><div class="line">                    areaStyle: &#123;normal: &#123;&#125;&#125;,</div><div class="line">                    data:[820, 932, 901, 934, 1290, 1330, 1320]</div><div class="line">                &#125;</div><div class="line">            ]</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		let myCharts=echarts.init(document.getElementById(&apos;demo&apos;));</div><div class="line">        myCharts.setOption(option);</div><div class="line"></div><div class="line">		//在此处可以请求后台数据，动态设置option</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	render:function() &#123;</div><div class="line">	      </div><div class="line">	        return (    </div><div class="line">	            &lt;div id=&quot;demo&quot; style=&#123;&#123;&apos;height&apos;:&apos;250px&apos;&#125;&#125;&gt;</div><div class="line">	</div><div class="line">	             &lt;/div&gt;</div><div class="line">	        )</div><div class="line">	    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">export default Main;</div></pre></td></tr></table></figure>
+<p>以上就是一个简单的在react中使用echarts的demo</p>
+<h2 id="使用echarts的地图"><a href="#使用echarts的地图" class="headerlink" title="使用echarts的地图"></a>使用echarts的地图</h2><p>官方文档说明，使用地图需要引入对应的js，或者json文件。如下</p>
+<p>JavaScript 引入示例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;echarts.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;map/js/china.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script&gt;</div><div class="line">var chart = echarts.init(document.getElementById(&apos;main&apos;));</div><div class="line">chart.setOption(&#123;</div><div class="line">    series: [&#123;</div><div class="line">        type: &apos;map&apos;,</div><div class="line">        map: &apos;china&apos;</div><div class="line">    &#125;]</div><div class="line">&#125;);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>或者</p>
+<p>JSON 引入示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$.get(&apos;map/json/china.json&apos;, function (chinaJson) &#123;</div><div class="line">    echarts.registerMap(&apos;china&apos;, chinaJson);</div><div class="line">    var chart = echarts.init(document.getElementById(&apos;main&apos;));</div><div class="line">    chart.setOption(&#123;</div><div class="line">        series: [&#123;</div><div class="line">            type: &apos;map&apos;,</div><div class="line">            map: &apos;china&apos;</div><div class="line">        &#125;]</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>在普通的页面中可以使用，但是在react组件中，并不一定好用。我做的项目中，option和组件不是在同一个js文件中，我的option配置文件单独写的一个js文件，使用的时候 <code>important</code>到组件中，所以这两种办法对我的项目来说不怎么适应，经过一番查找，尝试，找到如下解决办法：</p>
+<p>引入 <code>echarts-for-react</code> 包，<code>echarts-for-react</code>是开源的npm包，其实就是对echarts进行了封装，使echarts更加适用于react。<br>引入 <code>echarts-for-react</code> 包之后，例如想使用中国地图，则只需要 <code>important echarts/map/js/china</code> 即可。实例代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div><div class="line">295</div><div class="line">296</div><div class="line">297</div><div class="line">298</div><div class="line">299</div><div class="line">300</div><div class="line">301</div><div class="line">302</div><div class="line">303</div><div class="line">304</div><div class="line">305</div><div class="line">306</div><div class="line">307</div><div class="line">308</div><div class="line">309</div><div class="line">310</div><div class="line">311</div><div class="line">312</div><div class="line">313</div><div class="line">314</div><div class="line">315</div><div class="line">316</div><div class="line">317</div><div class="line">318</div><div class="line">319</div><div class="line">320</div><div class="line">321</div><div class="line">322</div><div class="line">323</div><div class="line">324</div><div class="line">325</div><div class="line">326</div><div class="line">327</div><div class="line">328</div><div class="line">329</div><div class="line">330</div><div class="line">331</div><div class="line">332</div><div class="line">333</div><div class="line">334</div><div class="line">335</div><div class="line">336</div><div class="line">337</div><div class="line">338</div><div class="line">339</div><div class="line">340</div><div class="line">341</div><div class="line">342</div><div class="line">343</div><div class="line">344</div><div class="line">345</div><div class="line">346</div><div class="line">347</div><div class="line">348</div><div class="line">349</div><div class="line">350</div><div class="line">351</div><div class="line">352</div><div class="line">353</div><div class="line">354</div><div class="line">355</div><div class="line">356</div><div class="line">357</div><div class="line">358</div><div class="line">359</div><div class="line">360</div><div class="line">361</div><div class="line">362</div><div class="line">363</div><div class="line">364</div><div class="line">365</div><div class="line">366</div><div class="line">367</div><div class="line">368</div><div class="line">369</div><div class="line">370</div><div class="line">371</div><div class="line">372</div><div class="line">373</div><div class="line">374</div><div class="line">375</div><div class="line">376</div><div class="line">377</div><div class="line">378</div><div class="line">379</div><div class="line">380</div><div class="line">381</div><div class="line">382</div><div class="line">383</div><div class="line">384</div><div class="line">385</div><div class="line">386</div><div class="line">387</div><div class="line">388</div><div class="line">389</div><div class="line">390</div><div class="line">391</div><div class="line">392</div><div class="line">393</div><div class="line">394</div><div class="line">395</div><div class="line">396</div><div class="line">397</div><div class="line">398</div><div class="line">399</div><div class="line">400</div><div class="line">401</div><div class="line">402</div><div class="line">403</div><div class="line">404</div><div class="line">405</div><div class="line">406</div><div class="line">407</div><div class="line">408</div><div class="line">409</div><div class="line">410</div><div class="line">411</div><div class="line">412</div><div class="line">413</div><div class="line">414</div><div class="line">415</div><div class="line">416</div><div class="line">417</div><div class="line">418</div><div class="line">419</div><div class="line">420</div><div class="line">421</div><div class="line">422</div><div class="line">423</div><div class="line">424</div><div class="line">425</div><div class="line">426</div><div class="line">427</div><div class="line">428</div><div class="line">429</div><div class="line">430</div><div class="line">431</div><div class="line">432</div><div class="line">433</div><div class="line">434</div><div class="line">435</div><div class="line">436</div><div class="line">437</div><div class="line">438</div><div class="line">439</div><div class="line">440</div><div class="line">441</div><div class="line">442</div><div class="line">443</div><div class="line">444</div><div class="line">445</div><div class="line">446</div><div class="line">447</div><div class="line">448</div><div class="line">449</div><div class="line">450</div><div class="line">451</div><div class="line">452</div><div class="line">453</div><div class="line">454</div><div class="line">455</div><div class="line">456</div><div class="line">457</div><div class="line">458</div><div class="line">459</div><div class="line">460</div><div class="line">461</div><div class="line">462</div><div class="line">463</div><div class="line">464</div><div class="line">465</div><div class="line">466</div><div class="line">467</div><div class="line">468</div><div class="line">469</div><div class="line">470</div><div class="line">471</div><div class="line">472</div><div class="line">473</div><div class="line">474</div><div class="line">475</div><div class="line">476</div><div class="line">477</div><div class="line">478</div><div class="line">479</div><div class="line">480</div><div class="line">481</div><div class="line">482</div><div class="line">483</div><div class="line">484</div><div class="line">485</div><div class="line">486</div><div class="line">487</div><div class="line">488</div><div class="line">489</div><div class="line">490</div><div class="line">491</div><div class="line">492</div><div class="line">493</div><div class="line">494</div><div class="line">495</div><div class="line">496</div><div class="line">497</div><div class="line">498</div><div class="line">499</div><div class="line">500</div><div class="line">501</div><div class="line">502</div><div class="line">503</div><div class="line">504</div><div class="line">505</div><div class="line">506</div><div class="line">507</div><div class="line">508</div><div class="line">509</div><div class="line">510</div><div class="line">511</div><div class="line">512</div><div class="line">513</div></pre></td><td class="code"><pre><div class="line">import ReactEcharts from &apos;echarts-for-react&apos;;</div><div class="line">import &apos;echarts/map/js/china&apos;;</div><div class="line">class Main extends Component&#123;</div><div class="line"></div><div class="line">	constructor(props)&#123;</div><div class="line">		super(props);</div><div class="line">       	this.state=&#123;</div><div class="line">            regionOption:resource.region.option,</div><div class="line">        &#125;;</div><div class="line">    &#125;</div><div class="line">	componentDidMount()&#123;</div><div class="line">		let geoCoordMap=&#123;</div><div class="line">        &apos;海门&apos;:[121.15,31.89],</div><div class="line">        &apos;鄂尔多斯&apos;:[109.781327,39.608266],</div><div class="line">        &apos;招远&apos;:[120.38,37.35],</div><div class="line">        &apos;舟山&apos;:[122.207216,29.985295],</div><div class="line">        &apos;齐齐哈尔&apos;:[123.97,47.33],</div><div class="line">        &apos;盐城&apos;:[120.13,33.38],</div><div class="line">        &apos;赤峰&apos;:[118.87,42.28],</div><div class="line">        &apos;青岛&apos;:[120.33,36.07],</div><div class="line">        &apos;乳山&apos;:[121.52,36.89],</div><div class="line">        &apos;金昌&apos;:[102.188043,38.520089],</div><div class="line">        &apos;泉州&apos;:[118.58,24.93],</div><div class="line">        &apos;莱西&apos;:[120.53,36.86],</div><div class="line">        &apos;日照&apos;:[119.46,35.42],</div><div class="line">        &apos;胶南&apos;:[119.97,35.88],</div><div class="line">        &apos;南通&apos;:[121.05,32.08],</div><div class="line">        &apos;拉萨&apos;:[91.11,29.97],</div><div class="line">        &apos;云浮&apos;:[112.02,22.93],</div><div class="line">        &apos;梅州&apos;:[116.1,24.55],</div><div class="line">        &apos;文登&apos;:[122.05,37.2],</div><div class="line">        &apos;上海&apos;:[121.48,31.22],</div><div class="line">        &apos;攀枝花&apos;:[101.718637,26.582347],</div><div class="line">        &apos;威海&apos;:[122.1,37.5],</div><div class="line">        &apos;承德&apos;:[117.93,40.97],</div><div class="line">        &apos;厦门&apos;:[118.1,24.46],</div><div class="line">        &apos;汕尾&apos;:[115.375279,22.786211],</div><div class="line">        &apos;潮州&apos;:[116.63,23.68],</div><div class="line">        &apos;丹东&apos;:[124.37,40.13],</div><div class="line">        &apos;太仓&apos;:[121.1,31.45],</div><div class="line">        &apos;曲靖&apos;:[103.79,25.51],</div><div class="line">        &apos;烟台&apos;:[121.39,37.52],</div><div class="line">        &apos;福州&apos;:[119.3,26.08],</div><div class="line">        &apos;瓦房店&apos;:[121.979603,39.627114],</div><div class="line">        &apos;即墨&apos;:[120.45,36.38],</div><div class="line">        &apos;抚顺&apos;:[123.97,41.97],</div><div class="line">        &apos;玉溪&apos;:[102.52,24.35],</div><div class="line">        &apos;张家口&apos;:[114.87,40.82],</div><div class="line">        &apos;阳泉&apos;:[113.57,37.85],</div><div class="line">        &apos;莱州&apos;:[119.942327,37.177017],</div><div class="line">        &apos;湖州&apos;:[120.1,30.86],</div><div class="line">        &apos;汕头&apos;:[116.69,23.39],</div><div class="line">        &apos;昆山&apos;:[120.95,31.39],</div><div class="line">        &apos;宁波&apos;:[121.56,29.86],</div><div class="line">        &apos;湛江&apos;:[110.359377,21.270708],</div><div class="line">        &apos;揭阳&apos;:[116.35,23.55],</div><div class="line">        &apos;荣成&apos;:[122.41,37.16],</div><div class="line">        &apos;连云港&apos;:[119.16,34.59],</div><div class="line">        &apos;葫芦岛&apos;:[120.836932,40.711052],</div><div class="line">        &apos;常熟&apos;:[120.74,31.64],</div><div class="line">        &apos;东莞&apos;:[113.75,23.04],</div><div class="line">        &apos;河源&apos;:[114.68,23.73],</div><div class="line">        &apos;淮安&apos;:[119.15,33.5],</div><div class="line">        &apos;泰州&apos;:[119.9,32.49],</div><div class="line">        &apos;南宁&apos;:[108.33,22.84],</div><div class="line">        &apos;营口&apos;:[122.18,40.65],</div><div class="line">        &apos;惠州&apos;:[114.4,23.09],</div><div class="line">        &apos;江阴&apos;:[120.26,31.91],</div><div class="line">        &apos;蓬莱&apos;:[120.75,37.8],</div><div class="line">        &apos;韶关&apos;:[113.62,24.84],</div><div class="line">        &apos;嘉峪关&apos;:[98.289152,39.77313],</div><div class="line">        &apos;广州&apos;:[113.23,23.16],</div><div class="line">        &apos;延安&apos;:[109.47,36.6],</div><div class="line">        &apos;太原&apos;:[112.53,37.87],</div><div class="line">        &apos;清远&apos;:[113.01,23.7],</div><div class="line">        &apos;中山&apos;:[113.38,22.52],</div><div class="line">        &apos;昆明&apos;:[102.73,25.04],</div><div class="line">        &apos;寿光&apos;:[118.73,36.86],</div><div class="line">        &apos;盘锦&apos;:[122.070714,41.119997],</div><div class="line">        &apos;长治&apos;:[113.08,36.18],</div><div class="line">        &apos;深圳&apos;:[114.07,22.62],</div><div class="line">        &apos;珠海&apos;:[113.52,22.3],</div><div class="line">        &apos;宿迁&apos;:[118.3,33.96],</div><div class="line">        &apos;咸阳&apos;:[108.72,34.36],</div><div class="line">        &apos;铜川&apos;:[109.11,35.09],</div><div class="line">        &apos;平度&apos;:[119.97,36.77],</div><div class="line">        &apos;佛山&apos;:[113.11,23.05],</div><div class="line">        &apos;海口&apos;:[110.35,20.02],</div><div class="line">        &apos;江门&apos;:[113.06,22.61],</div><div class="line">        &apos;章丘&apos;:[117.53,36.72],</div><div class="line">        &apos;肇庆&apos;:[112.44,23.05],</div><div class="line">        &apos;大连&apos;:[121.62,38.92],</div><div class="line">        &apos;临汾&apos;:[111.5,36.08],</div><div class="line">        &apos;吴江&apos;:[120.63,31.16],</div><div class="line">        &apos;石嘴山&apos;:[106.39,39.04],</div><div class="line">        &apos;沈阳&apos;:[123.38,41.8],</div><div class="line">        &apos;苏州&apos;:[120.62,31.32],</div><div class="line">        &apos;茂名&apos;:[110.88,21.68],</div><div class="line">        &apos;嘉兴&apos;:[120.76,30.77],</div><div class="line">        &apos;长春&apos;:[125.35,43.88],</div><div class="line">        &apos;胶州&apos;:[120.03336,36.264622],</div><div class="line">        &apos;银川&apos;:[106.27,38.47],</div><div class="line">        &apos;张家港&apos;:[120.555821,31.875428],</div><div class="line">        &apos;三门峡&apos;:[111.19,34.76],</div><div class="line">        &apos;锦州&apos;:[121.15,41.13],</div><div class="line">        &apos;南昌&apos;:[115.89,28.68],</div><div class="line">        &apos;柳州&apos;:[109.4,24.33],</div><div class="line">        &apos;三亚&apos;:[109.511909,18.252847],</div><div class="line">        &apos;自贡&apos;:[104.778442,29.33903],</div><div class="line">        &apos;吉林&apos;:[126.57,43.87],</div><div class="line">        &apos;阳江&apos;:[111.95,21.85],</div><div class="line">        &apos;泸州&apos;:[105.39,28.91],</div><div class="line">        &apos;西宁&apos;:[101.74,36.56],</div><div class="line">        &apos;宜宾&apos;:[104.56,29.77],</div><div class="line">        &apos;呼和浩特&apos;:[111.65,40.82],</div><div class="line">        &apos;成都&apos;:[104.06,30.67],</div><div class="line">        &apos;大同&apos;:[113.3,40.12],</div><div class="line">        &apos;镇江&apos;:[119.44,32.2],</div><div class="line">        &apos;桂林&apos;:[110.28,25.29],</div><div class="line">        &apos;张家界&apos;:[110.479191,29.117096],</div><div class="line">        &apos;宜兴&apos;:[119.82,31.36],</div><div class="line">        &apos;北海&apos;:[109.12,21.49],</div><div class="line">        &apos;西安&apos;:[108.95,34.27],</div><div class="line">        &apos;金坛&apos;:[119.56,31.74],</div><div class="line">        &apos;东营&apos;:[118.49,37.46],</div><div class="line">        &apos;牡丹江&apos;:[129.58,44.6],</div><div class="line">        &apos;遵义&apos;:[106.9,27.7],</div><div class="line">        &apos;绍兴&apos;:[120.58,30.01],</div><div class="line">        &apos;扬州&apos;:[119.42,32.39],</div><div class="line">        &apos;常州&apos;:[119.95,31.79],</div><div class="line">        &apos;潍坊&apos;:[119.1,36.62],</div><div class="line">        &apos;重庆&apos;:[106.54,29.59],</div><div class="line">        &apos;台州&apos;:[121.420757,28.656386],</div><div class="line">        &apos;南京&apos;:[118.78,32.04],</div><div class="line">        &apos;滨州&apos;:[118.03,37.36],</div><div class="line">        &apos;贵阳&apos;:[106.71,26.57],</div><div class="line">        &apos;无锡&apos;:[120.29,31.59],</div><div class="line">        &apos;本溪&apos;:[123.73,41.3],</div><div class="line">        &apos;克拉玛依&apos;:[84.77,45.59],</div><div class="line">        &apos;渭南&apos;:[109.5,34.52],</div><div class="line">        &apos;马鞍山&apos;:[118.48,31.56],</div><div class="line">        &apos;宝鸡&apos;:[107.15,34.38],</div><div class="line">        &apos;焦作&apos;:[113.21,35.24],</div><div class="line">        &apos;句容&apos;:[119.16,31.95],</div><div class="line">        &apos;北京&apos;:[116.46,39.92],</div><div class="line">        &apos;徐州&apos;:[117.2,34.26],</div><div class="line">        &apos;衡水&apos;:[115.72,37.72],</div><div class="line">        &apos;包头&apos;:[110,40.58],</div><div class="line">        &apos;绵阳&apos;:[104.73,31.48],</div><div class="line">        &apos;乌鲁木齐&apos;:[87.68,43.77],</div><div class="line">        &apos;枣庄&apos;:[117.57,34.86],</div><div class="line">        &apos;杭州&apos;:[120.19,30.26],</div><div class="line">        &apos;淄博&apos;:[118.05,36.78],</div><div class="line">        &apos;鞍山&apos;:[122.85,41.12],</div><div class="line">        &apos;溧阳&apos;:[119.48,31.43],</div><div class="line">        &apos;库尔勒&apos;:[86.06,41.68],</div><div class="line">        &apos;安阳&apos;:[114.35,36.1],</div><div class="line">        &apos;开封&apos;:[114.35,34.79],</div><div class="line">        &apos;济南&apos;:[117,36.65],</div><div class="line">        &apos;德阳&apos;:[104.37,31.13],</div><div class="line">        &apos;温州&apos;:[120.65,28.01],</div><div class="line">        &apos;九江&apos;:[115.97,29.71],</div><div class="line">        &apos;邯郸&apos;:[114.47,36.6],</div><div class="line">        &apos;临安&apos;:[119.72,30.23],</div><div class="line">        &apos;兰州&apos;:[103.73,36.03],</div><div class="line">        &apos;沧州&apos;:[116.83,38.33],</div><div class="line">        &apos;临沂&apos;:[118.35,35.05],</div><div class="line">        &apos;南充&apos;:[106.110698,30.837793],</div><div class="line">        &apos;天津&apos;:[117.2,39.13],</div><div class="line">        &apos;富阳&apos;:[119.95,30.07],</div><div class="line">        &apos;泰安&apos;:[117.13,36.18],</div><div class="line">        &apos;诸暨&apos;:[120.23,29.71],</div><div class="line">        &apos;郑州&apos;:[113.65,34.76],</div><div class="line">        &apos;哈尔滨&apos;:[126.63,45.75],</div><div class="line">        &apos;聊城&apos;:[115.97,36.45],</div><div class="line">        &apos;芜湖&apos;:[118.38,31.33],</div><div class="line">        &apos;唐山&apos;:[118.02,39.63],</div><div class="line">        &apos;平顶山&apos;:[113.29,33.75],</div><div class="line">        &apos;邢台&apos;:[114.48,37.05],</div><div class="line">        &apos;德州&apos;:[116.29,37.45],</div><div class="line">        &apos;济宁&apos;:[116.59,35.38],</div><div class="line">        &apos;荆州&apos;:[112.239741,30.335165],</div><div class="line">        &apos;宜昌&apos;:[111.3,30.7],</div><div class="line">        &apos;义乌&apos;:[120.06,29.32],</div><div class="line">        &apos;丽水&apos;:[119.92,28.45],</div><div class="line">        &apos;洛阳&apos;:[112.44,34.7],</div><div class="line">        &apos;秦皇岛&apos;:[119.57,39.95],</div><div class="line">        &apos;株洲&apos;:[113.16,27.83],</div><div class="line">        &apos;石家庄&apos;:[114.48,38.03],</div><div class="line">        &apos;莱芜&apos;:[117.67,36.19],</div><div class="line">        &apos;常德&apos;:[111.69,29.05],</div><div class="line">        &apos;保定&apos;:[115.48,38.85],</div><div class="line">        &apos;湘潭&apos;:[112.91,27.87],</div><div class="line">        &apos;金华&apos;:[119.64,29.12],</div><div class="line">        &apos;岳阳&apos;:[113.09,29.37],</div><div class="line">        &apos;长沙&apos;:[113,28.21],</div><div class="line">        &apos;衢州&apos;:[118.88,28.97],</div><div class="line">        &apos;廊坊&apos;:[116.7,39.53],</div><div class="line">        &apos;菏泽&apos;:[115.480656,35.23375],</div><div class="line">        &apos;合肥&apos;:[117.27,31.86],</div><div class="line">        &apos;武汉&apos;:[114.31,30.52],</div><div class="line">        &apos;大庆&apos;:[125.03,46.58]</div><div class="line">    &#125;;</div><div class="line">let convertData=function (data) &#123;</div><div class="line">    let res = [];</div><div class="line">    for (let i = 0; i &lt; data.length; i++) &#123;</div><div class="line">        let geoCoord = geoCoordMap[data[i].name];</div><div class="line">        if (geoCoord) &#123;</div><div class="line">            res.push(&#123;</div><div class="line">                name: data[i].name,</div><div class="line">                value: geoCoord.concat(data[i].value)</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return res;</div><div class="line">&#125;;</div><div class="line">let dataRegion = [</div><div class="line">    &#123;name: &apos;海门&apos;, value: 9&#125;,</div><div class="line">    &#123;name: &apos;鄂尔多斯&apos;, value: 12&#125;,</div><div class="line">    &#123;name: &apos;招远&apos;, value: 12&#125;,</div><div class="line">    &#123;name: &apos;舟山&apos;, value: 12&#125;,</div><div class="line">    &#123;name: &apos;齐齐哈尔&apos;, value: 14&#125;,</div><div class="line">    &#123;name: &apos;盐城&apos;, value: 15&#125;,</div><div class="line">    &#123;name: &apos;赤峰&apos;, value: 16&#125;,</div><div class="line">    &#123;name: &apos;青岛&apos;, value: 18&#125;,</div><div class="line">    &#123;name: &apos;乳山&apos;, value: 18&#125;,</div><div class="line">    &#123;name: &apos;金昌&apos;, value: 19&#125;,</div><div class="line">    &#123;name: &apos;泉州&apos;, value: 21&#125;,</div><div class="line">    &#123;name: &apos;莱西&apos;, value: 21&#125;,</div><div class="line">    &#123;name: &apos;日照&apos;, value: 21&#125;,</div><div class="line">    &#123;name: &apos;胶南&apos;, value: 22&#125;,</div><div class="line">    &#123;name: &apos;南通&apos;, value: 23&#125;,</div><div class="line">    &#123;name: &apos;拉萨&apos;, value: 24&#125;,</div><div class="line">    &#123;name: &apos;云浮&apos;, value: 24&#125;,</div><div class="line">    &#123;name: &apos;梅州&apos;, value: 25&#125;,</div><div class="line">    &#123;name: &apos;文登&apos;, value: 25&#125;,</div><div class="line">    &#123;name: &apos;上海&apos;, value: 25&#125;,</div><div class="line">    &#123;name: &apos;攀枝花&apos;, value: 25&#125;,</div><div class="line">    &#123;name: &apos;威海&apos;, value: 25&#125;,</div><div class="line">    &#123;name: &apos;承德&apos;, value: 25&#125;,</div><div class="line">    &#123;name: &apos;厦门&apos;, value: 26&#125;,</div><div class="line">    &#123;name: &apos;汕尾&apos;, value: 26&#125;,</div><div class="line">    &#123;name: &apos;潮州&apos;, value: 26&#125;,</div><div class="line">    &#123;name: &apos;丹东&apos;, value: 27&#125;,</div><div class="line">    &#123;name: &apos;太仓&apos;, value: 27&#125;,</div><div class="line">    &#123;name: &apos;曲靖&apos;, value: 27&#125;,</div><div class="line">    &#123;name: &apos;烟台&apos;, value: 28&#125;,</div><div class="line">    &#123;name: &apos;福州&apos;, value: 29&#125;,</div><div class="line">    &#123;name: &apos;瓦房店&apos;, value: 30&#125;,</div><div class="line">    &#123;name: &apos;即墨&apos;, value: 30&#125;,</div><div class="line">    &#123;name: &apos;抚顺&apos;, value: 31&#125;,</div><div class="line">    &#123;name: &apos;玉溪&apos;, value: 31&#125;,</div><div class="line">    &#123;name: &apos;张家口&apos;, value: 31&#125;,</div><div class="line">    &#123;name: &apos;阳泉&apos;, value: 31&#125;,</div><div class="line">    &#123;name: &apos;莱州&apos;, value: 32&#125;,</div><div class="line">    &#123;name: &apos;湖州&apos;, value: 32&#125;,</div><div class="line">    &#123;name: &apos;汕头&apos;, value: 32&#125;,</div><div class="line">    &#123;name: &apos;昆山&apos;, value: 33&#125;,</div><div class="line">    &#123;name: &apos;宁波&apos;, value: 33&#125;,</div><div class="line">    &#123;name: &apos;湛江&apos;, value: 33&#125;,</div><div class="line">    &#123;name: &apos;揭阳&apos;, value: 34&#125;,</div><div class="line">    &#123;name: &apos;荣成&apos;, value: 34&#125;,</div><div class="line">    &#123;name: &apos;连云港&apos;, value: 35&#125;,</div><div class="line">    &#123;name: &apos;葫芦岛&apos;, value: 35&#125;,</div><div class="line">    &#123;name: &apos;常熟&apos;, value: 36&#125;,</div><div class="line">    &#123;name: &apos;东莞&apos;, value: 36&#125;,</div><div class="line">    &#123;name: &apos;河源&apos;, value: 36&#125;,</div><div class="line">    &#123;name: &apos;淮安&apos;, value: 36&#125;,</div><div class="line">    &#123;name: &apos;泰州&apos;, value: 36&#125;,</div><div class="line">    &#123;name: &apos;南宁&apos;, value: 37&#125;,</div><div class="line">    &#123;name: &apos;营口&apos;, value: 37&#125;,</div><div class="line">    &#123;name: &apos;惠州&apos;, value: 37&#125;,</div><div class="line">    &#123;name: &apos;江阴&apos;, value: 37&#125;,</div><div class="line">    &#123;name: &apos;蓬莱&apos;, value: 37&#125;,</div><div class="line">    &#123;name: &apos;韶关&apos;, value: 38&#125;,</div><div class="line">    &#123;name: &apos;嘉峪关&apos;, value: 38&#125;,</div><div class="line">    &#123;name: &apos;广州&apos;, value: 38&#125;,</div><div class="line">    &#123;name: &apos;延安&apos;, value: 38&#125;,</div><div class="line">    &#123;name: &apos;太原&apos;, value: 39&#125;,</div><div class="line">    &#123;name: &apos;清远&apos;, value: 39&#125;,</div><div class="line">    &#123;name: &apos;中山&apos;, value: 39&#125;,</div><div class="line">    &#123;name: &apos;昆明&apos;, value: 39&#125;,</div><div class="line">    &#123;name: &apos;寿光&apos;, value: 40&#125;,</div><div class="line">    &#123;name: &apos;盘锦&apos;, value: 40&#125;,</div><div class="line">    &#123;name: &apos;长治&apos;, value: 41&#125;,</div><div class="line">    &#123;name: &apos;深圳&apos;, value: 41&#125;,</div><div class="line">    &#123;name: &apos;珠海&apos;, value: 42&#125;,</div><div class="line">    &#123;name: &apos;宿迁&apos;, value: 43&#125;,</div><div class="line">    &#123;name: &apos;咸阳&apos;, value: 43&#125;,</div><div class="line">    &#123;name: &apos;铜川&apos;, value: 44&#125;,</div><div class="line">    &#123;name: &apos;平度&apos;, value: 44&#125;,</div><div class="line">    &#123;name: &apos;佛山&apos;, value: 44&#125;,</div><div class="line">    &#123;name: &apos;海口&apos;, value: 44&#125;,</div><div class="line">    &#123;name: &apos;江门&apos;, value: 45&#125;,</div><div class="line">    &#123;name: &apos;章丘&apos;, value: 45&#125;,</div><div class="line">    &#123;name: &apos;肇庆&apos;, value: 46&#125;,</div><div class="line">    &#123;name: &apos;大连&apos;, value: 47&#125;,</div><div class="line">    &#123;name: &apos;临汾&apos;, value: 47&#125;,</div><div class="line">    &#123;name: &apos;吴江&apos;, value: 47&#125;,</div><div class="line">    &#123;name: &apos;石嘴山&apos;, value: 49&#125;,</div><div class="line">    &#123;name: &apos;沈阳&apos;, value: 50&#125;,</div><div class="line">    &#123;name: &apos;苏州&apos;, value: 50&#125;,</div><div class="line">    &#123;name: &apos;茂名&apos;, value: 50&#125;,</div><div class="line">    &#123;name: &apos;嘉兴&apos;, value: 51&#125;,</div><div class="line">    &#123;name: &apos;长春&apos;, value: 51&#125;,</div><div class="line">    &#123;name: &apos;胶州&apos;, value: 52&#125;,</div><div class="line">    &#123;name: &apos;银川&apos;, value: 52&#125;,</div><div class="line">    &#123;name: &apos;张家港&apos;, value: 52&#125;,</div><div class="line">    &#123;name: &apos;三门峡&apos;, value: 53&#125;,</div><div class="line">    &#123;name: &apos;锦州&apos;, value: 54&#125;,</div><div class="line">    &#123;name: &apos;南昌&apos;, value: 54&#125;,</div><div class="line">    &#123;name: &apos;柳州&apos;, value: 54&#125;,</div><div class="line">    &#123;name: &apos;三亚&apos;, value: 54&#125;,</div><div class="line">    &#123;name: &apos;自贡&apos;, value: 56&#125;,</div><div class="line">    &#123;name: &apos;吉林&apos;, value: 56&#125;,</div><div class="line">    &#123;name: &apos;阳江&apos;, value: 57&#125;,</div><div class="line">    &#123;name: &apos;泸州&apos;, value: 57&#125;,</div><div class="line">    &#123;name: &apos;西宁&apos;, value: 57&#125;,</div><div class="line">    &#123;name: &apos;宜宾&apos;, value: 58&#125;,</div><div class="line">    &#123;name: &apos;呼和浩特&apos;, value: 58&#125;,</div><div class="line">    &#123;name: &apos;成都&apos;, value: 58&#125;,</div><div class="line">    &#123;name: &apos;大同&apos;, value: 58&#125;,</div><div class="line">    &#123;name: &apos;镇江&apos;, value: 59&#125;,</div><div class="line">    &#123;name: &apos;桂林&apos;, value: 59&#125;,</div><div class="line">    &#123;name: &apos;张家界&apos;, value: 59&#125;,</div><div class="line">    &#123;name: &apos;宜兴&apos;, value: 59&#125;,</div><div class="line">    &#123;name: &apos;北海&apos;, value: 60&#125;,</div><div class="line">    &#123;name: &apos;西安&apos;, value: 61&#125;,</div><div class="line">    &#123;name: &apos;金坛&apos;, value: 62&#125;,</div><div class="line">    &#123;name: &apos;东营&apos;, value: 62&#125;,</div><div class="line">    &#123;name: &apos;牡丹江&apos;, value: 63&#125;,</div><div class="line">    &#123;name: &apos;遵义&apos;, value: 63&#125;,</div><div class="line">    &#123;name: &apos;绍兴&apos;, value: 63&#125;,</div><div class="line">    &#123;name: &apos;扬州&apos;, value: 64&#125;,</div><div class="line">    &#123;name: &apos;常州&apos;, value: 64&#125;,</div><div class="line">    &#123;name: &apos;潍坊&apos;, value: 65&#125;,</div><div class="line">    &#123;name: &apos;重庆&apos;, value: 66&#125;,</div><div class="line">    &#123;name: &apos;台州&apos;, value: 67&#125;,</div><div class="line">    &#123;name: &apos;南京&apos;, value: 67&#125;,</div><div class="line">    &#123;name: &apos;滨州&apos;, value: 70&#125;,</div><div class="line">    &#123;name: &apos;贵阳&apos;, value: 71&#125;,</div><div class="line">    &#123;name: &apos;无锡&apos;, value: 71&#125;,</div><div class="line">    &#123;name: &apos;本溪&apos;, value: 71&#125;,</div><div class="line">    &#123;name: &apos;克拉玛依&apos;, value: 72&#125;,</div><div class="line">    &#123;name: &apos;渭南&apos;, value: 72&#125;,</div><div class="line">    &#123;name: &apos;马鞍山&apos;, value: 72&#125;,</div><div class="line">    &#123;name: &apos;宝鸡&apos;, value: 72&#125;,</div><div class="line">    &#123;name: &apos;焦作&apos;, value: 75&#125;,</div><div class="line">    &#123;name: &apos;句容&apos;, value: 75&#125;,</div><div class="line">    &#123;name: &apos;北京&apos;, value: 79&#125;,</div><div class="line">    &#123;name: &apos;徐州&apos;, value: 79&#125;,</div><div class="line">    &#123;name: &apos;衡水&apos;, value: 80&#125;,</div><div class="line">    &#123;name: &apos;包头&apos;, value: 80&#125;,</div><div class="line">    &#123;name: &apos;绵阳&apos;, value: 80&#125;,</div><div class="line">    &#123;name: &apos;乌鲁木齐&apos;, value: 84&#125;,</div><div class="line">    &#123;name: &apos;枣庄&apos;, value: 84&#125;,</div><div class="line">    &#123;name: &apos;杭州&apos;, value: 84&#125;,</div><div class="line">    &#123;name: &apos;淄博&apos;, value: 85&#125;,</div><div class="line">    &#123;name: &apos;鞍山&apos;, value: 86&#125;,</div><div class="line">    &#123;name: &apos;溧阳&apos;, value: 86&#125;,</div><div class="line">    &#123;name: &apos;库尔勒&apos;, value: 86&#125;,</div><div class="line">    &#123;name: &apos;安阳&apos;, value: 90&#125;,</div><div class="line">    &#123;name: &apos;开封&apos;, value: 90&#125;,</div><div class="line">    &#123;name: &apos;济南&apos;, value: 92&#125;,</div><div class="line">    &#123;name: &apos;德阳&apos;, value: 93&#125;,</div><div class="line">    &#123;name: &apos;温州&apos;, value: 95&#125;,</div><div class="line">    &#123;name: &apos;九江&apos;, value: 96&#125;,</div><div class="line">    &#123;name: &apos;邯郸&apos;, value: 98&#125;,</div><div class="line">    &#123;name: &apos;临安&apos;, value: 99&#125;,</div><div class="line">    &#123;name: &apos;兰州&apos;, value: 99&#125;,</div><div class="line">    &#123;name: &apos;沧州&apos;, value: 100&#125;,</div><div class="line">    &#123;name: &apos;临沂&apos;, value: 103&#125;,</div><div class="line">    &#123;name: &apos;南充&apos;, value: 104&#125;,</div><div class="line">    &#123;name: &apos;天津&apos;, value: 105&#125;,</div><div class="line">    &#123;name: &apos;富阳&apos;, value: 106&#125;,</div><div class="line">    &#123;name: &apos;泰安&apos;, value: 112&#125;,</div><div class="line">    &#123;name: &apos;诸暨&apos;, value: 112&#125;,</div><div class="line">    &#123;name: &apos;郑州&apos;, value: 113&#125;,</div><div class="line">    &#123;name: &apos;哈尔滨&apos;, value: 114&#125;,</div><div class="line">    &#123;name: &apos;聊城&apos;, value: 116&#125;,</div><div class="line">    &#123;name: &apos;芜湖&apos;, value: 117&#125;,</div><div class="line">    &#123;name: &apos;唐山&apos;, value: 119&#125;,</div><div class="line">    &#123;name: &apos;平顶山&apos;, value: 119&#125;,</div><div class="line">    &#123;name: &apos;邢台&apos;, value: 119&#125;,</div><div class="line">    &#123;name: &apos;德州&apos;, value: 120&#125;,</div><div class="line">    &#123;name: &apos;济宁&apos;, value: 120&#125;,</div><div class="line">    &#123;name: &apos;荆州&apos;, value: 127&#125;,</div><div class="line">    &#123;name: &apos;宜昌&apos;, value: 130&#125;,</div><div class="line">    &#123;name: &apos;义乌&apos;, value: 132&#125;,</div><div class="line">    &#123;name: &apos;丽水&apos;, value: 133&#125;,</div><div class="line">    &#123;name: &apos;洛阳&apos;, value: 134&#125;,</div><div class="line">    &#123;name: &apos;秦皇岛&apos;, value: 136&#125;,</div><div class="line">    &#123;name: &apos;株洲&apos;, value: 143&#125;,</div><div class="line">    &#123;name: &apos;石家庄&apos;, value: 147&#125;,</div><div class="line">    &#123;name: &apos;莱芜&apos;, value: 148&#125;,</div><div class="line">    &#123;name: &apos;常德&apos;, value: 152&#125;,</div><div class="line">    &#123;name: &apos;保定&apos;, value: 153&#125;,</div><div class="line">    &#123;name: &apos;湘潭&apos;, value: 154&#125;,</div><div class="line">    &#123;name: &apos;金华&apos;, value: 157&#125;,</div><div class="line">    &#123;name: &apos;岳阳&apos;, value: 169&#125;,</div><div class="line">    &#123;name: &apos;长沙&apos;, value: 175&#125;,</div><div class="line">    &#123;name: &apos;衢州&apos;, value: 177&#125;,</div><div class="line">    &#123;name: &apos;廊坊&apos;, value: 193&#125;,</div><div class="line">    &#123;name: &apos;菏泽&apos;, value: 194&#125;,</div><div class="line">    &#123;name: &apos;合肥&apos;, value: 229&#125;,</div><div class="line">    &#123;name: &apos;武汉&apos;, value: 273&#125;,</div><div class="line">    &#123;name: &apos;大庆&apos;, value: 279&#125;</div><div class="line">];</div><div class="line">let option=option:&#123;</div><div class="line">            backgroundColor: &apos;#fff&apos;,</div><div class="line">            title: &#123;</div><div class="line">                text: &apos;全国地区访问量&apos;,</div><div class="line">                //subtext: &apos;&apos;,</div><div class="line">                left: &apos;center&apos;,</div><div class="line">                top:&quot;10%&quot;,</div><div class="line">                textStyle: &#123;</div><div class="line">                    color: &apos;black&apos;,</div><div class="line">                    fontSize:20</div><div class="line">                &#125;</div><div class="line">            &#125;,</div><div class="line">            tooltip : &#123;</div><div class="line">                trigger: &apos;item&apos;</div><div class="line">            &#125;,</div><div class="line">            geo: &#123;</div><div class="line">                map: &apos;china&apos;,</div><div class="line">                label: &#123;</div><div class="line">                    emphasis: &#123;</div><div class="line">                        show: false</div><div class="line">                    &#125;</div><div class="line">                &#125;,</div><div class="line">                roam: false,</div><div class="line">                itemStyle: &#123;</div><div class="line">                    normal: &#123;</div><div class="line">                        areaColor: &apos;#068cef&apos;,</div><div class="line">                        borderColor: &apos;#111&apos;</div><div class="line">                    &#125;,</div><div class="line">                    emphasis: &#123;</div><div class="line">                        areaColor: &apos;#2a333d&apos;</div><div class="line">                    &#125;</div><div class="line">                &#125;,</div><div class="line">                zoom:1.15,</div><div class="line">                top:&quot;7%&quot;</div><div class="line">            &#125;,</div><div class="line">            series : [</div><div class="line">                &#123;</div><div class="line">                    name: &apos;pm2.5&apos;,</div><div class="line">                    type: &apos;scatter&apos;,</div><div class="line">                    coordinateSystem: &apos;geo&apos;,</div><div class="line">                    data: convertData(dataRegion),</div><div class="line">                    symbolSize: function (val) &#123;</div><div class="line">                        return val[2] / 10;</div><div class="line">                    &#125;,</div><div class="line">                    label: &#123;</div><div class="line">                        normal: &#123;</div><div class="line">                            formatter: &apos;&#123;b&#125;&apos;,</div><div class="line">                            position: &apos;right&apos;,</div><div class="line">                            show: false</div><div class="line">                        &#125;,</div><div class="line">                        emphasis: &#123;</div><div class="line">                            show: true</div><div class="line">                        &#125;</div><div class="line">                    &#125;,</div><div class="line">                    itemStyle: &#123;</div><div class="line">                        normal: &#123;</div><div class="line">                            color: &apos;#ddb926&apos;</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    name: &apos;Top 5&apos;,</div><div class="line">                    type: &apos;effectScatter&apos;,</div><div class="line">                    coordinateSystem: &apos;geo&apos;,</div><div class="line">                    data: convertData(dataRegion.sort(function (a, b) &#123;</div><div class="line">                        return b.value - a.value;</div><div class="line">                    &#125;).slice(0, 6)),</div><div class="line">                    symbolSize: function (val) &#123;</div><div class="line">                        return val[2] / 10;</div><div class="line">                    &#125;,</div><div class="line">                    showEffectOn: &apos;render&apos;,</div><div class="line">                    rippleEffect: &#123;</div><div class="line">                        brushType: &apos;stroke&apos;</div><div class="line">                    &#125;,</div><div class="line">                    hoverAnimation: true,</div><div class="line">                    label: &#123;</div><div class="line">                        normal: &#123;</div><div class="line">                            formatter: &apos;&#123;b&#125;&apos;,</div><div class="line">                            position: &apos;bottom&apos;,</div><div class="line">                            show: true</div><div class="line">                        &#125;</div><div class="line">                    &#125;,</div><div class="line">                    itemStyle: &#123;</div><div class="line">                        normal: &#123;</div><div class="line">                            color: &apos;#f4e925&apos;,</div><div class="line">                            //shadowBlur: 10,</div><div class="line">                            // shadowColor: &apos;#333&apos;</div><div class="line">                        &#125;</div><div class="line">                    &#125;,</div><div class="line">                    zlevel: 1</div><div class="line">                &#125;,</div><div class="line">            ]</div><div class="line">        &#125;</div><div class="line"></div><div class="line">		this.setState(&#123;regionOption,option&#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">	 render()&#123;</div><div class="line">        return(</div><div class="line">			&lt;ReactEcharts id=&quot;region&quot; style=&#123;&#123;&apos;height&apos;:&apos;500px&apos;&#125;&#125; option=&#123;this.state.regionOption&#125;&gt;</div><div class="line"></div><div class="line">             &lt;/ReactEcharts&gt;</div><div class="line">		)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/02/16/近期要写/" itemprop="url">
                   近期要写
                 </a>
@@ -846,991 +1454,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/16/react-jsx语法规范/" itemprop="url">
-                  react/jsx语法规范
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-16T19:44:35+08:00" content="2017-02-16">
-              2017-02-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/react/" itemprop="url" rel="index">
-                    <span itemprop="name">react</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><ul>
-<li>组件命名已大写开头</li>
-</ul>
-<h2 id="组件声明"><a href="#组件声明" class="headerlink" title="组件声明"></a>组件声明</h2><ul>
-<li>return的根元素只能是一个</li>
-<li>尽量不使用 <code>displayName</code>，通过引用来命名<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">export defalut React.createClass(&#123;</div><div class="line">	displayName:&apos;MyCom&apos;</div><div class="line">&#125;);//不使用</div><div class="line"></div><div class="line">const MyCom = React.createClass(&#123;</div><div class="line"></div><div class="line">&#125;);</div><div class="line">export defalut MyCom;//使用</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><ul>
-<li>在组件中，使用<code>className</code>代替<code>class</code></li>
-<li>在组件中，使用<code>htmlFor</code>代替<code>for</code></li>
-<li>自定义属性需要加<code>data-</code>前缀，否则react不会渲染</li>
-<li><code>aria-</code>可以正常使用</li>
-</ul>
-<h2 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h2><p>可以在组件中定义样式对象，然后直接使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">import React, &#123; Component &#125; from &apos;react&apos;;</div><div class="line"></div><div class="line">class StyleDemo extends Component &#123;</div><div class="line">  render()&#123;</div><div class="line">    // 5. 在JS文件里面给组件定义样式</div><div class="line">    var MyComponentStyles = &#123;</div><div class="line">        color: &apos;blue&apos;,</div><div class="line">        fontSize: &apos;28px&apos;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    return (</div><div class="line">      &lt;div style=&#123;MyComponentStyles&#125;&gt;</div><div class="line">          可以直接这样写行内样式</div><div class="line">      &lt;/div&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">export default StyleDemo;</div></pre></td></tr></table></figure></p>
-<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
-<li>多行的JSX使用 () 包裹，有组件嵌套时使用多行模式</li>
-<li>单行的JSX 省略 ()</li>
-<li>JSX中所有的标签必须闭合</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/16/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-16T19:44:35+08:00" content="2017-02-16">
-              2017-02-16
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/16/ES6入门/" itemprop="url">
-                  ES6入门
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-16T19:44:35+08:00" content="2017-02-16">
-              2017-02-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/javascript/ES6/" itemprop="url" rel="index">
-                    <span itemprop="name">ES6</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>参考 <a href="http://es6.ruanyifeng.com/#README" target="_blank" rel="external">ECMAScript 6 入门</a></p>
-</blockquote>
-<h2 id="一、let、const定义变量"><a href="#一、let、const定义变量" class="headerlink" title="一、let、const定义变量"></a>一、let、const定义变量</h2><p>现在一般定义变量都用<code>var</code>，但是<code>var</code>会有很多的问题：</p>
-<ul>
-<li><code>var</code>没有块级作用域，定义后在当前闭包中都可以访问，如果变量名重复，就会覆盖前面定义的变量，并且也有可能被其他人更改。</li>
-<li><code>var</code>在<code>for</code>循环标记变量共享，一般在循环中使用的<code>i</code>会被共享，其本质上也是由于没有块级作用域造成的，由于情况比较多见和特殊，单独算一个问题。</li>
-</ul>
-<p>因此有了两种新的变量定义方式<code>let</code>和<code>const</code>。</p>
-<p>用<code>let</code>定义的变量具有块级作用域。<br>用<code>const</code>定义的变量是静态变量，定义以后不可修改。</p>
-<h3 id="let的好处和用法"><a href="#let的好处和用法" class="headerlink" title="let的好处和用法"></a><code>let</code>的好处和用法</h3><ul>
-<li><code>let</code>拥有块级作用域</li>
-<li><code>let</code>生命的全局变量不会影响<code>window</code></li>
-<li>循环时不会共享<code>let</code>定义的变量</li>
-</ul>
-<h4 id="友好的报错"><a href="#友好的报错" class="headerlink" title="友好的报错"></a>友好的报错</h4><p><strong><code>&#39;use strict&#39;;</code></strong> 用了严格模式才有有友好的报错</p>
-<ul>
-<li>重新定义<code>let</code>的变量会报错</li>
-<li>使用未定义的变量会报错（包括不在自己作用域中的变量）</li>
-<li><code>let</code>没有变量提升(变量预定义)，在一个块级作用域中，不可以先使用未定义的变量。</li>
-</ul>
-<h4 id="块级作用域是什么"><a href="#块级作用域是什么" class="headerlink" title="块级作用域是什么"></a>块级作用域是什么</h4><p>在用<code>var</code>定义变量的时候，变量是通过闭包进行隔离的，现在用了<code>let</code>，不仅仅可以通过闭包隔离，还增加了一些块级作用域隔离。</p>
-<p> <code>{}</code></p>
-<p>在<code>for</code>、<code>if</code>、<code>switch</code>、<code>function</code>等的大括号都会当成一个独立的块级作用域。</p>
-<p>闭包的新写法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>不必再是：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">;(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
-<h3 id="const的好处和用法"><a href="#const的好处和用法" class="headerlink" title="const的好处和用法"></a>const的好处和用法</h3><p><code>const</code>是静态变量，定以后不允许再被修改或者重新定义。</p>
-<ul>
-<li>在严格模式下，重新定义或者修改静态变量会报错。</li>
-<li>不同的块级作用域下，可以定义相同名字的静态变量。</li>
-</ul>
-<h2 id="二、解构赋值"><a href="#二、解构赋值" class="headerlink" title="二、解构赋值"></a>二、解构赋值</h2><blockquote>
-<p>ES6 允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构</p>
-</blockquote>
-<ul>
-<li>数组的解构赋值</li>
-<li>对象的解构赋值</li>
-<li>字符串的解构赋值</li>
-<li>数值和布尔值的解构赋值</li>
-<li>函数参数的解构赋值</li>
-<li>圆括号问题</li>
-</ul>
-<h2 id="三、字符串的扩展"><a href="#三、字符串的扩展" class="headerlink" title="三、字符串的扩展"></a>三、字符串的扩展</h2><ul>
-<li>字符的Unicode表示法</li>
-<li>codePointAt()</li>
-<li>String.fromCodePoint()</li>
-<li>字符串的遍历器接口</li>
-<li>at()</li>
-<li>normalize()</li>
-<li>includes(), startsWith(), endsWith()</li>
-<li>repeat()</li>
-<li>padStart()，padEnd()</li>
-<li>模板字符串</li>
-<li>标签模板</li>
-<li>String.raw()</li>
-<li>模板字符串的限制</li>
-</ul>
-<h2 id="四、正则的扩展"><a href="#四、正则的扩展" class="headerlink" title="四、正则的扩展"></a>四、正则的扩展</h2><ul>
-<li>RegExp构造函数</li>
-<li>字符串的正则方法</li>
-<li>u 修饰符</li>
-<li>y 修饰符</li>
-<li>sticky属性</li>
-<li>flags属性</li>
-<li>RegExp.escape()</li>
-<li>s 修饰符：dotAll 模式</li>
-<li>后行断言</li>
-<li>Unicode属性类</li>
-</ul>
-<h2 id="五、数值的扩展"><a href="#五、数值的扩展" class="headerlink" title="五、数值的扩展"></a>五、数值的扩展</h2><ul>
-<li>Number.isFinite(), Number.isNaN()</li>
-<li>Number.parseInt(), Number.parseFloat()</li>
-<li>Number.isInteger()</li>
-<li>Number.EPSILON</li>
-<li>安全整数和Number.isSafeInteger()</li>
-<li>Math对象的扩展</li>
-<li>指数运算符</li>
-</ul>
-<h2 id="六、函数的扩展"><a href="#六、函数的扩展" class="headerlink" title="六、函数的扩展"></a>六、函数的扩展</h2><ul>
-<li>函数参数的默认值</li>
-<li>rest参数</li>
-<li>扩展运算符</li>
-<li>严格模式</li>
-<li>name 属性</li>
-<li>箭头函数</li>
-<li>绑定 this</li>
-<li>尾调用优化</li>
-<li>函数参数的尾逗号</li>
-</ul>
-<h2 id="七、对象的扩展"><a href="#七、对象的扩展" class="headerlink" title="七、对象的扩展"></a>七、对象的扩展</h2><ul>
-<li>属性的简洁表示法</li>
-<li>属性名表达式</li>
-<li>方法的 name 属性</li>
-<li>Object.is()</li>
-<li>Object.assign()</li>
-<li>属性的可枚举性</li>
-<li>属性的遍历</li>
-<li><strong>proto</strong>属性，Object.setPrototypeOf()，Object.getPrototypeOf()</li>
-<li>Object.keys()，Object.values()，Object.entries()</li>
-<li>对象的扩展运算符</li>
-<li>Object.getOwnPropertyDescriptors()</li>
-</ul>
-<h2 id="八、Symbol"><a href="#八、Symbol" class="headerlink" title="八、Symbol"></a>八、Symbol</h2><blockquote>
-<p>JavaScript语言的第七种数据类型</p>
-</blockquote>
-<p>Symbol值通过Symbol函数生成。这就是说，对象的属性名现在可以有两种类型，一种是原来就有的字符串，另一种就是新增的Symbol类型。凡是属性名属于Symbol类型，就都是独一无二的，可以保证不会与其他属性名产生冲突。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let s = Symbol();</div><div class="line">typeof s</div><div class="line">// &quot;symbol&quot;</div></pre></td></tr></table></figure></p>
-<p>上面代码中，变量s就是一个独一无二的值。typeof运算符的结果，表明变量s是Symbol数据类型，而不是字符串之类的其他类型。<br>注意，Symbol函数前不能使用new命令，否则会报错。这是因为生成的Symbol是一个原始类型的值，不是对象。也就是说，由于Symbol值不是对象，所以不能添加属性。基本上，它是一种类似于字符串的数据类型。<br>………</p>
-<h2 id="九、Set和Map数据结构"><a href="#九、Set和Map数据结构" class="headerlink" title="九、Set和Map数据结构"></a>九、Set和Map数据结构</h2><ul>
-<li>Set</li>
-<li>WeakSet</li>
-<li>Map</li>
-<li>WeakMap</li>
-</ul>
-<h2 id="十、Class"><a href="#十、Class" class="headerlink" title="十、Class"></a>十、Class</h2><p>JavaScript语言的传统方法是通过构造函数，定义并生成新对象。下面是一个例子。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function Point(x, y) &#123;</div><div class="line">  this.x = x;</div><div class="line">  this.y = y;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Point.prototype.toString = function () &#123;</div><div class="line">  return &apos;(&apos; + this.x + &apos;, &apos; + this.y + &apos;)&apos;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">var p = new Point(1, 2);</div></pre></td></tr></table></figure></p>
-<p>上面这种写法跟传统的面向对象语言（比如C++和Java）差异很大，很容易让新学习这门语言的程序员感到困惑。</p>
-<p>ES6提供了更接近传统语言的写法，引入了Class（类）这个概念，作为对象的模板。通过class关键字，可以定义类。基本上，ES6的class可以看作只是一个语法糖，它的绝大部分功能，ES5都可以做到，新的class写法只是让对象原型的写法更加清晰、更像面向对象编程的语法而已。上面的代码用ES6的“类”改写，就是下面这样。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//定义类</div><div class="line">class Point &#123;</div><div class="line">  constructor(x, y) &#123;</div><div class="line">    this.x = x;</div><div class="line">    this.y = y;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  toString() &#123;</div><div class="line">    return &apos;(&apos; + this.x + &apos;, &apos; + this.y + &apos;)&apos;;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>上面代码定义了一个“类”，可以看到里面有一个constructor方法，这就是构造方法，而this关键字则代表实例对象。也就是说，ES5的构造函数Point，对应ES6的Point类的构造方法。<br>Point类除了构造方法，还定义了一个toString方法。注意，定义“类”的方法的时候，前面不需要加上function这个关键字，直接把函数定义放进去了就可以了。另外，方法之间不需要逗号分隔，加了会报错。<br>ES6的类，完全可以看作构造函数的另一种写法。类的数据类型就是函数，类本身就指向构造函数。使用的时候，也是直接对类使用new命令，跟构造函数的用法完全一致。</p>
-<h2 id="十一、Module模块"><a href="#十一、Module模块" class="headerlink" title="十一、Module模块"></a>十一、Module模块</h2><blockquote>
-<p>模块功能主要由两个命令构成：export和import。export命令用于规定模块的对外接口，import命令用于输入其他模块提供的功能。</p>
-</blockquote>
-<h3 id="export-命令"><a href="#export-命令" class="headerlink" title="export 命令"></a>export 命令</h3><p>一个模块就是一个独立的文件。该文件内部的所有变量，外部无法获取。如果你希望外部能够读取模块内部的某个变量，就必须使用export关键字输出该变量。下面是一个 JS 文件，里面使用export命令输出变量。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// profile.js</div><div class="line">export var firstName = &apos;Michael&apos;;</div><div class="line">export var lastName = &apos;Jackson&apos;;</div><div class="line">export var year = 1958;</div></pre></td></tr></table></figure></p>
-<p>上面代码是profile.js文件，保存了用户信息。ES6将其视为一个模块，里面用export命令对外部输出了三个变量。<br>export的写法，除了像上面这样，还有另外一种。</p>
-<p>// profile.js<br>var firstName = ‘Michael’;<br>var lastName = ‘Jackson’;<br>var year = 1958;</p>
-<p>export {firstName, lastName, year};<br>上面代码在export命令后面，使用大括号指定所要输出的一组变量。它与前一种写法（直接放置在var语句前）是等价的，但是应该优先考虑使用这种写法。因为这样就可以在脚本尾部，一眼看清楚输出了哪些变量。<br>export命令除了输出变量，还可以输出函数或类（class）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">export function multiply(x, y) &#123;</div><div class="line">  return x * y;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>上面代码对外输出一个函数multiply。</p>
-<p>通常情况下，export输出的变量就是本来的名字，但是可以使用as关键字重命名。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function v1() &#123; ... &#125;</div><div class="line">function v2() &#123; ... &#125;</div><div class="line"></div><div class="line">export &#123;</div><div class="line">  v1 as streamV1,</div><div class="line">  v2 as streamV2,</div><div class="line">  v2 as streamLatestVersion</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>上面代码使用as关键字，重命名了函数v1和v2的对外接口。重命名后，v2可以用不同的名字输出两次。<br>需要特别注意的是，export命令规定的是对外的接口，必须与模块内部的变量建立一一对应关系。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 报错</div><div class="line">export 1;</div><div class="line"></div><div class="line">// 报错</div><div class="line">var m = 1;</div><div class="line">export m;</div></pre></td></tr></table></figure></p>
-<p>上面两种写法都会报错，因为没有提供对外的接口。第一种写法直接输出1，第二种写法通过变量m，还是直接输出1。1只是一个值，不是接口。正确的写法是下面这样。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// 写法一</div><div class="line">export var m = 1;</div><div class="line"></div><div class="line">// 写法二</div><div class="line">var m = 1;</div><div class="line">export &#123;m&#125;;</div><div class="line"></div><div class="line">// 写法三</div><div class="line">var n = 1;</div><div class="line">export &#123;n as m&#125;;</div></pre></td></tr></table></figure></p>
-<p>上面三种写法都是正确的，规定了对外的接口m。其他脚本可以通过这个接口，取到值1。它们的实质是，在接口名与模块内部变量之间，建立了一一对应的关系。<br>同样的，function和class的输出，也必须遵守这样的写法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// 报错</div><div class="line">function f() &#123;&#125;</div><div class="line">export f;</div><div class="line"></div><div class="line">// 正确</div><div class="line">export function f() &#123;&#125;;</div><div class="line"></div><div class="line">// 正确</div><div class="line">function f() &#123;&#125;</div><div class="line">export &#123;f&#125;;</div></pre></td></tr></table></figure></p>
-<p>另外，export语句输出的接口，与其对应的值是动态绑定关系，即通过该接口，可以取到模块内部实时的值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export var foo = &apos;bar&apos;;</div><div class="line">setTimeout(() =&gt; foo = &apos;baz&apos;, 500);</div></pre></td></tr></table></figure></p>
-<p>上面代码输出变量foo，值为bar，500毫秒之后变成baz。</p>
-<h3 id="import-命令"><a href="#import-命令" class="headerlink" title="import 命令"></a>import 命令</h3><p>使用export命令定义了模块的对外接口以后，其他 JS 文件就可以通过import命令加载这个模块。</p>
-<pre><code>// main.js
-import {firstName, lastName, year} from &apos;./profile&apos;;
-
-function setName(element) {
-  element.textContent = firstName + &apos; &apos; + lastName;
-}
-</code></pre><p>上面代码的import命令，用于加载profile.js文件，并从中输入变量。import命令接受一对大括号，里面指定要从其他模块导入的变量名。大括号里面的变量名，必须与被导入模块（profile.js）对外接口的名称相同。</p>
-<p>如果想为输入的变量重新取一个名字，import命令要使用as关键字，将输入的变量重命名。</p>
-<pre><code>import { lastName as surname } from &apos;./profile&apos;;
-</code></pre><p>import后面的from指定模块文件的位置，可以是相对路径，也可以是绝对路径，.js路径可以省略。如果只是模块名，不带有路径，那么必须有配置文件，告诉 JavaScript 引擎该模块的位置。</p>
-<pre><code>import {myMethod} from &apos;util&apos;;
-</code></pre><p>上面代码中，util是模块文件名，由于不带有路径，必须通过配置，告诉引擎怎么取到这个模块。</p>
-<p>注意，import命令具有提升效果，会提升到整个模块的头部，首先执行。</p>
-<pre><code>foo();
-
-import { foo } from &apos;my_module&apos;;
-</code></pre><p>上面的代码不会报错，因为import的执行早于foo的调用。这种行为的本质是，import命令是编译阶段执行的，在代码运行之前。</p>
-<p>由于import是静态执行，所以不能使用表达式和变量，这些只有在运行时才能得到结果的语法结构。</p>
-<pre><code>// 报错
-import { &apos;f&apos; + &apos;oo&apos; } from &apos;my_module&apos;;
-
-// 报错
-let module = &apos;my_module&apos;;
-import { foo } from module;
-
-// 报错
-if (x === 1) {
-  import { foo } from &apos;module1&apos;;
-} else {
-  import { foo } from &apos;module2&apos;;
-}
-</code></pre><p>上面三种写法都会报错，因为它们用到了表达式、变量和if结构。在静态分析阶段，这些语法都是没法得到值的。</p>
-<p>最后，import语句会执行所加载的模块，因此可以有下面的写法。</p>
-<pre><code>import &apos;lodash&apos;;
-</code></pre><p>上面代码仅仅执行lodash模块，但是不输入任何值。</p>
-<p>如果多次重复执行同一句import语句，那么只会执行一次，而不会执行多次。</p>
-<pre><code>import &apos;lodash&apos;;
-import &apos;lodash&apos;;
-</code></pre><p>上面代码加载了两次lodash，但是只会执行一次。</p>
-<pre><code>import { foo } from &apos;my_module&apos;;
-import { bar } from &apos;my_module&apos;;
-
-// 等同于
-import { foo, bar } from &apos;my_module&apos;;
-</code></pre><p>上面代码中，虽然foo和bar在两个语句中加载，但是它们对应的是同一个my_module实例。<br>除了指定加载某个输出值，还可以使用整体加载，即用星号（*）指定一个对象，所有输出值都加载在这个对象上面。</p>
-<p>下面是一个circle.js文件，它输出两个方法area和circumference。</p>
-<pre><code>// circle.js
-
-export function area(radius) {
-  return Math.PI * radius * radius;
-}
-
-export function circumference(radius) {
-  return 2 * Math.PI * radius;
-}
-</code></pre><p>现在，加载这个模块。</p>
-<pre><code>// main.js
-
-import { area, circumference } from &apos;./circle&apos;;
-
-console.log(&apos;圆面积：&apos; + area(4));
-console.log(&apos;圆周长：&apos; + circumference(14));
-</code></pre><p>上面写法是逐一指定要加载的方法，整体加载的写法如下。</p>
-<pre><code>import * as circle from &apos;./circle&apos;;
-
-console.log(&apos;圆面积：&apos; + circle.area(4));
-console.log(&apos;圆周长：&apos; + circle.circumference(14));
-</code></pre><p>从前面的例子可以看出，使用import命令的时候，用户需要知道所要加载的变量名或函数名，否则无法加载。但是，用户肯定希望快速上手，未必愿意阅读文档，去了解模块有哪些属性和方法。</p>
-<p>为了给用户提供方便，让他们不用阅读文档就能加载模块，就要用到export default命令，为模块指定默认输出。</p>
-<pre><code>// export-default.js
-export default function () {
-  console.log(&apos;foo&apos;);
-}
-</code></pre><p>上面代码是一个模块文件export-default.js，它的默认输出是一个函数。<br>其他模块加载该模块时，import命令可以为该匿名函数指定任意名字。</p>
-<pre><code>// import-default.js
-import customName from &apos;./export-default&apos;;
-customName(); // &apos;foo&apos;
-</code></pre><p>上面代码的import命令，可以用任意名称指向export-default.js输出的方法，这时就不需要知道原模块输出的函数名。需要注意的是，这时import命令后面，不使用大括号。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/17/JS四种数据类型检测的方法/" itemprop="url">
-                  javaScript四种数据类型检测的方法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-17T15:02:37+08:00" content="2017-01-17">
-              2017-01-17
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>js中常用的四种数据类型检测的方法：typeof、instanceof、constructor、Object.prototype.toString.call()</p>
-</blockquote>
-<h2 id="1、typeof用来检测数据类型的运算符"><a href="#1、typeof用来检测数据类型的运算符" class="headerlink" title="1、typeof用来检测数据类型的运算符"></a>1、typeof用来检测数据类型的运算符</h2><p>例子：</p>
-<pre><code>console.log(typeof 12);//&quot;number&quot;
-console.log(typeof [&apos;a&apos;,&apos;b&apos;]);//&quot;object&quot;
-console.log(typeof /\d+/);//&quot;object&quot;
-console.log(typeof &apos;a&apos;);//&quot;string&quot;
-console.log(typeof undefined);//&quot;undefined&quot;
-</code></pre><p>说明：typeof检测数据类型返回一个字符串。可以检测到的数据类型为：”number”、“string”、“boolean”，“undefined”，“function”、“object”。由以上代码可以看出，typeof不可以检测出数组，正则等具体的数据类型。会将对象数据类型的值都返回“object”</p>
-<h2 id="2、instanceof检测某一个实例是否属于某个类"><a href="#2、instanceof检测某一个实例是否属于某个类" class="headerlink" title="2、instanceof检测某一个实例是否属于某个类"></a>2、instanceof检测某一个实例是否属于某个类</h2><p>例子：</p>
-<pre><code>var ary=[1,2]; 
-console.log(ary instanceof Array);//true
-console.log(ary instanceof Object);//true
-console.log(1 instanceof Number);//false
-console.log(new Number(1) instanceof Number);//true
-</code></pre><p>说明：由以上代码可以说明instanceof不能用来处理字面量方式创建出来的基本数据类型的值。只要在当前实例的原型链上，我们用其检测出来的结果都是true。instanceof不可以检测null和undefined</p>
-<h2 id="3、constructor"><a href="#3、constructor" class="headerlink" title="3、constructor"></a>3、constructor</h2><p>例子：</p>
-<pre><code>var aa=[1,2];
-console.log(aa.constructor==Array);//true
-console.log(aa.constructor==RegExp);//false
-console.log((1).constructor==Number);//true
-var reg=/^$/;
-console.log(reg.constructor==RegExp);//true
-console.log(reg.constructor==Object);//false
-</code></pre><p>说明：constructor作用和instanceof非常相似。但是我们可以把类的原型进行重写，在重写的过程中很有可能把之前的constructor给覆盖了，所以这样检测出来的结果是不准确的。constructor不可以检测null和undefined</p>
-<h2 id="4、Object-prototype-toString-call-最准确最常用的方式。"><a href="#4、Object-prototype-toString-call-最准确最常用的方式。" class="headerlink" title="4、Object.prototype.toString.call() 最准确最常用的方式。"></a>4、Object.prototype.toString.call() 最准确最常用的方式。</h2><p>例子：</p>
-<pre><code>var aaa=[];
-console.log(Object.prototype.toString.call(aaa));//[object Array]
-console.log(({}).toString.call(aaa));//[object Array]
-console.log(Object.prototype.toString.call(aaa)===&quot;[object Array]&quot;);//true
-</code></pre><p>说明：Object.prototype.toString.call() 最准确最常用的方式。 首先获取Object原型上的toString方法，让方法执行，让toString方法中的this指向第一个参数的值。Object上的toString并不是用来转换为字符串的。Object上的toSting它的作用是返回当前方法执行的主体（方法中的this）所属类的详细信息——&gt;”[object Object]”:第一个object代表当前实例是对象数据类型的，这个是固定死的，第二个Object代表的是this所属的类是Object。 Object可以检测null和undefined，第二和第三种方法不可以检测null和undefined</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/28/hexo主题更换/" itemprop="url">
-                  hexo主题更换
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-28T09:22:29+08:00" content="2016-08-28">
-              2016-08-28
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>前两篇文章介绍了如何使用hexo，已经如何同步到git上。但是搭建出来的hexo博客，感觉不好看，作为一个90后，觉得需要一点个性，所以本次介绍如何更换主题，为方便说明将 hexo下的_config.xml成为站点配置文件，将NexT下的_config.xml成为主题配置文件</p>
-</blockquote>
-<h2 id="选择主题"><a href="#选择主题" class="headerlink" title="选择主题"></a>选择主题</h2><p>经过多次寻找，各种度娘，发现有个叫 NEXT 主题的挺牛逼，不妨拿来试试。<a href="http://theme-next.iissnan.com/" target="_blank" rel="external">NexT官网</a></p>
-<h2 id="下载-NexT-主题"><a href="#下载-NexT-主题" class="headerlink" title="下载 NexT 主题"></a>下载 NexT 主题</h2><p>可以在官网找到zip包下载，或者</p>
-<pre><code>git clone https://github.com/iissnan/hexo-theme-next themes/next。 
-</code></pre><p>个人比较偏向与后者，因为逼格高（手动滑稽）。<br>将NexT克隆到 themes文件下，命名为next(此处名字可以随便起，只要在配置文件中写相同即可)</p>
-<h2 id="启用-NexT主题"><a href="#启用-NexT主题" class="headerlink" title="启用 NexT主题"></a>启用 NexT主题</h2><p>在配置文件站点配置文件中找到 theme，然后将这个字段的值改为next即可</p>
-<h2 id="验证主题"><a href="#验证主题" class="headerlink" title="验证主题"></a>验证主题</h2><p>启用hexo本地站点 <code>hexo s</code></p>
-<p>然后访问 <code>http://localhost:4000</code>  检查站点主题是否更换成功，最好清除一次浏览器缓存再访问，以免缓存这个大大大坑</p>
-<h2 id="NexT主题配置"><a href="#NexT主题配置" class="headerlink" title="NexT主题配置"></a>NexT主题配置</h2><h3 id="选择-Scheme"><a href="#选择-Scheme" class="headerlink" title="选择 Scheme"></a>选择 Scheme</h3><p>在主题配置文件中可以找到Scheme，Scheme 是 NexT 提供的一种特性，借助于 Scheme，NexT 为你提供多种不同的外观。即NexT这个主题还有三个主题，目前 NexT 支持三种 Scheme,自行根据需要选择，他们是：</p>
-<ul>
-<li>Muse 默认 Scheme，这是 NexT 最初的版本，黑白主调，大量留白</li>
-<li>Mist Muse 的紧凑版本，整洁有序的单栏外观</li>
-<li>Pisces 双栏 Scheme，小家碧玉似的清新</li>
-</ul>
-<h3 id="语言设置"><a href="#语言设置" class="headerlink" title="语言设置"></a>语言设置</h3><p>在站点配置文件中，将language设置成你需要的语言，可用的如下如下表格所示：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:right">语言</th>
-<th>代码</th>
-<th>设定值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right">English</td>
-<td>en</td>
-<td>language: en</td>
-</tr>
-<tr>
-<td style="text-align:right">简体中文</td>
-<td>zh-Hans</td>
-<td>language: zh-Hans</td>
-</tr>
-<tr>
-<td style="text-align:right">Français</td>
-<td>fr-FR</td>
-<td>language: fr-FR</td>
-</tr>
-<tr>
-<td style="text-align:right">Português</td>
-<td>pt</td>
-<td>language: pt</td>
-</tr>
-<tr>
-<td style="text-align:right">繁體中文</td>
-<td>zh-hk 或者 zh-tw</td>
-<td>language: zh-hk</td>
-</tr>
-<tr>
-<td style="text-align:right">Русский язык</td>
-<td>ru</td>
-<td>language: ru</td>
-</tr>
-<tr>
-<td style="text-align:right">Deutsch</td>
-<td>de</td>
-<td>language: de</td>
-</tr>
-<tr>
-<td style="text-align:right">日本語</td>
-<td>ja</td>
-<td>language: ja</td>
-</tr>
-<tr>
-<td style="text-align:right">Indonesian</td>
-<td>id</td>
-<td>language: id</td>
-</tr>
-</tbody>
-</table>
-<p>语言示例配置</p>
-<pre><code>language: zh-Hans
-</code></pre><h3 id="菜单设置"><a href="#菜单设置" class="headerlink" title="菜单设置"></a>菜单设置</h3><h4 id="1-设置菜单内容"><a href="#1-设置菜单内容" class="headerlink" title="1.设置菜单内容"></a>1.设置菜单内容</h4><p>编辑主题配置文件的menu字段，NexT 默认的菜单项有</p>
-<table>
-<thead>
-<tr>
-<th>键值</th>
-<th>设定值</th>
-<th>显示文本（简体中文）</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>home</td>
-<td>home: /</td>
-<td>主页</td>
-</tr>
-<tr>
-<td>archives</td>
-<td>archives: /archives</td>
-<td>归档页</td>
-</tr>
-<tr>
-<td>categories</td>
-<td>categories: /categories</td>
-<td>分类页</td>
-</tr>
-<tr>
-<td>tags</td>
-<td>tags: /tags</td>
-<td>标签页</td>
-</tr>
-<tr>
-<td>about</td>
-<td>about: /about</td>
-<td>关于页面</td>
-</tr>
-<tr>
-<td>commonweal</td>
-<td>commonweal: /404.html</td>
-<td>公益 404</td>
-</tr>
-</tbody>
-</table>
-<p>菜单内容示例配置(启用和管理，只需要更改菜单前边的#即可)</p>
-<pre><code>menu:
-  home: /
-  categories: /categories
-  #about: /about
-  archives: /archives
-  tags: /tags
-  #commonweal: /404.html
-</code></pre><h4 id="2-设置菜单项的显示文本"><a href="#2-设置菜单项的显示文本" class="headerlink" title="2.设置菜单项的显示文本"></a>2.设置菜单项的显示文本</h4><p>在第一步中设置的菜单的名称并不直接用于界面上的展示。Hexo 在生成的时候将使用 这个名称查找对应的语言翻译，并提取显示文本。这些翻译文本放置在 NexT 主题目录下的 languages/{language}.yml （{language} 为你所使用的语言）。以简体中文为例，若你需要添加一个菜单项，比如 something。那么就需要修改简体中文对应的翻译文件 languages/zh-Hans.yml，在 menu 字段下添加一项：</p>
-<pre><code>menu:
-  home: 首页
-  archives: 归档
-  categories: 分类
-  tags: 标签
-  about: 关于
-  search: 搜索
-  commonweal: 公益404
-  something: 有料
-</code></pre><h4 id="3-设定菜单项的图标"><a href="#3-设定菜单项的图标" class="headerlink" title="3.设定菜单项的图标"></a>3.设定菜单项的图标</h4><p>设定菜单项的图标，对应的字段是 menu_icons。 此设定格式是 item name: icon name，其中 item name 与上一步所配置的菜单名字对应，icon name 是 Font Awesome 图标的 名字。而 enable 可用于控制是否显示图标，你可以设置成 false 来去掉图标。</p>
-<pre><code>menu_icons:
-  enable: true
-  # Icon Mapping.
-  home: home
-  about: user
-  categories: th
-  tags: tags
-  archives: archive
-  commonweal: heartbeat
-</code></pre><h3 id="侧栏设置"><a href="#侧栏设置" class="headerlink" title="侧栏设置"></a>侧栏设置</h3><p>默认情况下，侧栏仅在文章页面（拥有目录列表）时才显示，并放置于右侧位置。 可以通过修改 主题配置文件 中的 sidebar 字段来控制侧栏的行为。侧栏的设置包括两个部分，其一是侧栏的位置， 其二是侧栏显示的时机。支持的选项为：</p>
-<ul>
-<li>post 默认行为，在文章页面（拥有目录列表）时显示</li>
-<li>always 在所有页面中都显示</li>
-<li>hide 在所有页面中都隐藏（可以手动展开）</li>
-</ul>
-<p>侧栏示例配置：</p>
-<pre><code>sidebar:
-    position: right
-    display: post
-</code></pre><h3 id="头像设置"><a href="#头像设置" class="headerlink" title="头像设置"></a>头像设置</h3><p>编辑 站点配置文件，新增字段 avatar，值设置成的地址，可以使用完整的互联网URL，也可以将图片放到站点目录下，使用相对地址。<br>头像设置示例</p>
-<pre><code>avatar: /images/avatar.jpg
-</code></pre><h3 id="作者昵称设置"><a href="#作者昵称设置" class="headerlink" title="作者昵称设置"></a>作者昵称设置</h3><p>编辑 站点配置文件， 设置 author 为你的昵称。</p>
-<h3 id="站点描述"><a href="#站点描述" class="headerlink" title="站点描述"></a>站点描述</h3><p>编辑 站点配置文件， 设置 description 字段为你的站点描述。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1876,7 +1499,7 @@ console.log(Object.prototype.toString.call(aaa)===&quot;[object Array]&quot;);//
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1884,7 +1507,7 @@ console.log(Object.prototype.toString.call(aaa)===&quot;[object Array]&quot;);//
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1893,7 +1516,7 @@ console.log(Object.prototype.toString.call(aaa)===&quot;[object Array]&quot;);//
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
