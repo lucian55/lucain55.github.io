@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="代码规范," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,37 +84,15 @@
 
 
 
-<meta name="description" content="团队代码规范– js代码规范，用于规范团队内统一的代码风格。
-
-1、缩进缩进的单位为四个空格。
-2、每行长度避免每行超过80个字符。当一条语句一行写不下时,请考虑折行。
-3、注释
-不要吝啬注释。注释应该和它们所注释的代码一样是书写良好且清晰明了。
-及时地更新注释也很重要。错误的注释会让程序更加难以阅读和理解。
-让注释有意义。重点在解释那些不容易立即明白的逻辑上。不要把读者的时间浪费在阅读类似于:">
-<meta property="og:type" content="article">
-<meta property="og:title" content="javascript代码规范">
-<meta property="og:url" content="http://yoursite.com/2016/07/30/javaScript代码规范/index.html">
+<meta name="description" content="不太可能的事也许今天实现，根本不可能的事也许明天会实现">
+<meta property="og:type" content="website">
+<meta property="og:title" content="lucian">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
 <meta property="og:site_name" content="lucian">
-<meta property="og:description" content="团队代码规范– js代码规范，用于规范团队内统一的代码风格。
-
-1、缩进缩进的单位为四个空格。
-2、每行长度避免每行超过80个字符。当一条语句一行写不下时,请考虑折行。
-3、注释
-不要吝啬注释。注释应该和它们所注释的代码一样是书写良好且清晰明了。
-及时地更新注释也很重要。错误的注释会让程序更加难以阅读和理解。
-让注释有意义。重点在解释那些不容易立即明白的逻辑上。不要把读者的时间浪费在阅读类似于:">
-<meta property="og:updated_time" content="2017-02-18T06:59:00.545Z">
+<meta property="og:description" content="不太可能的事也许今天实现，根本不可能的事也许明天会实现">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="javascript代码规范">
-<meta name="twitter:description" content="团队代码规范– js代码规范，用于规范团队内统一的代码风格。
-
-1、缩进缩进的单位为四个空格。
-2、每行长度避免每行超过80个字符。当一条语句一行写不下时,请考虑折行。
-3、注释
-不要吝啬注释。注释应该和它们所注释的代码一样是书写良好且清晰明了。
-及时地更新注释也很重要。错误的注释会让程序更加难以阅读和理解。
-让注释有意义。重点在解释那些不容易立即明白的逻辑上。不要把读者的时间浪费在阅读类似于:">
+<meta name="twitter:title" content="lucian">
+<meta name="twitter:description" content="不太可能的事也许今天实现，根本不可能的事也许明天会实现">
 
 
 
@@ -132,7 +110,7 @@
   };
 </script>
 
-  <title> javascript代码规范 | lucian </title>
+  <title> lucian </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -153,7 +131,9 @@
     
   
 
-  <div class="container one-collumn sidebar-position-right page-post-detail ">
+  <div class="container one-collumn sidebar-position-right 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -240,9 +220,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
   
@@ -262,7 +242,146 @@
             
             
               
-                javascript代码规范
+                
+                <a class="post-title-link" href="/2016/08/06/cookie的使用场景及方法/" itemprop="url">
+                  cookie的使用场景及方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-06T19:36:37+08:00" content="2016-08-06">
+              2016-08-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>cookie是浏览器提供的一种机制，它将document 对象的cookie属性提供给JavaScript。可以由JavaScript对其进行控制，而并不是JavaScript本身的性质。cookie是存于用户硬盘的一个文件，这个文件通常对应一个域名，当浏览器再次访问这个域名时，便使这个cookie可用。因此，cookie可以跨越一个域名下的多个网页，但不能跨越多个域名使用。 不同的浏览器对cookie的实现也不一样，但其性质是相同的。cookie机制将信息存储于用户硬盘，因此可以作为全局变量，这是它最大的一个优点。它可以用于以下几种场合。</p>
+</blockquote>
+<h2 id="保存用户登录状态"><a href="#保存用户登录状态" class="headerlink" title="保存用户登录状态"></a>保存用户登录状态</h2><p>例如将用户id存储于一个cookie内，这样当用户下次访问该页面时就不需要重新登录了，现在很多论坛和社区都提供这样的功能。cookie还可以设置过期时间，当超过时间期限后，cookie就会自动消失。因此，系统往往可以提示用户保持登录状态的时间：常见选项有一个月、三个月、一年等。 </p>
+<h2 id="跟踪用户行为"><a href="#跟踪用户行为" class="headerlink" title="跟踪用户行为"></a>跟踪用户行为</h2><p>例如一个天气预报网站，能够根据用户选择的地区显示当地的天气情况。如果每次都需要选择所在地是烦琐的，当利用了 cookie后就会显得很人性化了，系统能够记住上一次访问的地区，当下次再打开该页面时，它就会自动显示上次用户所在地区的天气情况。因为一切都是在后台完成，所以这样的页面就像为某个用户所定制的一样，使用起来非常方便。 </p>
+<h2 id="定制页面"><a href="#定制页面" class="headerlink" title="定制页面"></a>定制页面</h2><p>如果网站提供了换肤或更换布局的功能，那么可以使用cookie来记录用户的选项，例如：背景色、分辨率等。当用户下次访问时，仍然可以保存上一次访问的界面风格</p>
+<h2 id="创建购物车"><a href="#创建购物车" class="headerlink" title="创建购物车"></a>创建购物车</h2><p>使用cookie来记录用户需要购买的商品一样，在结账的时候可以统一提交。例如淘宝网就使用cookie记录了用户曾经浏览过的商品，方便随时进行比较</p>
+<blockquote>
+<p>当然，上述应用仅仅是cookie能完成的部分应用，还有更多的功能需要全局变量。cookie的缺点主要集中于安全性和隐私保护。主要包括以下几种： </p>
+<ul>
+<li>cookie可能被禁用。当用户非常注重个人隐私保护时，他很可能禁用浏览器的cookie功能； </li>
+<li>cookie是与浏览器相关的。这意味着即使访问的是同一个页面，不同浏览器之间所保存的cookie也是不能互相访问的； </li>
+<li>cookie可能被删除。因为每个cookie都是硬盘上的一个文件，因此很有可能被用户删除； </li>
+<li>cookie安全性不够高。所有的cookie都是以纯文本的形式记录于文件中，因此如果要保存用户名密码等信息时，最好事先经过加密处理。 </li>
+</ul>
+</blockquote>
+<h2 id="cookie的使用"><a href="#cookie的使用" class="headerlink" title="cookie的使用"></a>cookie的使用</h2><h3 id="设置cookie"><a href="#设置cookie" class="headerlink" title="设置cookie"></a>设置cookie</h3><pre><code>document.cookie=&quot;userId=828&quot;; 
+document.cookie=&quot;userId=828; userName=hulk&quot;; 
+</code></pre><h3 id="获取cookie的值"><a href="#获取cookie的值" class="headerlink" title="获取cookie的值"></a>获取cookie的值</h3><pre><code>document.cookie
+</code></pre><h3 id="给cookie设置终止日期"><a href="#给cookie设置终止日期" class="headerlink" title="给cookie设置终止日期"></a>给cookie设置终止日期</h3><pre><code>document.cookie=&quot;userId=828; expiress=GMT_String&quot;; 
+</code></pre><p>其中GMT_String是以GMT格式表示的时间字符串</p>
+<h3 id="删除cookie"><a href="#删除cookie" class="headerlink" title="删除cookie"></a>删除cookie</h3><p>为了删除一个cookie，可以将其过期时间设定为一个过去的时间</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">   //获取当前时间 </div><div class="line">var date=new Date(); </div><div class="line">//将date设置为过去的时间 </div><div class="line">date.setTime(date.getTime()-10000); </div><div class="line">//将userId这个cookie删除 </div><div class="line">document.cookie=&quot;userId=828; expires=&quot;+date.toGMTString();</div></pre></td></tr></table></figure>
+<h2 id="js对cookie操作方法代码"><a href="#js对cookie操作方法代码" class="headerlink" title="js对cookie操作方法代码"></a>js对cookie操作方法代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 添加cookie</div><div class="line"> * @param name cookie名称</div><div class="line"> * @param value cookie值</div><div class="line"> * @param expiresHours 多少小时后过期</div><div class="line"> */</div><div class="line">function addCookie(name,value,expiresHours)&#123;</div><div class="line">    var cookieString=name+&quot;=&quot;+escape(value);</div><div class="line">    //判断是否设置过期时间</div><div class="line">    if(expiresHours&gt;0)&#123;</div><div class="line">        var date=new Date();</div><div class="line">        date.setTime(date.getTime+expiresHours*3600*1000);</div><div class="line">        cookieString=cookieString+&quot;; expires=&quot;+date.toGMTString();</div><div class="line">    &#125;</div><div class="line">    document.cookie=cookieString;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 获得指定名称的cookie</div><div class="line"> * @param name cookie名称</div><div class="line"> * @returns  返回cookie值</div><div class="line"> */</div><div class="line">function getCookie(name)&#123;</div><div class="line">    var strCookie=document.cookie;</div><div class="line">    var arrCookie=strCookie.split(&quot;; &quot;);</div><div class="line">    for(var i=0;i&lt;arrCookie.length;i++)&#123;</div><div class="line">        var arr=arrCookie[i].split(&quot;=&quot;);</div><div class="line">        if(arr[0]==name)return arr[1];</div><div class="line">    &#125;</div><div class="line">    return &quot;&quot;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 删除指定名称的cookie</div><div class="line"> * @param name cookie名称</div><div class="line"> */</div><div class="line">function deleteCookie(name)&#123;</div><div class="line">    var date=new Date();</div><div class="line">    date.setTime(date.getTime()-10000);</div><div class="line">    document.cookie=name+&quot;=v; expires=&quot;+date.toGMTString();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/30/javaScript代码规范/" itemprop="url">
+                  javascript代码规范
+                </a>
               
             
           </h1>
@@ -321,7 +440,9 @@
       
 
       
-        <blockquote>
+        
+          
+            <blockquote>
 <p>团队代码规范– js代码规范，用于规范团队内统一的代码风格。</p>
 </blockquote>
 <h2 id="1、缩进"><a href="#1、缩进" class="headerlink" title="1、缩进"></a>1、缩进</h2><p>缩进的单位为四个空格。</p>
@@ -489,58 +610,40 @@ try {
 </code></pre><p>这样+ +不会被误认为是++。</p>
 <h3 id="9-7、避免使用eval"><a href="#9-7、避免使用eval" class="headerlink" title="9.7、避免使用eval"></a>9.7、避免使用eval</h3><p>eval是JavaScript中最容易被滥用的方法。避免使用它。</p>
 <h3 id="9-8、规范定义JSON对象，补全双引号"><a href="#9-8、规范定义JSON对象，补全双引号" class="headerlink" title="9.8、规范定义JSON对象，补全双引号"></a>9.8、规范定义JSON对象，补全双引号</h3><h3 id="9-9、不在文件中留下未来确定不再使用的代码片段"><a href="#9-9、不在文件中留下未来确定不再使用的代码片段" class="headerlink" title="9.9、不在文件中留下未来确定不再使用的代码片段"></a>9.9、不在文件中留下未来确定不再使用的代码片段</h3>
-      
-    </div>
-
-    <div>
-      
+          
         
       
     </div>
 
     <div>
       
-        
+    </div>
 
+    <div>
       
     </div>
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/代码规范/" rel="tag">#代码规范</a>
-          
-        </div>
+
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/08/06/cookie的使用场景及方法/" rel="prev" title="cookie的使用场景及方法">
-                cookie的使用场景及方法 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
 
 
           </div>
@@ -548,10 +651,6 @@ try {
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -571,17 +670,8 @@ try {
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -642,17 +732,6 @@ try {
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、缩进"><span class="nav-number">1.</span> <span class="nav-text">1、缩进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、每行长度"><span class="nav-number">2.</span> <span class="nav-text">2、每行长度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、注释"><span class="nav-number">3.</span> <span class="nav-text">3、注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、变量声明"><span class="nav-number">4.</span> <span class="nav-text">4、变量声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、字符串"><span class="nav-number">5.</span> <span class="nav-text">5、字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、函数声明"><span class="nav-number">6.</span> <span class="nav-text">6、函数声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7、命名"><span class="nav-number">7.</span> <span class="nav-text">7、命名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8、语句"><span class="nav-number">8.</span> <span class="nav-text">8、语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1、简单语句"><span class="nav-number">8.1.</span> <span class="nav-text">8.1、简单语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2、复合语句"><span class="nav-number">8.2.</span> <span class="nav-text">8.2、复合语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3、严格模式"><span class="nav-number">8.3.</span> <span class="nav-text">8.3、严格模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-4、变量赋值时的逻辑操作"><span class="nav-number">8.4.</span> <span class="nav-text">8.4、变量赋值时的逻辑操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-5、return-语句"><span class="nav-number">8.5.</span> <span class="nav-text">8.5、return 语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-6、if-语句"><span class="nav-number">8.6.</span> <span class="nav-text">8.6、if 语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-7、for-语句"><span class="nav-number">8.7.</span> <span class="nav-text">8.7、for 语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-8、while-语句"><span class="nav-number">8.8.</span> <span class="nav-text">8.8、while 语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9、do-语句"><span class="nav-number">8.9.</span> <span class="nav-text">9、do 语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10、switch-语句"><span class="nav-number">8.10.</span> <span class="nav-text">10、switch 语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-11、try-语句"><span class="nav-number">8.11.</span> <span class="nav-text">8.11、try 语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-12、continue-语句"><span class="nav-number">8.12.</span> <span class="nav-text">8.12、continue 语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-13、with-语句"><span class="nav-number">8.13.</span> <span class="nav-text">8.13、with 语句</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9、另外的建议"><span class="nav-number">9.</span> <span class="nav-text">9、另外的建议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#9-1、-和"><span class="nav-number">9.1.</span> <span class="nav-text">9.1、{} 和[]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-2、-逗号-操作符"><span class="nav-number">9.2.</span> <span class="nav-text">9.2、,(逗号)操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-3、作用域"><span class="nav-number">9.3.</span> <span class="nav-text">9.3、作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-4、赋值表达式"><span class="nav-number">9.4.</span> <span class="nav-text">9.4、赋值表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-5、-和-操作符。"><span class="nav-number">9.5.</span> <span class="nav-text">9.5、===和!==操作符。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-6、令人迷惑的加号和减号"><span class="nav-number">9.6.</span> <span class="nav-text">9.6、令人迷惑的加号和减号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-7、避免使用eval"><span class="nav-number">9.7.</span> <span class="nav-text">9.7、避免使用eval</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-8、规范定义JSON对象，补全双引号"><span class="nav-number">9.8.</span> <span class="nav-text">9.8、规范定义JSON对象，补全双引号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-9、不在文件中留下未来确定不再使用的代码片段"><span class="nav-number">9.9.</span> <span class="nav-text">9.9、不在文件中留下未来确定不再使用的代码片段</span></a></li></ol></li></ol></div>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -749,10 +828,6 @@ try {
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
 
   
 
