@@ -243,6 +243,137 @@
             
               
                 
+                <a class="post-title-link" href="/2017/02/20/axios使用教程/" itemprop="url">
+                  axios使用教程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-20T20:28:02+08:00" content="2017-02-20">
+              2017-02-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/axios/" itemprop="url" rel="index">
+                    <span itemprop="name">axios</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Axios 是一个基于 promise 的 HTTP 库，可以工作于浏览器中，也可以在 node.js 中使用，提供了一个API用来处理 XMLHttpRequests 和 node 的 http 接口</p>
+</blockquote>
+<h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><ul>
+<li>GET</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">axios.get(&apos;https://www.baidu.com&apos; + username)</div><div class="line">  .then(function(response)&#123;</div><div class="line">    console.log(response.data); </div><div class="line">    console.log(response.status); </div><div class="line">  &#125;)</div><div class="line">  .catch(function(err)&#123;</div><div class="line">  	console.log(err);</div><div class="line">  &#125;);</div></pre></td></tr></table></figure>
+<ul>
+<li>POST</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">axios.post(&apos;/save&apos;, &#123; firstName: &apos;Marlon&apos;, lastName: &apos;Bernardes&apos; &#125;)</div><div class="line">  .then(function(response)&#123;</div><div class="line">    console.log(&apos;saved successfully&apos;);</div><div class="line">  &#125;)</div><div class="line">  .catch(function (err) &#123;</div><div class="line">    console.log(err);</div><div class="line">  &#125;);</div></pre></td></tr></table></figure>
+<p>除了 get/post，还可以请求 delete,head,put,patch</p>
+<h3 id="同时执行多个请求"><a href="#同时执行多个请求" class="headerlink" title="同时执行多个请求"></a>同时执行多个请求</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">axios.all([</div><div class="line">    axios.get(&apos;https://api.github.com/xxx/1&apos;),</div><div class="line">    axios.get(&apos;https://api.github.com/xxx/2&apos;)</div><div class="line">  ])</div><div class="line">  .then(axios.spread(function (userResp, reposResp) &#123;</div><div class="line">    // 上面两个请求都完成后，才执行这个回调方法</div><div class="line">    console.log(&apos;User&apos;, userResp.data);</div><div class="line">    console.log(&apos;Repositories&apos;, reposResp.data);</div><div class="line">  &#125;));</div></pre></td></tr></table></figure>
+<p>当所有的请求都完成后，会收到一个数组，包含着响应对象，其中的顺序和请求发送的顺序相同，可以使用 axios.spread 分割成多个单独的响应对象</p>
+<h3 id="自定义请求头"><a href="#自定义请求头" class="headerlink" title="自定义请求头"></a>自定义请求头</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var config = &#123;</div><div class="line">  essay-headers: &#123;&apos;X-My-Custom-Header&apos;: &apos;Header-Value&apos;&#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">axios.get(&apos;https://api.github.com/users/xxx&apos;, config);</div><div class="line">axios.post(&apos;/save&apos;, &#123; firstName: &apos;Marlon&apos; &#125;, config);</div></pre></td></tr></table></figure>
+<h3 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h3><p>可以在 then 或者 catch 之前对 requests/responses 进行拦截处理</p>
+<p>添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var myInterceptor = axios.interceptors.request.use(function () &#123;/*...*/&#125;);</div></pre></td></tr></table></figure>
+<p>移除</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">axios.interceptors.request.eject(myInterceptor);</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/02/18/常用正则/" itemprop="url">
                   常用正则
                 </a>
@@ -1321,139 +1452,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/16/react-基本使用/" itemprop="url">
-                  react-基本使用
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-16T19:44:35+08:00" content="2017-02-16">
-              2017-02-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/react/" itemprop="url" rel="index">
-                    <span itemprop="name">react</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>react的基本使用</p>
-</blockquote>
-<h2 id="获取-react"><a href="#获取-react" class="headerlink" title="获取 react"></a>获取 react</h2><ul>
-<li><p>npm下载</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install react --save</div></pre></td></tr></table></figure>
-</li>
-<li><p>bower下载</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bower install react --save</div></pre></td></tr></table></figure>
-</li>
-<li><p>直接去下载zip包</p>
-</li>
-</ul>
-<h2 id="react使用简单用例"><a href="#react使用简单用例" class="headerlink" title="react使用简单用例"></a>react使用简单用例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;script src=&quot;../vendors/react/react.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;script src=&quot;../vendors/react/react-dom.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;!-- browser.js 的作用是将 JSX 语法转为 JavaScript 语法 --&gt;</div><div class="line">    &lt;script src=&quot;../vendors/babel/browser.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;div id=&quot;example&quot;&gt;&lt;/div&gt;</div><div class="line">    &lt;!-- JSX 语法，跟 JavaScript 不兼容。凡是使用 JSX 的地方，都要加上 type=&quot;text/babel&quot; --&gt;</div><div class="line">    &lt;script type=&quot;text/babel&quot;&gt;</div><div class="line">      var MyComponent = React.createClass(&#123;</div><div class="line">          render: function ()&#123;</div><div class="line">            return (</div><div class="line">              &lt;h1 className=&quot;header&quot;&gt;我的第一个组件&lt;/h1&gt;</div><div class="line">            )</div><div class="line">          &#125;</div><div class="line">      &#125;);</div><div class="line">      ReactDOM.render(&lt;MyComponent /&gt;, document.getElementById(&apos;example&apos;));</div><div class="line">    &lt;/script&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<p>说明：</p>
-<ul>
-<li>需要用 bowser.js 将jsx语法转换为javascript语法。script标签的type写为 text/babel</li>
-<li>render的方法中return的顶级元素只能是一个</li>
-<li>如果要定义样式的时候，style=”opacity:{this.state.opacity};”</li>
-<li>使用 className 和 htmlFor 来替代对应的class 和 for</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1499,7 +1497,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1507,7 +1505,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1516,7 +1514,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
