@@ -1,3 +1,11 @@
+---
+title: Knockout
+date: 2017年2月25日15:13:01
+tags: "knockout"
+categories: "knockout"
+
+---
+
 # 1.Knockout如何使用 # 
 ## 1. 引入Konckout文件 ##
    ` <script src="http://design.yyuap.com/static/knockout/knockout-3.2.0.debug.js"></script>`

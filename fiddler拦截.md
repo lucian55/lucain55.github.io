@@ -1,3 +1,11 @@
+---
+title: fiddler拦截
+date: 2017年2月20日21:10:02
+tags: ["fiddler","工具"]
+categories: "工具"
+
+---
+
 # 用fiddler拦截指定网站数据包并修改数据包教程 #
 1. 打开fiddler抓包工具，在左下底部，输入bpu+你要拦截的网址域名，比如，我要拦截打开百度时发送的数据包，那么我输入：bpu baidu.com或者bpu  www.baidu.com都可以，然后回车，这个时候就会拦截百度相关网址的数据包了，如下图：	
 ![](http://i.imgur.com/KJGHjeI.jpg)

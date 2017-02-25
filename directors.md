@@ -1,3 +1,12 @@
+---
+title: director客户端路由
+date: 2017年2月25日15:38:24
+tags: "director"
+categories: "director"
+
+---
+
+
 # director.js：客户端的路由 #
 >director是客户端的路由，功能是在不刷新页面的情况下，利用"#"符号组织不同的URL路径。根据不同的URL路径来匹配不同的回调方法。`director.js` 适用于客户端浏览器以及`node.js`的服务器端应用，在两者的应用场景里调用方法仅有少量的不同。它非常适合用来开发不需要刷新的单页程序以及node.js应用。`director.js` 不依赖于任何其他的js库
 
