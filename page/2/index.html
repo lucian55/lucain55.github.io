@@ -243,6 +243,123 @@
             
               
                 
+                <a class="post-title-link" href="/2017/02/18/css 遇见单词空格自动换行的方法/" itemprop="url">
+                  css 遇见单词空格自动换行的方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-18T14:59:36+08:00" content="2017-02-18">
+              2017-02-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/css/" itemprop="url" rel="index">
+                    <span itemprop="name">css</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>项目中在做sidebar左侧导航栏的时候，要实现多语，本来很正常的东西，遇到英文单词就不正常了，犹豫单词长度问题，经常会把单词截断，导致很难看，下边的属性可以解决这个问题</p>
+<p><code>word-wrap:break-word</code>  这个不仅可以把超长的英文单词截断，还可以根据空格区分单词，保持单词的可读性</p>
+<p>与之相反的是下边的属性</p>
+<p><code>word-break:break-all</code>  这个是不管三七二十一把单词弄断，影响单词的可读性</p>
+<p>总结：这种小的属性不经常用，很容易被忽略，本以为以上问题很难，没想到已经有配置可以解决，没事多看看API，会少走很多弯路哦</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/02/18/react-echarts/" itemprop="url">
                   react-使用echarts，以及使用echats的地图
                 </a>
@@ -1542,150 +1659,6 @@ customName(); // &apos;foo&apos;
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/17/JS四种数据类型检测的方法/" itemprop="url">
-                  javaScript四种数据类型检测的方法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-17T15:02:37+08:00" content="2017-01-17">
-              2017-01-17
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>js中常用的四种数据类型检测的方法：typeof、instanceof、constructor、Object.prototype.toString.call()</p>
-</blockquote>
-<h2 id="1、typeof用来检测数据类型的运算符"><a href="#1、typeof用来检测数据类型的运算符" class="headerlink" title="1、typeof用来检测数据类型的运算符"></a>1、typeof用来检测数据类型的运算符</h2><p>例子：</p>
-<pre><code>console.log(typeof 12);//&quot;number&quot;
-console.log(typeof [&apos;a&apos;,&apos;b&apos;]);//&quot;object&quot;
-console.log(typeof /\d+/);//&quot;object&quot;
-console.log(typeof &apos;a&apos;);//&quot;string&quot;
-console.log(typeof undefined);//&quot;undefined&quot;
-</code></pre><p>说明：typeof检测数据类型返回一个字符串。可以检测到的数据类型为：”number”、“string”、“boolean”，“undefined”，“function”、“object”。由以上代码可以看出，typeof不可以检测出数组，正则等具体的数据类型。会将对象数据类型的值都返回“object”</p>
-<h2 id="2、instanceof检测某一个实例是否属于某个类"><a href="#2、instanceof检测某一个实例是否属于某个类" class="headerlink" title="2、instanceof检测某一个实例是否属于某个类"></a>2、instanceof检测某一个实例是否属于某个类</h2><p>例子：</p>
-<pre><code>var ary=[1,2]; 
-console.log(ary instanceof Array);//true
-console.log(ary instanceof Object);//true
-console.log(1 instanceof Number);//false
-console.log(new Number(1) instanceof Number);//true
-</code></pre><p>说明：由以上代码可以说明instanceof不能用来处理字面量方式创建出来的基本数据类型的值。只要在当前实例的原型链上，我们用其检测出来的结果都是true。instanceof不可以检测null和undefined</p>
-<h2 id="3、constructor"><a href="#3、constructor" class="headerlink" title="3、constructor"></a>3、constructor</h2><p>例子：</p>
-<pre><code>var aa=[1,2];
-console.log(aa.constructor==Array);//true
-console.log(aa.constructor==RegExp);//false
-console.log((1).constructor==Number);//true
-var reg=/^$/;
-console.log(reg.constructor==RegExp);//true
-console.log(reg.constructor==Object);//false
-</code></pre><p>说明：constructor作用和instanceof非常相似。但是我们可以把类的原型进行重写，在重写的过程中很有可能把之前的constructor给覆盖了，所以这样检测出来的结果是不准确的。constructor不可以检测null和undefined</p>
-<h2 id="4、Object-prototype-toString-call-最准确最常用的方式。"><a href="#4、Object-prototype-toString-call-最准确最常用的方式。" class="headerlink" title="4、Object.prototype.toString.call() 最准确最常用的方式。"></a>4、Object.prototype.toString.call() 最准确最常用的方式。</h2><p>例子：</p>
-<pre><code>var aaa=[];
-console.log(Object.prototype.toString.call(aaa));//[object Array]
-console.log(({}).toString.call(aaa));//[object Array]
-console.log(Object.prototype.toString.call(aaa)===&quot;[object Array]&quot;);//true
-</code></pre><p>说明：Object.prototype.toString.call() 最准确最常用的方式。 首先获取Object原型上的toString方法，让方法执行，让toString方法中的this指向第一个参数的值。Object上的toString并不是用来转换为字符串的。Object上的toSting它的作用是返回当前方法执行的主体（方法中的this）所属类的详细信息——&gt;”[object Object]”:第一个object代表当前实例是对象数据类型的，这个是固定死的，第二个Object代表的是this所属的类是Object。 Object可以检测null和undefined，第二和第三种方法不可以检测null和undefined</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1731,7 +1704,7 @@ console.log(Object.prototype.toString.call(aaa)===&quot;[object Array]&quot;);//
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">26</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1748,7 +1721,7 @@ console.log(Object.prototype.toString.call(aaa)===&quot;[object Array]&quot;);//
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
