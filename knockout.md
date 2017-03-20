@@ -7,9 +7,12 @@ categories: "knockout"
 ---
 
 # 1.Knockout如何使用 # 
-## 1. 引入Konckout文件 ##
+## 1.1. 引入Konckout文件 ##
+
+使用cdn资源或者下载到本地引入
+
    ` <script src="http://design.yyuap.com/static/knockout/knockout-3.2.0.debug.js"></script>`
-## 2. 在js中定义一个view model并绑定 ##
+## 1.2. 在js中定义一个view model并绑定 ##
 ```
 <script type='text/JavaScript'>
 	//定义viewModel
@@ -22,7 +25,7 @@ categories: "knockout"
 </script>
 ```
 
-## 3. 在knockout中，每个HTML的DOM对象都是通过data-bind属性来绑定数据的。 ##
+## 1.3. 在knockout中，每个HTML的DOM对象都是通过data-bind属性来绑定数据的。 ##
 例如:
 ```
 <p data-bind="text:name"></p>
