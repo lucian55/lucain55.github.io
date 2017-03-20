@@ -243,6 +243,245 @@
             
               
                 
+                <a class="post-title-link" href="/2017/03/20/react-技巧/" itemprop="url">
+                  react-技巧
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-20T10:40:41+08:00" content="2017-03-20">
+              2017-03-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/react/" itemprop="url" rel="index">
+                    <span itemprop="name">react</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>##　react-技巧</p>
+<blockquote>
+<p>在react组件开发中的一些技巧，和常用模块。持续更新</p>
+</blockquote>
+<h3 id="classnames模块"><a href="#classnames模块" class="headerlink" title="classnames模块"></a>classnames模块</h3><p>在ract组件开发中，如果给标签添加class，直接获取到对应的标签，然后写className=’xx’即可。<br>但是如果是动态设置class，多个class就会麻烦。这里可以引入classnames模块来解决。<br><a href="https://github.com/JedWatson/classnames" target="_blank" rel="external">classnames github地址</a>.<br>classnames传参很灵活，这里通过几个例子说明</p>
+<p>The classNames function takes any number of arguments which can be a string or object. The argument ‘foo’ is short for { foo: true }. If the value associated with a given key is falsy, that key won’t be included in the output.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">classNames(&apos;foo&apos;, &apos;bar&apos;); // =&gt; &apos;foo bar&apos;</div><div class="line">classNames(&apos;foo&apos;, &#123; bar: true &#125;); // =&gt; &apos;foo bar&apos;</div><div class="line">classNames(&#123; &apos;foo-bar&apos;: true &#125;); // =&gt; &apos;foo-bar&apos;</div><div class="line">classNames(&#123; &apos;foo-bar&apos;: false &#125;); // =&gt; &apos;&apos;</div><div class="line">classNames(&#123; foo: true &#125;, &#123; bar: true &#125;); // =&gt; &apos;foo bar&apos;</div><div class="line">classNames(&#123; foo: true, bar: true &#125;); // =&gt; &apos;foo bar&apos;</div><div class="line"></div><div class="line">// lots of arguments of various types</div><div class="line">classNames(&apos;foo&apos;, &#123; bar: true, duck: false &#125;, &apos;baz&apos;, &#123; quux: true &#125;); // =&gt; &apos;foo bar baz quux&apos;</div><div class="line"></div><div class="line">// other falsy values are just ignored</div><div class="line">classNames(null, false, &apos;bar&apos;, undefined, 0, 1, &#123; baz: null &#125;, &apos;&apos;); // =&gt; &apos;bar 1&apos;</div></pre></td></tr></table></figure>
+<p>Arrays will be recursively flattened as per the rules above:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var arr = [&apos;b&apos;, &#123; c: true, d: false &#125;];</div><div class="line">classNames(&apos;a&apos;, arr); // =&gt; &apos;a b c&apos;</div></pre></td></tr></table></figure>
+<p>Dynamic class names with ES2015</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let buttonType = &apos;primary&apos;;</div><div class="line">classNames(&#123; [`btn-$&#123;buttonType&#125;`]: true &#125;);</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/20/react-propTypes校验/" itemprop="url">
+                  react-propTypes校验
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-20T10:17:51+08:00" content="2017-03-20">
+              2017-03-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/react/" itemprop="url" rel="index">
+                    <span itemprop="name">react</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="React-PropTypes"><a href="#React-PropTypes" class="headerlink" title="React.PropTypes"></a>React.PropTypes</h2><blockquote>
+<p>组件的属性可以接受任意值，字符串、对象、函数等等。有时候需要一种机制，来验证使用组件的时候，提供的组件属性值是否符合要求。这时就要使用propTypes属性来校验。React.PropTypes提供很多的验证器来验证传入数据的有效性，当向props传入无效数据是，js控制台就会抛出警告。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line">React.createClass(&#123;</div><div class="line">  propTypes: &#123;</div><div class="line">    // 可以声明 prop 为指定的 JS 基本类型。默认</div><div class="line">    // 情况下，这些 prop 都是可传可不传的。</div><div class="line">    optionalArray: React.PropTypes.array,</div><div class="line">    optionalBool: React.PropTypes.bool,</div><div class="line">    optionalFunc: React.PropTypes.func,</div><div class="line">    optionalNumber: React.PropTypes.number,</div><div class="line">    optionalObject: React.PropTypes.object,</div><div class="line">    optionalString: React.PropTypes.string,</div><div class="line"></div><div class="line">    // 所有可以被渲染的对象：数字，</div><div class="line">    // 字符串，DOM 元素或包含这些类型的数组。</div><div class="line">    optionalNode: React.PropTypes.node,</div><div class="line"></div><div class="line">    // React 元素</div><div class="line">    optionalElement: React.PropTypes.element,</div><div class="line"></div><div class="line">    // 用 JS 的 instanceof 操作符声明 prop 为类的实例。</div><div class="line">    optionalMessage: React.PropTypes.instanceOf(Message),</div><div class="line"></div><div class="line">    // 用 enum 来限制 prop 只接受指定的值。</div><div class="line">    optionalEnum: React.PropTypes.oneOf([&apos;News&apos;, &apos;Photos&apos;]),</div><div class="line"></div><div class="line">    // 指定的多个对象类型中的一个</div><div class="line">    optionalUnion: React.PropTypes.oneOfType([</div><div class="line">      React.PropTypes.string,</div><div class="line">      React.PropTypes.number,</div><div class="line">      React.PropTypes.instanceOf(Message)</div><div class="line">    ]),</div><div class="line"></div><div class="line">    // 指定类型组成的数组</div><div class="line">    optionalArrayOf: React.PropTypes.arrayOf(React.PropTypes.number),</div><div class="line"></div><div class="line">    // 指定类型的属性构成的对象</div><div class="line">    optionalObjectOf: React.PropTypes.objectOf(React.PropTypes.number),</div><div class="line"></div><div class="line">    // 特定形状参数的对象</div><div class="line">    optionalObjectWithShape: React.PropTypes.shape(&#123;</div><div class="line">      color: React.PropTypes.string,</div><div class="line">      fontSize: React.PropTypes.number</div><div class="line">    &#125;),</div><div class="line"></div><div class="line">    // 以后任意类型加上 `isRequired` 来使 prop 不可空。</div><div class="line">    requiredFunc: React.PropTypes.func.isRequired,</div><div class="line"></div><div class="line">    // 不可空的任意类型</div><div class="line">    requiredAny: React.PropTypes.any.isRequired,</div><div class="line"></div><div class="line">    // 自定义验证器。如果验证失败需要返回一个 Error 对象。不要直接</div><div class="line">    // 使用 `console.warn` 或抛异常，因为这样 `oneOfType` 会失效。</div><div class="line">    customProp: function(props, propName, componentName) &#123;</div><div class="line">      if (!/matchme/.test(props[propName])) &#123;</div><div class="line">        return new Error(&apos;Validation failed!&apos;);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  /* ... */</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/03/18/sass/" itemprop="url">
                   sass全攻略之语法
                 </a>
@@ -1382,251 +1621,6 @@ var router = Router({
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/20/axios使用教程/" itemprop="url">
-                  axios使用教程
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-20T20:28:02+08:00" content="2017-02-20">
-              2017-02-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/axios/" itemprop="url" rel="index">
-                    <span itemprop="name">axios</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>Axios 是一个基于 promise 的 HTTP 库，可以工作于浏览器中，也可以在 node.js 中使用，提供了一个API用来处理 XMLHttpRequests 和 node 的 http 接口</p>
-</blockquote>
-<h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><ul>
-<li>GET</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">axios.get(&apos;https://www.baidu.com&apos; + username)</div><div class="line">  .then(function(response)&#123;</div><div class="line">    console.log(response.data); </div><div class="line">    console.log(response.status); </div><div class="line">  &#125;)</div><div class="line">  .catch(function(err)&#123;</div><div class="line">  	console.log(err);</div><div class="line">  &#125;);</div></pre></td></tr></table></figure>
-<ul>
-<li>POST</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">axios.post(&apos;/save&apos;, &#123; firstName: &apos;Marlon&apos;, lastName: &apos;Bernardes&apos; &#125;)</div><div class="line">  .then(function(response)&#123;</div><div class="line">    console.log(&apos;saved successfully&apos;);</div><div class="line">  &#125;)</div><div class="line">  .catch(function (err) &#123;</div><div class="line">    console.log(err);</div><div class="line">  &#125;);</div></pre></td></tr></table></figure>
-<p>除了 get/post，还可以请求 delete,head,put,patch</p>
-<h3 id="同时执行多个请求"><a href="#同时执行多个请求" class="headerlink" title="同时执行多个请求"></a>同时执行多个请求</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">axios.all([</div><div class="line">    axios.get(&apos;https://api.github.com/xxx/1&apos;),</div><div class="line">    axios.get(&apos;https://api.github.com/xxx/2&apos;)</div><div class="line">  ])</div><div class="line">  .then(axios.spread(function (userResp, reposResp) &#123;</div><div class="line">    // 上面两个请求都完成后，才执行这个回调方法</div><div class="line">    console.log(&apos;User&apos;, userResp.data);</div><div class="line">    console.log(&apos;Repositories&apos;, reposResp.data);</div><div class="line">  &#125;));</div></pre></td></tr></table></figure>
-<p>当所有的请求都完成后，会收到一个数组，包含着响应对象，其中的顺序和请求发送的顺序相同，可以使用 axios.spread 分割成多个单独的响应对象</p>
-<h3 id="自定义请求头"><a href="#自定义请求头" class="headerlink" title="自定义请求头"></a>自定义请求头</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var config = &#123;</div><div class="line">  essay-headers: &#123;&apos;X-My-Custom-Header&apos;: &apos;Header-Value&apos;&#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">axios.get(&apos;https://api.github.com/users/xxx&apos;, config);</div><div class="line">axios.post(&apos;/save&apos;, &#123; firstName: &apos;Marlon&apos; &#125;, config);</div></pre></td></tr></table></figure>
-<h3 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h3><p>可以在 then 或者 catch 之前对 requests/responses 进行拦截处理</p>
-<p>添加</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var myInterceptor = axios.interceptors.request.use(function () &#123;/*...*/&#125;);</div></pre></td></tr></table></figure>
-<p>移除</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">axios.interceptors.request.eject(myInterceptor);</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/18/常用正则/" itemprop="url">
-                  常用正则
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-18T14:59:36+08:00" content="2017-02-18">
-              2017-02-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/正则/" itemprop="url" rel="index">
-                    <span itemprop="name">正则</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>有效数字的正则，不可以以0开头，可以是小数，可以有+或—号<br>    <code>reg=/^[+-]?(\d|([1-9]\d+))(\.\d+)?$/;</code><br>汉字<br>    <code>reg=/\u4e00-\u9fa5/;</code><br>五位回文数<br>    <code>reg=/(\w)(\w)\w\2\1/;</code><br>去掉连续的重复的数字和字符<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">str=&quot;723328744737393hdsdsfjjjjhhhiusaafsdfnjv&quot;;</div><div class="line">reg=/(\w)\1+/g;</div><div class="line">str=str.replace(reg,&quot;$1&quot;);</div></pre></td></tr></table></figure></p>
-<p>匹配18-65<br>    <code>reg=/^((1[8-9])|([2-5]\d)|(6[0-5]))$/;</code><br>同时包含数字和字母的用户名 长度在8-15之间<br>    <code>reg=/^(?!\d+$)(?![a-zA-Z]+$)[a-zA-Z0-9]{8,15}$/;</code><br>去掉首位空格<br>    <code>reg=/^ +| +$/g;</code><br>去掉中间多余空格<br>    <code>reg=/ +/g</code><br>验证邮箱<br>    <code>reg=/^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/</code><br>验证url<br>    <code>regUrl=new RegExp(&#39;(https?|ftp|file)://[-A-Za-z0-9+&amp;@#/%?=~_|!:,.;]+[-A-Za-z0-9+&amp;@#/%=~_|]&#39;);</code></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1672,7 +1666,7 @@ var router = Router({
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

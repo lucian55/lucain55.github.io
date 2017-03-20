@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hexo," />
+  <meta name="keywords" content="react," />
 
 
 
@@ -84,22 +84,28 @@
 
 
 
-<meta name="description" content="配置Github建立Repository建立与你用户名对应的仓库，仓库名必须为【yourname.github.io】，固定写法，例如：我的用户名是 liushaozhen，则我的仓库名必须为 liushaozhen.github.io
-修改hexo配置文件 建立关联修改_config.yml文件
-1234deploy:	type: git	repo: https://github.com/liu">
+<meta name="description" content="##　react-技巧
+
+在react组件开发中的一些技巧，和常用模块。持续更新
+
+classnames模块在ract组件开发中，如果给标签添加class，直接获取到对应的标签，然后写className=’xx’即可。但是如果是动态设置class，多个class就会麻烦。这里可以引入classnames模块来解决。classnames github地址.classnames传参很灵活，这里通过几个">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo同步到git">
-<meta property="og:url" content="http://yoursite.com/2016/08/21/hexo同步到git/index.html">
+<meta property="og:title" content="react-技巧">
+<meta property="og:url" content="http://yoursite.com/2017/03/20/react-技巧/index.html">
 <meta property="og:site_name" content="lucian">
-<meta property="og:description" content="配置Github建立Repository建立与你用户名对应的仓库，仓库名必须为【yourname.github.io】，固定写法，例如：我的用户名是 liushaozhen，则我的仓库名必须为 liushaozhen.github.io
-修改hexo配置文件 建立关联修改_config.yml文件
-1234deploy:	type: git	repo: https://github.com/liu">
-<meta property="og:updated_time" content="2017-02-18T06:59:00.544Z">
+<meta property="og:description" content="##　react-技巧
+
+在react组件开发中的一些技巧，和常用模块。持续更新
+
+classnames模块在ract组件开发中，如果给标签添加class，直接获取到对应的标签，然后写className=’xx’即可。但是如果是动态设置class，多个class就会麻烦。这里可以引入classnames模块来解决。classnames github地址.classnames传参很灵活，这里通过几个">
+<meta property="og:updated_time" content="2017-03-20T02:48:43.852Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo同步到git">
-<meta name="twitter:description" content="配置Github建立Repository建立与你用户名对应的仓库，仓库名必须为【yourname.github.io】，固定写法，例如：我的用户名是 liushaozhen，则我的仓库名必须为 liushaozhen.github.io
-修改hexo配置文件 建立关联修改_config.yml文件
-1234deploy:	type: git	repo: https://github.com/liu">
+<meta name="twitter:title" content="react-技巧">
+<meta name="twitter:description" content="##　react-技巧
+
+在react组件开发中的一些技巧，和常用模块。持续更新
+
+classnames模块在ract组件开发中，如果给标签添加class，直接获取到对应的标签，然后写className=’xx’即可。但是如果是动态设置class，多个class就会麻烦。这里可以引入classnames模块来解决。classnames github地址.classnames传参很灵活，这里通过几个">
 
 
 
@@ -117,7 +123,7 @@
   };
 </script>
 
-  <title> hexo同步到git | lucian </title>
+  <title> react-技巧 | lucian </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -247,7 +253,7 @@
             
             
               
-                hexo同步到git
+                react-技巧
               
             
           </h1>
@@ -259,8 +265,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-21T11:29:01+08:00" content="2016-08-21">
-              2016-08-21
+            <time itemprop="dateCreated" datetime="2017-03-20T10:40:41+08:00" content="2017-03-20">
+              2017-03-20
             </time>
           </span>
 
@@ -273,8 +279,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
+                  <a href="/categories/react/" itemprop="url" rel="index">
+                    <span itemprop="name">react</span>
                   </a>
                 </span>
 
@@ -306,18 +312,18 @@
       
 
       
-        <h2 id="配置Github"><a href="#配置Github" class="headerlink" title="配置Github"></a>配置Github</h2><p>建立Repository<br>建立与你用户名对应的仓库，仓库名必须为【yourname.github.io】，固定写法，例如：我的用户名是 liushaozhen，则我的仓库名必须为 liushaozhen.github.io</p>
-<h2 id="修改hexo配置文件-建立关联"><a href="#修改hexo配置文件-建立关联" class="headerlink" title="修改hexo配置文件 建立关联"></a>修改hexo配置文件 建立关联</h2><p>修改_config.yml文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">	type: git</div><div class="line">	repo: https://github.com/liushaozhen/liushaozhen.github.io.git</div><div class="line">	branch: master</div></pre></td></tr></table></figure>
-<p>网上会有很多说法，有的type是github, 还有repository最后面的后缀也不一样，是github.com.git，我也踩了很多坑，我现在的版本是hexo: 3.2.2，执行命令hexo -vsersion就出来了,貌似3.0后全部改成我上面这种格式了。</p>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>执行命令</p>
-<pre><code>hexo deploy
-</code></pre><h2 id="部署步骤"><a href="#部署步骤" class="headerlink" title="部署步骤"></a>部署步骤</h2><pre><code>hexo clean
+        <p>##　react-技巧</p>
+<blockquote>
+<p>在react组件开发中的一些技巧，和常用模块。持续更新</p>
+</blockquote>
+<h3 id="classnames模块"><a href="#classnames模块" class="headerlink" title="classnames模块"></a>classnames模块</h3><p>在ract组件开发中，如果给标签添加class，直接获取到对应的标签，然后写className=’xx’即可。<br>但是如果是动态设置class，多个class就会麻烦。这里可以引入classnames模块来解决。<br><a href="https://github.com/JedWatson/classnames" target="_blank" rel="external">classnames github地址</a>.<br>classnames传参很灵活，这里通过几个例子说明</p>
+<p>The classNames function takes any number of arguments which can be a string or object. The argument ‘foo’ is short for { foo: true }. If the value associated with a given key is falsy, that key won’t be included in the output.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">classNames(&apos;foo&apos;, &apos;bar&apos;); // =&gt; &apos;foo bar&apos;</div><div class="line">classNames(&apos;foo&apos;, &#123; bar: true &#125;); // =&gt; &apos;foo bar&apos;</div><div class="line">classNames(&#123; &apos;foo-bar&apos;: true &#125;); // =&gt; &apos;foo-bar&apos;</div><div class="line">classNames(&#123; &apos;foo-bar&apos;: false &#125;); // =&gt; &apos;&apos;</div><div class="line">classNames(&#123; foo: true &#125;, &#123; bar: true &#125;); // =&gt; &apos;foo bar&apos;</div><div class="line">classNames(&#123; foo: true, bar: true &#125;); // =&gt; &apos;foo bar&apos;</div><div class="line"></div><div class="line">// lots of arguments of various types</div><div class="line">classNames(&apos;foo&apos;, &#123; bar: true, duck: false &#125;, &apos;baz&apos;, &#123; quux: true &#125;); // =&gt; &apos;foo bar baz quux&apos;</div><div class="line"></div><div class="line">// other falsy values are just ignored</div><div class="line">classNames(null, false, &apos;bar&apos;, undefined, 0, 1, &#123; baz: null &#125;, &apos;&apos;); // =&gt; &apos;bar 1&apos;</div></pre></td></tr></table></figure>
+<p>Arrays will be recursively flattened as per the rules above:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var arr = [&apos;b&apos;, &#123; c: true, d: false &#125;];</div><div class="line">classNames(&apos;a&apos;, arr); // =&gt; &apos;a b c&apos;</div></pre></td></tr></table></figure>
+<p>Dynamic class names with ES2015</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let buttonType = &apos;primary&apos;;</div><div class="line">classNames(&#123; [`btn-$&#123;buttonType&#125;`]: true &#125;);</div></pre></td></tr></table></figure>
 
-hexo generate
-
-hexo deploy 
-</code></pre>
       
     </div>
 
@@ -359,7 +365,7 @@ hexo deploy
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag">#hexo</a>
+            <a href="/tags/react/" rel="tag">#react</a>
           
         </div>
       
@@ -368,17 +374,13 @@ hexo deploy
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/14/hexo基本使用/" rel="next" title="hexo基本使用">
-                <i class="fa fa-chevron-left"></i> hexo基本使用
+              <a href="/2017/03/20/react-propTypes校验/" rel="next" title="react-propTypes校验">
+                <i class="fa fa-chevron-left"></i> react-propTypes校验
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/08/28/hexo主题更换/" rel="prev" title="hexo主题更换">
-                hexo主题更换 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -503,7 +505,7 @@ hexo deploy
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置Github"><span class="nav-number">1.</span> <span class="nav-text">配置Github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改hexo配置文件-建立关联"><span class="nav-number">2.</span> <span class="nav-text">修改hexo配置文件 建立关联</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">3.</span> <span class="nav-text">最后</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署步骤"><span class="nav-number">4.</span> <span class="nav-text">部署步骤</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#classnames模块"><span class="nav-number">1.</span> <span class="nav-text">classnames模块</span></a></li></ol></div>
             
           </div>
         </section>

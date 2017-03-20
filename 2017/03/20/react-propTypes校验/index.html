@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hexo," />
+  <meta name="keywords" content="react," />
 
 
 
@@ -84,22 +84,25 @@
 
 
 
-<meta name="description" content="配置Github建立Repository建立与你用户名对应的仓库，仓库名必须为【yourname.github.io】，固定写法，例如：我的用户名是 liushaozhen，则我的仓库名必须为 liushaozhen.github.io
-修改hexo配置文件 建立关联修改_config.yml文件
-1234deploy:	type: git	repo: https://github.com/liu">
+<meta name="description" content="React.PropTypes
+组件的属性可以接受任意值，字符串、对象、函数等等。有时候需要一种机制，来验证使用组件的时候，提供的组件属性值是否符合要求。这时就要使用propTypes属性来校验。React.PropTypes提供很多的验证器来验证传入数据的有效性，当向props传入无效数据是，js控制台就会抛出警告。
+
+12345678910111213141516171819202122232">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo同步到git">
-<meta property="og:url" content="http://yoursite.com/2016/08/21/hexo同步到git/index.html">
+<meta property="og:title" content="react-propTypes校验">
+<meta property="og:url" content="http://yoursite.com/2017/03/20/react-propTypes校验/index.html">
 <meta property="og:site_name" content="lucian">
-<meta property="og:description" content="配置Github建立Repository建立与你用户名对应的仓库，仓库名必须为【yourname.github.io】，固定写法，例如：我的用户名是 liushaozhen，则我的仓库名必须为 liushaozhen.github.io
-修改hexo配置文件 建立关联修改_config.yml文件
-1234deploy:	type: git	repo: https://github.com/liu">
-<meta property="og:updated_time" content="2017-02-18T06:59:00.544Z">
+<meta property="og:description" content="React.PropTypes
+组件的属性可以接受任意值，字符串、对象、函数等等。有时候需要一种机制，来验证使用组件的时候，提供的组件属性值是否符合要求。这时就要使用propTypes属性来校验。React.PropTypes提供很多的验证器来验证传入数据的有效性，当向props传入无效数据是，js控制台就会抛出警告。
+
+12345678910111213141516171819202122232">
+<meta property="og:updated_time" content="2017-03-20T02:40:45.137Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo同步到git">
-<meta name="twitter:description" content="配置Github建立Repository建立与你用户名对应的仓库，仓库名必须为【yourname.github.io】，固定写法，例如：我的用户名是 liushaozhen，则我的仓库名必须为 liushaozhen.github.io
-修改hexo配置文件 建立关联修改_config.yml文件
-1234deploy:	type: git	repo: https://github.com/liu">
+<meta name="twitter:title" content="react-propTypes校验">
+<meta name="twitter:description" content="React.PropTypes
+组件的属性可以接受任意值，字符串、对象、函数等等。有时候需要一种机制，来验证使用组件的时候，提供的组件属性值是否符合要求。这时就要使用propTypes属性来校验。React.PropTypes提供很多的验证器来验证传入数据的有效性，当向props传入无效数据是，js控制台就会抛出警告。
+
+12345678910111213141516171819202122232">
 
 
 
@@ -117,7 +120,7 @@
   };
 </script>
 
-  <title> hexo同步到git | lucian </title>
+  <title> react-propTypes校验 | lucian </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -247,7 +250,7 @@
             
             
               
-                hexo同步到git
+                react-propTypes校验
               
             
           </h1>
@@ -259,8 +262,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-21T11:29:01+08:00" content="2016-08-21">
-              2016-08-21
+            <time itemprop="dateCreated" datetime="2017-03-20T10:17:51+08:00" content="2017-03-20">
+              2017-03-20
             </time>
           </span>
 
@@ -273,8 +276,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
+                  <a href="/categories/react/" itemprop="url" rel="index">
+                    <span itemprop="name">react</span>
                   </a>
                 </span>
 
@@ -306,18 +309,11 @@
       
 
       
-        <h2 id="配置Github"><a href="#配置Github" class="headerlink" title="配置Github"></a>配置Github</h2><p>建立Repository<br>建立与你用户名对应的仓库，仓库名必须为【yourname.github.io】，固定写法，例如：我的用户名是 liushaozhen，则我的仓库名必须为 liushaozhen.github.io</p>
-<h2 id="修改hexo配置文件-建立关联"><a href="#修改hexo配置文件-建立关联" class="headerlink" title="修改hexo配置文件 建立关联"></a>修改hexo配置文件 建立关联</h2><p>修改_config.yml文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">	type: git</div><div class="line">	repo: https://github.com/liushaozhen/liushaozhen.github.io.git</div><div class="line">	branch: master</div></pre></td></tr></table></figure>
-<p>网上会有很多说法，有的type是github, 还有repository最后面的后缀也不一样，是github.com.git，我也踩了很多坑，我现在的版本是hexo: 3.2.2，执行命令hexo -vsersion就出来了,貌似3.0后全部改成我上面这种格式了。</p>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>执行命令</p>
-<pre><code>hexo deploy
-</code></pre><h2 id="部署步骤"><a href="#部署步骤" class="headerlink" title="部署步骤"></a>部署步骤</h2><pre><code>hexo clean
+        <h2 id="React-PropTypes"><a href="#React-PropTypes" class="headerlink" title="React.PropTypes"></a>React.PropTypes</h2><blockquote>
+<p>组件的属性可以接受任意值，字符串、对象、函数等等。有时候需要一种机制，来验证使用组件的时候，提供的组件属性值是否符合要求。这时就要使用propTypes属性来校验。React.PropTypes提供很多的验证器来验证传入数据的有效性，当向props传入无效数据是，js控制台就会抛出警告。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line">React.createClass(&#123;</div><div class="line">  propTypes: &#123;</div><div class="line">    // 可以声明 prop 为指定的 JS 基本类型。默认</div><div class="line">    // 情况下，这些 prop 都是可传可不传的。</div><div class="line">    optionalArray: React.PropTypes.array,</div><div class="line">    optionalBool: React.PropTypes.bool,</div><div class="line">    optionalFunc: React.PropTypes.func,</div><div class="line">    optionalNumber: React.PropTypes.number,</div><div class="line">    optionalObject: React.PropTypes.object,</div><div class="line">    optionalString: React.PropTypes.string,</div><div class="line"></div><div class="line">    // 所有可以被渲染的对象：数字，</div><div class="line">    // 字符串，DOM 元素或包含这些类型的数组。</div><div class="line">    optionalNode: React.PropTypes.node,</div><div class="line"></div><div class="line">    // React 元素</div><div class="line">    optionalElement: React.PropTypes.element,</div><div class="line"></div><div class="line">    // 用 JS 的 instanceof 操作符声明 prop 为类的实例。</div><div class="line">    optionalMessage: React.PropTypes.instanceOf(Message),</div><div class="line"></div><div class="line">    // 用 enum 来限制 prop 只接受指定的值。</div><div class="line">    optionalEnum: React.PropTypes.oneOf([&apos;News&apos;, &apos;Photos&apos;]),</div><div class="line"></div><div class="line">    // 指定的多个对象类型中的一个</div><div class="line">    optionalUnion: React.PropTypes.oneOfType([</div><div class="line">      React.PropTypes.string,</div><div class="line">      React.PropTypes.number,</div><div class="line">      React.PropTypes.instanceOf(Message)</div><div class="line">    ]),</div><div class="line"></div><div class="line">    // 指定类型组成的数组</div><div class="line">    optionalArrayOf: React.PropTypes.arrayOf(React.PropTypes.number),</div><div class="line"></div><div class="line">    // 指定类型的属性构成的对象</div><div class="line">    optionalObjectOf: React.PropTypes.objectOf(React.PropTypes.number),</div><div class="line"></div><div class="line">    // 特定形状参数的对象</div><div class="line">    optionalObjectWithShape: React.PropTypes.shape(&#123;</div><div class="line">      color: React.PropTypes.string,</div><div class="line">      fontSize: React.PropTypes.number</div><div class="line">    &#125;),</div><div class="line"></div><div class="line">    // 以后任意类型加上 `isRequired` 来使 prop 不可空。</div><div class="line">    requiredFunc: React.PropTypes.func.isRequired,</div><div class="line"></div><div class="line">    // 不可空的任意类型</div><div class="line">    requiredAny: React.PropTypes.any.isRequired,</div><div class="line"></div><div class="line">    // 自定义验证器。如果验证失败需要返回一个 Error 对象。不要直接</div><div class="line">    // 使用 `console.warn` 或抛异常，因为这样 `oneOfType` 会失效。</div><div class="line">    customProp: function(props, propName, componentName) &#123;</div><div class="line">      if (!/matchme/.test(props[propName])) &#123;</div><div class="line">        return new Error(&apos;Validation failed!&apos;);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  /* ... */</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 
-hexo generate
-
-hexo deploy 
-</code></pre>
       
     </div>
 
@@ -359,7 +355,7 @@ hexo deploy
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag">#hexo</a>
+            <a href="/tags/react/" rel="tag">#react</a>
           
         </div>
       
@@ -368,16 +364,16 @@ hexo deploy
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/14/hexo基本使用/" rel="next" title="hexo基本使用">
-                <i class="fa fa-chevron-left"></i> hexo基本使用
+              <a href="/2017/03/18/sass/" rel="next" title="sass全攻略之语法">
+                <i class="fa fa-chevron-left"></i> sass全攻略之语法
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/08/28/hexo主题更换/" rel="prev" title="hexo主题更换">
-                hexo主题更换 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/20/react-技巧/" rel="prev" title="react-技巧">
+                react-技巧 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -503,7 +499,7 @@ hexo deploy
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置Github"><span class="nav-number">1.</span> <span class="nav-text">配置Github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改hexo配置文件-建立关联"><span class="nav-number">2.</span> <span class="nav-text">修改hexo配置文件 建立关联</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">3.</span> <span class="nav-text">最后</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署步骤"><span class="nav-number">4.</span> <span class="nav-text">部署步骤</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#React-PropTypes"><span class="nav-number">1.</span> <span class="nav-text">React.PropTypes</span></a></li></ol></div>
             
           </div>
         </section>
