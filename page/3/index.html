@@ -243,6 +243,128 @@
             
               
                 
+                <a class="post-title-link" href="/2017/02/16/react-复合组件/" itemprop="url">
+                  react-复合组件
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-16T19:44:35+08:00" content="2017-02-16">
+              2017-02-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/react/" itemprop="url" rel="index">
+                    <span itemprop="name">react</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>react 复合组件，增加样式，自定义属性的使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;Title&lt;/title&gt;</div><div class="line">    &lt;style type=&quot;text/css&quot;&gt;</div><div class="line">        .a&#123;</div><div class="line">            margin-left: 10px;</div><div class="line">        &#125;</div><div class="line">    &lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;script src=&quot;lib/react/react.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;lib/react/react-dom.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;lib/browser.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;div id=&quot;a&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;script type=&quot;text/babel&quot;&gt;</div><div class="line">    var bg=&#123;</div><div class="line">        background:&apos;red&apos;</div><div class="line">    &#125;;</div><div class="line">    var A=React.createClass(&#123;</div><div class="line">        render:function()&#123;</div><div class="line">            return (</div><div class="line">                    &lt;div&gt;</div><div class="line">                            &lt;B b=&#123;this.props.b&#125;/&gt;</div><div class="line">                            &lt;C c=&#123;this.props.c&#125;/&gt;</div><div class="line">                    &lt;/div&gt;</div><div class="line">            )</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    var B=React.createClass(&#123;</div><div class="line">        getInitialState:function()&#123;</div><div class="line">            return &#123;</div><div class="line">                name:&apos;哈哈B&apos;,</div><div class="line">                style:&#123;color:&apos;blue&apos;&#125;</div><div class="line">            &#125;</div><div class="line">        &#125;,</div><div class="line">        render:function()&#123;</div><div class="line">            return(</div><div class="line">                    &lt;span data-spanb=&#123;this.props.b&#125; className =&apos;a&apos; style=&#123;this.state.style&#125;&gt;&#123;this.state.name&#125;&lt;/span&gt;</div><div class="line">            )</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    var C=React.createClass(&#123;</div><div class="line">        getInitialState:function()&#123;</div><div class="line">          return &#123;name:&apos;哈哈C&apos;&#125;</div><div class="line">        &#125;,</div><div class="line">        render:function()&#123;</div><div class="line">            return(</div><div class="line">                    &lt;span data-spanc=&#123;this.props.c&#125; className =&apos;a&apos; style=&#123;bg&#125;&gt;&#123;this.state.name&#125;&lt;/span&gt;</div><div class="line">            )</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    ReactDOM.render(&lt;A b=&quot;b&quot; c=&quot;c&quot;/&gt;,document.getElementById(&apos;a&apos;));</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>说明：</p>
+<ol>
+<li>react组件中的类名用 className增加，不可直接写为类似 <code>style=&quot;color:red&quot;</code>这样的错误代码。 </li>
+<li>this.props：react的数据流传递是单项的，只能从父级传到子集，this.props代表父级dom中的属性</li>
+<li>this.state: react每个组件都会有state，可以在getInitialState中初始化组件的state</li>
+<li>组件自定义属性：react支持 data-<em>*</em> 这样自定义属性</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/02/16/react-基本使用/" itemprop="url">
                   react-基本使用
                 </a>
@@ -1809,290 +1931,11 @@ document.cookie=&quot;userId=828; userName=hulk&quot;;
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/30/javaScript代码规范/" itemprop="url">
-                  javascript代码规范
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-30T15:53:37+08:00" content="2016-07-30">
-              2016-07-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>团队代码规范– js代码规范，用于规范团队内统一的代码风格。</p>
-</blockquote>
-<h2 id="1、缩进"><a href="#1、缩进" class="headerlink" title="1、缩进"></a>1、缩进</h2><p>缩进的单位为四个空格。</p>
-<h2 id="2、每行长度"><a href="#2、每行长度" class="headerlink" title="2、每行长度"></a>2、每行长度</h2><p>避免每行超过80个字符。当一条语句一行写不下时,请考虑折行。</p>
-<h2 id="3、注释"><a href="#3、注释" class="headerlink" title="3、注释"></a>3、注释</h2><ul>
-<li>不要吝啬注释。注释应该和它们所注释的代码一样是书写良好且清晰明了。</li>
-<li>及时地更新注释也很重要。错误的注释会让程序更加难以阅读和理解。</li>
-<li>让注释有意义。重点在解释那些不容易立即明白的逻辑上。不要把读者的时间浪费在阅读类似于:<br><code>i = 0; //让i等于0</code>  使用单行注释。</li>
-</ul>
-<h2 id="4、变量声明"><a href="#4、变量声明" class="headerlink" title="4、变量声明"></a>4、变量声明</h2><ul>
-<li>所有的变量必须在使用前进行声明。JavaScript并不强制必须这么做,但是这么做可以让程序易于阅读,且也容易发现那些没声明的变量(它们会被编译成全局变量)。</li>
-<li>将var语句放在函数的首部。</li>
-<li><p>最好把每个变量的声明语句单独放到一行,并加上注释说明。所有变量按照字母排序。如下</p>
-<p>  var currentEntry; // 当前选择项<br>  var level;// 缩进程度<br>  var size; // 表格大小</p>
-</li>
-<li><p>尽量减少全局变量的使用。不要让局部变量覆盖全局变量。</p>
-</li>
-</ul>
-<h2 id="5、字符串"><a href="#5、字符串" class="headerlink" title="5、字符串"></a>5、字符串</h2><p>统一使用单引号(‘)，不使用双引号(“)。这在创建 HTML 字符串非常有好处：</p>
-<pre><code>var msg = &apos;This is some HTML &lt;div class=&quot;makes-sense&quot;&gt;&lt;/div&gt;&apos;;
-</code></pre><h2 id="6、函数声明"><a href="#6、函数声明" class="headerlink" title="6、函数声明"></a>6、函数声明</h2><ul>
-<li><p>所有的函数在使用前进行声明。 内函数的声明跟在var语句的后面。这样可以帮助判断哪些变量是在函数范围内的。</p>
-<pre><code>function outer(c, d) {
-    var e = c * d;
-
-    function inner(a, b) {
-    return (e * a) + b;
-    }
-
-    return inner(0, 1);
-}
-</code></pre></li>
-<li><p>如果函数是匿名函数,则在function和((左括号)之间应有一个空格。</p>
-<pre><code>div.onclick = function (e) {
-    return false;
-};
-</code></pre></li>
-</ul>
-<ul>
-<li>尽量不使用全局函数。</li>
-</ul>
-<h2 id="7、命名"><a href="#7、命名" class="headerlink" title="7、命名"></a>7、命名</h2><ul>
-<li>变量名应由26个大小写字母(A..Z,a..z),10个数字(0..9),和 _(下划线)组成。</li>
-<li>不要把 _(下划线)作为变量名的第一个字符。</li>
-<li>大多数的变量名和方法命应以小写字母开头。</li>
-<li>必须与new共同使用的构造函数名应以大写字母开头。</li>
-<li>全局变量应该全部大写。</li>
-</ul>
-<h2 id="8、语句"><a href="#8、语句" class="headerlink" title="8、语句"></a>8、语句</h2><h3 id="8-1、简单语句"><a href="#8-1、简单语句" class="headerlink" title="8.1、简单语句"></a>8.1、简单语句</h3><p>每一行最多只包含一条语句。把;(分号)放到每条简单语句的结尾处。</p>
-<h3 id="8-2、复合语句"><a href="#8-2、复合语句" class="headerlink" title="8.2、复合语句"></a>8.2、复合语句</h3><ul>
-<li>复合语句是被包含在{ }(大括号)的语句序列。</li>
-<li>被括起的语句必须多缩进四个空格。</li>
-<li>{(左大括号)应在复合语句起始行的结尾处。</li>
-<li>}(右大括号)应与{(左大括号)的那一行的开头对齐</li>
-<li>大括号应该在所有复合语句中使用,即使只有一条语句,当它们是控制结构的一部分时, 比如一个if或者for语句。这样做可以避免以后添加语句时造成的错误。</li>
-</ul>
-<h3 id="8-3、严格模式"><a href="#8-3、严格模式" class="headerlink" title="8.3、严格模式"></a>8.3、严格模式</h3><p>ECMAScript 5 严格模式可在整个脚本或独个方法内被激活。它对应不同的 javascript 语境会做更加严格的错误检查。严格模式也确保了 javascript 代码更加的健壮，运行的也更加快速。</p>
-<p>不推荐</p>
-<pre><code>// Script starts here
-&apos;use strict&apos;;
-
-(function(){
-
-  // Your code starts here
-
-}());
-</code></pre><p>推荐</p>
-<pre><code>(function(){
-  &apos;use strict&apos;;
-
-  // Your code starts here
-
-}());
-</code></pre><h3 id="8-4、变量赋值时的逻辑操作"><a href="#8-4、变量赋值时的逻辑操作" class="headerlink" title="8.4、变量赋值时的逻辑操作"></a>8.4、变量赋值时的逻辑操作</h3><p>逻辑操作符 || 和 &amp;&amp; 也可被用来返回布尔值。如果操作对象为非布尔对象，那每个表达式将会被自左向右地做真假判断。基于此操作，最终总有一个表达式被返回回来。这在变量赋值时，是可以用来简化你的代码的。</p>
-<p>不推荐</p>
-<pre><code>if(!x) {
-  if(!y) {
-x = 1;
-  } else {
-x = y;
-  }
-}
-</code></pre><p>推荐</p>
-<pre><code>x = x || y || 1;
-</code></pre><h3 id="8-5、return-语句"><a href="#8-5、return-语句" class="headerlink" title="8.5、return 语句"></a>8.5、return 语句</h3><p>一条有返回值的return语句不要使用( )(括号)来括住返回值。如果返回表达式,则表达式应与return 关键字在同一行,以避免误加分号错误。</p>
-<h3 id="8-6、if-语句"><a href="#8-6、if-语句" class="headerlink" title="8.6、if 语句"></a>8.6、if 语句</h3><p>if语句应如以下格式:</p>
-<pre><code>if (condition){
-    statements;
-}
-
-if (condition) {
-    statements;
-} else {
-    statements;
-}
-
-if (condition) {
-    statements;
-} else if (condition) {
-    statements;
-} else {
-    statements;
-}
-</code></pre><h3 id="8-7、for-语句"><a href="#8-7、for-语句" class="headerlink" title="8.7、for 语句"></a>8.7、for 语句</h3><p>for语句应如以下格式:</p>
-<pre><code>for (initialization;condition; update) {
-    statements;
-}
-
-for (variable in object){
-    if (filter) {
-        statements;
-    }
-}
-</code></pre><p>第一种形式的循环用于已经知道相关参数的数组循环。<br>第二种形式应用于对象中。object原型中的成员将会被包含在迭代器中。通过预先定义hasOwnProperty方法来区分真正的object成员是个不错方法:</p>
-<pre><code>for (variablein object) {
-    if (object.hasOwnProperty(variable)){
-        statements;
-    }
-}
-</code></pre><h3 id="8-8、while-语句"><a href="#8-8、while-语句" class="headerlink" title="8.8、while 语句"></a>8.8、while 语句</h3><p>while语句应如以下格式:</p>
-<pre><code>while (condition){
-    statements;
-}
-</code></pre><h3 id="9、do-语句"><a href="#9、do-语句" class="headerlink" title="9、do 语句"></a>9、do 语句</h3><p>do语句应如以下格式:</p>
-<pre><code>do {
-    statements;
-} while (condition);
-</code></pre><p>注：不像别的复合语句,do语句总是以;(分号)结尾。</p>
-<h3 id="10、switch-语句"><a href="#10、switch-语句" class="headerlink" title="10、switch 语句"></a>10、switch 语句</h3><p>switch语句应如以下格式:</p>
-<pre><code>switch (expression){
-case expression:
-    statements;
-default:
-    statements;
-}
-</code></pre><p>每个 case与switch对齐。这可避免过分缩进。<br>每一组statements(除了default应以 break,return,或者throw结尾。不要让它顺次往下执行。</p>
-<h3 id="8-11、try-语句"><a href="#8-11、try-语句" class="headerlink" title="8.11、try 语句"></a>8.11、try 语句</h3><p>try语句应如以下格式:</p>
-<pre><code>try {
-    statements;
-} catch (variable){
-    statements;
-}
-
-try {
-    statements;
-} catch (variable){
-    statements;
-} finally {
-    statements;
-}
-</code></pre><h3 id="8-12、continue-语句"><a href="#8-12、continue-语句" class="headerlink" title="8.12、continue 语句"></a>8.12、continue 语句</h3><p>避免使用continue语句。它很容易使得程序的逻辑过程晦涩难懂。</p>
-<h3 id="8-13、with-语句"><a href="#8-13、with-语句" class="headerlink" title="8.13、with 语句"></a>8.13、with 语句</h3><p>不要使用with语句。</p>
-<h2 id="9、另外的建议"><a href="#9、另外的建议" class="headerlink" title="9、另外的建议"></a>9、另外的建议</h2><h3 id="9-1、-和"><a href="#9-1、-和" class="headerlink" title="9.1、{} 和[]"></a>9.1、{} 和[]</h3><ul>
-<li>使用{}代替new Object()。使用[]代替new Array()。</li>
-<li>当成员名是一组有序的数字时使用数组来保存数据。当成员名是无规律的字符串或其他时使用对象来保存数据。</li>
-</ul>
-<h3 id="9-2、-逗号-操作符"><a href="#9-2、-逗号-操作符" class="headerlink" title="9.2、,(逗号)操作符"></a>9.2、,(逗号)操作符</h3><p>避免使用逗号操作符,除非在特定的for 语句的控制部分。(这不包括那些被用在对象定义,数组定义,var语句,和参数列表中的逗号分隔符。)</p>
-<h3 id="9-3、作用域"><a href="#9-3、作用域" class="headerlink" title="9.3、作用域"></a>9.3、作用域</h3><p>在JavaScript中块没有域。只有函数有域。不要使用块,除非在复合语句中。</p>
-<h3 id="9-4、赋值表达式"><a href="#9-4、赋值表达式" class="headerlink" title="9.4、赋值表达式"></a>9.4、赋值表达式</h3><p>避免在if和while语句的条件部分进行赋值。</p>
-<h3 id="9-5、-和-操作符。"><a href="#9-5、-和-操作符。" class="headerlink" title="9.5、===和!==操作符。"></a>9.5、===和!==操作符。</h3><p>使用===和!==操作符会相对好点。==和!=操作符会进行类型强制转换。 特别是, 不要将==用于与错值比较( false,null,undefined,“”,0,NaN)。</p>
-<h3 id="9-6、令人迷惑的加号和减号"><a href="#9-6、令人迷惑的加号和减号" class="headerlink" title="9.6、令人迷惑的加号和减号"></a>9.6、令人迷惑的加号和减号</h3><p>不要在+后紧跟+或++。这种形式很容易仍人迷惑。应插入括号以便于理解。</p>
-<pre><code>total = subtotal + +myInput.value;
-</code></pre><p>最好能写成</p>
-<pre><code>total = subtotal + (+myInput.value);
-</code></pre><p>这样+ +不会被误认为是++。</p>
-<h3 id="9-7、避免使用eval"><a href="#9-7、避免使用eval" class="headerlink" title="9.7、避免使用eval"></a>9.7、避免使用eval</h3><p>eval是JavaScript中最容易被滥用的方法。避免使用它。</p>
-<h3 id="9-8、规范定义JSON对象，补全双引号"><a href="#9-8、规范定义JSON对象，补全双引号" class="headerlink" title="9.8、规范定义JSON对象，补全双引号"></a>9.8、规范定义JSON对象，补全双引号</h3><h3 id="9-9、不在文件中留下未来确定不再使用的代码片段"><a href="#9-9、不在文件中留下未来确定不再使用的代码片段" class="headerlink" title="9.9、不在文件中留下未来确定不再使用的代码片段"></a>9.9、不在文件中留下未来确定不再使用的代码片段</h3>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2133,7 +1976,7 @@ try {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
