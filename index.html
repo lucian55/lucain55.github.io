@@ -243,6 +243,138 @@
             
               
                 
+                <a class="post-title-link" href="/2017/03/29/clipboard复制到剪贴板/" itemprop="url">
+                  clipboard复制到剪贴板
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-29T10:32:57+08:00" content="2017-03-29">
+              2017-03-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/clipboard/" itemprop="url" rel="index">
+                    <span itemprop="name">clipboard</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>在做项目的过程中，有一个需求是客户需要把浏览器中的一行命令复制到docker中，其实是很简单的功能，但是要处理兼容性并不简单，出于安全原因，大多数现代浏览器都未提供通用的剪贴板复制接口(或即便有，也默认被禁用)</p>
+</blockquote>
+<p>在网络上搜索以后，现有如下两种方法：</p>
+<ol>
+<li>使用原生JavaScript中window.clipboardData实现复制到剪贴板功能；</li>
+<li>使用Zero Clipboard库；</li>
+</ol>
+<p>在尝试了之后发现现有的方案都不能满足需求。<br>方案一仅仅支持ie浏览器，在firefox,chrome浏览器上则不起作用。<br>方案二则是现有绝大多数网站（包括github等）所采取的方ZeroClipboard是国外大神开发的一个用于剪贴板复制的 JS 插件，它是基于 Flash 来实现跨浏览器的复制功能的。当我们使用 ZeroClipboard的时候，它会悄悄隐藏一个小小的 Flash 影片(swf)，不会对我们的用户界面造成影响。我们只需要借助它实现复制功能就行了。==<strong>但是</strong>== 在现代浏览器中，flash逐渐没落，firefox浏览器默认不开启flash，所以Zero Clipboard在<br>兼容方面也表现不佳。</p>
+<h3 id="下边进入正题"><a href="#下边进入正题" class="headerlink" title="下边进入正题"></a>下边进入正题</h3><p>那么，对于复制到剪切板这种简单的操作有没有一种实现简单，兼容性良好的解决方案呢？有的！那就是github上的开源项目clipboard.js<a href="https://clipboardjs.com/" target="_blank" rel="external">官网</a> </p>
+<p>如何使用：<br>1.引入clipboard.js文件<br>2.new 一个实例<br>3.给实例绑定success，和 error方法</p>
+<p>实例1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;button id=&quot;btn&quot; data-clipboard-action=&quot;copy&quot; data-clipboard-text=&quot;这是cut出来的内容&quot; &gt; 点击复制&lt;/button&gt; </div><div class="line"></div><div class="line">var clipboard = new Clipboard(&apos;#btn&apos;);</div><div class="line"></div><div class="line">clipboard.on(&apos;success&apos;, function(e) &#123;</div><div class="line">    console.info(&apos;Action:&apos;, e.action);</div><div class="line">    console.info(&apos;Text:&apos;, e.text);</div><div class="line">    console.info(&apos;Trigger:&apos;, e.trigger);</div><div class="line">    e.clearSelection();</div><div class="line">&#125;);</div><div class="line"></div><div class="line">clipboard.on(&apos;error&apos;, function(e) &#123;</div><div class="line">    console.error(&apos;Action:&apos;, e.action);</div><div class="line">    console.error(&apos;Trigger:&apos;, e.trigger);</div><div class="line">&#125;);</div><div class="line">clipboard.destroy();</div></pre></td></tr></table></figure></p>
+<p>说明：<br>1.clipboard在实例中提供了三个属性</p>
+<ul>
+<li>data-clipboard-action：方法，可选copy(复制)，cut(剪切)</li>
+<li>data-clipboard-text：要复制/剪切的内容</li>
+<li>data-clipboard-target：要复制/剪切的目标dom，如果不写为当前实例的data-clipboard-text。data-clipboard-target还可以写为其它dom元素，使用css选择器,如实例2。 <em>注意</em> 如果data-clipboard-target和data-clipboard-text同时具备，则会使用data-clipboard-text</li>
+</ul>
+<p>2.如果你是在开发一个单页应用，可能需要更精确地管理DOM的生命周期，clipboard提供了destroy()事件来销毁创建的clipboard实例</p>
+<p>实例2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;textarea cols=&quot;20&quot; rows=&quot;10&quot; id=&quot;text&quot;&gt;这段文字将会被复制到剪贴板&lt;/textarea&gt;</div><div class="line">&lt;button id=&quot;btn&quot; data-clipboard-action=&quot;cut&quot;  data-clipboard-target=&quot;#text&quot;&gt;点击复制&lt;/button&gt;</div><div class="line">var clipboard=new Clipboard(&apos;#btn&apos;);</div><div class="line">clipboard.on(&apos;success&apos;,function (e) &#123;</div><div class="line">    console.info(&apos;Action:&apos;, e.action);</div><div class="line">    console.info(&apos;Text:&apos;, e.text);</div><div class="line">    console.info(&apos;Trigger:&apos;, e.trigger);</div><div class="line">    e.clearSelection();</div><div class="line">&#125;);</div><div class="line">clipboard.on(&apos;error&apos;, function(e) &#123;</div><div class="line">    console.error(&apos;Action:&apos;, e.action);</div><div class="line">    console.error(&apos;Trigger:&apos;, e.trigger);</div><div class="line">&#125;);</div><div class="line">clipboard.destroy();</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/03/28/php全攻略/" itemprop="url">
                   PHP全攻略
                 </a>
@@ -1596,119 +1728,6 @@ var router = Router({
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/20/chrome谷歌浏览器一键清楚缓存插件/" itemprop="url">
-                  chrome谷歌浏览器一键清楚缓存插件
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-20T20:54:53+08:00" content="2017-02-20">
-              2017-02-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在前端开发中，浏览器缓存一直是一个很友好又很不友好的朋友。<br>在测试的时候每次都要 ctrl+shift+N  清楚chrome浏览器的缓存是一件很麻烦的事情，不过我找到了一个插件，可以一键清楚chrome浏览器的缓存。<br><a href="http://pan.baidu.com/s/1gf1IJrd" target="_blank" rel="external">点击下载</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1754,7 +1773,7 @@ var router = Router({
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1762,7 +1781,7 @@ var router = Router({
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1771,7 +1790,7 @@ var router = Router({
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
