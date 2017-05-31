@@ -87,7 +87,8 @@
 <meta name="description" content="React.PropTypes
 组件的属性可以接受任意值，字符串、对象、函数等等。有时候需要一种机制，来验证使用组件的时候，提供的组件属性值是否符合要求。这时就要使用propTypes属性来校验。React.PropTypes提供很多的验证器来验证传入数据的有效性，当向props传入无效数据是，js控制台就会抛出警告。
 
-12345678910111213141516171819202122232">
+写在前面：
+随着应用不断变大，保证组件被正确使用变得非常有用。React.P">
 <meta property="og:type" content="article">
 <meta property="og:title" content="react-propTypes校验">
 <meta property="og:url" content="http://yoursite.com/2017/03/20/react-propTypes校验/index.html">
@@ -95,14 +96,16 @@
 <meta property="og:description" content="React.PropTypes
 组件的属性可以接受任意值，字符串、对象、函数等等。有时候需要一种机制，来验证使用组件的时候，提供的组件属性值是否符合要求。这时就要使用propTypes属性来校验。React.PropTypes提供很多的验证器来验证传入数据的有效性，当向props传入无效数据是，js控制台就会抛出警告。
 
-12345678910111213141516171819202122232">
-<meta property="og:updated_time" content="2017-03-20T02:40:45.137Z">
+写在前面：
+随着应用不断变大，保证组件被正确使用变得非常有用。React.P">
+<meta property="og:updated_time" content="2017-05-31T05:57:56.609Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react-propTypes校验">
 <meta name="twitter:description" content="React.PropTypes
 组件的属性可以接受任意值，字符串、对象、函数等等。有时候需要一种机制，来验证使用组件的时候，提供的组件属性值是否符合要求。这时就要使用propTypes属性来校验。React.PropTypes提供很多的验证器来验证传入数据的有效性，当向props传入无效数据是，js控制台就会抛出警告。
 
-12345678910111213141516171819202122232">
+写在前面：
+随着应用不断变大，保证组件被正确使用变得非常有用。React.P">
 
 
 
@@ -312,7 +315,25 @@
         <h2 id="React-PropTypes"><a href="#React-PropTypes" class="headerlink" title="React.PropTypes"></a>React.PropTypes</h2><blockquote>
 <p>组件的属性可以接受任意值，字符串、对象、函数等等。有时候需要一种机制，来验证使用组件的时候，提供的组件属性值是否符合要求。这时就要使用propTypes属性来校验。React.PropTypes提供很多的验证器来验证传入数据的有效性，当向props传入无效数据是，js控制台就会抛出警告。</p>
 </blockquote>
+<h2 id="写在前面："><a href="#写在前面：" class="headerlink" title="写在前面："></a>写在前面：</h2><ul>
+<li>随着应用不断变大，保证组件被正确使用变得非常有用。React.PropTypes 提供很多验证器 (validator) 来验证传入数据的有效性。</li>
+<li>当向 props 传入无效数据时，JavaScript 控制台会抛出警告。</li>
+</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line">React.createClass(&#123;</div><div class="line">  propTypes: &#123;</div><div class="line">    // 可以声明 prop 为指定的 JS 基本类型。默认</div><div class="line">    // 情况下，这些 prop 都是可传可不传的。</div><div class="line">    optionalArray: React.PropTypes.array,</div><div class="line">    optionalBool: React.PropTypes.bool,</div><div class="line">    optionalFunc: React.PropTypes.func,</div><div class="line">    optionalNumber: React.PropTypes.number,</div><div class="line">    optionalObject: React.PropTypes.object,</div><div class="line">    optionalString: React.PropTypes.string,</div><div class="line"></div><div class="line">    // 所有可以被渲染的对象：数字，</div><div class="line">    // 字符串，DOM 元素或包含这些类型的数组。</div><div class="line">    optionalNode: React.PropTypes.node,</div><div class="line"></div><div class="line">    // React 元素</div><div class="line">    optionalElement: React.PropTypes.element,</div><div class="line"></div><div class="line">    // 用 JS 的 instanceof 操作符声明 prop 为类的实例。</div><div class="line">    optionalMessage: React.PropTypes.instanceOf(Message),</div><div class="line"></div><div class="line">    // 用 enum 来限制 prop 只接受指定的值。</div><div class="line">    optionalEnum: React.PropTypes.oneOf([&apos;News&apos;, &apos;Photos&apos;]),</div><div class="line"></div><div class="line">    // 指定的多个对象类型中的一个</div><div class="line">    optionalUnion: React.PropTypes.oneOfType([</div><div class="line">      React.PropTypes.string,</div><div class="line">      React.PropTypes.number,</div><div class="line">      React.PropTypes.instanceOf(Message)</div><div class="line">    ]),</div><div class="line"></div><div class="line">    // 指定类型组成的数组</div><div class="line">    optionalArrayOf: React.PropTypes.arrayOf(React.PropTypes.number),</div><div class="line"></div><div class="line">    // 指定类型的属性构成的对象</div><div class="line">    optionalObjectOf: React.PropTypes.objectOf(React.PropTypes.number),</div><div class="line"></div><div class="line">    // 特定形状参数的对象</div><div class="line">    optionalObjectWithShape: React.PropTypes.shape(&#123;</div><div class="line">      color: React.PropTypes.string,</div><div class="line">      fontSize: React.PropTypes.number</div><div class="line">    &#125;),</div><div class="line"></div><div class="line">    // 以后任意类型加上 `isRequired` 来使 prop 不可空。</div><div class="line">    requiredFunc: React.PropTypes.func.isRequired,</div><div class="line"></div><div class="line">    // 不可空的任意类型</div><div class="line">    requiredAny: React.PropTypes.any.isRequired,</div><div class="line"></div><div class="line">    // 自定义验证器。如果验证失败需要返回一个 Error 对象。不要直接</div><div class="line">    // 使用 `console.warn` 或抛异常，因为这样 `oneOfType` 会失效。</div><div class="line">    customProp: function(props, propName, componentName) &#123;</div><div class="line">      if (!/matchme/.test(props[propName])) &#123;</div><div class="line">        return new Error(&apos;Validation failed!&apos;);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  /* ... */</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="flow类型检测-简单了解"><a href="#flow类型检测-简单了解" class="headerlink" title="flow类型检测 简单了解"></a>flow类型检测 简单了解</h2><blockquote>
+<p>Flow能够帮助开发人员查找出JavaScript代码中的类型错误，从而提高开发效率和代码质量。Flow已经能够捕获JavaScript代码中的常见问题，如静态类型转换不匹配、空指针引用等问题。同时，Flow还为JavaScript新增了类型语法，如类型别名。</p>
+</blockquote>
+<ul>
+<li><p>Flow的类型检查具有可选性和自动性</p>
+<p>  除非你明确告诉Flow需要对某些文件进行类型检查，否则它是不会检查你不需要检查文件的。这就是说，你可以慢慢地将你的代码库转到Flow之上，继续收获其持续增长的价值。比如你选择了一个文件进行检查，Flow会自动地对你代码的类型检查，并查出你的代码中的错误。不过，如果你的代码分得很细并存在于不同的文件之中，这种做法显得太麻烦。但有些时候，你选择检查一些很大型的库，Flow可能会不是那么准确。在这种情况下，我们可以手动地采用“类型注解”或者切换到“弱模式”下限制其类型引用来解决问题。</p>
+</li>
+<li><p>Flow的类型检查是一种及时、在线的检查</p>
+</li>
+</ul>
+<p>当对整个代码库进行检查时，Flow首先会对整个代码库的所有文件进行一个初步地分析，然后监控文件的后续变化，并进行类型检查和依赖检查。对于开发者来说，他们根本感觉不出编译时间的延迟。当对代码进行编辑或者批量更新一批文件时，Flow将会自动触发代码检查，并保存检查的结果以备及时查询使用</p>
+<blockquote>
+<p>flow简单了解，后续详细介绍</p>
+</blockquote>
 
       
     </div>
@@ -499,7 +520,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#React-PropTypes"><span class="nav-number">1.</span> <span class="nav-text">React.PropTypes</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#React-PropTypes"><span class="nav-number">1.</span> <span class="nav-text">React.PropTypes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面："><span class="nav-number">2.</span> <span class="nav-text">写在前面：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flow类型检测-简单了解"><span class="nav-number">3.</span> <span class="nav-text">flow类型检测 简单了解</span></a></li></ol></div>
             
           </div>
         </section>
