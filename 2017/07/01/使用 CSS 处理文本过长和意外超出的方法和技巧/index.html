@@ -1,0 +1,627 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="使用 CSS 处理文本过长和意外超出的方法和技巧
+在网页开发中，经常会碰到在一些场景中文本内容不受控制过长超出的问题，为了不破坏UI界面保持设计上的美观，我们需要对它进行一些截断或者是其它的处理。这篇文章就文本超出这类型的情形的方法做了一些总结，下面就来看看，针对不同的场景我们有哪些方法呢？
+
+按钮图文混排问题上图是一个有图标的按钮。图标是在按钮的右侧，这里又一个小小的问题，就是当按钮的长度不够长">
+<meta property="og:type" content="article">
+<meta property="og:title" content="lucian">
+<meta property="og:url" content="http://yoursite.com/2017/07/01/使用 CSS 处理文本过长和意外超出的方法和技巧/index.html">
+<meta property="og:site_name" content="lucian">
+<meta property="og:description" content="使用 CSS 处理文本过长和意外超出的方法和技巧
+在网页开发中，经常会碰到在一些场景中文本内容不受控制过长超出的问题，为了不破坏UI界面保持设计上的美观，我们需要对它进行一些截断或者是其它的处理。这篇文章就文本超出这类型的情形的方法做了一些总结，下面就来看看，针对不同的场景我们有哪些方法呢？
+
+按钮图文混排问题上图是一个有图标的按钮。图标是在按钮的右侧，这里又一个小小的问题，就是当按钮的长度不够长">
+<meta property="og:image" content="https://user-images.githubusercontent.com/17527649/27760284-375b9ef2-5e76-11e7-90f4-7af487414467.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/17527649/27760287-53102e60-5e76-11e7-8d01-8411391e5240.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/17527649/27760295-841b7136-5e76-11e7-9f67-af1c5ca82201.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/17527649/27760297-8b2f6ab8-5e76-11e7-8325-384d9a970088.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/17527649/27760299-98d42564-5e76-11e7-8e59-0f34339a2b77.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/17527649/27760305-da300262-5e76-11e7-873e-11b84d2e8529.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/17527649/27760318-11bbae66-5e77-11e7-910d-4f1d0ecf6265.png">
+<meta property="og:updated_time" content="2017-07-01T08:09:09.979Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="lucian">
+<meta name="twitter:description" content="使用 CSS 处理文本过长和意外超出的方法和技巧
+在网页开发中，经常会碰到在一些场景中文本内容不受控制过长超出的问题，为了不破坏UI界面保持设计上的美观，我们需要对它进行一些截断或者是其它的处理。这篇文章就文本超出这类型的情形的方法做了一些总结，下面就来看看，针对不同的场景我们有哪些方法呢？
+
+按钮图文混排问题上图是一个有图标的按钮。图标是在按钮的右侧，这里又一个小小的问题，就是当按钮的长度不够长">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/17527649/27760284-375b9ef2-5e76-11e7-90f4-7af487414467.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title>  | lucian </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">lucian</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-01T16:09:07+08:00" content="2017-07-01">
+              2017-07-01
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="使用-CSS-处理文本过长和意外超出的方法和技巧"><a href="#使用-CSS-处理文本过长和意外超出的方法和技巧" class="headerlink" title="使用 CSS 处理文本过长和意外超出的方法和技巧"></a>使用 CSS 处理文本过长和意外超出的方法和技巧</h2><blockquote>
+<p>在网页开发中，经常会碰到在一些场景中文本内容不受控制过长超出的问题，为了不破坏UI界面保持设计上的美观，我们需要对它进行一些截断或者是其它的处理。这篇文章就文本超出这类型的情形的方法做了一些总结，下面就来看看，针对不同的场景我们有哪些方法呢？</p>
+</blockquote>
+<h3 id="按钮图文混排问题"><a href="#按钮图文混排问题" class="headerlink" title="按钮图文混排问题"></a>按钮图文混排问题</h3><p><img src="https://user-images.githubusercontent.com/17527649/27760284-375b9ef2-5e76-11e7-90f4-7af487414467.png" alt="image"><br>上图是一个有图标的按钮。图标是在按钮的右侧，这里又一个小小的问题，就是当按钮的长度不够长的时候，按钮中文字会叠在图标上，尤其是按钮中的文本过长的时候。<br>一种解决方法是给按钮设置足够大的padding-right值<br>效果如下图<br><img src="https://user-images.githubusercontent.com/17527649/27760287-53102e60-5e76-11e7-8d01-8411391e5240.png" alt="image"></p>
+<h3 id="占位文本（placeholder）"><a href="#占位文本（placeholder）" class="headerlink" title="占位文本（placeholder）"></a>占位文本（placeholder）</h3><p>在一些表单的设计场景中，一般都会使用占位文本来对用户进行要填写内容的提示。同样也会碰到文本过长的问题，如下图所示：<br><img src="https://user-images.githubusercontent.com/17527649/27760295-841b7136-5e76-11e7-9f67-af1c5ca82201.png" alt="image"></p>
+<p>通常的解决方法是把文字放在按钮的下面：<br><img src="https://user-images.githubusercontent.com/17527649/27760297-8b2f6ab8-5e76-11e7-8325-384d9a970088.png" alt="image"></p>
+<h3 id="人名过长"><a href="#人名过长" class="headerlink" title="人名过长"></a>人名过长</h3><p><img src="https://user-images.githubusercontent.com/17527649/27760299-98d42564-5e76-11e7-8e59-0f34339a2b77.png" alt="image"></p>
+<p>如上图所示，在web开发中经常会碰到此类人名过长的问题。当人名过长的时候，会破坏整个UI界面的视觉体验。<br>对这种左图右文的布局，一般的做法是图片使用浮动进行向左浮动，这样文字就会在图片的右边。当然，这仅仅是在文字不够长的情形下有效。<br>为了这种布局更加的健壮，可以给这两个元素添加一个宽度。当然，现在有更好的方法，那就是使用flexbox的这个属性来进行布局。</p>
+<h3 id="英文单词过长"><a href="#英文单词过长" class="headerlink" title="英文单词过长"></a>英文单词过长</h3><p><img src="https://user-images.githubusercontent.com/17527649/27760305-da300262-5e76-11e7-873e-11b84d2e8529.png" alt="image"></p>
+<p>在文本内容中经常会碰到一些单词过长的问题。在大尺寸设备上没啥问题，但是在小尺寸设备上，过长的单词会破坏整个页面的美感。<br>有两种解决方案：</p>
+<ol>
+<li><p>使用CSS中word-break<br>通过使用 word-break 属性，可以让浏览器实现在任意位置的换行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">p &#123;</div><div class="line">  word-break: break-all;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用text-overflow<br>使用text-overflow来截断文字。这个方法用在链接类型的文字上比较好，对于普通的文本推荐使用word-break。<br>效果图下图<br><img src="https://user-images.githubusercontent.com/17527649/27760318-11bbae66-5e77-11e7-910d-4f1d0ecf6265.png" alt="image"></p>
+</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>您的支持将鼓励我最大的动力！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat.JPG" alt="lucian WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.JPG" alt="lucian Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/30/有点意思的前端之 大白(●—●)/" rel="next" title="有点意思的前端代码">
+                <i class="fa fa-chevron-left"></i> 有点意思的前端代码
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/03/js 监听浏览器后退事件/" rel="prev" title="js 监听浏览器后退事件">
+                js 监听浏览器后退事件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="lucian" />
+          <p class="site-author-name" itemprop="name">lucian</p>
+          <p class="site-description motion-element" itemprop="description">不太可能的事也许今天实现，根本不可能的事也许明天会实现</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">37</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/liushaozhen" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-CSS-处理文本过长和意外超出的方法和技巧"><span class="nav-number">1.</span> <span class="nav-text">使用 CSS 处理文本过长和意外超出的方法和技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#按钮图文混排问题"><span class="nav-number">1.1.</span> <span class="nav-text">按钮图文混排问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#占位文本（placeholder）"><span class="nav-number">1.2.</span> <span class="nav-text">占位文本（placeholder）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#人名过长"><span class="nav-number">1.3.</span> <span class="nav-text">人名过长</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#英文单词过长"><span class="nav-number">1.4.</span> <span class="nav-text">英文单词过长</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lucian</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
