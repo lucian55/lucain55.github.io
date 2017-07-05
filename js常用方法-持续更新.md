@@ -93,15 +93,17 @@ function getQueryString(name) {
 
 ```
 /**
- * 日期格式化
- * @param data  日期
+ * 完美的日期格式化
+ * @param data  日期  日期类型/毫秒数/时间格式字符串
  * @param fmt 格式  y年，M月，d日，h时，m分，s秒，q季度，S毫秒
  * @returns {*}
  */
 function dataPart(data,fmt){
+    data=new Date(data);
     let o = {
         "M+": data.getMonth() + 1, //月份
         "d+": data.getDate(), //日
+        "w+": data.getDay(),//周
         "h+": data.getHours(), //小时
         "m+": data.getMinutes(), //分
         "s+": data.getSeconds(), //秒
