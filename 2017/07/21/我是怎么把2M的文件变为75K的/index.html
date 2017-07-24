@@ -1,0 +1,639 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="技巧," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="这一周听某产品负责人说的最多的话：“这什么文件？怎么这么大啊!这加载也太慢了！拆啊！异步加载！太慢了太慢了！改一下不就好了嘛！不行不行，还得改，还是太慢！不行就重新做一个啊！宁可重新做也不能这样！。。。”好，懂的人都知道发生了什么，下边来说一下，前端优化页面加载性能的工具和技巧
+
+背景介绍项目是用的react写的，webpack打包后将所有的js，css都打包到了一个js中，所以如果页面复杂的时">
+<meta property="og:type" content="article">
+<meta property="og:title" content="怎么把2M的文件变为75K">
+<meta property="og:url" content="http://yoursite.com/2017/07/21/我是怎么把2M的文件变为75K的/index.html">
+<meta property="og:site_name" content="lucian">
+<meta property="og:description" content="这一周听某产品负责人说的最多的话：“这什么文件？怎么这么大啊!这加载也太慢了！拆啊！异步加载！太慢了太慢了！改一下不就好了嘛！不行不行，还得改，还是太慢！不行就重新做一个啊！宁可重新做也不能这样！。。。”好，懂的人都知道发生了什么，下边来说一下，前端优化页面加载性能的工具和技巧
+
+背景介绍项目是用的react写的，webpack打包后将所有的js，css都打包到了一个js中，所以如果页面复杂的时">
+<meta property="og:updated_time" content="2017-07-24T08:15:37.415Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="怎么把2M的文件变为75K">
+<meta name="twitter:description" content="这一周听某产品负责人说的最多的话：“这什么文件？怎么这么大啊!这加载也太慢了！拆啊！异步加载！太慢了太慢了！改一下不就好了嘛！不行不行，还得改，还是太慢！不行就重新做一个啊！宁可重新做也不能这样！。。。”好，懂的人都知道发生了什么，下边来说一下，前端优化页面加载性能的工具和技巧
+
+背景介绍项目是用的react写的，webpack打包后将所有的js，css都打包到了一个js中，所以如果页面复杂的时">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 怎么把2M的文件变为75K | lucian </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">lucian</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                怎么把2M的文件变为75K
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-21T14:16:29+08:00" content="2017-07-21">
+              2017-07-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>这一周听某产品负责人说的最多的话：“这什么文件？怎么这么大啊!这加载也太慢了！拆啊！异步加载！太慢了太慢了！改一下不就好了嘛！不行不行，还得改，还是太慢！不行就重新做一个啊！宁可重新做也不能这样！。。。”<br>好，懂的人都知道发生了什么，下边来说一下，前端优化页面加载性能的工具和技巧</p>
+</blockquote>
+<h4 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h4><p>项目是用的react写的，webpack打包后将所有的js，css都打包到了一个js中，所以如果页面复杂的时候会很大很大</p>
+<h4 id="一、先从代码下手"><a href="#一、先从代码下手" class="headerlink" title="一、先从代码下手"></a>一、先从代码下手</h4><p>先看一下 <code>import</code> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">import React,&#123;Component&#125; from &apos;react&apos;;</div><div class="line">import axios from &apos;../../components/axios&apos;</div><div class="line">import &#123;Col,Row,Button,Message  &#125; from &apos;tinper-bee&apos;;</div><div class="line">import &#123; DatePicker&#125; from &apos;antd&apos;;</div><div class="line">import &#123;loadData,getQueryString,getCookie &#125; from &apos;../../components/util&apos;;</div><div class="line">import style from &apos;./index.css&apos;;</div><div class="line">import classnames from &apos;classnames&apos;;</div><div class="line">import NoData from &apos;./NoData&apos;;</div></pre></td></tr></table></figure>
+<p>引入了<code>react,axios,tinper-bee,antd,classnames,index.css,NoData</code>和公用的方法，还有一个组件，<code>react,axios,tinper-bee,classnames,index.css,NoData</code>在不改代码的情况下，这些是不能动的,那么只剩下<code>antd</code>了，嗯，先拿它开刀。翻看了一下官网，使用 <code>import { DatePicker } from &#39;antd&#39;;</code> 这种方式引入<code>antd</code>的组件会将整个<code>antd</code>打包进来，<code>antd</code>的压缩包 1M多，看看有没有其它办法引入 <code>antd</code>的组件，果然在官网发现了如下方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import Button from &apos;antd/lib/button&apos;;</div><div class="line">import &apos;antd/lib/button/style&apos;; // 或者antd/lib/button/style/css 加载 css 文件</div></pre></td></tr></table></figure></p>
+<p>官方说明：如果你在开发环境的控制台看到下面的提示，那么你可能使用了 <code>import { Button } from &#39;antd&#39;;</code> 的写法引入了 antd 下所有的模块，这会影响应用的网络性能。可以通过以上按需加载的方式引入组件。如果你使用了 babel，那么可以使用 <code>babel-plugin-import</code> 来进行按需加载，加入这个插件后。你可以仍然这么写：<code>import { Button } from &#39;antd&#39;;</code><br>好，按照官网的方式把 <code>import { DatePicker} from &#39;antd&#39;</code> 改成了<code>import  DatePicker from &#39;antd/lib/data-picker&#39;;import &#39;antd/lib/datapicker/style/index.css&#39;;</code>。然后：66666666666，文件瞬间瘦了1M多，这一波很强势，开局的成功给了我巨大的信息，赶紧继续搞<br>(注：一些多余代码，多余的引入这里就不说了，效果不是很明显，但是苍蝇也是肉，该删还得删)</p>
+<h4 id="二、从webpack打包下手"><a href="#二、从webpack打包下手" class="headerlink" title="二、从webpack打包下手"></a>二、从webpack打包下手</h4><p>首先百度一下webpack压缩的技巧，<a href="http://www.jianshu.com/p/a64735eb0e2b" target="_blank" rel="external">彻底解决 webpack 打包文件体积过大</a>,我从这上边受到了启发。</p>
+<h5 id="1-去除不必要的插件"><a href="#1-去除不必要的插件" class="headerlink" title="1.去除不必要的插件"></a>1.去除不必要的插件</h5><p>浏览了一下,<code>webpack.config.js</code>配置文件，发现引入的插件都用到了，没有什么多余的插件，所以此方法对我来说无效</p>
+<h5 id="2-提取第三方库"><a href="#2-提取第三方库" class="headerlink" title="2.提取第三方库"></a>2.提取第三方库</h5><p>前边介绍了，<code>import</code>中引入了<code>react,axios,tinper-bee</code>，然后我看了一下<code>externals</code>如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">externals: &#123;</div><div class="line">       &apos;react&apos;: &apos;React&apos;,</div><div class="line">       &apos;react-dom&apos;: &apos;ReactDOM&apos;,</div><div class="line">       &apos;tinper-bee&apos;: &apos;tinper-bee&apos;,</div><div class="line">       &apos;axios&apos;: &apos;axios&apos;,</div><div class="line">       &apos;react-router&apos;: &apos;ReactRouter&apos;</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<p>我试着把antd提取成第三方，然后产出，测试。然后，失算了，提取成第三方相当于引入了antd的所有的组件，我只用了一个组件，这样就得不偿失了，虽然产出的index.js文件变小了，但是需要加载antd.min.js和antd.min.css文件，导致下载的东西更多，响应时间更久了。此方法无效</p>
+<h5 id="3-代码压缩"><a href="#3-代码压缩" class="headerlink" title="3.代码压缩"></a>3.代码压缩</h5><p>在<code>webpack.config.js</code>的<code>plugins</code>中没有找到<code>UglifyJsPlugin</code>，然后我就加上了这个插件，将js文件压缩，如下图：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">plugins: [</div><div class="line">        new HappyPack(&#123;</div><div class="line">            id: &apos;jsx&apos;,</div><div class="line">            loaders: [&apos;babel-loader&apos;]</div><div class="line">        &#125;),</div><div class="line">        new webpack.optimize.UglifyJsPlugin(&#123;</div><div class="line">            compress: &#123;</div><div class="line">                warnings: false</div><div class="line">            &#125;</div><div class="line">        &#125;)</div></pre></td></tr></table></figure></p>
+<p>不错不错，这个使我的文件又缩小了一倍。目前位置文件为500K左右。距离要求，总的加载时间为1.5s左右，还是太慢。<br>（注：使用<code>UglifyJsPlugin</code>插件之后，在webpack构建的时候，会明显变慢，所以我在测试的时候一般注释掉这一个功能，再正式环境上使用这个功能）</p>
+<h5 id="4-代码分割"><a href="#4-代码分割" class="headerlink" title="4.代码分割"></a>4.代码分割</h5><p>先来说一下项目的<code>webpack</code>的打包机制：每一个节点都是一个文件夹，所有的css和js打包到一个<code>index.js</code>中，除此之外还有一个<code>index.html</code>。我在移动端的节点要实现，列表，详情，增加的功能。我写代码的时候都是写在一个文件夹下，也就是说打包出来的<code>index.js</code>中包含了列表详情增加的所有功能，只是首页是列表页。我试着把这三个功能拆分开，拆分成三个节点（列表一个，详情一个，增加一个）。这样当用户需要增加或者详情功能的时候，才会去加载对应的文件，而且打包出来是三个<code>index.js</code>，首次给用户展现的只有列表的<code>index.js</code>，这样就会块很多。  产出测试后，目前文件有200K，不错不错，这一步又把文件砍掉了一半多，测试加载时间为500ms-1s之间，哎，还是有点大，看能不能再优化。<br>其实这一步可以用<code>webpack</code>的按需加载功能，但是项目的框架方面做这个按需加载不是很容易，就没有使用按需加载，而是拆成了多个节点</p>
+<h5 id="5-设置缓存"><a href="#5-设置缓存" class="headerlink" title="5.设置缓存"></a>5.设置缓存</h5><p>文章中的这一步好像是为了更新用的，并没有什么卵用。而且文件会304走缓存，所以这一步跳过</p>
+<h5 id="6-服务端开启GZIP"><a href="#6-服务端开启GZIP" class="headerlink" title="6.服务端开启GZIP"></a>6.服务端开启GZIP</h5><p>前端代码方面到我已经想不到什么可以优化的了，那就从服务器端下手吧，服务器有个GZIP的方式，这个还是比较给力的，测试过后，文件在加载的时候下载大小为 74K。到目前位置已经达到了经理的要求，文件估计没办法再缩小了。前端+服务器都把文件大小进行了压缩，还有没有其它途径更快呢？在页面加载的时候，需要把文件下载到本地，对，如果下载的更快，岂不是加载就更快了，那么，进入下一条</p>
+<h5 id="7-使用CDN加速"><a href="#7-使用CDN加速" class="headerlink" title="7.使用CDN加速"></a>7.使用CDN加速</h5><p>项目使用的阿里云的cdn，我将产出的文件放到cdn上，虽然这样没法上线都要改一次cdn，但是上线不会那么频繁，找一个稳定的版本放在cdn上，果然，页面加载的速度又进了一步。</p>
+<p>以上就是前端性能优化的一些步骤！</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>您的支持将鼓励我最大的动力！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat.JPG" alt="lucian WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.JPG" alt="lucian Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/技巧/" rel="tag">#技巧</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/05/还不知道标题/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="lucian" />
+          <p class="site-author-name" itemprop="name">lucian</p>
+          <p class="site-description motion-element" itemprop="description">不太可能的事也许今天实现，根本不可能的事也许明天会实现</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/liushaozhen" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#背景介绍"><span class="nav-number">1.</span> <span class="nav-text">背景介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一、先从代码下手"><span class="nav-number">2.</span> <span class="nav-text">一、先从代码下手</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、从webpack打包下手"><span class="nav-number">3.</span> <span class="nav-text">二、从webpack打包下手</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-去除不必要的插件"><span class="nav-number">3.1.</span> <span class="nav-text">1.去除不必要的插件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-提取第三方库"><span class="nav-number">3.2.</span> <span class="nav-text">2.提取第三方库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-代码压缩"><span class="nav-number">3.3.</span> <span class="nav-text">3.代码压缩</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-代码分割"><span class="nav-number">3.4.</span> <span class="nav-text">4.代码分割</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-设置缓存"><span class="nav-number">3.5.</span> <span class="nav-text">5.设置缓存</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-服务端开启GZIP"><span class="nav-number">3.6.</span> <span class="nav-text">6.服务端开启GZIP</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-使用CDN加速"><span class="nav-number">3.7.</span> <span class="nav-text">7.使用CDN加速</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lucian</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

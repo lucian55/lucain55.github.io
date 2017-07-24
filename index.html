@@ -243,6 +243,137 @@
             
               
                 
+                <a class="post-title-link" href="/2017/07/21/我是怎么把2M的文件变为75K的/" itemprop="url">
+                  怎么把2M的文件变为75K
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-21T14:16:29+08:00" content="2017-07-21">
+              2017-07-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>这一周听某产品负责人说的最多的话：“这什么文件？怎么这么大啊!这加载也太慢了！拆啊！异步加载！太慢了太慢了！改一下不就好了嘛！不行不行，还得改，还是太慢！不行就重新做一个啊！宁可重新做也不能这样！。。。”<br>好，懂的人都知道发生了什么，下边来说一下，前端优化页面加载性能的工具和技巧</p>
+</blockquote>
+<h4 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h4><p>项目是用的react写的，webpack打包后将所有的js，css都打包到了一个js中，所以如果页面复杂的时候会很大很大</p>
+<h4 id="一、先从代码下手"><a href="#一、先从代码下手" class="headerlink" title="一、先从代码下手"></a>一、先从代码下手</h4><p>先看一下 <code>import</code> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">import React,&#123;Component&#125; from &apos;react&apos;;</div><div class="line">import axios from &apos;../../components/axios&apos;</div><div class="line">import &#123;Col,Row,Button,Message  &#125; from &apos;tinper-bee&apos;;</div><div class="line">import &#123; DatePicker&#125; from &apos;antd&apos;;</div><div class="line">import &#123;loadData,getQueryString,getCookie &#125; from &apos;../../components/util&apos;;</div><div class="line">import style from &apos;./index.css&apos;;</div><div class="line">import classnames from &apos;classnames&apos;;</div><div class="line">import NoData from &apos;./NoData&apos;;</div></pre></td></tr></table></figure>
+<p>引入了<code>react,axios,tinper-bee,antd,classnames,index.css,NoData</code>和公用的方法，还有一个组件，<code>react,axios,tinper-bee,classnames,index.css,NoData</code>在不改代码的情况下，这些是不能动的,那么只剩下<code>antd</code>了，嗯，先拿它开刀。翻看了一下官网，使用 <code>import { DatePicker } from &#39;antd&#39;;</code> 这种方式引入<code>antd</code>的组件会将整个<code>antd</code>打包进来，<code>antd</code>的压缩包 1M多，看看有没有其它办法引入 <code>antd</code>的组件，果然在官网发现了如下方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import Button from &apos;antd/lib/button&apos;;</div><div class="line">import &apos;antd/lib/button/style&apos;; // 或者antd/lib/button/style/css 加载 css 文件</div></pre></td></tr></table></figure></p>
+<p>官方说明：如果你在开发环境的控制台看到下面的提示，那么你可能使用了 <code>import { Button } from &#39;antd&#39;;</code> 的写法引入了 antd 下所有的模块，这会影响应用的网络性能。可以通过以上按需加载的方式引入组件。如果你使用了 babel，那么可以使用 <code>babel-plugin-import</code> 来进行按需加载，加入这个插件后。你可以仍然这么写：<code>import { Button } from &#39;antd&#39;;</code><br>好，按照官网的方式把 <code>import { DatePicker} from &#39;antd&#39;</code> 改成了<code>import  DatePicker from &#39;antd/lib/data-picker&#39;;import &#39;antd/lib/datapicker/style/index.css&#39;;</code>。然后：66666666666，文件瞬间瘦了1M多，这一波很强势，开局的成功给了我巨大的信息，赶紧继续搞<br>(注：一些多余代码，多余的引入这里就不说了，效果不是很明显，但是苍蝇也是肉，该删还得删)</p>
+<h4 id="二、从webpack打包下手"><a href="#二、从webpack打包下手" class="headerlink" title="二、从webpack打包下手"></a>二、从webpack打包下手</h4><p>首先百度一下webpack压缩的技巧，<a href="http://www.jianshu.com/p/a64735eb0e2b" target="_blank" rel="external">彻底解决 webpack 打包文件体积过大</a>,我从这上边受到了启发。</p>
+<h5 id="1-去除不必要的插件"><a href="#1-去除不必要的插件" class="headerlink" title="1.去除不必要的插件"></a>1.去除不必要的插件</h5><p>浏览了一下,<code>webpack.config.js</code>配置文件，发现引入的插件都用到了，没有什么多余的插件，所以此方法对我来说无效</p>
+<h5 id="2-提取第三方库"><a href="#2-提取第三方库" class="headerlink" title="2.提取第三方库"></a>2.提取第三方库</h5><p>前边介绍了，<code>import</code>中引入了<code>react,axios,tinper-bee</code>，然后我看了一下<code>externals</code>如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">externals: &#123;</div><div class="line">       &apos;react&apos;: &apos;React&apos;,</div><div class="line">       &apos;react-dom&apos;: &apos;ReactDOM&apos;,</div><div class="line">       &apos;tinper-bee&apos;: &apos;tinper-bee&apos;,</div><div class="line">       &apos;axios&apos;: &apos;axios&apos;,</div><div class="line">       &apos;react-router&apos;: &apos;ReactRouter&apos;</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<p>我试着把antd提取成第三方，然后产出，测试。然后，失算了，提取成第三方相当于引入了antd的所有的组件，我只用了一个组件，这样就得不偿失了，虽然产出的index.js文件变小了，但是需要加载antd.min.js和antd.min.css文件，导致下载的东西更多，响应时间更久了。此方法无效</p>
+<h5 id="3-代码压缩"><a href="#3-代码压缩" class="headerlink" title="3.代码压缩"></a>3.代码压缩</h5><p>在<code>webpack.config.js</code>的<code>plugins</code>中没有找到<code>UglifyJsPlugin</code>，然后我就加上了这个插件，将js文件压缩，如下图：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">plugins: [</div><div class="line">        new HappyPack(&#123;</div><div class="line">            id: &apos;jsx&apos;,</div><div class="line">            loaders: [&apos;babel-loader&apos;]</div><div class="line">        &#125;),</div><div class="line">        new webpack.optimize.UglifyJsPlugin(&#123;</div><div class="line">            compress: &#123;</div><div class="line">                warnings: false</div><div class="line">            &#125;</div><div class="line">        &#125;)</div></pre></td></tr></table></figure></p>
+<p>不错不错，这个使我的文件又缩小了一倍。目前位置文件为500K左右。距离要求，总的加载时间为1.5s左右，还是太慢。<br>（注：使用<code>UglifyJsPlugin</code>插件之后，在webpack构建的时候，会明显变慢，所以我在测试的时候一般注释掉这一个功能，再正式环境上使用这个功能）</p>
+<h5 id="4-代码分割"><a href="#4-代码分割" class="headerlink" title="4.代码分割"></a>4.代码分割</h5><p>先来说一下项目的<code>webpack</code>的打包机制：每一个节点都是一个文件夹，所有的css和js打包到一个<code>index.js</code>中，除此之外还有一个<code>index.html</code>。我在移动端的节点要实现，列表，详情，增加的功能。我写代码的时候都是写在一个文件夹下，也就是说打包出来的<code>index.js</code>中包含了列表详情增加的所有功能，只是首页是列表页。我试着把这三个功能拆分开，拆分成三个节点（列表一个，详情一个，增加一个）。这样当用户需要增加或者详情功能的时候，才会去加载对应的文件，而且打包出来是三个<code>index.js</code>，首次给用户展现的只有列表的<code>index.js</code>，这样就会块很多。  产出测试后，目前文件有200K，不错不错，这一步又把文件砍掉了一半多，测试加载时间为500ms-1s之间，哎，还是有点大，看能不能再优化。<br>其实这一步可以用<code>webpack</code>的按需加载功能，但是项目的框架方面做这个按需加载不是很容易，就没有使用按需加载，而是拆成了多个节点</p>
+<h5 id="5-设置缓存"><a href="#5-设置缓存" class="headerlink" title="5.设置缓存"></a>5.设置缓存</h5><p>文章中的这一步好像是为了更新用的，并没有什么卵用。而且文件会304走缓存，所以这一步跳过</p>
+<h5 id="6-服务端开启GZIP"><a href="#6-服务端开启GZIP" class="headerlink" title="6.服务端开启GZIP"></a>6.服务端开启GZIP</h5><p>前端代码方面到我已经想不到什么可以优化的了，那就从服务器端下手吧，服务器有个GZIP的方式，这个还是比较给力的，测试过后，文件在加载的时候下载大小为 74K。到目前位置已经达到了经理的要求，文件估计没办法再缩小了。前端+服务器都把文件大小进行了压缩，还有没有其它途径更快呢？在页面加载的时候，需要把文件下载到本地，对，如果下载的更快，岂不是加载就更快了，那么，进入下一条</p>
+<h5 id="7-使用CDN加速"><a href="#7-使用CDN加速" class="headerlink" title="7.使用CDN加速"></a>7.使用CDN加速</h5><p>项目使用的阿里云的cdn，我将产出的文件放到cdn上，虽然这样没法上线都要改一次cdn，但是上线不会那么频繁，找一个稳定的版本放在cdn上，果然，页面加载的速度又进了一步。</p>
+<p>以上就是前端性能优化的一些步骤！</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/07/05/还不知道标题/" itemprop="url">
                   未命名
                 </a>
@@ -1362,129 +1493,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/20/react-技巧/" itemprop="url">
-                  react-技巧
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-20T10:40:41+08:00" content="2017-03-20">
-              2017-03-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/react/" itemprop="url" rel="index">
-                    <span itemprop="name">react</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>##　react-技巧</p>
-<blockquote>
-<p>在react组件开发中的一些技巧，和常用模块。持续更新</p>
-</blockquote>
-<h3 id="classnames模块"><a href="#classnames模块" class="headerlink" title="classnames模块"></a>classnames模块</h3><p>在ract组件开发中，如果给标签添加class，直接获取到对应的标签，然后写className=’xx’即可。<br>但是如果是动态设置class，多个class就会麻烦。这里可以引入classnames模块来解决。<br><a href="https://github.com/JedWatson/classnames" target="_blank" rel="external">classnames github地址</a>.<br>classnames传参很灵活，这里通过几个例子说明</p>
-<p>The classNames function takes any number of arguments which can be a string or object. The argument ‘foo’ is short for { foo: true }. If the value associated with a given key is falsy, that key won’t be included in the output.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">classNames(&apos;foo&apos;, &apos;bar&apos;); // =&gt; &apos;foo bar&apos;</div><div class="line">classNames(&apos;foo&apos;, &#123; bar: true &#125;); // =&gt; &apos;foo bar&apos;</div><div class="line">classNames(&#123; &apos;foo-bar&apos;: true &#125;); // =&gt; &apos;foo-bar&apos;</div><div class="line">classNames(&#123; &apos;foo-bar&apos;: false &#125;); // =&gt; &apos;&apos;</div><div class="line">classNames(&#123; foo: true &#125;, &#123; bar: true &#125;); // =&gt; &apos;foo bar&apos;</div><div class="line">classNames(&#123; foo: true, bar: true &#125;); // =&gt; &apos;foo bar&apos;</div><div class="line"></div><div class="line">// lots of arguments of various types</div><div class="line">classNames(&apos;foo&apos;, &#123; bar: true, duck: false &#125;, &apos;baz&apos;, &#123; quux: true &#125;); // =&gt; &apos;foo bar baz quux&apos;</div><div class="line"></div><div class="line">// other falsy values are just ignored</div><div class="line">classNames(null, false, &apos;bar&apos;, undefined, 0, 1, &#123; baz: null &#125;, &apos;&apos;); // =&gt; &apos;bar 1&apos;</div></pre></td></tr></table></figure>
-<p>Arrays will be recursively flattened as per the rules above:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var arr = [&apos;b&apos;, &#123; c: true, d: false &#125;];</div><div class="line">classNames(&apos;a&apos;, arr); // =&gt; &apos;a b c&apos;</div></pre></td></tr></table></figure>
-<p>Dynamic class names with ES2015</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let buttonType = &apos;primary&apos;;</div><div class="line">classNames(&#123; [`btn-$&#123;buttonType&#125;`]: true &#125;);</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1530,7 +1538,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-count">40</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
