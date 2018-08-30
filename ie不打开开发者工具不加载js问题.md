@@ -25,6 +25,6 @@ categories: "bug"
 
 ```
 if(window.console)//测试是否可用
-  console.log("智障ie");//可用的话，输出信息
+  console.log("智障ie hehe ");//可用的话，输出信息
 
 ```
