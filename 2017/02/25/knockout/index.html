@@ -1,0 +1,488 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpg">
+  <link rel="icon" href="/img/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="liushaozhen">
+  <meta name="keywords" content="">
+  
+  <title>Knockout - liushaozhen</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>牧之的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Knockout">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2017-02-25 15:13" pubdate>
+        2017年2月25日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      31
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Knockout</h1>
+            
+            <div class="markdown-body">
+              <h1 id="1-Knockout如何使用"><a href="#1-Knockout如何使用" class="headerlink" title="1.Knockout如何使用"></a>1.Knockout如何使用</h1><h2 id="1-1-引入Konckout文件"><a href="#1-1-引入Konckout文件" class="headerlink" title="1.1. 引入Konckout文件"></a>1.1. 引入Konckout文件</h2><p>使用cdn资源或者下载到本地引入</p>
+<p>   <code> &lt;script src=&quot;http://design.yyuap.com/static/knockout/knockout-3.2.0.debug.js&quot;&gt;&lt;/script&gt;</code></p>
+<h2 id="1-2-在js中定义一个view-model并绑定"><a href="#1-2-在js中定义一个view-model并绑定" class="headerlink" title="1.2. 在js中定义一个view model并绑定"></a>1.2. 在js中定义一个view model并绑定</h2><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs xquery"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;text/JavaScript&#x27;</span>&gt;</span></span><br><span class="xml">	//定义viewModel</span><br><span class="xml">	var viewModel=</span><span class="xquery">&#123;</span><br><span class="xquery">	<span class="hljs-built_in">	name</span>:<span class="hljs-string">&#x27;lsz&#x27;</span>,</span><br><span class="xquery">		age:<span class="hljs-string">&#x27;23&#x27;</span></span><br><span class="xquery">	&#125;</span><span class="xml">;</span><br><span class="xml">	//开始绑定</span><br><span class="xml">	ko.applyBindings(viewModel);</span><br><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<h2 id="1-3-在knockout中，每个HTML的DOM对象都是通过data-bind属性来绑定数据的。"><a href="#1-3-在knockout中，每个HTML的DOM对象都是通过data-bind属性来绑定数据的。" class="headerlink" title="1.3. 在knockout中，每个HTML的DOM对象都是通过data-bind属性来绑定数据的。"></a>1.3. 在knockout中，每个HTML的DOM对象都是通过data-bind属性来绑定数据的。</h2><p>例如:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">data-bind</span>=<span class="hljs-string">&quot;text:name&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">data-bind</span>=<span class="hljs-string">&quot;text:age&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>说明：ko.applyBindings()两个参数，第一个参数是用于绑定的对象。第二个参数（可选），可以指定使用knockout的DOM元素或者容器。例如 <code>ko.applyBindings(viewModel,document,getElementById(&#39;div&#39;))</code>。它现在的功能是只有对id为div的元素和子元素生效</p>
+<h1 id="2-knockout的DOM元素上的属性说明"><a href="#2-knockout的DOM元素上的属性说明" class="headerlink" title="2.knockout的DOM元素上的属性说明"></a>2.knockout的DOM元素上的属性说明</h1><h2 id="2-1-text绑定"><a href="#2-1-text绑定" class="headerlink" title="2.1 text绑定"></a>2.1 text绑定</h2><p>text绑定到DOM元素上，使得该元素的文本值为你绑定的参数值。<br>例如：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">data-bind</span>=<span class="hljs-string">&quot;text:name&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xquery"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="xml">  var viewModel=</span><span class="xquery">&#123;</span><br><span class="xquery">    <span class="hljs-built_in"> name</span>:<span class="hljs-string">&#x27;lsz&#x27;</span></span><br><span class="xquery">  &#125;</span><br><span class="xml">  ko.applyBindings(viewModel);</span><br><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<p>说明：knockout将参数值设置在指定DOM元素的innerText(IE)或textContent(Firefox)属性上。原来的文本将会被覆盖</p>
+<h2 id="2-2-value绑定"><a href="#2-2-value绑定" class="headerlink" title="2.2 value绑定"></a>2.2 value绑定</h2><p>value绑定是关联DOM元素的值到view model的属性上。主要是用在表单控件input，select和textarea上。<br>例如：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros">&lt;p <span class="hljs-attribute">data-bind</span>=<span class="hljs-string">&quot;text:name&quot;</span>&gt;&lt;/p&gt;<br>&lt;input <span class="hljs-attribute">data-bind</span>=<span class="hljs-string">&quot;value: name&quot;</span>/&gt;<br></code></pre></td></tr></table></figure>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xquery"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="xml">    var viewModel=</span><span class="xquery">&#123;</span><br><span class="xquery">      <span class="hljs-built_in"> name</span>:ko.observable(<span class="hljs-string">&#x27;lsz&#x27;</span>)</span><br><span class="xquery">    &#125;</span><span class="xml">;</span><br><span class="xml">    ko.applyBindings(viewModel);</span><br><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<p>说明：以上代码的效果是的，当input的值发生变化的时候，会给viewModel的name属性重新赋值，并在p标签中显示</p>
+<h2 id="2-3-visible绑定"><a href="#2-3-visible绑定" class="headerlink" title="2.3 visible绑定"></a>2.3 visible绑定</h2><p>visible绑定到DOM元素上，使得该元素的hidden和visible状态取决于绑定的值<br>例如：</p>
+<figure class="highlight gml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs gml">&lt;<span class="hljs-keyword">div</span> data-bind=<span class="hljs-string">&quot;visible:shouldShowMessage&quot;</span>&gt;<br>    当<span class="hljs-symbol">visible</span>的值为<span class="hljs-literal">true</span>的时候，你才可以看到这句话<br>&lt;/<span class="hljs-keyword">div</span>&gt;<br></code></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">  <span class="hljs-keyword">var</span> viewModel=&#123;</span><br><span class="javascript">        shouldShowMessage:<span class="hljs-literal">true</span> </span><br>    &#125;;<br>    ko.applyBindings(viewModel);<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>说明：当visible的值为真的时候，元素的display为css设置的样式。 当visible的值为假的时候，元素的display为none，它的优先级高于css定义的任何display的样式</p>
+<h2 id="2-4-html绑定"><a href="#2-4-html绑定" class="headerlink" title="2.4 html绑定"></a>2.4 html绑定</h2><p>html绑定到DOM元素上，使得该元素的HTML值为你绑定的参数值<br>例如：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">data-bind</span>=<span class="hljs-string">&quot;html:content&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>原来的html结构<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">    <span class="hljs-keyword">var</span> viewModel=&#123;</span><br><span class="handlebars"><span class="xml">        content:&#x27;<span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>标题一<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>&#x27;</span></span><br>    &#125;;<br>    ko.applyBindings(viewModel);<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>说明：knockout将参数值设置到指定DOM元素的innerHTML属性上，元素原来的内容将会被覆盖</p>
+<h2 id="2-5-css绑定"><a href="#2-5-css绑定" class="headerlink" title="2.5 css绑定"></a>2.5 css绑定</h2><p>css绑定是添加或删除一个或多个class类名到指定DOM元素上<br>例如：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span>&gt;</span><br>	.bg&#123;<br><span class="css">	    <span class="hljs-attribute">background</span>: red;</span><br>	&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">data-bind</span>=<span class="hljs-string">&quot;css:</span></span></span><span class="hljs-template-variable">&#123;bg:flag&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span></span><br><span class="xml">    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>css绑定<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">	<span class="hljs-keyword">var</span> viewModel=&#123;</span><br><span class="javascript">	    flag:<span class="hljs-literal">true</span></span><br>	&#125;;<br>	ko.applyBindings(viewModel);<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>说明：以上代码的效果是当flag为true的时候，将bg这个类添加到指定DOM元素上。当flag为false的时候，将bg这个类从指定DOM元素上移除</p>
+<h2 id="2-6-style绑定"><a href="#2-6-style绑定" class="headerlink" title="2.6 style绑定"></a>2.6 style绑定</h2><p>style是添加或删除一个或多个DOM元素上的style值<br>例如：</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">data-bind</span>=<span class="hljs-string">&quot;style:</span></span></span><span class="hljs-template-variable">&#123;background:flag?&#x27;red&#x27;:&#x27;blue&#x27;,color:flag?&#x27;blue&#x27;:&#x27;red&#x27;&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> &gt;</span></span><br><span class="xml">    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>内容<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">    <span class="hljs-keyword">var</span> viewModel=&#123;</span><br><span class="javascript">        flag:<span class="hljs-literal">true</span></span><br>    &#125;;<br>    ko.applyBindings(viewModel);<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>说明：以上代码的效果是当flag为true的时候，DOM元素为红背景蓝字体。当flag为flase的时候，DOM元素为蓝背景红字体</p>
+<h2 id="2-7-attr绑定"><a href="#2-7-attr绑定" class="headerlink" title="2.7 attr绑定"></a>2.7 attr绑定</h2><p>attr绑定提供了一种可以设置DOM元素的任何属性的值，例如可以设置a标签的title属性，href属性，自定义属性等等</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">data-bind</span>=<span class="hljs-string">&quot;attr:</span></span></span><span class="hljs-template-variable">&#123;href:url,title:alt,self:self&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>百度<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">    <span class="hljs-keyword">var</span> viewModel=&#123;</span><br><span class="javascript">       url:<span class="hljs-string">&#x27;https://www.baidu.com/&#x27;</span>,</span><br><span class="javascript">       alt:<span class="hljs-string">&#x27;百度一下&#x27;</span>,</span><br><span class="javascript">       self:<span class="hljs-string">&#x27;自定义属性值&#x27;</span></span><br>    &#125;;<br>    ko.applyBindings(viewModel);<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>说明：以上代码的效果是给a动态绑定了href和title属性已经自定义属性self的值</p>
+<h2 id="2-8-checked绑定"><a href="#2-8-checked绑定" class="headerlink" title="2.8 checked绑定"></a>2.8 checked绑定</h2><p>checked绑定可以用于checkbox和redio设置的绑定<br>例如：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros">&lt;input <span class="hljs-attribute">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attribute">data-bind</span>=<span class="hljs-string">&quot;checked: checkboxFlag&quot;</span>/&gt;<br>&lt;input <span class="hljs-attribute">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attribute">data-bind</span>=<span class="hljs-string">&quot;checked: radioFlag&quot;</span> <span class="hljs-attribute">value</span>=<span class="hljs-string">&quot;radioValue&quot;</span>/&gt;<br></code></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">    <span class="hljs-keyword">var</span> viewModel=&#123;</span><br><span class="javascript">        checkboxFlag: <span class="hljs-literal">true</span>,</span><br><span class="javascript">        radioFlag:<span class="hljs-string">&#x27;radioValue&#x27;</span></span><br>    &#125;;<br>    ko.applyBindings(viewModel);<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>说明：以上代码的效果是，当checkboxFlag为true的时候，对应的checkbox被选中。当radioFlag的值等于radio的value的值的时候，对应的元素被选中 </p>
+<h2 id="2-9-click绑定"><a href="#2-9-click绑定" class="headerlink" title="2.9 click绑定"></a>2.9 click绑定</h2><p>click绑定在DOM元素上，给元素添加点击事件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">data-bind</span>=<span class="hljs-string">&quot;click: clickFn&quot;</span>&gt;</span>Click<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">    <span class="hljs-keyword">var</span> viewModel = &#123;</span><br><span class="javascript">        clickFn: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br>           alert();<br>        &#125;<br>    &#125;;<br>	ko.applyBindings(viewModel);<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>说明：以上代码的效果是，当点击按钮的时候执行函数</p>
+<h2 id="2-10-event绑定"><a href="#2-10-event绑定" class="headerlink" title="2.10 event绑定"></a>2.10 event绑定</h2><p>event绑定在DOM元素上，给元素添加指定的事件</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">data-bind</span>=<span class="hljs-string">&quot;event: </span></span></span><span class="hljs-template-variable">&#123; mouseover: overFn, mouseout: outFn &#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span></span><br><span class="xml">	Mouse </span><br><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">    <span class="hljs-keyword">var</span> viewModel = &#123;</span><br><span class="javascript">        overFn: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">            alert(<span class="hljs-string">&#x27;over&#x27;</span>);</span><br>        &#125;,<br><span class="javascript">		outFn:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">		    alert(<span class="hljs-string">&#x27;out&#x27;</span>);</span><br>		&#125;<br>    &#125;;<br>	ko.applyBindings(viewModel);<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br></code></pre></td></tr></table></figure>
+<p>说明：以上代码的效果是，当鼠标划入或划出的时候执行对应的函数</p>
+<h2 id="2-11-submit绑定"><a href="#2-11-submit绑定" class="headerlink" title="2.11 submit绑定"></a>2.11 submit绑定</h2><p>submit绑定在form表单上添加指定的事件，以使该form被提交的时候执行指定的函数</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">data-bind</span>=<span class="hljs-string">&quot;submit: sub&quot;</span>&gt;</span><br>    ... form contents ...<br>    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>submit<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">	<span class="hljs-keyword">var</span> viewModel=&#123;</span><br><span class="javascript">        sub: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">formElement</span>) </span>&#123;</span><br><span class="javascript">            <span class="hljs-built_in">console</span>.log(formElement);</span><br>        &#125;<br>    &#125;;<br>    ko.applyBindings(viewModel);<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>说明：submit只能用在form表单上，当你使用submit绑定的时候， knockout会阻止form表单默认的submit动作。sub执行的时候，knockout会将整个form表单元素传递到sub函数中</p>
+<h2 id="2-12-options绑定"><a href="#2-12-options绑定" class="headerlink" title="2.12 options绑定"></a>2.12 options绑定</h2><p>options绑定控制下拉列表的内容，只能用于select元素</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs fortran">&lt;<span class="hljs-keyword">select</span> <span class="hljs-keyword">data</span>-<span class="hljs-keyword">bind</span>=<span class="hljs-string">&quot;options: options&quot;</span>&gt;&lt;/<span class="hljs-keyword">select</span>&gt;<br></code></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">    <span class="hljs-keyword">var</span> viewModel = &#123;</span><br><span class="javascript">        options: [<span class="hljs-string">&#x27;France&#x27;</span>, <span class="hljs-string">&#x27;Germany&#x27;</span>, <span class="hljs-string">&#x27;Spain&#x27;</span>]</span><br>    &#125;;<br>    ko.applyBindings(viewModel);<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>说明：options给select标签增加了options元素，options默认会被展开</p>
+<h1 id="3-Knockout的数据绑定"><a href="#3-Knockout的数据绑定" class="headerlink" title="3.Knockout的数据绑定"></a>3.Knockout的数据绑定</h1><h2 id="3-1-单向绑定"><a href="#3-1-单向绑定" class="headerlink" title="3.1. 单向绑定"></a>3.1. 单向绑定</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>姓名：<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">data-bind</span>=<span class="hljs-string">&quot;text:name&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>	<br><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>年龄：<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">data-bind</span>=<span class="hljs-string">&quot;text:age&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs xquery"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="xml"> var viewModel= </span><span class="xquery">&#123;</span><br><span class="xquery">     <span class="hljs-built_in"> name</span>:<span class="hljs-string">&#x27;lsz&#x27;</span>;</span><br><span class="xquery">      age:<span class="hljs-string">&#x27;23&#x27;</span>;</span><br><span class="xquery">  &#125;</span><br><span class="xml">  ko.applyBindings(viewModel);</span><br><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<h2 id="3-2-双向绑定"><a href="#3-2-双向绑定" class="headerlink" title="3.2. 双向绑定"></a>3.2. 双向绑定</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>姓名：<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">data-bind</span>=<span class="hljs-string">&quot;text:name&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>年龄：<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">data-bind</span>=<span class="hljs-string">&quot;text:age&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>姓名：<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">data-bind</span>=<span class="hljs-string">&quot;value:name&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>年龄：<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">data-bind</span>=<span class="hljs-string">&quot;value:age&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs xquery"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="xml">  var viewModel=</span><span class="xquery">&#123;</span><br><span class="xquery">       <span class="hljs-built_in"> name</span>:ko.observable(<span class="hljs-string">&#x27;lsz&#x27;</span>),</span><br><span class="xquery">        age:ko.observable(<span class="hljs-string">&#x27;23&#x27;</span>)</span><br><span class="xquery">    &#125;</span><span class="xml">;</span><br><span class="xml">    ko.applyBindings(viewModel)</span><br><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<p>说明：上述代码中，利用ko.observable()实现对属性的监控，当input的值发生改变的时候，span的值也会发生改变</p>
+<h2 id="3-3-依赖绑定"><a href="#3-3-依赖绑定" class="headerlink" title="3.3. 依赖绑定"></a>3.3. 依赖绑定</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>姓名：<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">data-bind</span>=<span class="hljs-string">&quot;text:name&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>年龄：<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">data-bind</span>=<span class="hljs-string">&quot;text:age&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>姓名：<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">data-bind</span>=<span class="hljs-string">&quot;value:name&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>年龄：<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">data-bind</span>=<span class="hljs-string">&quot;value:age&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>姓名年龄：<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">data-bind</span>=<span class="hljs-string">&quot;text:nameAge&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">  <span class="hljs-keyword">var</span> viewModel=&#123;</span><br><span class="javascript">        name:ko.observable(<span class="hljs-string">&#x27;lsz&#x27;</span>),</span><br><span class="javascript">        age:ko.observable(<span class="hljs-string">&#x27;23&#x27;</span>)</span><br>    &#125;;<br><span class="javascript">    viewModel.nameAge=ko.computed(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.name()+<span class="hljs-built_in">this</span>.age();</span><br>    &#125;,viewModel);<br>    ko.applyBindings(viewModel);<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>说明：ko.computed()用来依赖一个或多个监控属性，并且当其中任何一个依赖对象被改变的时候将会自动更新。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/knockout/">knockout</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/knockout/">knockout</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2017/02/25/directors%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%B7%AF%E7%94%B1/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">director客户端路由</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2017/02/25/node%E4%B9%8Bprocess/">
+                        <span class="hidden-mobile">nodejs之process模块</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

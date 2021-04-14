@@ -1,0 +1,660 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpg">
+  <link rel="icon" href="/img/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="liushaozhen">
+  <meta name="keywords" content="">
+  
+  <title>ES6入门 - liushaozhen</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>牧之的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="ES6入门">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2017-01-23 08:58" pubdate>
+        2017年1月23日 早上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      40
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">ES6入门</h1>
+            
+            <div class="markdown-body">
+              <blockquote>
+<p>参考 <a target="_blank" rel="noopener" href="http://es6.ruanyifeng.com/#README">ECMAScript 6 入门</a></p>
+</blockquote>
+<h2 id="一、let、const定义变量"><a href="#一、let、const定义变量" class="headerlink" title="一、let、const定义变量"></a>一、let、const定义变量</h2><p>现在一般定义变量都用<code>var</code>，但是<code>var</code>会有很多的问题：</p>
+<ul>
+<li><code>var</code>没有块级作用域，定义后在当前闭包中都可以访问，如果变量名重复，就会覆盖前面定义的变量，并且也有可能被其他人更改。</li>
+<li><code>var</code>在<code>for</code>循环标记变量共享，一般在循环中使用的<code>i</code>会被共享，其本质上也是由于没有块级作用域造成的，由于情况比较多见和特殊，单独算一个问题。</li>
+</ul>
+<p>因此有了两种新的变量定义方式<code>let</code>和<code>const</code>。</p>
+<p>用<code>let</code>定义的变量具有块级作用域。<br>用<code>const</code>定义的变量是静态变量，定义以后不可修改。</p>
+<h3 id="let的好处和用法"><a href="#let的好处和用法" class="headerlink" title="let的好处和用法"></a><code>let</code>的好处和用法</h3><ul>
+<li><code>let</code>拥有块级作用域</li>
+<li><code>let</code>生命的全局变量不会影响<code>window</code></li>
+<li>循环时不会共享<code>let</code>定义的变量</li>
+</ul>
+<h4 id="友好的报错"><a href="#友好的报错" class="headerlink" title="友好的报错"></a>友好的报错</h4><p><strong><code>&#39;use strict&#39;;</code></strong> 用了严格模式才有有友好的报错</p>
+<ul>
+<li>重新定义<code>let</code>的变量会报错</li>
+<li>使用未定义的变量会报错（包括不在自己作用域中的变量）</li>
+<li><code>let</code>没有变量提升(变量预定义)，在一个块级作用域中，不可以先使用未定义的变量。</li>
+</ul>
+<h4 id="块级作用域是什么"><a href="#块级作用域是什么" class="headerlink" title="块级作用域是什么"></a>块级作用域是什么</h4><p>在用<code>var</code>定义变量的时候，变量是通过闭包进行隔离的，现在用了<code>let</code>，不仅仅可以通过闭包隔离，还增加了一些块级作用域隔离。</p>
+<p> <code>&#123;&#125;</code></p>
+<p>在<code>for</code>、<code>if</code>、<code>switch</code>、<code>function</code>等的大括号都会当成一个独立的块级作用域。</p>
+<p>闭包的新写法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&#123;<br>	<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>不必再是：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">;(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br><br>&#125;)();<br></code></pre></td></tr></table></figure>
+<h3 id="const的好处和用法"><a href="#const的好处和用法" class="headerlink" title="const的好处和用法"></a>const的好处和用法</h3><p><code>const</code>是静态变量，定以后不允许再被修改或者重新定义。</p>
+<ul>
+<li>在严格模式下，重新定义或者修改静态变量会报错。</li>
+<li>不同的块级作用域下，可以定义相同名字的静态变量。</li>
+</ul>
+<h2 id="二、解构赋值"><a href="#二、解构赋值" class="headerlink" title="二、解构赋值"></a>二、解构赋值</h2><blockquote>
+<p>ES6 允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构</p>
+</blockquote>
+<ul>
+<li>数组的解构赋值</li>
+<li>对象的解构赋值</li>
+<li>字符串的解构赋值</li>
+<li>数值和布尔值的解构赋值</li>
+<li>函数参数的解构赋值</li>
+<li>圆括号问题</li>
+</ul>
+<h2 id="三、字符串的扩展"><a href="#三、字符串的扩展" class="headerlink" title="三、字符串的扩展"></a>三、字符串的扩展</h2><ul>
+<li>字符的Unicode表示法</li>
+<li>codePointAt()</li>
+<li>String.fromCodePoint()</li>
+<li>字符串的遍历器接口</li>
+<li>at()</li>
+<li>normalize()</li>
+<li>includes(), startsWith(), endsWith()</li>
+<li>repeat()</li>
+<li>padStart()，padEnd()</li>
+<li>模板字符串</li>
+<li>标签模板</li>
+<li>String.raw()</li>
+<li>模板字符串的限制</li>
+</ul>
+<h2 id="四、正则的扩展"><a href="#四、正则的扩展" class="headerlink" title="四、正则的扩展"></a>四、正则的扩展</h2><ul>
+<li>RegExp构造函数</li>
+<li>字符串的正则方法</li>
+<li>u 修饰符</li>
+<li>y 修饰符</li>
+<li>sticky属性</li>
+<li>flags属性</li>
+<li>RegExp.escape()</li>
+<li>s 修饰符：dotAll 模式</li>
+<li>后行断言</li>
+<li>Unicode属性类</li>
+</ul>
+<h2 id="五、数值的扩展"><a href="#五、数值的扩展" class="headerlink" title="五、数值的扩展"></a>五、数值的扩展</h2><ul>
+<li>Number.isFinite(), Number.isNaN()</li>
+<li>Number.parseInt(), Number.parseFloat()</li>
+<li>Number.isInteger()</li>
+<li>Number.EPSILON</li>
+<li>安全整数和Number.isSafeInteger()</li>
+<li>Math对象的扩展</li>
+<li>指数运算符</li>
+</ul>
+<h2 id="六、函数的扩展"><a href="#六、函数的扩展" class="headerlink" title="六、函数的扩展"></a>六、函数的扩展</h2><ul>
+<li>函数参数的默认值</li>
+<li>rest参数</li>
+<li>扩展运算符</li>
+<li>严格模式</li>
+<li>name 属性</li>
+<li>箭头函数</li>
+<li>绑定 this</li>
+<li>尾调用优化</li>
+<li>函数参数的尾逗号</li>
+</ul>
+<h2 id="七、对象的扩展"><a href="#七、对象的扩展" class="headerlink" title="七、对象的扩展"></a>七、对象的扩展</h2><ul>
+<li>属性的简洁表示法</li>
+<li>属性名表达式</li>
+<li>方法的 name 属性</li>
+<li>Object.is()</li>
+<li>Object.assign()</li>
+<li>属性的可枚举性</li>
+<li>属性的遍历</li>
+<li>__proto__属性，Object.setPrototypeOf()，Object.getPrototypeOf()</li>
+<li>Object.keys()，Object.values()，Object.entries()</li>
+<li>对象的扩展运算符</li>
+<li>Object.getOwnPropertyDescriptors()</li>
+</ul>
+<h2 id="八、Symbol"><a href="#八、Symbol" class="headerlink" title="八、Symbol"></a>八、Symbol</h2><blockquote>
+<p>JavaScript语言的第七种数据类型</p>
+</blockquote>
+<p>Symbol值通过Symbol函数生成。这就是说，对象的属性名现在可以有两种类型，一种是原来就有的字符串，另一种就是新增的Symbol类型。凡是属性名属于Symbol类型，就都是独一无二的，可以保证不会与其他属性名产生冲突。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> s = <span class="hljs-built_in">Symbol</span>();<br><span class="hljs-keyword">typeof</span> s<br><span class="hljs-comment">// &quot;symbol&quot;</span><br></code></pre></td></tr></table></figure>
+<p>上面代码中，变量s就是一个独一无二的值。typeof运算符的结果，表明变量s是Symbol数据类型，而不是字符串之类的其他类型。<br>注意，Symbol函数前不能使用new命令，否则会报错。这是因为生成的Symbol是一个原始类型的值，不是对象。也就是说，由于Symbol值不是对象，所以不能添加属性。基本上，它是一种类似于字符串的数据类型。<br>………</p>
+<h2 id="九、Set和Map数据结构"><a href="#九、Set和Map数据结构" class="headerlink" title="九、Set和Map数据结构"></a>九、Set和Map数据结构</h2><ul>
+<li>Set</li>
+<li>WeakSet</li>
+<li>Map</li>
+<li>WeakMap</li>
+</ul>
+<h2 id="十、Class"><a href="#十、Class" class="headerlink" title="十、Class"></a>十、Class</h2><p>JavaScript语言的传统方法是通过构造函数，定义并生成新对象。下面是一个例子。</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs actionscript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Point</span><span class="hljs-params">(x, y)</span> </span>&#123;<br>  <span class="hljs-keyword">this</span>.x = x;<br>  <span class="hljs-keyword">this</span>.y = y;<br>&#125;<br><br>Point.prototype.toString = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;(&#x27;</span> + <span class="hljs-keyword">this</span>.x + <span class="hljs-string">&#x27;, &#x27;</span> + <span class="hljs-keyword">this</span>.y + <span class="hljs-string">&#x27;)&#x27;</span>;<br>&#125;;<br><br><span class="hljs-keyword">var</span> p = <span class="hljs-keyword">new</span> Point(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);<br></code></pre></td></tr></table></figure>
+<p>上面这种写法跟传统的面向对象语言（比如C++和Java）差异很大，很容易让新学习这门语言的程序员感到困惑。</p>
+<p>ES6提供了更接近传统语言的写法，引入了Class（类）这个概念，作为对象的模板。通过class关键字，可以定义类。基本上，ES6的class可以看作只是一个语法糖，它的绝大部分功能，ES5都可以做到，新的class写法只是让对象原型的写法更加清晰、更像面向对象编程的语法而已。上面的代码用ES6的“类”改写，就是下面这样。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-comment">//定义类</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> </span>&#123;<br>  <span class="hljs-keyword">constructor</span>(x, y) &#123;<br>    <span class="hljs-keyword">this</span>.x = x;<br>    <span class="hljs-keyword">this</span>.y = y;<br>  &#125;<br><br>  toString() &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;(&#x27;</span> + <span class="hljs-keyword">this</span>.x + <span class="hljs-string">&#x27;, &#x27;</span> + <span class="hljs-keyword">this</span>.y + <span class="hljs-string">&#x27;)&#x27;</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>上面代码定义了一个“类”，可以看到里面有一个constructor方法，这就是构造方法，而this关键字则代表实例对象。也就是说，ES5的构造函数Point，对应ES6的Point类的构造方法。<br>Point类除了构造方法，还定义了一个toString方法。注意，定义“类”的方法的时候，前面不需要加上function这个关键字，直接把函数定义放进去了就可以了。另外，方法之间不需要逗号分隔，加了会报错。<br>ES6的类，完全可以看作构造函数的另一种写法。类的数据类型就是函数，类本身就指向构造函数。使用的时候，也是直接对类使用new命令，跟构造函数的用法完全一致。</p>
+<h2 id="十一、Module模块"><a href="#十一、Module模块" class="headerlink" title="十一、Module模块"></a>十一、Module模块</h2><blockquote>
+<p>模块功能主要由两个命令构成：export和import。export命令用于规定模块的对外接口，import命令用于输入其他模块提供的功能。</p>
+</blockquote>
+<h3 id="export-命令"><a href="#export-命令" class="headerlink" title="export 命令"></a>export 命令</h3><p>一个模块就是一个独立的文件。该文件内部的所有变量，外部无法获取。如果你希望外部能够读取模块内部的某个变量，就必须使用export关键字输出该变量。下面是一个 JS 文件，里面使用export命令输出变量。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-comment">// profile.js</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">var</span> firstName = <span class="hljs-string">&#x27;Michael&#x27;</span>;<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">var</span> lastName = <span class="hljs-string">&#x27;Jackson&#x27;</span>;<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">var</span> year = <span class="hljs-number">1958</span>;<br></code></pre></td></tr></table></figure>
+<p>上面代码是profile.js文件，保存了用户信息。ES6将其视为一个模块，里面用export命令对外部输出了三个变量。<br>export的写法，除了像上面这样，还有另外一种。</p>
+<p>// profile.js<br>var firstName = ‘Michael’;<br>var lastName = ‘Jackson’;<br>var year = 1958;</p>
+<p>export {firstName, lastName, year};<br>上面代码在export命令后面，使用大括号指定所要输出的一组变量。它与前一种写法（直接放置在var语句前）是等价的，但是应该优先考虑使用这种写法。因为这样就可以在脚本尾部，一眼看清楚输出了哪些变量。<br>export命令除了输出变量，还可以输出函数或类（class）。</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ada">export <span class="hljs-keyword">function</span> <span class="hljs-title">multiply</span>(x, y) &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-type">x</span> * y;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>上面代码对外输出一个函数multiply。</p>
+<p>通常情况下，export输出的变量就是本来的名字，但是可以使用as关键字重命名。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">v1</span>(<span class="hljs-params"></span>) </span>&#123; ... &#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">v2</span>(<span class="hljs-params"></span>) </span>&#123; ... &#125;<br><br><span class="hljs-keyword">export</span> &#123;<br>  v1 <span class="hljs-keyword">as</span> streamV1,<br>  v2 <span class="hljs-keyword">as</span> streamV2,<br>  v2 <span class="hljs-keyword">as</span> streamLatestVersion<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>上面代码使用as关键字，重命名了函数v1和v2的对外接口。重命名后，v2可以用不同的名字输出两次。<br>需要特别注意的是，export命令规定的是对外的接口，必须与模块内部的变量建立一一对应关系。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-comment">// 报错</span><br><span class="hljs-keyword">export</span> <span class="hljs-number">1</span>;<br><br><span class="hljs-comment">// 报错</span><br><span class="hljs-keyword">var</span> m = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">export</span> m;<br></code></pre></td></tr></table></figure>
+<p>上面两种写法都会报错，因为没有提供对外的接口。第一种写法直接输出1，第二种写法通过变量m，还是直接输出1。1只是一个值，不是接口。正确的写法是下面这样。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-comment">// 写法一</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">var</span> m = <span class="hljs-number">1</span>;<br><br><span class="hljs-comment">// 写法二</span><br><span class="hljs-keyword">var</span> m = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">export</span> &#123;m&#125;;<br><br><span class="hljs-comment">// 写法三</span><br><span class="hljs-keyword">var</span> n = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">export</span> &#123;n <span class="hljs-keyword">as</span> m&#125;;<br></code></pre></td></tr></table></figure>
+<p>上面三种写法都是正确的，规定了对外的接口m。其他脚本可以通过这个接口，取到值1。它们的实质是，在接口名与模块内部变量之间，建立了一一对应的关系。<br>同样的，function和class的输出，也必须遵守这样的写法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 报错</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>&#123;&#125;<br><span class="hljs-keyword">export</span> f;<br><br><span class="hljs-comment">// 正确</span><br><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>&#123;&#125;;<br><br><span class="hljs-comment">// 正确</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>&#123;&#125;<br><span class="hljs-keyword">export</span> &#123;f&#125;;<br></code></pre></td></tr></table></figure>
+<p>另外，export语句输出的接口，与其对应的值是动态绑定关系，即通过该接口，可以取到模块内部实时的值。</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-keyword">export</span> var foo = <span class="hljs-string">&#x27;bar&#x27;</span>;<br><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> foo = <span class="hljs-string">&#x27;baz&#x27;</span>, <span class="hljs-number">500</span>);<br></code></pre></td></tr></table></figure>
+<p>上面代码输出变量foo，值为bar，500毫秒之后变成baz。</p>
+<h3 id="import-命令"><a href="#import-命令" class="headerlink" title="import 命令"></a>import 命令</h3><p>使用export命令定义了模块的对外接口以后，其他 JS 文件就可以通过import命令加载这个模块。</p>
+<pre><code>// main.js
+import &#123;firstName, lastName, year&#125; from &#39;./profile&#39;;
+
+function setName(element) &#123;
+  element.textContent = firstName + &#39; &#39; + lastName;
+&#125;
+</code></pre>
+<p>上面代码的import命令，用于加载profile.js文件，并从中输入变量。import命令接受一对大括号，里面指定要从其他模块导入的变量名。大括号里面的变量名，必须与被导入模块（profile.js）对外接口的名称相同。</p>
+<p>如果想为输入的变量重新取一个名字，import命令要使用as关键字，将输入的变量重命名。</p>
+<pre><code>import &#123; lastName as surname &#125; from &#39;./profile&#39;;
+</code></pre>
+<p>import后面的from指定模块文件的位置，可以是相对路径，也可以是绝对路径，.js路径可以省略。如果只是模块名，不带有路径，那么必须有配置文件，告诉 JavaScript 引擎该模块的位置。</p>
+<pre><code>import &#123;myMethod&#125; from &#39;util&#39;;
+</code></pre>
+<p>上面代码中，util是模块文件名，由于不带有路径，必须通过配置，告诉引擎怎么取到这个模块。</p>
+<p>注意，import命令具有提升效果，会提升到整个模块的头部，首先执行。</p>
+<pre><code>foo();
+
+import &#123; foo &#125; from &#39;my_module&#39;;
+</code></pre>
+<p>上面的代码不会报错，因为import的执行早于foo的调用。这种行为的本质是，import命令是编译阶段执行的，在代码运行之前。</p>
+<p>由于import是静态执行，所以不能使用表达式和变量，这些只有在运行时才能得到结果的语法结构。</p>
+<pre><code>// 报错
+import &#123; &#39;f&#39; + &#39;oo&#39; &#125; from &#39;my_module&#39;;
+
+// 报错
+let module = &#39;my_module&#39;;
+import &#123; foo &#125; from module;
+
+// 报错
+if (x === 1) &#123;
+  import &#123; foo &#125; from &#39;module1&#39;;
+&#125; else &#123;
+  import &#123; foo &#125; from &#39;module2&#39;;
+&#125;
+</code></pre>
+<p>上面三种写法都会报错，因为它们用到了表达式、变量和if结构。在静态分析阶段，这些语法都是没法得到值的。</p>
+<p>最后，import语句会执行所加载的模块，因此可以有下面的写法。</p>
+<pre><code>import &#39;lodash&#39;;
+</code></pre>
+<p>上面代码仅仅执行lodash模块，但是不输入任何值。</p>
+<p>如果多次重复执行同一句import语句，那么只会执行一次，而不会执行多次。</p>
+<pre><code>import &#39;lodash&#39;;
+import &#39;lodash&#39;;
+</code></pre>
+<p>上面代码加载了两次lodash，但是只会执行一次。</p>
+<pre><code>import &#123; foo &#125; from &#39;my_module&#39;;
+import &#123; bar &#125; from &#39;my_module&#39;;
+
+// 等同于
+import &#123; foo, bar &#125; from &#39;my_module&#39;;
+</code></pre>
+<p>上面代码中，虽然foo和bar在两个语句中加载，但是它们对应的是同一个my_module实例。<br>除了指定加载某个输出值，还可以使用整体加载，即用星号（*）指定一个对象，所有输出值都加载在这个对象上面。</p>
+<p>下面是一个circle.js文件，它输出两个方法area和circumference。</p>
+<pre><code>// circle.js
+
+export function area(radius) &#123;
+  return Math.PI * radius * radius;
+&#125;
+
+export function circumference(radius) &#123;
+  return 2 * Math.PI * radius;
+&#125;
+</code></pre>
+<p>现在，加载这个模块。</p>
+<pre><code>// main.js
+
+import &#123; area, circumference &#125; from &#39;./circle&#39;;
+
+console.log(&#39;圆面积：&#39; + area(4));
+console.log(&#39;圆周长：&#39; + circumference(14));
+</code></pre>
+<p>上面写法是逐一指定要加载的方法，整体加载的写法如下。</p>
+<pre><code>import * as circle from &#39;./circle&#39;;
+
+console.log(&#39;圆面积：&#39; + circle.area(4));
+console.log(&#39;圆周长：&#39; + circle.circumference(14));
+</code></pre>
+<p>从前面的例子可以看出，使用import命令的时候，用户需要知道所要加载的变量名或函数名，否则无法加载。但是，用户肯定希望快速上手，未必愿意阅读文档，去了解模块有哪些属性和方法。</p>
+<p>为了给用户提供方便，让他们不用阅读文档就能加载模块，就要用到export default命令，为模块指定默认输出。</p>
+<pre><code>// export-default.js
+export default function () &#123;
+  console.log(&#39;foo&#39;);
+&#125;
+</code></pre>
+<p>上面代码是一个模块文件export-default.js，它的默认输出是一个函数。<br>其他模块加载该模块时，import命令可以为该匿名函数指定任意名字。</p>
+<pre><code>// import-default.js
+import customName from &#39;./export-default&#39;;
+customName(); // &#39;foo&#39;
+</code></pre>
+<p>上面代码的import命令，可以用任意名称指向export-default.js输出的方法，这时就不需要知道原模块输出的函数名。需要注意的是，这时import命令后面，不使用大括号。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/ES6/">ES6</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/ES6/">ES6</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2017/02/16/react-echarts/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">react-使用echarts，以及使用echats的地图</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2017/01/19/react-jsx%E8%AF%AD%E6%B3%95%E8%A7%84%E8%8C%83/">
+                        <span class="hidden-mobile">react/jsx语法规范</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

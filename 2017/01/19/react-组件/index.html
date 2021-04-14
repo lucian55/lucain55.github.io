@@ -1,0 +1,449 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpg">
+  <link rel="icon" href="/img/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="liushaozhen">
+  <meta name="keywords" content="">
+  
+  <title>react-组件定义以及es5与es6在react中的不同写法 - liushaozhen</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>牧之的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="react-组件定义以及es5与es6在react中的不同写法">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2017-01-19 14:38" pubdate>
+        2017年1月19日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      849 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      14
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">react-组件定义以及es5与es6在react中的不同写法</h1>
+            
+            <div class="markdown-body">
+              <blockquote>
+<p>组件定义以及es5与es6在react中的不同写法</p>
+</blockquote>
+<h2 id="es5组件"><a href="#es5组件" class="headerlink" title="es5组件"></a>es5组件</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/babel&quot;</span>&gt;</span><br><span class="javascript">    <span class="hljs-keyword">var</span> Cm=React.createClass(&#123;</span><br><span class="javascript">        getDefaultProps:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">          <span class="hljs-keyword">return</span> &#123;</span><br><span class="javascript">              title:<span class="hljs-string">&#x27;title&#x27;</span></span><br>          &#125;<br>        &#125;,<br><span class="javascript">        getInitialState:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">            <span class="hljs-keyword">return</span> &#123;<span class="hljs-attr">key</span>:<span class="hljs-literal">true</span>&#125;</span><br>        &#125;,<br><span class="javascript">        handleClick:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">            <span class="hljs-built_in">this</span>.setState(&#123;</span><br><span class="javascript">                key:!<span class="hljs-built_in">this</span>.state.key</span><br>            &#125;)<br>        &#125;,<br><span class="javascript">        render:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">            <span class="hljs-keyword">var</span> text=<span class="hljs-built_in">this</span>.state.key?<span class="hljs-string">&#x27;+&#x27;</span>:<span class="hljs-string">&#x27;-&#x27;</span>;</span><br><span class="javascript">            <span class="hljs-keyword">return</span>(</span><br><span class="handlebars"><span class="xml">                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">&#123;this.handleClick&#125;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;title&#x27;</span>&gt;</span>1&#123;text&#125;1<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span></span><br>            )<br>        &#125;<br>    &#125;);<br><span class="javascript">    ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Cm</span>/&gt;</span></span>,<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;b&#x27;</span>));</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="es6组件"><a href="#es6组件" class="headerlink" title="es6组件"></a>es6组件</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/babel&quot;</span>&gt;</span><br><span class="javascript">    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CmEs</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span></span>&#123;</span><br><span class="javascript">        <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">props</span>)</span>&#123;</span><br><span class="javascript">            <span class="hljs-built_in">super</span>(props);</span><br><span class="javascript">            <span class="hljs-built_in">this</span>.state=&#123;</span><br><span class="javascript">                key:<span class="hljs-literal">true</span></span><br>            &#125;<br>        &#125;<br><span class="javascript">        <span class="hljs-function"><span class="hljs-title">handleClick</span>(<span class="hljs-params">e</span>)</span>&#123;</span><br><span class="javascript">            <span class="hljs-built_in">this</span>.setState(&#123;</span><br><span class="javascript">                key:!<span class="hljs-built_in">this</span>.state.key</span><br>            &#125;)<br>        &#125;<br><span class="javascript">        <span class="hljs-function"><span class="hljs-title">render</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">            <span class="hljs-keyword">var</span> text=<span class="hljs-built_in">this</span>.state.key?<span class="hljs-string">&#x27;+&#x27;</span>:<span class="hljs-string">&#x27;-&#x27;</span>;</span><br><span class="javascript">            <span class="hljs-keyword">return</span>(</span><br><span class="handlebars"><span class="xml">                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">&#123;this.handleClick.bind(this)&#125;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;title&#x27;</span>&gt;</span>1&#123;text&#125;1<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span></span><br>            )<br>        &#125;<br>    &#125;<br>    CmEs.defaultProps=&#123;<br><span class="javascript">        title:<span class="hljs-string">&#x27;title&#x27;</span></span><br>    &#125;;<br><span class="javascript">    ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">CmEs</span>/&gt;</span></span>,<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;c&#x27;</span>));</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="es5与es6-react写法的不同"><a href="#es5与es6-react写法的不同" class="headerlink" title="es5与es6 react写法的不同"></a>es5与es6 react写法的不同</h2><ol>
+<li>引入模块<br>es5写法： <code>var React=require(&#39;react&#39;);</code><br>es6写法： <code>var React,&#123;Component,PropTypes&#125; from &#39;react&#39;;</code></li>
+<li>导出模块<br>es5写法：用define和return实现<br>es6写法：<code>export default 组件名称</code></li>
+<li>组件<ol>
+<li>定义组件<br>es5写法 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> Cm=React.createClass(&#123;<br>       render:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>           <span class="hljs-keyword">return</span>(<br>                   &lt;span&gt;hello word&lt;/span&gt;<br>           )<br>       &#125;<br>   &#125;);<br></code></pre></td></tr></table></figure>
+es6写法<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs scala"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CmEs</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>&#123;  <br>    render:function()&#123;<br>           <span class="hljs-keyword">return</span>(<br>                   &lt;span&gt;hello word&lt;/span&gt;<br>           )<br>       &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>定义组件的属性类型和默认属性(Props)<br>es5写法：写在组件内部<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> Cm=React.createClass(&#123;<br>	getDefaultProps:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>         <span class="hljs-keyword">return</span> &#123;<br>             title:<span class="hljs-string">&#x27;title&#x27;</span><br>         &#125;<br>       &#125;,<br>       render:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>           <span class="hljs-keyword">return</span>(<br>                   &lt;span title=<span class="hljs-string">&#x27;title&#x27;</span>&gt;hello word&lt;/span&gt;<br>           )<br>       &#125;<br>   &#125;);<br></code></pre></td></tr></table></figure>
+es6写法：写在组件外边<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs scala"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CmEs</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>&#123;  <br>    render:function()&#123;<br>           <span class="hljs-keyword">return</span>(<br>                   &lt;span title=<span class="hljs-symbol">&#x27;titl</span>e&#x27;&gt;hello word&lt;/span&gt;<br>           )<br>       &#125;<br>&#125;<br>	<span class="hljs-type">CmEs</span>.defaultProps=&#123;<br>       title:<span class="hljs-symbol">&#x27;titl</span>e&#x27;<br>   &#125;;<br></code></pre></td></tr></table></figure></li>
+<li>初始化state<br>es5写法<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> Cm=React.createClass(&#123;<br>		getInitialState:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>           <span class="hljs-keyword">return</span> &#123;<span class="hljs-attr">key</span>:<span class="hljs-literal">true</span>&#125;<br>       &#125;,<br>       render:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>           <span class="hljs-keyword">return</span>(<br>                   &lt;span&gt;hello word&lt;/span&gt;<br>           )<br>       &#125;<br>   &#125;);<br></code></pre></td></tr></table></figure>
+es6写法<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs scala"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CmEs</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>&#123;  <br>	constructor(props)&#123;<br>           <span class="hljs-keyword">super</span>(props);<br>           <span class="hljs-keyword">this</span>.state=&#123;<br>               key:<span class="hljs-literal">true</span><br>           &#125;<br>       &#125;<br>    render:function()&#123;<br>           <span class="hljs-keyword">return</span>(<br>                   &lt;span&gt;hello word&lt;/span&gt;<br>           )<br>       &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>绑定方法<br>es5写法：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> Cm=React.createClass(&#123;<br>		 handleClick:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>           <span class="hljs-built_in">this</span>.setState(&#123;<br>               key:!<span class="hljs-built_in">this</span>.state.key<br>           &#125;)<br>       &#125;,<br>       render:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>           <span class="hljs-keyword">return</span>(<br>                   &lt;span onClick=&#123;<span class="hljs-built_in">this</span>.handleClick&#125;&gt;hello word&lt;/span&gt;<br>           )<br>       &#125;<br>   &#125;);<br></code></pre></td></tr></table></figure>
+es6写法<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs scala"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CmEs</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>&#123;  <br>	handleClick(e)&#123;<br>           <span class="hljs-keyword">this</span>.setState(&#123;<br>               key:!<span class="hljs-keyword">this</span>.state.key<br>           &#125;)<br>       &#125;<br>    render:function()&#123;<br>           <span class="hljs-keyword">return</span>(<br>                   &lt;span onClick=&#123;<span class="hljs-keyword">this</span>.handleClick.bind(<span class="hljs-keyword">this</span>)&#125;&gt;hello word&lt;/span&gt;<br>           )<br>       &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li>Mixins<br>使用ES6语法来创建组件是不支持React mixins的，如果一定要使用React mixins就只能使用React.createClass方法来创建组件了。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> React,&#123; Component &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span>;<br><br><span class="hljs-keyword">var</span> SetIntervalMixin = &#123;<br>  doSomething: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;do somethis...&#x27;</span>);<br>  &#125;,<br>&#125;;<br><span class="hljs-keyword">const</span> Contacts = React.createClass(&#123;<br>  mixins: [SetIntervalMixin],<br>  <br>  <span class="hljs-function"><span class="hljs-title">handleClick</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.doSomething(); <span class="hljs-comment">//使用mixin</span><br>  &#125;,<br>  <span class="hljs-function"><span class="hljs-title">render</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-keyword">return</span> (<br>      &lt;div onClick=&#123;<span class="hljs-built_in">this</span>.handleClick&#125;&gt;&lt;/div&gt;<br>    );<br>  &#125;<br>&#125;);<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Contacts;<br></code></pre></td></tr></table></figure></li>
+<li>解构赋值与属性传递<br>利用es6语法中的 … 运算符进行传递<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs scala"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AutoloadingPostsGrid</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>&#123;<br>    render() &#123;<br>        <span class="hljs-keyword">var</span> &#123;<br>            className,<br>            ...others,  <span class="hljs-comment">// contains all properties of this.props except for className</span><br>        &#125; = <span class="hljs-keyword">this</span>.props;<br>        <span class="hljs-keyword">return</span> (<br>            &lt;div className=&#123;className&#125;&gt;<br>                &lt;<span class="hljs-type">PostsGrid</span> &#123;...others&#125; /&gt;<br>                &lt;button onClick=&#123;<span class="hljs-keyword">this</span>.handleLoadMoreClick&#125;&gt;<span class="hljs-type">Load</span> more&lt;/button&gt;<br>            &lt;/div&gt;<br>        );<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+下面这种写法，则是传递所有属性的同时，用新的className值进行覆盖（{…this.props}写在前边）：<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs axapta">&lt;<span class="hljs-keyword">div</span> &#123;...<span class="hljs-keyword">this</span>.props&#125; className=<span class="hljs-string">&quot;override&quot;</span>&gt;<br>    …<br>&lt;/<span class="hljs-keyword">div</span>&gt;<br></code></pre></td></tr></table></figure>
+这个例子则相反，如果属性中没有包含className，则提供默认的值，而如果属性中已经包含了，则使用属性中的值（{…this.props}写在后边）<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs axapta">&lt;<span class="hljs-keyword">div</span> className=<span class="hljs-string">&quot;base&quot;</span> &#123;...<span class="hljs-keyword">this</span>.props&#125;&gt;<br>    …<br>&lt;/<span class="hljs-keyword">div</span>&gt;<br></code></pre></td></tr></table></figure></li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/react/">react</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/react/">react</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2017/01/19/react-%E5%A4%8D%E5%90%88%E7%BB%84%E4%BB%B6/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">react-复合组件</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2017/01/19/react-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
+                        <span class="hidden-mobile">react-基本使用</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

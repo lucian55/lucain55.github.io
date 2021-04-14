@@ -1,0 +1,511 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpg">
+  <link rel="icon" href="/img/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="liushaozhen">
+  <meta name="keywords" content="">
+  
+  <title>nodejs之process模块 - liushaozhen</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>牧之的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="nodejs之process模块">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2017-02-25 15:13" pubdate>
+        2017年2月25日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      12
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">nodejs之process模块</h1>
+            
+            <div class="markdown-body">
+              <h1 id="nodejs之process模块"><a href="#nodejs之process模块" class="headerlink" title="nodejs之process模块"></a>nodejs之process模块</h1><blockquote>
+<p>process可以用于node和系统中已经存在的进程进行交互，创建工作子进程等。process模块是一个全局对象，允许你获得或者修改当前node进程的设置。</p>
+</blockquote>
+<h2 id="1-process的引入"><a href="#1-process的引入" class="headerlink" title="1.process的引入"></a>1.process的引入</h2><p>process模块用来与当前进程互动，可以通过全局变量process访问，不必使用require命令加载。它是一个EventEmitter对象的实例。</p>
+<h2 id="2-process事件"><a href="#2-process事件" class="headerlink" title="2.process事件"></a>2.process事件</h2><h3 id="1）exit事件"><a href="#1）exit事件" class="headerlink" title="1）exit事件"></a>1）exit事件</h3><p>当前进程退出时（即按”ctre+c”时）会触发exit事件，可以对该事件指定回调函数。这是一个用来定时检测模块状态的钩子。当主事件循环在执行完exit的回调函数后将不再执行，所以在exit事件中定义的定时器不会被加入到事件列表</p>
+<pre><code>process.on(&#39;exit&#39;, function() &#123;
+  // 设置一个延迟执行
+  setTimeout(function() &#123;
+console.log(&#39;主事件循环已停止，所以不会执行&#39;);
+  &#125;, 0);
+  console.log(&#39;退出前执行&#39;);
+&#125;);
+</code></pre>
+<p>###2）uncaughtException事件###<br>这是process的异常事件，uncaughtException译为：未捕获的异常，可以利用这个函数来捕获整个进程运行时的异常，这里可以理解为“使本node.js进程中断的异常”</p>
+<pre><code>process.on(&#39;uncaughtException&#39;, function (err) &#123;
+　　console.log(&#39;Caught exception: &#39; + err);
+&#125;);
+nonexistentFunc();
+console.log(&#39;This will not run.&#39;);
+</code></pre>
+<p>说明：以上的例子注册了uncaughtException事件来捕获系统异常，执行到nonexistentFunc()时，因为改函数没有定义所以会抛出异常。因为javascript是解释性语言，nonexistentFunc()方法上面的语句不会被影响到，他下面的语句不会执行。所以他执行的结果如下：</p>
+<pre><code>Caught exception: ReferenceError: nonexistentFunc is not defined
+This will still run.
+</code></pre>
+<h2 id="2-process属性"><a href="#2-process属性" class="headerlink" title="2.process属性"></a>2.process属性</h2><ul>
+<li>process.pid：当前进程的进程号。</li>
+<li>process.version：Node的版本，比如v0.10.18。</li>
+<li>process.platform：当前系统平台，比如Linux。</li>
+<li>process.title：默认值为“node”，可以自定义该值。</li>
+<li>process.argv：当前进程的命令行参数数组。</li>
+<li>process.env：指向当前shell的环境变量。</li>
+<li>process.execPath：运行当前进程的可执行文件的绝对路径。</li>
+<li>process.stdout：指向标准输出。</li>
+<li>process.stdin：指向标准输入。</li>
+<li>process.stderr：指向标准错误。</li>
+</ul>
+<p>以下是主要属性的介绍：</p>
+<h3 id="1）stdout"><a href="#1）stdout" class="headerlink" title="1）stdout"></a>1）stdout</h3><p>process.stdout用来控制标准输出，也就是在命令行窗口向用户显示内容。它的write方法等同于console.log。</p>
+<pre><code>process.stdout.write(&#39;description:&#39;);
+</code></pre>
+<h3 id="2）argv"><a href="#2）argv" class="headerlink" title="2）argv###"></a>2）argv###</h3><p>process.argv返回命令行脚本的各个参数组成的数组。数组第一项是node，第二项是.js文件的名称，接下来依次是命令行传入的参数<br>建立iweb.js</p>
+<pre><code>console.log(process.argv);
+</code></pre>
+<p>在命令行输入：</p>
+<pre><code>node iweb.js 3000 2000
+</code></pre>
+<p>结果如下：</p>
+<pre><code>[ &#39;C:\\Program Files\\nodejs\\node.exe&#39;,&#39;D:\\portal\\iuap_portal_fe\\node_modules\\iweb\\bin\\iweb.js&#39;,&#39;3000&#39;,&#39;2000&#39; ]
+</code></pre>
+<h2 id="3-process方法"><a href="#3-process方法" class="headerlink" title="3.process方法"></a>3.process方法</h2><ul>
+<li>process.abort()：退出node并创建一个核心文件</li>
+<li>process.exit()：退出当前进程。</li>
+<li>process.cwd()：返回运行当前脚本的工作目录的路径。</li>
+<li>process.chdir()：改变工作目录。</li>
+<li>process.nextTick()：将一个回调函数放在下次事件循环的顶部。</li>
+<li>process.kill()：向进程发送一个信号</li>
+<li>process.memoryUsage()：返回内存使用情况单位是bytes。</li>
+<li>process.uptime()：返回 Node 程序已运行的秒数。</li>
+<li>process.hrtime()：</li>
+</ul>
+<p>以下是部分方法的介绍：</p>
+<h3 id="1）process-chdir"><a href="#1）process-chdir" class="headerlink" title="1）process.chdir()"></a>1）process.chdir()</h3><p>改变进程的当前进程的工作目录，若操作失败则抛出异常。</p>
+<pre><code>console.log(&#39;当前目录：&#39; + process.cwd());
+try &#123;
+  process.chdir(&#39;/tmp&#39;);
+  console.log(&#39;新目录：&#39; + process.cwd());
+&#125;
+catch (err) &#123;
+  console.log(&#39;chdir: &#39; + err);
+&#125;
+</code></pre>
+<h3 id="2）process-nextTick-callback"><a href="#2）process-nextTick-callback" class="headerlink" title="2）process.nextTick(callback)"></a>2）process.nextTick(callback)</h3><p>在事件循环的下一次循环中调用 callback 回调函数。</p>
+<pre><code>console.log(&#39;开始&#39;);
+process.nextTick(function() &#123;
+  console.log(&#39;nextTick 回调&#39;);
+&#125;);
+console.log(&#39;已设定&#39;);
+</code></pre>
+<p>结果如下：</p>
+<pre><code> 输出:
+ 开始
+ 已设定
+ nextTick 回调
+</code></pre>
+<h3 id="3）process-kill-pid-signal"><a href="#3）process-kill-pid-signal" class="headerlink" title="3）process.kill(pid, [signal])"></a>3）process.kill(pid, [signal])</h3><p>向进程发送一个信号。 pid 是进程的 id 而 signal 则是描述信号的字符串名称。信号的名称都形似 ‘SIGINT’ 或者 ‘SIGUSR1’。如果没有指定参数则会默认发送 ‘SIGTERM’ 信号 。</p>
+<pre><code>process.kill(process.pid, &#39;SIGHUP&#39;); 
+</code></pre>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/node/">node</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/node/">node</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2017/02/25/knockout/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Knockout</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2017/02/20/fiddler%E6%89%8B%E6%9C%BA%E6%8A%93%E5%8C%85/">
+                        <span class="hidden-mobile">fiddler手机抓包</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

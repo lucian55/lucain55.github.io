@@ -1,0 +1,568 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpg">
+  <link rel="icon" href="/img/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="liushaozhen">
+  <meta name="keywords" content="">
+  
+  <title>director客户端路由 - liushaozhen</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>牧之的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="director客户端路由">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2017-02-25 15:38" pubdate>
+        2017年2月25日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      23
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">director客户端路由</h1>
+            
+            <div class="markdown-body">
+              <h1 id="director-js：客户端的路由"><a href="#director-js：客户端的路由" class="headerlink" title="director.js：客户端的路由"></a>director.js：客户端的路由</h1><blockquote>
+<p>director是客户端的路由，功能是在不刷新页面的情况下，利用”#”符号组织不同的URL路径。根据不同的URL路径来匹配不同的回调方法。<code>director.js</code> 适用于客户端浏览器以及<code>node.js</code>的服务器端应用，在两者的应用场景里调用方法仅有少量的不同。它非常适合用来开发不需要刷新的单页程序以及node.js应用。<code>director.js</code> 不依赖于任何其他的js库</p>
+</blockquote>
+<h2 id="1-简单的开始"><a href="#1-简单的开始" class="headerlink" title="1.简单的开始"></a>1.简单的开始</h2><p>上文简单提到： <code>director.js</code> 是通过“#”符号进行路径组织的，例如：</p>
+<pre><code>http://www.demo.com/#/show
+http://www.demo.com/#/show/list
+http://www.demo.com/#/show/single
+</code></pre>
+<p>路由注册在URL里的体现是用“#”符号来标识路由的开始，再利用”/“分隔符（分隔符可自定义，后面会讲到）来定义路由片段。客户端路由其实就是通过URL来区分应用程序的不同状态，并且定义在不同的状态下应该做什么事情。当用户访问不同的URL时，<code>director.js </code>会解析路由信息并告知应用程序需要做什么事情。<br>下面是一个简单的例子：</p>
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;demo&lt;/title&gt;
+    &lt;script src=&quot;director.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;#/author&quot;&gt;author&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#/books&quot;&gt;books&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#/books/view/1&quot;&gt;books/view/1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/body&gt;
+&lt;script&gt;
+
+    var author = function () &#123;
+                console.log(&quot;author&quot;);
+            &#125;,
+            books = function () &#123;
+                console.log(&quot;books&quot;);
+            &#125;,
+            viewBook = function (bookId) &#123;
+                console.log(&quot;viewBook: bookId is populated: &quot; + bookId);
+            &#125;;
+
+    var routes = &#123;
+        &#39;/author&#39;: author,
+        &#39;/books&#39;: [books, function () &#123;
+            console.log(&quot;An inline route handler.&quot;);
+        &#125;],
+        &#39;/books/view/:bookId&#39;: viewBook
+    &#125;;
+
+    var router = Router(routes);
+    router.init();
+
+&lt;/script&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="2-初始化及路由注册"><a href="#2-初始化及路由注册" class="headerlink" title="2.初始化及路由注册"></a>2.初始化及路由注册</h2><p><code>director.js</code>的主要对象是<code>Router</code>对象，构造方法如下：</p>
+<pre><code>var router = new Router(routes);
+</code></pre>
+<p>构造方法传入的<code>routes</code>参数是一个路由表对象，它是一个具有键值对结构的对象，路由允许多层的嵌套定义。<br>键值对的键对应URL中传入的路径，一般一个键对应按分隔符切割后的某一部分；而键值对的值则对应该路径需要触发的回调函数名，可以传入一个或多个函数名，传入多个函数名时请使用数组对象。一般来说，回调函数要在路由表对象使用前先声明，否则js会报错。另外，回调函数除非特殊情况，一般不推荐使用匿名函数，请尽量先声明后使用。</p>
+<pre><code>var routes = &#123;
+    &#39;/dog&#39;: bark,    
+    &#39;/cat&#39;: [meow, scratch]
+  &#125;;
+</code></pre>
+<p>上面例子中，对应的URL分别为：<code>#/dog</code> 和 <code>#/cat</code></p>
+<p>声明<code>Router</code>对象后，需要调用<code>init()</code>方法进行初始化，如下：</p>
+<pre><code>var routes = &#123;
+    &#39;/dog&#39;: bark,    
+    &#39;/cat&#39;: [meow, scratch]
+&#125;;
+
+var router = Router(routes);
+router.init();
+</code></pre>
+<h2 id="3-路由的即时注册"><a href="#3-路由的即时注册" class="headerlink" title="3.路由的即时注册"></a>3.路由的即时注册</h2><p>当我们在开发一些规模比较大的应用的时候，一般做不到一开始就将需要的路径和它对应的回调函数都预先准备好。很多时候，我们都是在做到某一功能时，或者是开发一些独立性比较强耦合度比较低的模块时，才知道我们需要什么样的路径和回调函数。这个时候我们就需要实时注册路由的功能了。 </p>
+<p><code>director.js</code> 通过“<code>on</code>”方法，提供对即时注册功能的支持，示例如下：</p>
+<pre><code>router.on(&#39;/rabbit&#39;, function()&#123;
+　　...
+&#125;)
+</code></pre>
+<h2 id="4-路由事件"><a href="#4-路由事件" class="headerlink" title="4.路由事件"></a>4.路由事件</h2><p>路由事件是路由注册表中一个有固定命名的属性，是指当路由方法<code>router.dispatch()</code>被调用时，路由匹配成功的时定义的需要触发的回调方法（允许定义多个回调方法）。上文即时注册功能里的”on”方法就是一个事件。具体信息如下：</p>
+<ul>
+<li><code>on</code> ：当路由匹配成功后，需要执行的方法</li>
+<li><code>before</code>：在触发“on”方法之前执行的方法</li>
+</ul>
+<p>仅在客户端有效的方法：</p>
+<ul>
+<li><p><code>after</code>：当离开当前注册路径时，需要执行的方法</p>
+</li>
+<li><p><code>once</code>: 当前注册路径仅执行一次的方法</p>
+<pre><code>  var before = function (id) &#123;
+      alert(&quot;direct to : /Home/About/&quot; + id);
+  &#125;,
+  on = function (id) &#123;
+      window.location = &quot;/Home/About/&quot; + id;
+  &#125;;
+  var routes = &#123;
+      &quot;/about/:id&quot;: &#123;
+          before: before,
+          on: on
+      &#125;
+  &#125;
+</code></pre>
+</li>
+</ul>
+<h2 id="5-配置参数"><a href="#5-配置参数" class="headerlink" title="5.配置参数"></a>5.配置参数</h2><p><code>director.js</code> 通过配置一些可选项的参数从而提升Router对象的灵活性。而这些参数的设置需要通过<code>router.configure()</code>方法实现。</p>
+<pre><code>var router = new director.Router(routes).configure(options);
+</code></pre>
+<p>具体的配置参数有：</p>
+<ul>
+<li>recurse：控制路由递归触发方式的参数，可选值为”forward”,”backward”和”false”，客户端的默认值是”false”，而服务端的默认值是”backward”</li>
+<li>strict：当值为”false”时，路径允许以”/“结尾（也可以是其他自定义的分隔符）；默认值是”true”，说明默认不允许路径以”/“结尾</li>
+<li>async：同步异步控制器，值为”ture”,”false”，默认值为”false”</li>
+<li>delimiter：路由分隔符，默认值为”/“</li>
+<li>notfound：当路由方法router.dispatch()被调用时，没有匹配到任何路由时触发的方法</li>
+<li>on：当路由方法router.dispatch()被调用时，任何一个路由匹配成功后都需要执行的方法；与上文路由事件中的“on”事件的区别类似于全局和局部的概念，路由表中仅针对当前注册的路由；而configure方法中的”on”则针对全局的所有路由</li>
+<li>before：当路由方法router.dispatch()被调用时，当任何一个路由匹配成功并在”on”执行之前需要执行的方法；与上文路由事件中的 “before” 事件的区别同上</li>
+</ul>
+<p>仅在客户端有效的参数：</p>
+<ul>
+<li>resource：用来进行回调函数绑定的基于字符串的对象。使用该参数能实现回调函数的延迟绑定（原词是 “late-binding”，后面有相关的详细说明）</li>
+<li>after：当给定的路径不再是当前激活的路径时触发的方法，可以理解为离开当前路径后触发的方法；与上文路由事件中的 “after” 事件的区别同上</li>
+</ul>
+<h2 id="5-URL匹配"><a href="#5-URL匹配" class="headerlink" title="5.URL匹配"></a>5.URL匹配</h2><p>在路由事件那一节的示例里，有这么一个路由表达式<code>&quot;/about/:id&quot;</code>，其中”:”后面定义的部分表示实际路径对应的这部分是传入回调函数的参数，例如”<code>#/about/5</code>“中，5就是id参数的值。参数的匹配还可以用嵌套的方式来定义：</p>
+<pre><code>var router = Router(&#123;
+  &#39;/about&#39;: &#123;
+    &#39;/:id&#39;: &#123;
+      on: on
+    &#125;
+  &#125;
+&#125;);
+</code></pre>
+<p>在实际应用的过程中，我们的路由可能会变得非常复杂，像”<code>/about/:id</code>“这样简单的表达式并不能满足我们的需求。而<code>director.js</code> 支持利用正则表达式来匹配复杂的路由名称，匹配到的值会作为参数传给回调函数，例如：</p>
+<pre><code>var router = Router(&#123;
+  &#39;/hello&#39;: &#123;
+     &#39;/(\\w+)&#39;: &#123;
+      on: function (who) &#123; console.log(who) &#125;
+    &#125;
+  &#125;
+&#125;);
+</code></pre>
+<p>当URL传入’<code>#/hello/world</code>‘，则回调函数的<code>who=world</code><br>支持更为复杂的多参数的传递：</p>
+<pre><code>var fn=function (a, b) &#123;
+        console.log(a, b);
+    &#125;;
+var router = Router(&#123;
+    &#39;/hello&#39;: &#123;
+        &#39;/world/?([^\/]*)\/([^\/]*)/?&#39;: fn
+    &#125;
+&#125;);
+</code></pre>
+<p>当URL传入’<code>#/hello/world/johny/appleseed</code>‘，则回调函数的<code>a=johny,b=applesee</code></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/director/">director</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/director/">director</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2017/03/09/js%E4%B8%AD%E7%9A%84%E5%81%8F%E7%A7%BB%E9%87%8F/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">js中的偏移量</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2017/02/25/knockout/">
+                        <span class="hidden-mobile">Knockout</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

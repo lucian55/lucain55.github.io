@@ -1,0 +1,713 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpg">
+  <link rel="icon" href="/img/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="liushaozhen">
+  <meta name="keywords" content="">
+  
+  <title>jquery Sortable - liushaozhen</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>牧之的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="jquery Sortable">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2016-07-30 15:53" pubdate>
+        2016年7月30日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      32
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">jquery Sortable</h1>
+            
+            <div class="markdown-body">
+              <h1 id="jquery-Sortable"><a href="#jquery-Sortable" class="headerlink" title="jquery Sortable"></a>jquery Sortable</h1><p>所有的事件回调函数都有两个参数：event和ui，浏览器自有event对象，和经过封装的ui对象</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ul>
+<li>ui.helper 表示sortable元素的JQuery对象，通常是当前元素的克隆对象</li>
+<li>ui.position 表示相对当前对象，鼠标的坐标值对象{top,left}</li>
+<li>ui.offset 表示相对于当前页面，鼠标的坐标值对象{top,left}</li>
+<li>ui.item 表示当前拖拽的元素</li>
+<li>ui.placeholder 占位符（如果有定义的话）</li>
+<li>ui.sender 当前拖拽元素的所属sortable对象（仅当元素是从另一个sortable对象传递过来时有用）</li>
+</ul>
+<h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><p>参数名 : 参数类型 : 默认值</p>
+<pre><code>appendTo : String : &#39;parent&#39;
+Defines where the helper that moves with the mouse is being appended to during the drag (for example, to resolve overlap/zIndex issues).
+初始：$(&#39;.selector&#39;).sortable(&#123; appendTo: &#39;body&#39; &#125;);
+获取：var appendTo = $(&#39;.selector&#39;).sortable(&#39;option&#39;, &#39;appendTo&#39;);
+设置：$(&#39;.selector&#39;).sortable(&#39;option&#39;, &#39;appendTo&#39;, &#39;body&#39;);
+</code></pre>
+<hr>
+<pre><code>axis : String : false
+如果有设置，则元素仅能横向或纵向拖动。可选值：&#39;x&#39;, &#39;y&#39;
+初始：$(&#39;.selector&#39;).sortable(&#123; axis: &#39;x&#39; &#125;);
+获取：var axis = $(&#39;.selector&#39;).sortable(&#39;option&#39;, &#39;axis&#39;);
+设置：$(&#39;.selector&#39;).sortable(&#39;option&#39;, &#39;axis&#39;, &#39;x&#39;);
+</code></pre>
+<hr>
+<pre><code>cancel : Selector : &#39;:input,button&#39;
+阻止排序动作在匹配的元素上发生。
+初始：$(&#39;.selector&#39;).sortable(&#123; cancel: &#39;button&#39; &#125;);
+获取：var cancel = $(&#39;.selector&#39;).sortable(&#39;option&#39;, &#39;cancel&#39;);
+设置：$(&#39;.selector&#39;).sortable(&#39;option&#39;, &#39;cancel&#39;, &#39;button&#39;);
+</code></pre>
+<hr>
+<pre><code>connectWith : Selector : false
+允许sortable对象连接另一个sortable对象，可将item元素拖拽到另一个中。
+初始：$(&#39;.selector&#39;).sortable(&#123; connectWith: &#39;.otherlist&#39; &#125;);
+获取：var connectWith = $(&#39;.selector&#39;).sortable(&#39;option&#39;, &#39;connectWith&#39;);
+设置：$(&#39;.selector&#39;).sortable(&#39;option&#39;, &#39;connectWith&#39;, &#39;.otherlist&#39;);
+</code></pre>
+<hr>
+<pre><code>containment : Element, String, Selector : false
+约束排序动作只能在一个指定的范围内发生。可选值：DOM对象, &#39;parent&#39;, &#39;document&#39;, &#39;window&#39;, 或jQuery对象
+初始：$(&#39;.selector&#39;).sortable(&#123; containment: &#39;parent&#39; &#125;);
+获取：var containment = $(&#39;.selector&#39;).sortable(&#39;option&#39;, &#39;containment&#39;);
+设置：$(&#39;.selector&#39;).sortable(&#39;option&#39;, &#39;containment&#39;, &#39;parent&#39;);
+</code></pre>
+<hr>
+<pre><code>cursor : String : &#39;auto&#39;
+定义在开始排序动作时，如果的样式。
+初始：$(&#39;.selector&#39;).sortable(&#123; cursor: &#39;crosshair&#39; &#125;);
+获取：var cursor = $(&#39;.selector&#39;).sortable(&#39;option&#39;, &#39;cursor&#39;);
+设置：$(&#39;.selector&#39;).sortable(&#39;option&#39;, &#39;cursor&#39;, &#39;crosshair&#39;);
+</code></pre>
+<hr>
+<pre><code>cursorAt : Object : false
+当开始移动时，鼠标定位在的某个位置上（最多两个方向）。可选值：&#123; top, left, right, bottom &#125;.
+初始：$(&#39;.selector&#39;).sortable(&#123; cursorAt: &#39;top&#39; &#125;);
+获取：var cursorAt = $(&#39;.selector&#39;).sortable(&#39;option&#39;, &#39;cursorAt&#39;);
+设置：$(&#39;.selector&#39;).sortable(&#39;option&#39;, &#39;cursorAt&#39;, &#39;top&#39;);
+</code></pre>
+<hr>
+<pre><code>delay : Integer : 0
+以毫秒为单位，设置延迟多久才激活排序动作。此参数可防止误点击。
+初始：$(&#39;.selector&#39;).sortable(&#123; delay: 500 &#125;);
+获取：var delay = $(&#39;.selector&#39;).sortable(&#39;option&#39;, &#39;delay&#39;);
+设置：$(&#39;.selector&#39;).sortable(&#39;option&#39;, &#39;delay&#39;, 500);
+</code></pre>
+<hr>
+<pre><code>distance : Integer : 1
+决定至少要在元素上面拖动多少像素后，才正式触发排序动作。
+初始：$(&#39;.selector&#39;).sortable(&#123; distance: 30 &#125;);
+获取：var distance = $(&#39;.selector&#39;).sortable(&#39;option&#39;, &#39;distance&#39;);
+设置：$(&#39;.selector&#39;).sortable(&#39;option&#39;, &#39;distance&#39;, 30);
+</code></pre>
+<hr>
+<pre><code>dropOnEmpty : Boolean : true
+是否允許拖拽到一個空的sortable对象中。
+初始：$(&#39;.selector&#39;).sortable(&#123; dropOnEmpty: false &#125;);
+获取：var dropOnEmpty = $(&#39;.selector&#39;).sortable(&#39;option&#39;, &#39;dropOnEmpty&#39;);
+设置：$(&#39;.selector&#39;).sortable(&#39;option&#39;, &#39;dropOnEmpty&#39;, false);
+</code></pre>
+<hr>
+<pre><code>forceHelperSize : Boolean : false
+If true, forces the helper to have a size.
+初始：$(&#39;.selector&#39;).sortable(&#123; forceHelperSize: true &#125;);
+获取：var forceHelperSize = $(&#39;.selector&#39;).sortable(&#39;option&#39;, &#39;forceHelperSize&#39;);
+设置：$(&#39;.selector&#39;).sortable(&#39;option&#39;, &#39;forceHelperSize&#39;, true);
+</code></pre>
+<hr>
+<pre><code>forcePlaceholderSize : Boolean : false
+If true, forces the placeholder to have a size.
+初始：$(&#39;.selector&#39;).sortable(&#123; forcePlaceholderSize: true &#125;);
+获取：var forcePlaceholderSize = $(&#39;.selector&#39;).sortable(&#39;option&#39;, &#39;forcePlaceholderSize&#39;);
+设置：$(&#39;.selector&#39;).sortable(&#39;option&#39;, &#39;forcePlaceholderSize&#39;, true);
+</code></pre>
+<hr>
+<pre><code>grid : Array : false
+将排序对象的item元素视为一个格子处理，每次移动都按一个格子大小移动，数组值：[x,y]
+初始：$(’.selector’).sortable(&#123; grid: [50, 20] &#125;);
+获取：var grid = $(’.selector’).sortable(’option’, ‘grid’);
+设置：$(’.selector’).sortable(’option’, ‘grid’, [50, 20]);
+</code></pre>
+<hr>
+<pre><code>handle : Selector, Element : false
+限制排序的动作只能在item元素中的某个元素开始。
+初始：$(’.selector’).sortable(&#123; handle: ‘h2′ &#125;);
+获取：var handle = $(’.selector’).sortable(’option’, ‘handle’);
+设置：$(’.selector’).sortable(’option’, ‘handle’, ‘h2′);
+</code></pre>
+<hr>
+<pre><code>helper : String, Function : ‘original’
+设置是否在拖拽元素时，显示一个辅助的元素。可选值：’original’, ‘clone’
+初始：$(’.selector’).sortable(&#123; helper: ‘clone’ &#125;);
+获取：var helper = $(’.selector’).sortable(’option’, ‘helper’);
+设置：$(’.selector’).sortable(’option’, ‘helper’, ‘clone’);
+</code></pre>
+<hr>
+<pre><code>items : Selector : ‘&gt; *’
+指定在排序对象中，哪些元素是可以进行拖拽排序的。
+初始：$(’.selector’).sortable(&#123; items: ‘li’ &#125;);
+获取：var items = $(’.selector’).sortable(’option’, ‘items’);
+设置：$(’.selector’).sortable(’option’, ‘items’, ‘li’);
+</code></pre>
+<hr>
+<pre><code>opacity : Float : false
+定义当排序时，辅助元素(helper)显示的透明度。
+初始：$(’.selector’).sortable(&#123; opacity: 0.6 &#125;);
+获取：var opacity = $(’.selector’).sortable(’option’, ‘opacity’);
+设置：$(’.selector’).sortable(’option’, ‘opacity’, 0.6);
+</code></pre>
+<hr>
+<pre><code>placeholderType: StringDefault: false
+设置当排序动作发生时，空白占位符的CSS样式。
+初始：$(’.selector’).sortable(&#123; placeholder: ‘ui-state-highlight’ &#125;);
+获取：var placeholder = $(’.selector’).sortable(’option’, ‘placeholder’);
+设置：$(’.selector’).sortable(’option’, ‘placeholder’, ‘ui-state-highlight’);
+</code></pre>
+<hr>
+<pre><code>revert : Boolean : false
+如果设置成true，则被拖拽的元素在返回新位置时，会有一个动画效果。
+初始：$(’.selector’).sortable(&#123; revert: true &#125;);
+获取：var revert = $(’.selector’).sortable(’option’, ‘revert’);
+设置：$(’.selector’).sortable(’option’, ‘revert’, true);
+</code></pre>
+<hr>
+<pre><code>scroll : Boolean : true
+如果设置成true，则元素被拖动到页面边缘时，会自动滚动。
+初始：$(’.selector’).sortable(&#123; scroll: false &#125;);
+获取：var scroll = $(’.selector’).sortable(’option’, ’scroll’);
+设置：$(’.selector’).sortable(’option’, ’scroll’, false);
+</code></pre>
+<hr>
+<pre><code>scrollSensitivity : Integer : 20
+设置当元素移动至边缘多少像素时，便开始滚动页面。
+初始：$(’.selector’).sortable(&#123; scrollSensitivity: 40 &#125;);
+获取：var scrollSensitivity = $(’.selector’).sortable(’option’, ’scrollSensitivity’);
+设置：$(’.selector’).sortable(’option’, ’scrollSensitivity’, 40);
+</code></pre>
+<hr>
+<pre><code>scrollSpeed : Integer : 20
+设置页面滚动的速度。
+初始：$(’.selector’).sortable(&#123; scrollSpeed: 40 &#125;);
+获取：var scrollSpeed = $(’.selector’).sortable(’option’, ’scrollSpeed’);
+设置：$(’.selector’).sortable(’option’, ’scrollSpeed’, 40);
+</code></pre>
+<hr>
+<pre><code>tolerance : String : ‘intersect’
+设置当拖动元素越过其它元素多少时便对元素进行重新排序。可选值：’intersect’, ‘pointer’
+intersect：至少重叠50%
+pointer：鼠标指针重叠元素
+初始：$(’.selector’).sortable(&#123; tolerance: ‘pointer’ &#125;);
+获取：var tolerance = $(’.selector’).sortable(’option’, ‘tolerance’);
+设置：$(’.selector’).sortable(’option’, ‘tolerance’, ‘pointer’);
+</code></pre>
+<hr>
+<pre><code>zIndex : Integer : 1000
+设置在排序动作发生时，元素的z-index值。
+初始：$(’.selector’).sortable(&#123; zIndex: 5 &#125;);
+获取：var zIndex = $(’.selector’).sortable(’option’, ‘zIndex’);
+设置：$(’.selector’).sortable(’option’, ‘zIndex’, 5);
+</code></pre>
+<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><pre><code>start
+当排序动作开始时触发此事件。
+定义：$(’.selector’).sortable(&#123; start: function(event, ui) &#123; … &#125; &#125;);
+绑定：$(’.selector’).bind(’sortstart’, function(event, ui) &#123; … &#125;);
+</code></pre>
+<hr>
+<pre><code>sort
+当元素发生排序时触发此事件。
+定义：$(’.selector’).sortable(&#123; sort: function(event, ui) &#123; … &#125; &#125;);
+绑定：$(’.selector’).bind(’sort’, function(event, ui) &#123; … &#125;);
+</code></pre>
+<hr>
+<pre><code>change
+当元素发生排序且坐标已发生改变时触发此事件。
+定义：$(’.selector’).sortable(&#123; change: function(event, ui) &#123; … &#125; &#125;);
+绑定：$(’.selector’).bind(’sortchange’, function(event, ui) &#123; … &#125;);
+</code></pre>
+<hr>
+<pre><code>beforeStop
+当排序动作结束之前触发此事件。此时占位符元素和辅助元素仍有效。
+定义：$(’.selector’).sortable(&#123; beforeStop: function(event, ui) &#123; … &#125; &#125;);
+绑定：$(’.selector’).bind(’sortbeforeStop’, function(event, ui) &#123; … &#125;);
+</code></pre>
+<hr>
+<pre><code>stop
+当排序动作结束时触发此事件。
+定义：$(’.selector’).sortable(&#123; stop: function(event, ui) &#123; … &#125; &#125;);
+绑定：$(’.selector’).bind(’sortstop’, function(event, ui) &#123; … &#125;);
+</code></pre>
+<hr>
+<pre><code>update
+当排序动作结束时且元素坐标已经发生改变时触发此事件。
+定义：$(’.selector’).sortable(&#123; update: function(event, ui) &#123; … &#125; &#125;);
+绑定：$(’.selector’).bind(’sortupdate’, function(event, ui) &#123; … &#125;);
+</code></pre>
+<hr>
+<pre><code>receive
+当一个已连接的sortable对象接收到另一个sortable对象的元素后触发此事件。
+定义：$(’.selector’).sortable(&#123; receive: function(event, ui) &#123; … &#125; &#125;);
+绑定：$(’.selector’).bind(’sortreceive’, function(event, ui) &#123; … &#125;);
+</code></pre>
+<hr>
+<pre><code>over
+当一个元素拖拽移入另一个sortable对象后触发此事件。
+定义：$(’.selector’).sortable(&#123; over: function(event, ui) &#123; … &#125; &#125;);
+绑定：$(’.selector’).bind(’sortover’, function(event, ui) &#123; … &#125;);
+</code></pre>
+<hr>
+<pre><code>out
+当一个元素拖拽移出sortable对象移出并进入另一个sortable对象后触发此事件。
+定义：$(’.selector’).sortable(&#123; out: function(event, ui) &#123; … &#125; &#125;);
+绑定：$(’.selector’).bind(’sortout’, function(event, ui) &#123; … &#125;);
+</code></pre>
+<hr>
+<pre><code>activate
+当一个有使用连接的sortable对象开始排序动作时，所有允许的sortable触发此事件。
+定义：$(’.selector’).sortable(&#123; activate: function(event, ui) &#123; … &#125; &#125;);
+绑定：$(’.selector’).bind(’sortactivate’, function(event, ui) &#123; … &#125;);
+</code></pre>
+<hr>
+<pre><code>deactivate
+当一个有使用连接的sortable对象结束排序动作时，所有允许的sortable触发此事件。
+定义：$(’.selector’).sortable(&#123; deactivate: function(event, ui) &#123; … &#125; &#125;);
+绑定：$(’.selector’).bind(’sortdeactivate’, function(event, ui) &#123; … &#125;);
+</code></pre>
+<hr>
+<pre><code>destory
+从元素中移除拖拽功能。
+用法：.sortable( ‘destroy’ )
+</code></pre>
+<hr>
+<pre><code>disable
+禁用元素的拖拽功能。
+用法：.sortable( ‘disable’ )
+</code></pre>
+<hr>
+<pre><code>enable
+启用元素的拖拽功能。
+用法：.sortable( ‘enable’ )
+</code></pre>
+<hr>
+<pre><code>option
+获取或设置元素的参数。
+用法：.sortable( ‘option’ , optionName , [value] )
+</code></pre>
+<hr>
+<pre><code>serialize
+获取或设置序列化后的每个item元素的id属性。
+用法：.sortable( ’serialize’ , [options] )
+</code></pre>
+<hr>
+<pre><code>toArray
+获取序列化后的每个item元素的id属性的数组。
+用法：.sortable( ‘toArray’ ）
+</code></pre>
+<hr>
+<pre><code>refresh
+手动重新刷新当前sortable对象的item元素的排序。
+用法：.sortable( ‘refresh’ )
+</code></pre>
+<hr>
+<pre><code>refreshPositions
+手动重新刷新当前sortable对象的item元素的坐标，此方法可能会降低性能。
+用法：.sortable( ‘refreshPositions’ )
+</code></pre>
+<hr>
+<pre><code>cancel
+取消当前sortable对象中item元素的排序改变。
+用法：.sortable( ‘cancel’ )
+</code></pre>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/javascript/">javascript</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/jq/">jq</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2016/07/30/javaScript%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">javascript代码规范</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2016/07/30/js%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/">
+                        <span class="hidden-mobile">javascript代码规范</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,503 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpg">
+  <link rel="icon" href="/img/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="liushaozhen">
+  <meta name="keywords" content="">
+  
+  <title>sass全攻略之语法 - liushaozhen</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>牧之的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="sass全攻略之语法">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2017-03-18 10:57" pubdate>
+        2017年3月18日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      43
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">sass全攻略之语法</h1>
+            
+            <div class="markdown-body">
+              <h2 id="sass语法"><a href="#sass语法" class="headerlink" title="sass语法"></a>sass语法</h2><h3 id="文件后缀名"><a href="#文件后缀名" class="headerlink" title="文件后缀名"></a>文件后缀名</h3><p>sass有两种文件后缀名，一种为sass，一种为scss，推荐使用scss，因为sass后缀名的格式严格，没有大括号，scss有大括号，格式和css相似</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-comment">//文件后缀名为sass的语法</span><br>body<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#eee</span><br>  <span class="hljs-attribute">font-size</span>:<span class="hljs-number">12px</span><br>p<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#0982c1</span><br><br><span class="hljs-comment">//文件后缀名为scss的语法  </span><br><span class="hljs-selector-tag">body</span> &#123;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#eee</span>;<br>  <span class="hljs-attribute">font-size</span>:<span class="hljs-number">12px</span>;<br>&#125;<br>p&#123;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#0982c1</span>;<br>&#125; <br></code></pre></td></tr></table></figure>
+
+<h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><p>sass的导入(@import)规则和css的有所不同，编译时会将 @import 的sass文件合并进来只生成一个css文件，但是如果你在sass中引入css文件，例如 @import ‘a.css’  那效果跟普通css导入样式文件一样，导入的css文件不会合并到编译后的css文件中，而是以 @import存在。<br>所有sass导入文件都可以忽略 .scss 后缀。 如果基础的文件命名方法以_开头，如 _mixin.scss ，这种文件在导入的时候可以不写下划线，可写成 @import ‘mixin’ 。</p>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>sass的变量必须是$开头，后面紧跟变量名，变量名和变量值之间必须用冒号(:) 分隔开，如果变量值后边加  !default  则表示默认值。</p>
+<h4 id="普通变量"><a href="#普通变量" class="headerlink" title="普通变量"></a>普通变量</h4><p>定义之后可以在全局范围内使用</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">//sass style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-variable">$fontSize</span>: <span class="hljs-number">12px</span>;<br><span class="hljs-selector-tag">body</span>&#123;<br>    <span class="hljs-attribute">font-size</span>:<span class="hljs-variable">$fontSize</span>;<br>&#125;<br><br><span class="hljs-comment">//css style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-selector-tag">body</span>&#123;<br>    <span class="hljs-attribute">font-size</span>:<span class="hljs-number">12px</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="默认变量"><a href="#默认变量" class="headerlink" title="默认变量"></a>默认变量</h4><p>sass的默认变量仅需要在值后边加上 !default 即可</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">//</span>sass style<br><span class="hljs-regexp">//</span>---------------------------<br><span class="hljs-variable">$baseLineHeight</span>: <span class="hljs-number">1.5</span>!default;<br>body&#123;<br>	lint-height:<span class="hljs-variable">$baseLineHeight</span><br>&#125;<br><span class="hljs-regexp">//</span>css style<br><span class="hljs-regexp">//</span>----------------------------<br>body&#123;<br>	line-height:<span class="hljs-number">1.5</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>sass的默认变量一般是用来设置默认值，然后根据需求来覆盖的，覆盖的方式也很简单，只需要在默认变量之前重新声明下即可</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">//sass style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-variable">$baseLineHeight</span>:        <span class="hljs-number">2</span>;<br><span class="hljs-variable">$baseLineHeight</span>:        <span class="hljs-number">1.5</span> !default;<br><span class="hljs-selector-tag">body</span>&#123;<br>    <span class="hljs-attribute">line-height</span>: <span class="hljs-variable">$baseLineHeight</span>; <br>&#125;<br><br><span class="hljs-comment">//css style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-selector-tag">body</span>&#123;<br>    <span class="hljs-attribute">line-height</span>:<span class="hljs-number">2</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="特殊变量"><a href="#特殊变量" class="headerlink" title="特殊变量"></a>特殊变量</h4><p>一般我们定义的变量都为属性值，可直接使用，但是变量作为属性名或在某些特殊情况下使用，必须要以 #{$variables} 形式使用</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">//sass style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-variable">$borderDirection</span>:       top !default; <br><span class="hljs-variable">$baseFontSize</span>:          <span class="hljs-number">12px</span> !default;<br><span class="hljs-variable">$baseLineHeight</span>:        <span class="hljs-number">1.5</span> !default;<br><br><span class="hljs-comment">//应用于class和属性</span><br><span class="hljs-selector-class">.border-</span>#&#123;<span class="hljs-variable">$borderDirection</span>&#125;&#123;<br>  <span class="hljs-attribute">border</span>-#&#123;<span class="hljs-variable">$borderDirection</span>&#125;:<span class="hljs-number">1px</span> solid <span class="hljs-number">#ccc</span>;<br>&#125;<br><span class="hljs-comment">//应用于复杂的属性值</span><br><span class="hljs-selector-tag">body</span>&#123;<br>    <span class="hljs-attribute">font</span>:#&#123;<span class="hljs-variable">$baseFontSize</span>&#125;/#&#123;<span class="hljs-variable">$baseLineHeight</span>&#125;;<br>&#125;<br><br><span class="hljs-comment">//css style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-selector-class">.border-top</span>&#123;<br>  <span class="hljs-attribute">border-top</span>:<span class="hljs-number">1px</span> solid <span class="hljs-number">#ccc</span>;<br>&#125;<br><span class="hljs-selector-tag">body</span> &#123;<br>  <span class="hljs-attribute">font</span>: <span class="hljs-number">12px</span>/<span class="hljs-number">1.5</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="多值变量"><a href="#多值变量" class="headerlink" title="多值变量"></a>多值变量</h4><p>多值变量分为list类型和map类型，list类似与js的数组，map类似与js中的对象</p>
+<h5 id="list"><a href="#list" class="headerlink" title="list"></a>list</h5><p>list可以通过空格，逗号或者小括号分割多个值，可用nth($var,$index)取值，$index从1开始，关于list数据操作还有很多其它还是，如length($list),join($list1,$list2,[$separator]),append($list,$value,[$separator])等，具体可参考 <a target="_blank" rel="noopener" href="http://sass-lang.com/documentation/Sass/Script/Functions.html">sass Function</a></p>
+<h6 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h6><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs gams"><span class="hljs-comment">//一维数据</span><br><span class="hljs-meta"><span class="hljs-meta-keyword">$px</span>: 5px 10px 20px 30px;</span><br><br><span class="hljs-comment">//二维数据，相当于js中的二维数组</span><br><span class="hljs-meta"><span class="hljs-meta-keyword">$px</span>: 5px 10px, 20px 30px;</span><br><span class="hljs-meta"><span class="hljs-meta-keyword">$px</span>: (5px 10px) (20px 30px);</span><br></code></pre></td></tr></table></figure>
+
+<h6 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h6><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">//sass style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-variable">$linkColor</span>:         <span class="hljs-number">#08c</span> <span class="hljs-number">#333</span> !default;<span class="hljs-comment">//第一个值为默认值，第二个鼠标滑过值</span><br><span class="hljs-selector-tag">a</span>&#123;<br>  <span class="hljs-attribute">color</span>:nth(<span class="hljs-variable">$linkColor</span>,<span class="hljs-number">1</span>);<br><br>  &amp;<span class="hljs-selector-pseudo">:hover</span>&#123;<br>    <span class="hljs-attribute">color</span>:nth(<span class="hljs-variable">$linkColor</span>,<span class="hljs-number">2</span>);<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">//css style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-selector-tag">a</span>&#123;<br>  <span class="hljs-attribute">color</span>:<span class="hljs-number">#08c</span>;<br>&#125;<br><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span>&#123;<br>  <span class="hljs-attribute">color</span>:<span class="hljs-number">#333</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="map"><a href="#map" class="headerlink" title="map"></a>map</h5><p>map数据类型以key，value形式成对出现，其中value又可以是list。格式为： $map:(key1:value1,key2:value2,key3:value3);可以通过，map-get($map,$key)取值。同样，map也有很多函数，具体参考 <a target="_blank" rel="noopener" href="http://sass-lang.com/documentation/Sass/Script/Functions.html">sass Function</a></p>
+<h6 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h6><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gams"><span class="hljs-meta"><span class="hljs-meta-keyword">$heading</span>:(h1:2em,h2:1.5em,h3:1.2em);</span><br></code></pre></td></tr></table></figure>
+
+<h6 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h6><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">//sass style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-variable">$headings</span>: (h1: <span class="hljs-number">2em</span>, h2: <span class="hljs-number">1.5em</span>, h3: <span class="hljs-number">1.2em</span>);<br><span class="hljs-keyword">@each</span> <span class="hljs-variable">$header</span>, <span class="hljs-variable">$size</span> in <span class="hljs-variable">$headings</span> &#123;<br>  #&#123;<span class="hljs-variable">$header</span>&#125; &#123;<br>    <span class="hljs-attribute">font-size</span>: <span class="hljs-variable">$size</span>;<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">//css style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-selector-tag">h1</span> &#123;<br>  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">2em</span>; <br>&#125;<br><span class="hljs-selector-tag">h2</span> &#123;<br>  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1.5em</span>; <br>&#125;<br><span class="hljs-selector-tag">h3</span> &#123;<br>  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1.2em</span>; <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h3><p>sass 的嵌套包括两种，一种是选择器的嵌套，一种是属性的嵌套，我们一般说起到或用到的都是选择器的嵌套</p>
+<h4 id="选择器嵌套"><a href="#选择器嵌套" class="headerlink" title="选择器嵌套"></a>选择器嵌套</h4><p>选择器嵌套指的是在一个选择器中嵌套另一个选择器来实现集成，从而增强了sass文件的结构性和可读性，在选择器嵌套中，可以使用&amp;表示父元素选择器</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs css">//sass style<br>//-------------------------------<br><span class="hljs-selector-id">#top_nav</span>&#123;<br>  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">40px</span>;<br>  <span class="hljs-attribute">text-transform</span>: capitalize;<br>  <span class="hljs-attribute">background-color</span>:<span class="hljs-number">#333</span>;<br>  <span class="hljs-selector-tag">li</span>&#123;<br>    <span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:left</span>;<br>  &#125;<br>  <span class="hljs-selector-tag">a</span>&#123;<br>    <span class="hljs-attribute">display</span>: block;<br>    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">10px</span>;<br>    <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;<br><br>    &amp;<span class="hljs-selector-pseudo">:hover</span>&#123;<br>      <span class="hljs-attribute">color</span>:<span class="hljs-number">#ddd</span>;<br>    &#125;<br>  &#125;<br>&#125;<br><br>//css style<br>//-------------------------------<br><span class="hljs-selector-id">#top_nav</span>&#123;<br>  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">40px</span>;<br>  <span class="hljs-attribute">text-transform</span>: capitalize;<br>  <span class="hljs-attribute">background-color</span>:<span class="hljs-number">#333</span>;<br>&#125;  <br><span class="hljs-selector-id">#top_nav</span> <span class="hljs-selector-tag">li</span>&#123;<br>  <span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:left</span>;<br>&#125;<br><span class="hljs-selector-id">#top_nav</span> <span class="hljs-selector-tag">a</span>&#123;<br>  <span class="hljs-attribute">display</span>: block;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">10px</span>;<br>  <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;<br>&#125;<br><span class="hljs-selector-id">#top_nav</span> <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span>&#123;<br>  <span class="hljs-attribute">color</span>:<span class="hljs-number">#ddd</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="属性嵌套"><a href="#属性嵌套" class="headerlink" title="属性嵌套"></a>属性嵌套</h4><p>所谓属性嵌套指的是有些属性用友同一个开始单词，如border-width，border-color都是以border开头。不推荐使用，很乱。官网实例如下</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">//sass style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-selector-class">.fakeshadow</span> &#123;<br>  <span class="hljs-attribute">border</span>: &#123;<br>    style: solid;<br>    <span class="hljs-attribute">left</span>: &#123;<br>      width: <span class="hljs-number">4px</span>;<br>      <span class="hljs-attribute">color</span>: <span class="hljs-number">#888</span>;<br>    &#125;<br>    <span class="hljs-attribute">right</span>: &#123;<br>      width: <span class="hljs-number">2px</span>;<br>      <span class="hljs-attribute">color</span>: <span class="hljs-number">#ccc</span>;<br>    &#125;<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">//css style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-selector-class">.fakeshadow</span> &#123;<br>  <span class="hljs-attribute">border-style</span>: solid;<br>  <span class="hljs-attribute">border-left-width</span>: <span class="hljs-number">4px</span>;<br>  <span class="hljs-attribute">border-left-color</span>: <span class="hljs-number">#888</span>;<br>  <span class="hljs-attribute">border-right-width</span>: <span class="hljs-number">2px</span>;<br>  <span class="hljs-attribute">border-right-color</span>: <span class="hljs-number">#ccc</span>; <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="at-root"><a href="#at-root" class="headerlink" title="@at-root"></a>@at-root</h4><p>sass 3.3.0中新增的功能，用来跳出选择器嵌套的。应用不多，暂不介绍</p>
+<h3 id="混合（mixin）"><a href="#混合（mixin）" class="headerlink" title="混合（mixin）"></a>混合（mixin）</h3><p>sass使用 @mixin声明混合，可以传递参数，参数名以￥符号开始，多个参数以逗号分开，也可以给参数设置默认值，声明的 @mixin 通过 @include 来调用</p>
+<h4 id="无参数mixin"><a href="#无参数mixin" class="headerlink" title="无参数mixin"></a>无参数mixin</h4><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-comment">//sass style</span><br><span class="hljs-comment">//-------------------------------</span><br>@<span class="hljs-keyword">mixin</span> center-block &#123;<br>    margin-left:<span class="hljs-built_in">auto</span>;<br>    margin-right:<span class="hljs-built_in">auto</span>;<br>&#125;<br>.demo&#123;<br>    @include center-block;<br>&#125;<br><br><span class="hljs-comment">//css style</span><br><span class="hljs-comment">//-------------------------------</span><br>.demo&#123;<br>    margin-left:<span class="hljs-built_in">auto</span>;<br>    margin-right:<span class="hljs-built_in">auto</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="有参数mixin"><a href="#有参数mixin" class="headerlink" title="有参数mixin"></a>有参数mixin</h4><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">//sass style</span><br><span class="hljs-comment">//-------------------------------   </span><br><span class="hljs-keyword">@mixin</span> opacity(<span class="hljs-variable">$opacity</span>:<span class="hljs-number">50</span>) &#123;<br>  <span class="hljs-attribute">opacity</span>: <span class="hljs-variable">$opacity</span> / <span class="hljs-number">100</span>;<br>  <span class="hljs-attribute">filter</span>: alpha(opacity=<span class="hljs-variable">$opacity</span>);<br>&#125;<br><br><span class="hljs-comment">//css style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-selector-class">.opacity</span>&#123;<br>  <span class="hljs-keyword">@include</span> opacity; <span class="hljs-comment">//参数使用默认值</span><br>&#125;<br><span class="hljs-selector-class">.opacity-80</span>&#123;<br>  <span class="hljs-keyword">@include</span> opacity(<span class="hljs-number">80</span>); <span class="hljs-comment">//传递参数</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="多个参数mixin"><a href="#多个参数mixin" class="headerlink" title="多个参数mixin"></a>多个参数mixin</h4><p>调用时可以直接传入值，如 @include 传入参数的个数小于 @mixin 定义参数的个数，则按照顺序表示，后面不足的使用默认值，如不足的没有默认值则报错，除此之外还可以选择性的传入参数，使用参数名与值同时传入。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">//sass style</span><br><span class="hljs-comment">//-------------------------------   </span><br><span class="hljs-keyword">@mixin</span> horizontal-line(<span class="hljs-variable">$border</span>:<span class="hljs-number">1px</span> dashed <span class="hljs-number">#ccc</span>, <span class="hljs-variable">$padding</span>:<span class="hljs-number">10px</span>)&#123;<br>    <span class="hljs-attribute">border-bottom</span>:<span class="hljs-variable">$border</span>;<br>    <span class="hljs-attribute">padding-top</span>:<span class="hljs-variable">$padding</span>;<br>    <span class="hljs-attribute">padding-bottom</span>:<span class="hljs-variable">$padding</span>;  <br>&#125;<br><span class="hljs-selector-class">.imgtext-h</span> <span class="hljs-selector-tag">li</span>&#123;<br>    <span class="hljs-keyword">@include</span> horizontal-line(<span class="hljs-number">1px</span> solid <span class="hljs-number">#ccc</span>);<br>&#125;<br><span class="hljs-selector-class">.imgtext-h--product</span> <span class="hljs-selector-tag">li</span>&#123;<br>    <span class="hljs-keyword">@include</span> horizontal-line(<span class="hljs-variable">$padding</span>:<span class="hljs-number">15px</span>);<br>&#125;<br><br><span class="hljs-comment">//css style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-selector-class">.imgtext-h</span> <span class="hljs-selector-tag">li</span> &#123;<br>    <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#cccccc</span>;<br>    <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">10px</span>;<br>    <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">10px</span>;<br>&#125;<br><span class="hljs-selector-class">.imgtext-h--product</span> <span class="hljs-selector-tag">li</span> &#123;<br>    <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> dashed <span class="hljs-number">#cccccc</span>;<br>    <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">15px</span>;<br>    <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">15px</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="多组值参数mixin"><a href="#多组值参数mixin" class="headerlink" title="多组值参数mixin"></a>多组值参数mixin</h4><p>如果一个参数可以有多组值，如box-shadow，transition等，那么需要在变量后加三个点表示，如 $variables…</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">//sass style</span><br><span class="hljs-comment">//-------------------------------   </span><br><span class="hljs-comment">//box-shadow可以有多组值，所以在变量参数后面添加...</span><br><span class="hljs-keyword">@mixin</span> box-shadow(<span class="hljs-variable">$shadow</span>...) &#123;<br>  -webkit-<span class="hljs-attribute">box-shadow</span>:<span class="hljs-variable">$shadow</span>;<br>  <span class="hljs-attribute">box-shadow</span>:<span class="hljs-variable">$shadow</span>;<br>&#125;<br><span class="hljs-selector-class">.box</span>&#123;<br>  <span class="hljs-attribute">border</span>:<span class="hljs-number">1px</span> solid <span class="hljs-number">#ccc</span>;<br>  <span class="hljs-keyword">@include</span> box-shadow(<span class="hljs-number">0</span> <span class="hljs-number">2px</span> <span class="hljs-number">2px</span> rgba(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,.<span class="hljs-number">3</span>),<span class="hljs-number">0</span> <span class="hljs-number">3px</span> <span class="hljs-number">3px</span> rgba(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,.<span class="hljs-number">3</span>),<span class="hljs-number">0</span> <span class="hljs-number">4px</span> <span class="hljs-number">4px</span> rgba(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,.<span class="hljs-number">3</span>));<br>&#125;<br><br><span class="hljs-comment">//css style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-selector-class">.box</span>&#123;<br>  <span class="hljs-attribute">border</span>:<span class="hljs-number">1px</span> solid <span class="hljs-number">#ccc</span>;<br>  -webkit-<span class="hljs-attribute">box-shadow</span>:<span class="hljs-number">0</span> <span class="hljs-number">2px</span> <span class="hljs-number">2px</span> rgba(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,.<span class="hljs-number">3</span>),<span class="hljs-number">0</span> <span class="hljs-number">3px</span> <span class="hljs-number">3px</span> rgba(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,.<span class="hljs-number">3</span>),<span class="hljs-number">0</span> <span class="hljs-number">4px</span> <span class="hljs-number">4px</span> rgba(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,.<span class="hljs-number">3</span>);<br>  <span class="hljs-attribute">box-shadow</span>:<span class="hljs-number">0</span> <span class="hljs-number">2px</span> <span class="hljs-number">2px</span> rgba(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,.<span class="hljs-number">3</span>),<span class="hljs-number">0</span> <span class="hljs-number">3px</span> <span class="hljs-number">3px</span> rgba(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,.<span class="hljs-number">3</span>),<span class="hljs-number">0</span> <span class="hljs-number">4px</span> <span class="hljs-number">4px</span> rgba(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,.<span class="hljs-number">3</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="content"><a href="#content" class="headerlink" title="@content"></a>@content</h4><p>@content 在sass3.2.0中引入，可以用来解决css3的@media等带来的问题，它可以使@mixin接受已整块样式，接受的样式从@content开始</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs less"> <span class="hljs-comment">//sass style</span><br><span class="hljs-comment">//-------------------------------                     </span><br><span class="hljs-variable">@mixin</span> max-screen($res)&#123;<br>  <span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> ( <span class="hljs-attribute">max-width</span>: $res )<br>  &#123;<br>    <span class="hljs-variable">@content</span>;<br>  &#125;<br>&#125;<br><br><span class="hljs-variable">@include</span> max-screen(<span class="hljs-number">480px</span>) &#123;<br>  <span class="hljs-selector-tag">body</span> &#123; <span class="hljs-attribute">color</span>: red &#125;<br>&#125;<br><br><span class="hljs-comment">//css style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-variable">@media</span> only screen and (<span class="hljs-attribute">max-width</span>: <span class="hljs-number">480px</span>) &#123;<br>  <span class="hljs-selector-tag">body</span> &#123; <span class="hljs-attribute">color</span>: red &#125;<br>&#125;    <br></code></pre></td></tr></table></figure>
+
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>sass中，选择器继承可以让选择器继承另一个选择器的所有样式，并联合声明，使用选择器的继承，要使用关键字 @extent，后边紧跟要继承的选择器</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">//sass style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-selector-tag">h1</span>&#123;<br>  <span class="hljs-attribute">border</span>: <span class="hljs-number">4px</span> solid <span class="hljs-number">#ff9aa9</span>;<br>&#125;<br><span class="hljs-selector-class">.speaker</span>&#123;<br>  <span class="hljs-keyword">@extend</span> h1;<br>  <span class="hljs-attribute">border-width</span>: <span class="hljs-number">2px</span>;<br>&#125;<br><br><span class="hljs-comment">//css style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-selector-tag">h1</span>,<span class="hljs-selector-class">.speaker</span>&#123;<br>  <span class="hljs-attribute">border</span>: <span class="hljs-number">4px</span> solid <span class="hljs-number">#ff9aa9</span>;<br>&#125;<br><span class="hljs-selector-class">.speaker</span>&#123;<br>  <span class="hljs-attribute">border-width</span>: <span class="hljs-number">2px</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="占位选择器"><a href="#占位选择器" class="headerlink" title="占位选择器 %"></a>占位选择器 %</h3><p>从sass 3.2.0以后就可以定义占位选择器%，这种选择器的有事在于，如果不调用则不会有任何多余的css文件，避免了以前在一些基础的文件中预定义了很多基础的样式，然后实际应用中不管是否使用了 @extend 去集成响应的样式，都会解析出来所有的样式，占位选择器以 % 标示定义，通过 @extend 调用</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">//sass style</span><br><span class="hljs-comment">//-------------------------------</span><br>%ir&#123;<br>  <span class="hljs-attribute">color</span>: transparent;<br>  <span class="hljs-attribute">text-shadow</span>: none;<br>  <span class="hljs-attribute">background-color</span>: transparent;<br>  <span class="hljs-attribute">border</span>: <span class="hljs-number">0</span>;<br>&#125;<br>%clearfix&#123;<br>  <span class="hljs-keyword">@if</span> <span class="hljs-variable">$lte7</span> &#123;<br>    *zoom: <span class="hljs-number">1</span>;<br>  &#125;<br>  &amp;:before,<br>  &amp;:after &#123;<br>    content: <span class="hljs-string">&quot;&quot;</span>;<br>    <span class="hljs-attribute">display</span>: table;<br>    <span class="hljs-attribute">font</span>: <span class="hljs-number">0</span>/<span class="hljs-number">0</span> a;<br>  &#125;<br>  &amp;:after &#123;<br>    clear: both;<br>  &#125;<br>&#125;<br><span class="hljs-selector-id">#header</span>&#123;<br>  <span class="hljs-selector-tag">h1</span>&#123;<br>    <span class="hljs-keyword">@extend</span> %ir;<br>    <span class="hljs-attribute">width</span>:<span class="hljs-number">300px</span>;<br>  &#125;<br>&#125;<br><span class="hljs-selector-class">.ir</span>&#123;<br>  <span class="hljs-keyword">@extend</span> %ir;<br>&#125;<br><br><span class="hljs-comment">//css style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-selector-id">#header</span> <span class="hljs-selector-tag">h1</span>,<br><span class="hljs-selector-class">.ir</span>&#123;<br>  <span class="hljs-attribute">color</span>: transparent;<br>  <span class="hljs-attribute">text-shadow</span>: none;<br>  <span class="hljs-attribute">background-color</span>: transparent;<br>  <span class="hljs-attribute">border</span>: <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-selector-id">#header</span> <span class="hljs-selector-tag">h1</span>&#123;<br>  <span class="hljs-attribute">width</span>:<span class="hljs-number">300px</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>如上代码，定义了两个占位选择器 %ir和%clearfix，其中没有调用，所以解析出来的参数是样式也就没有clearfix部分，占位选择器的出现，是css文件更加简练可控，没有多余。所以可以用其定义一些基础的样式文件，然后根据需要调用产生响应的css。目前版本在 @media中暂时不能用@extend，@media外的代码片段</p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>sass定义了很多函数可供使用，当然你也可以自己定义函数，以@fuction开始。sass的官方函数链接为：<a target="_blank" rel="noopener" href="http://sass-lang.com/documentation/Sass/Script/Functions.html">sass fuction</a><br>举个栗子</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">//sass style</span><br><span class="hljs-comment">//-------------------------------                     </span><br><span class="hljs-variable">$baseFontSize</span>:      <span class="hljs-number">10px</span> !default;<br><span class="hljs-variable">$gray</span>:              <span class="hljs-number">#ccc</span> !defualt;        <br><br><span class="hljs-comment">// pixels to rems </span><br><span class="hljs-keyword">@function</span> pxToRem(<span class="hljs-variable">$px</span>) &#123;<br>  <span class="hljs-keyword">@return</span> <span class="hljs-variable">$px</span> / <span class="hljs-variable">$baseFontSize</span> * <span class="hljs-number">1rem</span>;<br>&#125;<br><br><span class="hljs-selector-tag">body</span>&#123;<br>  <span class="hljs-attribute">font-size</span>:<span class="hljs-variable">$baseFontSize</span>;<br>  <span class="hljs-attribute">color</span>:lighten(<span class="hljs-variable">$gray</span>,<span class="hljs-number">10%</span>);<br>&#125;<br><span class="hljs-selector-class">.test</span>&#123;<br>  <span class="hljs-attribute">font-size</span>:pxToRem(<span class="hljs-number">16px</span>);<br>  <span class="hljs-attribute">color</span>:darken(<span class="hljs-variable">$gray</span>,<span class="hljs-number">10%</span>);<br>&#125;<br><br><span class="hljs-comment">//css style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-selector-tag">body</span>&#123;<br>  <span class="hljs-attribute">font-size</span>:<span class="hljs-number">10px</span>;<br>  <span class="hljs-attribute">color</span>:<span class="hljs-number">#E6E6E6</span>;<br>&#125;<br><span class="hljs-selector-class">.test</span>&#123;<br>  <span class="hljs-attribute">font-size</span>:<span class="hljs-number">1.6rem</span>;<br>  <span class="hljs-attribute">color</span>:<span class="hljs-number">#B3B3B3</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h3><p>sass可以对数值型的value(如颜色，数字，变量等)进行加减乘除四则运算，注意运算符前后留一个空格，否则会报错</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs mel">$baseFontSize:          <span class="hljs-number">14</span>px !<span class="hljs-keyword">default</span>;<br>$baseLineHeight:        <span class="hljs-number">1.5</span> !<span class="hljs-keyword">default</span>;<br>$baseGap:               $baseFontSize * $baseLineHeight !<span class="hljs-keyword">default</span>;<br>$halfBaseGap:           $baseGap / <span class="hljs-number">2</span>  !<span class="hljs-keyword">default</span>;<br>$samllFontSize:         $baseFontSize - <span class="hljs-number">2</span>px  !<span class="hljs-keyword">default</span>;<br><br><span class="hljs-comment">//grid </span><br>$_columns:                     <span class="hljs-number">12</span> !<span class="hljs-keyword">default</span>;      <span class="hljs-comment">// Total number of columns</span><br>$_column-width:                <span class="hljs-number">60</span>px !<span class="hljs-keyword">default</span>;   <span class="hljs-comment">// Width of a single column</span><br>$_gutter:                      <span class="hljs-number">20</span>px !<span class="hljs-keyword">default</span>;     <span class="hljs-comment">// Width of the gutter</span><br>$_gridsystem-width:            $_columns * ($_column-width + $_gutter); <span class="hljs-comment">//grid system width</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="条件判断及循环"><a href="#条件判断及循环" class="headerlink" title="条件判断及循环"></a>条件判断及循环</h3><h4 id="if判断"><a href="#if判断" class="headerlink" title="@if判断"></a>@if判断</h4><p>@if可以单独使用，也可以和@else结合多条使用</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">//sass style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-variable">$lte7</span>: true;<br><span class="hljs-variable">$type</span>: monster;<br><span class="hljs-selector-class">.ib</span>&#123;<br>    <span class="hljs-attribute">display</span>:inline-block;<br>    <span class="hljs-keyword">@if</span> <span class="hljs-variable">$lte7</span> &#123;<br>        *<span class="hljs-attribute">display</span>:inline;<br>        *zoom:<span class="hljs-number">1</span>;<br>    &#125;<br>&#125;<br><span class="hljs-selector-tag">p</span> &#123;<br>  <span class="hljs-keyword">@if</span> <span class="hljs-variable">$type</span> == ocean &#123;<br>    <span class="hljs-attribute">color</span>: blue;<br>  &#125; <span class="hljs-keyword">@else</span> if <span class="hljs-variable">$type</span> == matador &#123;<br>    <span class="hljs-attribute">color</span>: red;<br>  &#125; <span class="hljs-keyword">@else</span> if <span class="hljs-variable">$type</span> == monster &#123;<br>    <span class="hljs-attribute">color</span>: green;<br>  &#125; <span class="hljs-keyword">@else</span> &#123;<br>    <span class="hljs-attribute">color</span>: black;<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">//css style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-selector-class">.ib</span>&#123;<br>    <span class="hljs-attribute">display</span>:inline-block;<br>    *<span class="hljs-attribute">display</span>:inline;<br>    *zoom:<span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-selector-tag">p</span> &#123;<br>  <span class="hljs-attribute">color</span>: green; <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="三目运算"><a href="#三目运算" class="headerlink" title="三目运算"></a>三目运算</h4><p>语法 if($condition,$if_true,$if_false)，和js中的三目运算符一个意思</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">if</span>(true,<span class="hljs-number">1</span>px,<span class="hljs-number">2</span>px)=&gt;<span class="hljs-number">1</span>px<br><span class="hljs-attribute">if</span>(false,<span class="hljs-number">1</span>px,<span class="hljs-number">2</span>px)=&gt;<span class="hljs-number">2</span>px<br></code></pre></td></tr></table></figure>
+
+<h4 id="for循环"><a href="#for循环" class="headerlink" title="@for循环"></a>@for循环</h4><p>for循环有两种形式，分别为：@for $var from <start> through <end> 和 @for $var from <start> to <end> 。 $var 标示变量，start 标示起始值，end表示结束值，这两个的却别是：through包括end这个数，而to不包括end这个数</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">//sass style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-keyword">@for</span> <span class="hljs-variable">$i</span> from <span class="hljs-number">1</span> through <span class="hljs-number">3</span> &#123;<br>  <span class="hljs-selector-class">.item-</span>#&#123;<span class="hljs-variable">$i</span>&#125; &#123; <span class="hljs-attribute">width</span>: <span class="hljs-number">2em</span> * <span class="hljs-variable">$i</span>; &#125;<br>&#125;<br><br><span class="hljs-comment">//css style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-selector-class">.item-1</span> &#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">2em</span>; <br>&#125;<br><span class="hljs-selector-class">.item-2</span> &#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">4em</span>; <br>&#125;<br><span class="hljs-selector-class">.item-3</span> &#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">6em</span>; <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="each循环"><a href="#each循环" class="headerlink" title="@each循环"></a>@each循环</h4><p>语法： @each $var in <list or map> 。其中 $var 表示变量，list和map表示list类型数据和map类型数据。sass 3.3.0 新加入了多字段循环和map数据循环</p>
+<h5 id="单个字段list数据循环"><a href="#单个字段list数据循环" class="headerlink" title="单个字段list数据循环"></a>单个字段list数据循环</h5><p>语法：@each $item in list</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">//sass style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-variable">$animal-list</span>: puma, sea-slug, egret, salamander;<br><span class="hljs-keyword">@each</span> <span class="hljs-variable">$animal</span> in <span class="hljs-variable">$animal-list</span> &#123;<br>  .#&#123;<span class="hljs-variable">$animal</span>&#125;-<span class="hljs-attribute">icon</span> &#123;<br>    <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&#x27;/images/#&#123;$animal&#125;.png&#x27;</span>);<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">//css style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-selector-class">.puma-icon</span> &#123;<br>  <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&#x27;/images/puma.png&#x27;</span>); <br>&#125;<br><span class="hljs-selector-class">.sea-slug-icon</span> &#123;<br>  <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&#x27;/images/sea-slug.png&#x27;</span>); <br>&#125;<br><span class="hljs-selector-class">.egret-icon</span> &#123;<br>  <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&#x27;/images/egret.png&#x27;</span>); <br>&#125;<br><span class="hljs-selector-class">.salamander-icon</span> &#123;<br>  <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&#x27;/images/salamander.png&#x27;</span>); <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="多个字段list数据循环"><a href="#多个字段list数据循环" class="headerlink" title="多个字段list数据循环"></a>多个字段list数据循环</h5><p>语法：@each $item1,item2,item3 in list</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">//sass style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-variable">$animal-data</span>: (puma, black, default),(sea-slug, blue, pointer),(egret, white, move);<br><span class="hljs-keyword">@each</span> <span class="hljs-variable">$animal</span>, <span class="hljs-variable">$color</span>, <span class="hljs-variable">$cursor</span> in <span class="hljs-variable">$animal-data</span> &#123;<br>  .#&#123;<span class="hljs-variable">$animal</span>&#125;-<span class="hljs-attribute">icon</span> &#123;<br>    <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&#x27;/images/#&#123;$animal&#125;.png&#x27;</span>);<br>    <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> solid <span class="hljs-variable">$color</span>;<br>    <span class="hljs-attribute">cursor</span>: <span class="hljs-variable">$cursor</span>;<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">//css style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-selector-class">.puma-icon</span> &#123;<br>  <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&#x27;/images/puma.png&#x27;</span>);<br>  <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> solid black;<br>  <span class="hljs-attribute">cursor</span>: default; <br>&#125;<br><span class="hljs-selector-class">.sea-slug-icon</span> &#123;<br>  <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&#x27;/images/sea-slug.png&#x27;</span>);<br>  <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> solid blue;<br>  <span class="hljs-attribute">cursor</span>: pointer; <br>&#125;<br><span class="hljs-selector-class">.egret-icon</span> &#123;<br>  <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&#x27;/images/egret.png&#x27;</span>);<br>  <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> solid white;<br>  <span class="hljs-attribute">cursor</span>: move; <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="多个字段map数据循环"><a href="#多个字段map数据循环" class="headerlink" title="多个字段map数据循环"></a>多个字段map数据循环</h5><p>语法: @each $key $value in map</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">//sass style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-variable">$headings</span>: (h1: <span class="hljs-number">2em</span>, h2: <span class="hljs-number">1.5em</span>, h3: <span class="hljs-number">1.2em</span>);<br><span class="hljs-keyword">@each</span> <span class="hljs-variable">$header</span>, <span class="hljs-variable">$size</span> in <span class="hljs-variable">$headings</span> &#123;<br>  #&#123;<span class="hljs-variable">$header</span>&#125; &#123;<br>    <span class="hljs-attribute">font-size</span>: <span class="hljs-variable">$size</span>;<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">//css style</span><br><span class="hljs-comment">//-------------------------------</span><br><span class="hljs-selector-tag">h1</span> &#123;<br>  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">2em</span>; <br>&#125;<br><span class="hljs-selector-tag">h2</span> &#123;<br>  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1.5em</span>; <br>&#125;<br><span class="hljs-selector-tag">h3</span> &#123;<br>  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1.2em</span>; <br>&#125;<br></code></pre></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/sass/">sass</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/sass/">sass</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2017/03/20/react-propTypes%E6%A0%A1%E9%AA%8C/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">react-propTypes校验</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2017/03/18/sass%E5%85%A8%E6%94%BB%E7%95%A5-%E8%AF%AD%E6%B3%95/">
+                        <span class="hidden-mobile">sass全攻略-语法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,427 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpg">
+  <link rel="icon" href="/img/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="liushaozhen">
+  <meta name="keywords" content="">
+  
+  <title>webpack配置说明 - liushaozhen</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>牧之的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="webpack配置说明">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2017-01-19 11:29" pubdate>
+        2017年1月19日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      524 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      7
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">webpack配置说明</h1>
+            
+            <div class="markdown-body">
+              <blockquote>
+<p>废话不多说，直接上代码</p>
+</blockquote>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs awk">var htmlWebpackPlugin=require(<span class="hljs-string">&#x27;html-webpack-plugin&#x27;</span>);<br>var openBrowserWebpackPlugin=require(<span class="hljs-string">&#x27;open-browser-webpack-plugin&#x27;</span>);<span class="hljs-regexp">//</span>打开浏览器插件<br>var extractTextWebpackPlugin=require(<span class="hljs-string">&#x27;extract-text-webpack-plugin&#x27;</span>);<span class="hljs-regexp">//</span>文件单独加载插件<br>var webpack=require(<span class="hljs-string">&#x27;webpack&#x27;</span>);<br>module.exports=&#123;<br>  <span class="hljs-regexp">//</span>entry:<span class="hljs-string">&#x27;./app/index.js&#x27;</span>,<span class="hljs-regexp">//</span>入口文件<br>  <span class="hljs-regexp">//</span>配置多个入口文件<br>  entry:&#123;<br>    index:[<span class="hljs-string">&#x27;./app/a.js&#x27;</span>,<span class="hljs-string">&#x27;./app/b.js&#x27;</span>],<span class="hljs-regexp">//</span>将a和b同时打包在一起生成index.js<br>    bundle:<span class="hljs-string">&#x27;./app/index.js&#x27;</span><br>  &#125;,<br>  output:&#123;<span class="hljs-regexp">//</span>出口文件<br>    path:<span class="hljs-string">&#x27;./build/&#x27;</span>,<span class="hljs-regexp">//</span>出口路径<br>    filename:<span class="hljs-string">&#x27;[name].js?[hash:8]&#x27;</span><span class="hljs-regexp">//</span>出口文件名。[name]对于entry中的属性名。?[hash:<span class="hljs-number">8</span>]加<span class="hljs-number">8</span>位的hash值，防止缓存<br>  &#125;,<br>  plugins:[<br>    <span class="hljs-regexp">//</span>自动创建plugin<br>    new htmlWebpackPlugin(&#123;<br>      title:<span class="hljs-string">&#x27;标题&#x27;</span>,<br>      <span class="hljs-regexp">//</span>filename:<span class="hljs-string">&#x27;index.html&#x27;</span>,<span class="hljs-regexp">//</span>自动生成一个新的html<br>      template:<span class="hljs-string">&#x27;./index.html&#x27;</span>,<span class="hljs-regexp">//</span>在index.html模板上增加js<br>      chunks:[<span class="hljs-string">&#x27;index&#x27;</span>,<span class="hljs-string">&#x27;bundle&#x27;</span>,<span class="hljs-string">&#x27;common.js&#x27;</span>]<span class="hljs-regexp">//</span>需要哪些js文件,即依赖的js。 common是提取的js文件，必须加后缀<br>    &#125;),<br>    <span class="hljs-regexp">//</span>自动打开浏览器<br>    new openBrowserWebpackPlugin(&#123;<br>      url:<span class="hljs-string">&#x27;http://localhost:8081&#x27;</span><br>    &#125;),<br>    new extractTextWebpackPlugin(<span class="hljs-string">&#x27;bundle.css&#x27;</span>),<span class="hljs-regexp">//</span>文件单独加载，命名打包后的css文件<br>    new webpack.optimize.CommonsChunkPlugin(<span class="hljs-string">&#x27;common.js&#x27;</span>),<span class="hljs-regexp">//</span>抽取chunks下所有的js相同的代码，并合并为common.js<br>    new webpack.optimize.UglifyJsPlugin(&#123;<span class="hljs-regexp">//</span>压缩js文件<br>        compress: &#123;<br>          warnings: false<br>          &#125;<br>    &#125;),<br>  ],<br>  module:&#123;<span class="hljs-regexp">//</span>模块的导入方式，即为了简化index.js中的require(<span class="hljs-string">&#x27;style!css!./style.css&#x27;</span>)这句话。配置完一个这句话可以改为require(<span class="hljs-string">&#x27;./style.css&#x27;</span>)<br>    loaders:[<span class="hljs-regexp">//</span>所有的加载器<br>      <span class="hljs-regexp">//</span>&#123;test:<span class="hljs-regexp">/\.css$/</span>,loaders:[<span class="hljs-string">&#x27;style&#x27;</span>,<span class="hljs-string">&#x27;css&#x27;</span>]&#125;,<span class="hljs-regexp">//</span>匹配所有的css，进行css和style的配置<br>      &#123;test:<span class="hljs-regexp">/\.css$/</span>,loader:extractTextWebpackPlugin.extract(<span class="hljs-string">&#x27;style&#x27;</span>,<span class="hljs-string">&#x27;css&#x27;</span>)&#125;,<span class="hljs-regexp">//</span>配置需要单独单独加载的文件<br>      &#123;test:<span class="hljs-regexp">/\.(jpg|png|gif)$/</span>,loaders:[<span class="hljs-string">&#x27;url?limit=8000&#x27;</span>]&#125;<span class="hljs-regexp">//</span>匹配所有的图片，用url-loader加载。 ?limit=<span class="hljs-number">8000</span> <span class="hljs-number">8</span>K以下的不转BASE64<br>    ]<br>  &#125;,<br>  resolve:&#123;<span class="hljs-regexp">//</span>请求重定向<br>    <span class="hljs-regexp">//</span>在编写的时候去掉扩展名<br>    extensions:[<span class="hljs-string">&#x27;&#x27;</span>,<span class="hljs-string">&#x27;.js&#x27;</span>,<span class="hljs-string">&#x27;.css&#x27;</span>,<span class="hljs-string">&#x27;.jsx&#x27;</span>],<span class="hljs-regexp">//</span>顺序必须是 空  js  css jsx<br>    <span class="hljs-regexp">//</span>配置名称简写。即把index.js中的require(<span class="hljs-string">&#x27;./a/b/index.js&#x27;</span>)的写法改为pack<br>    alias:&#123;<br>      pack:<span class="hljs-string">&#x27;./a/b/index.js&#x27;</span><br>    &#125;<br>  &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/webpack/">webpack</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/webpack/">webpack</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2017/01/19/react-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">react-基本使用</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2017/01/17/JS%E5%9B%9B%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%B5%8B%E7%9A%84%E6%96%B9%E6%B3%95/">
+                        <span class="hidden-mobile">javaScript四种数据类型检测的方法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
