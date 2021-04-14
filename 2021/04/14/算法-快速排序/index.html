@@ -18,7 +18,7 @@
   <meta name="author" content="lucian">
   <meta name="keywords" content="">
   
-  <title>antd form异步初始值解决方案 - lucian blog</title>
+  <title>算法-快速排序 - lucian blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -158,7 +158,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="antd form异步初始值解决方案">
+            <span class="h2" id="subtitle" title="算法-快速排序">
               
             </span>
 
@@ -168,7 +168,7 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-04-14 20:07" pubdate>
+      <time datetime="2021-04-14 21:07" pubdate>
         2021年4月14日 晚上
       </time>
     </span>
@@ -180,7 +180,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      481 字
+      545 字
     </span>
   
 
@@ -190,7 +190,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      7
        分钟
     </span>
   
@@ -220,28 +220,35 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">antd form异步初始值解决方案</h1>
+            <h1 style="display: none">算法-快速排序</h1>
             
             <div class="markdown-body">
-              <h1 id="antd-form异步初始值解决方案"><a href="#antd-form异步初始值解决方案" class="headerlink" title="antd-form异步初始值解决方案"></a>antd-form异步初始值解决方案</h1><blockquote>
-<p>使用 <a target="_blank" rel="noopener" href="https://ant-design.gitee.io/components/form-cn/">antd form组件</a>设置<code>initialValues</code>属性。如果<code>initialValues</code> 需要从接口获得数据，由于form表单在接口请求完成之前已经初始化，无法再设置 <code>initialValues</code>导致的问题</p>
-</blockquote>
-<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>一个页面的查询区，查询区的某一个查询条件需要先请求接口，拿到数据后，给查询条件赋值。并且此查询项支持清空。想通过<code>initialValues</code>来设置初始值，无法实现</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="react16之前，不使用-hooks"><a href="#react16之前，不使用-hooks" class="headerlink" title="react16之前，不使用 hooks"></a>react16之前，不使用 hooks</h3><p>在 <code>componentWillMount</code> 时，请求数据，并等待数据返回后，再初始化form表单</p>
-<p>这样可以解决一部分问题，但是会阻碍render渲染，需要等待接口请求，不合适，况且如果接口响应比较慢，也会失效</p>
-<h3 id="react16之后，使用-hooks"><a href="#react16之后，使用-hooks" class="headerlink" title="react16之后，使用 hooks"></a>react16之后，使用 hooks</h3><p>react16使用 useEffect，无法模拟 <code>componentWillMount</code>，及时模拟出 <code>componentWillMount</code>，方法也不合适。此时需要一个完美的解决方案来处理</p>
-<h3 id="实战完美方案"><a href="#实战完美方案" class="headerlink" title="实战完美方案"></a>实战完美方案</h3><p>组件官网有说明如下：</p>
-<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pf">你不能用控件的 value 或 <span class="hljs-keyword">default</span>Value 等属性来设置表单域的值，默认值可以用 Form 里的 initialValues 来设置。注意 initialValues 不能被 <span class="hljs-built_in">set</span>State 动态更新，你需要用 <span class="hljs-built_in">set</span>FieldsValue 来更新。<br></code></pre></td></tr></table></figure>
-<p>由此得出可以通过<code>setFieldsValue</code>来更新表单域的值，并且这个值需要等待一个接口返回。</p>
-<ul>
-<li>在已封装好的查询组件中设置属性 <code>asyncInitialValues</code> 这是一个 <code>Promise</code></li>
-<li>在<code>useEffect</code>中调用 <code>asyncInitialValues</code>。并在<code>then</code>中调用<code>setFieldsValue</code>设置初始值</li>
+              <h1 id="算法-快速排序"><a href="#算法-快速排序" class="headerlink" title="算法-快速排序"></a>算法-快速排序</h1><p>快速排序有多种实现方法，这里说两种</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ul>
+<li>选择一个基准元素<code>target</code>（一般选择第一个数）</li>
+<li>将比<code>target</code>小的元素移动到数组左边，比<code>target</code>大的元素移动到数组右边</li>
+<li>分别对target左侧和右侧的元素进行快速排序</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js">useEffect(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (asyncInitialValues) &#123;<br>        asyncInitialValues().then(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;<br>            <span class="hljs-keyword">if</span> (res) &#123;<span class="hljs-comment">//这里需要传入setFieldsValue的参数</span><br>                form.setFieldsValue(res);<br>            &#125;<br>        &#125;);<br>    &#125;<br>&#125;, []);<br></code></pre></td></tr></table></figure>
-<ul>
-<li>在调用方传入 <code>asyncInitialValues</code>,<code>asyncInitialValues</code>返回<code>Promise</code></li>
+<p>下面是对序列6、1、2、7、9、3、4、5、10、8排序的过程：</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0b731216fc404227971efe44ba19d77a~tplv-k3u1fbpfcp-zoom-1.image" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2f22e774a2d941799a775521a9dffc11~tplv-k3u1fbpfcp-zoom-1.image" srcset="/img/loading.gif" lazyload></p>
+<h2 id="解法1：双数组"><a href="#解法1：双数组" class="headerlink" title="解法1：双数组"></a>解法1：双数组</h2><ul>
+<li>单独开辟两个存储空间left和right来存储每次递归比target小和大的序列</li>
+<li>每次递归直接返回left、target、right拼接后的数组</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> asyncInitialValues = <span class="hljs-keyword">async</span> () =&gt; &#123;<br>    setLoading(<span class="hljs-literal">true</span>);<br>    <span class="hljs-keyword">let</span> &#123; result &#125; = processData(<span class="hljs-keyword">await</span> getClass(&#123;&#125;));<br>    setLoading(<span class="hljs-literal">false</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>        <span class="hljs-keyword">if</span> (result?.ent?.items) &#123;<br>            <span class="hljs-keyword">let</span> course = result?.ent?.items;<br>            resolve(&#123;<br>                course,<span class="hljs-comment">//需要设置值的表单</span><br>            &#125;);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            reject();<br>        &#125;<br>    &#125;);<br>&#125;;<br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quickSort</span>(<span class="hljs-params">array</span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (array.length &lt; <span class="hljs-number">2</span>) &#123;<br>    <span class="hljs-keyword">return</span> array;<br>  &#125;<br>  <span class="hljs-keyword">const</span> target = array[<span class="hljs-number">0</span>];<br>  <span class="hljs-keyword">const</span> left = [];<br>  <span class="hljs-keyword">const</span> right = [];<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; array.length; i++) &#123;<br>    <span class="hljs-keyword">if</span> (array[i] &lt; target) &#123;<br>      left.push(array[i]);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      right.push(array[i]);<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> quickSort(left).concat([target], quickSort(right));<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="解法2：双指针"><a href="#解法2：双指针" class="headerlink" title="解法2：双指针"></a>解法2：双指针</h2><ul>
+<li>记录一个索引<code>l</code>从数组最左侧开始，记录一个索引<code>r</code>从数组右侧开始</li>
+<li>在<code>l&lt;r</code>的条件下，找到右侧小于<code>target</code>的值<code>array[r]</code>，并将其赋值到<code>array[l]</code></li>
+<li>在<code>l&lt;r</code>的条件下，找到左侧大于<code>target</code>的值<code>array[l]</code>，并将其赋值到<code>array[r]</code></li>
+<li>这样让<code>l=r</code>时，左侧的值全部小于<code>target</code>，右侧的值全部小于<code>target</code>，将<code>target</code>放到该位置</li>
+</ul>
+<p>这个可以结合视频理解：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1at411T75o">点击这里</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quickSort</span>(<span class="hljs-params">arr, begin, end</span>) </span>&#123;<br>    <span class="hljs-comment">//递归出口</span><br>    <span class="hljs-keyword">if</span>(begin &gt;= end)<br>        <span class="hljs-keyword">return</span>;<br>    <span class="hljs-keyword">var</span> l = begin; <span class="hljs-comment">// 左指针</span><br>    <span class="hljs-keyword">var</span> r = end; <span class="hljs-comment">//右指针</span><br>    <span class="hljs-keyword">var</span> temp = arr[begin]; <span class="hljs-comment">//基准数，这里取数组第一个数</span><br>    <span class="hljs-comment">//左右指针相遇的时候退出扫描循环</span><br>    <span class="hljs-keyword">while</span>(l &lt; r) &#123;<br><br>        <span class="hljs-comment">//右指针从右向左扫描，碰到第一个小于基准数的时候停住</span><br>        <span class="hljs-keyword">while</span>(l &lt; r &amp;&amp; arr[r] &gt;= temp)r --;<br><br>        <span class="hljs-comment">//左指针从左向右扫描，碰到第一个大于基准数的时候停住</span><br>        <span class="hljs-keyword">while</span>(l &lt; r &amp;&amp; arr[l] &lt;= temp)l ++;<br>        <br>        <span class="hljs-comment">//交换左右指针所停位置的数</span><br>        [arr[l], arr[r]] = [arr[r], arr[l]];<br>    &#125;<br>    <span class="hljs-comment">//最后交换基准数与指针相遇位置的数</span><br>    [arr[begin], arr[l]] = [arr[l], arr[begin]];<br>    <span class="hljs-comment">//递归处理左右数组</span><br>    quickSort(arr, begin, l - <span class="hljs-number">1</span>);<br>    quickSort(arr, l + <span class="hljs-number">1</span>, end);<br>    <span class="hljs-keyword">return</span> arr;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 
             </div>
             <hr>
@@ -251,7 +258,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/js/">js</a>
+                      <a class="hover-with-bg" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
                     
                   </div>
                 
@@ -259,7 +266,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/antd/">antd</a>
+                      <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%8E%92%E5%BA%8F/">排序</a>
                     
                   </div>
                 
@@ -276,18 +285,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/04/14/%E7%AE%97%E6%B3%95-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">算法-快速排序</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/04/14/%E5%8D%9A%E5%AE%A2%E9%87%8D%E5%90%AF/">
-                        <span class="hidden-mobile">博客重启</span>
+                      <a href="/2021/04/14/antd-form%E5%BC%82%E6%AD%A5%E5%88%9D%E5%A7%8B%E5%80%BC/">
+                        <span class="hidden-mobile">antd form异步初始值解决方案</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
