@@ -1,0 +1,468 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpg">
+  <link rel="icon" href="/img/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="lucian">
+  <meta name="keywords" content="">
+  
+  <title>antd 查询区组件 - lucian blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"liushaozhen.gitee.io","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>lucian的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://liushaozhen.gitee.io/img/bg.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="antd 查询区组件">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-04-19 15:07" pubdate>
+        2021年4月19日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      23
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">antd 查询区组件</h1>
+            
+            <div class="markdown-body">
+              <blockquote>
+<p>做过了很多react项目，每个项目基本都会需要一个查询区组件，封装过多个。整理一下</p>
+</blockquote>
+<p>全部项目组件参考<a target="_blank" rel="noopener" href="https://github.com/liushaozhen/react-component">这里</a>。 不断建设中…</p>
+<h2 id="基于tinper组件封装"><a href="#基于tinper组件封装" class="headerlink" title="基于tinper组件封装"></a>基于tinper组件封装</h2><p><a target="_blank" rel="noopener" href="http://tinper.org/">tinper</a> 在第一家公司的时候做的，整套的前端生态。里边有一套组件库，其中就有查询区组件。 <a target="_blank" rel="noopener" href="http://bee.tinper.org/tinper-bee/bee-search-panel">SearchPanel</a> 开源项目源码见<a target="_blank" rel="noopener" href="https://github.com/tinper-bee/bee-search-panel">这里</a></p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>可扩展性强、布局灵活</li>
+<li>已经过n多项目验证，比较健壮</li>
+</ul>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>封装度不高，使用起来代码量大</li>
+</ul>
+<h2 id="基于antd封装"><a href="#基于antd封装" class="headerlink" title="基于antd封装"></a>基于antd封装</h2><p>没有发布代码包，支持配置式生成表单</p>
+<h3 id="封装思路"><a href="#封装思路" class="headerlink" title="封装思路"></a>封装思路</h3><ul>
+<li>支持传入配置，解析配置生成查询区</li>
+<li>拆分两个组件，一个查询面板组件<code>SearchBoard</code>，一个表单渲染组件<code>FormRender</code></li>
+<li><code>SearchBoard</code>支持：查询回调、重置回调、设置默认值、传入配置项、有基本布局、可自定义其它类型组件自动集成到form表单中</li>
+<li><code>FormRender</code>支持：根据<code>renderType</code>解析成不同的表单元素、传入<code>Form.Item</code>的属性(name、label、reles等)、<code>renderType</code>支持扩展</li>
+</ul>
+<h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;SearchBoard<br>    onSearch=&#123;<span class="hljs-function">(<span class="hljs-params">value</span>) =&gt;</span> &#123;<br>        getData(value);<br>    &#125;&#125;<br>    onReset=&#123;handleReset&#125;<br>    props=&#123;&#123;<br>        rangepicker: [<br>            &#123;<br>                name: <span class="hljs-string">&#x27;time&#x27;</span>,<br>                label: <span class="hljs-string">&#x27;练习时间&#x27;</span>,<br>                showTime: <span class="hljs-literal">true</span>,<br>            &#125;,<br>        ],<br>        phone: [<br>            &#123;<br>                name: <span class="hljs-string">&#x27;phone&#x27;</span>,<br>                placeholder: <span class="hljs-string">&#x27;学生手机号&#x27;</span>,<br>            &#125;,<br>        ],<br>        input: [<br>            &#123;<br>                name: <span class="hljs-string">&#x27;userid&#x27;</span>,<br>                placeholder: <span class="hljs-string">&#x27;学生ID&#x27;</span>,<br>                isNumber: <span class="hljs-literal">true</span>,<br>            &#125;,<br>            &#123;<br>                name: <span class="hljs-string">&#x27;opuser&#x27;</span>,<br>                placeholder: <span class="hljs-string">&#x27;归属人&#x27;</span>,<br>            &#125;,<br>            &#123;<br>                name: <span class="hljs-string">&#x27;evaluatecount&#x27;</span>,<br>                placeholder: <span class="hljs-string">&#x27;测评次数&#x27;</span>,<br>                isNumber: <span class="hljs-literal">true</span>,<br>            &#125;,<br>        ],<br>        radio: [<br>            &#123;<br>                name: <span class="hljs-string">&#x27;kid&#x27;</span>,<br>                label: <span class="hljs-string">&#x27;课程类型&#x27;</span>,<br>                options: KID,<br>            &#125;,<br>        ],<br>    &#125;&#125;&gt;<br>     &#123;<span class="hljs-comment">/* 自定义其它类型， */</span>&#125;<br>    &lt;Form.Item name=<span class="hljs-string">&quot;classId&quot;</span>&gt;<br>        &lt;Input placeholder=<span class="hljs-string">&quot;请输入班级ID&quot;</span> /&gt;<br>    &lt;/Form.Item&gt;<br>&lt;/SearchBoard&gt;<br></code></pre></td></tr></table></figure>
+
+<h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3><h4 id="SearchBoard"><a href="#SearchBoard" class="headerlink" title="SearchBoard"></a>SearchBoard</h4><blockquote>
+<p>js</p>
+</blockquote>
+<p><code>asyncInitialValues</code> 异步初始值，参考之前的文章<a target="_blank" rel="noopener" href="https://liushaozhen.github.io/2021/04/14/antd-form%E5%BC%82%E6%AD%A5%E5%88%9D%E5%A7%8B%E5%80%BC/">antd-form异步初始值解决方案</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><span class="hljs-keyword">import</span> React, &#123; useEffect &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span>;<br><span class="hljs-keyword">import</span> &#123; Form, Button &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;UI&#x27;</span>;<br><span class="hljs-keyword">import</span> FormRender <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;components/FormRender&#x27;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;./index.less&#x27;</span>;<br><br><span class="hljs-keyword">const</span> noop = <span class="hljs-function">() =&gt;</span> &#123;&#125;;<br><br><span class="hljs-keyword">const</span> SearchBoard = (&#123;<br>    children,<br>    onReset = noop, <span class="hljs-comment">//重置回调</span><br>    onSearch = noop, <span class="hljs-comment">//查询回调</span><br>    clearfix = <span class="hljs-string">&#x27;search-board&#x27;</span>,<br>    props,<br>    initialValues, <span class="hljs-comment">//初始值</span><br>    asyncInitialValues, <span class="hljs-comment">//异步初始值</span><br>&#125;) =&gt; &#123;<br>    <span class="hljs-keyword">const</span> [form] = Form.useForm();<br><br>    <span class="hljs-keyword">const</span> clear = <span class="hljs-function">() =&gt;</span> &#123;<br>        <span class="hljs-keyword">if</span> (initialValues) &#123;<br>            <span class="hljs-keyword">let</span> obj = &#123;&#125;;<br>            <span class="hljs-built_in">Object</span>.keys(initialValues).forEach(<span class="hljs-function">(<span class="hljs-params">key</span>) =&gt;</span> &#123;<br>                obj[key] = <span class="hljs-literal">null</span>;<br>            &#125;);<br>            form.resetFields();<br>            form.setFieldsValue(obj);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            form.resetFields();<br>        &#125;<br>        onReset();<br>    &#125;;<br><br>    <span class="hljs-keyword">const</span> search = <span class="hljs-function">() =&gt;</span> &#123;<br>        form.validateFields().then(<span class="hljs-function">(<span class="hljs-params">values</span>) =&gt;</span> &#123;<br>            onSearch(values);<br>        &#125;);<br>    &#125;;<br><br>    <span class="hljs-keyword">const</span> renderItem = <span class="hljs-function">() =&gt;</span> &#123;<br>        <span class="hljs-keyword">let</span> domItem = [];<br>        <span class="hljs-keyword">let</span> domRadio = [];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> renderType <span class="hljs-keyword">in</span> props) &#123;<br>            <span class="hljs-keyword">if</span> (props[renderType]) &#123;<br>                props[renderType].forEach(<span class="hljs-function">(<span class="hljs-params">item, index</span>) =&gt;</span> &#123;<br>                    <span class="hljs-keyword">if</span> (renderType != <span class="hljs-string">&#x27;radio&#x27;</span>) &#123;<br>                        domItem.push(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">FormRender</span> <span class="hljs-attr">renderType</span>=<span class="hljs-string">&#123;renderType&#125;</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&#123;</span>`$&#123;<span class="hljs-attr">renderType</span>&#125;<span class="hljs-attr">-</span>$&#123;<span class="hljs-attr">index</span>&#125;`&#125; &#123;<span class="hljs-attr">...item</span>&#125; /&gt;</span></span>);<br>                    &#125; <span class="hljs-keyword">else</span> &#123;<br>                        domRadio.push(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">FormRender</span> <span class="hljs-attr">renderType</span>=<span class="hljs-string">&#123;renderType&#125;</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&#123;</span>`$&#123;<span class="hljs-attr">renderType</span>&#125;<span class="hljs-attr">-</span>$&#123;<span class="hljs-attr">index</span>&#125;`&#125; &#123;<span class="hljs-attr">...item</span>&#125; /&gt;</span></span>);<br>                    &#125;<br>                &#125;);<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> &#123;<br>            domItem,<br>            domRadio,<br>        &#125;;<br>    &#125;;<br><br>    useEffect(<span class="hljs-function">() =&gt;</span> &#123;<br>        <span class="hljs-keyword">if</span> (asyncInitialValues) &#123;<br>            asyncInitialValues().then(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;<br>                <span class="hljs-keyword">if</span> (res) &#123;<br>                    form.setFieldsValue(res);<br>                &#125;<br>            &#125;);<br>        &#125;<br>    &#125;, []);<br><br>    <span class="hljs-keyword">return</span> (<br>        &lt;div className=&#123;clearfix&#125;&gt;<br>            &lt;Form form=&#123;form&#125; layout=<span class="hljs-string">&quot;inline&quot;</span> colon=&#123;<span class="hljs-literal">false</span>&#125; validateTrigger=<span class="hljs-string">&quot;onBlur&quot;</span> initialValues=&#123;initialValues&#125;&gt;<br>                &#123;renderItem().domItem&#125;<br>                &#123;children&#125;<br>                &lt;span className=&#123;<span class="hljs-string">`<span class="hljs-subst">$&#123;clearfix&#125;</span>-options`</span>&#125;&gt;<br>                    &lt;Button onClick=&#123;search&#125; type=<span class="hljs-string">&quot;primary&quot;</span> className=&#123;<span class="hljs-string">`<span class="hljs-subst">$&#123;clearfix&#125;</span>-options-search`</span>&#125;&gt;<br>                        查询<br>                    &lt;/Button&gt;<br>                    &lt;Button onClick=&#123;clear&#125; className=&#123;<span class="hljs-string">`<span class="hljs-subst">$&#123;clearfix&#125;</span>-options-reset`</span>&#125;&gt;<br>                        重置<br>                    &lt;/Button&gt;<br>                &lt;/span&gt;<br><br>                &#123;renderItem().domRadio&#125;<br>            &lt;/Form&gt;<br>        &lt;/div&gt;<br>    );<br>&#125;;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> SearchBoard;<br><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>less</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.search-board</span>&#123;<br>    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">16px</span>;<br>    <span class="hljs-attribute">position</span>: relative;<br>    <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">150px</span>;<br>    <span class="hljs-selector-class">.ant-form</span>&#123;<br>        <span class="hljs-selector-class">.ant-form-item</span>&#123;<br>            <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">8px</span>;<br>            <span class="hljs-attribute">min-width</span>: <span class="hljs-number">180px</span>;<br>            <span class="hljs-selector-class">.ant-picker</span>&#123;<br>                <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;<br>            &#125;<br>            <span class="hljs-selector-class">.ant-select</span>&#123;<br>                <span class="hljs-attribute">min-width</span>: <span class="hljs-number">180px</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br>    &amp;-options&#123;<br>        <span class="hljs-attribute">width</span>: <span class="hljs-number">150px</span>;<br>        <span class="hljs-attribute">position</span>: absolute;<br>        <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;<br>        &amp;-search&#123;<br>            <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">16px</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-selector-class">.form-radio</span>&#123;<br>        <span class="hljs-attribute">display</span>: block;<br>        <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;<br>        <span class="hljs-selector-class">.ant-form-item-label</span>&#123;<br>            <span class="hljs-attribute">min-width</span>: <span class="hljs-number">100px</span>;<br>            <span class="hljs-attribute">text-align</span>: left;<br>        &#125;<br>        <span class="hljs-selector-class">.ant-radio-button-wrapper</span>&#123;<br>            <span class="hljs-attribute">border</span>: none;<br>            <span class="hljs-attribute">font-size</span>: <span class="hljs-number">12px</span>;<br>            &amp;<span class="hljs-selector-pseudo">::before</span>&#123;<br>                <span class="hljs-attribute">display</span>: none;<br>            &#125;<br>            &amp;<span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-pseudo">:last-of-type</span>)&#123;<br>                <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">8px</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-selector-class">.form-phone</span>&#123;<br>        <span class="hljs-selector-class">.ant-select</span>&#123;<br>            <span class="hljs-attribute">width</span>: <span class="hljs-number">80px</span>;<br>            <span class="hljs-attribute">min-width</span>: <span class="hljs-number">0</span><span class="hljs-meta">!important</span>;<br>        &#125;<br>        <span class="hljs-selector-class">.ant-input</span>&#123;<br>            <span class="hljs-attribute">width</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">100%</span> - <span class="hljs-number">80px</span>);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="FormRender"><a href="#FormRender" class="headerlink" title="FormRender"></a>FormRender</h4><ul>
+<li><code>Phone</code> 组件，支持选择区号的手机号下拉。可以在<a target="_blank" rel="noopener" href="https://github.com/liushaozhen/react-component">这里</a>查看组件源码</li>
+<li><code>Organization</code>组件：项目上封装的组织架构组件。不开源</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span>;<br><span class="hljs-keyword">import</span> &#123; Form, Input, Select, DatePicker, Radio &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;UI&#x27;</span>;<br><span class="hljs-keyword">import</span> Phone <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./component/Phone&#x27;</span>;<br><span class="hljs-keyword">import</span> RadioInput <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;components/RadioInput&#x27;</span>;<br><span class="hljs-keyword">import</span> Organization <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;components/Organization&#x27;</span>;<br><br><span class="hljs-keyword">const</span> RangePicker = DatePicker.RangePicker;<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;string&#125;</span> </span>renderType 渲染类型,如多个input分散，可以用 input_1,input_2</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;boolean&#125;</span> </span>isNumber 是否只允许数字</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;string&#125;</span> </span>name 唯一标示,Form.Item使用</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;string&#125;</span> </span>label 标题,Form.Item使用</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Array&#125;</span> </span>rules 校验规则</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Object&#125;</span> </span>itemProps Form.Item其它属性</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns</span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">const</span> FormRender = <span class="hljs-function">(<span class="hljs-params">&#123; renderType = <span class="hljs-string">&#x27;input&#x27;</span>, placeholder, isNumber, name, label, rules = [], itemProps, ...other &#125;</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">const</span> validatePhone = <span class="hljs-function">(<span class="hljs-params">rule, value</span>) =&gt;</span> &#123;<br>        <span class="hljs-keyword">if</span> (value) &#123;<br>            <span class="hljs-keyword">let</span> phone = value.split(<span class="hljs-string">&#x27;-&#x27;</span>)[<span class="hljs-number">1</span>];<br>            <span class="hljs-keyword">let</span> reg = <span class="hljs-regexp">/^\d*$/</span>;<br>            <span class="hljs-keyword">if</span> (reg.test(phone)) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.resolve();<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.reject(<span class="hljs-string">&#x27;手机号格式不正确&#x27;</span>);<br>            &#125;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.resolve();<br>        &#125;<br>    &#125;;<br><br>    <span class="hljs-keyword">const</span> validateNumber = <span class="hljs-function">(<span class="hljs-params">rule, value</span>) =&gt;</span> &#123;<br>        <span class="hljs-keyword">if</span> (value) &#123;<br>            <span class="hljs-keyword">let</span> reg = <span class="hljs-regexp">/^\d*$/</span>;<br>            <span class="hljs-keyword">if</span> (reg.test(value)) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.resolve();<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.reject(<span class="hljs-string">&#x27;数据格式错误&#x27;</span>);<br>            &#125;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.resolve();<br>        &#125;<br>    &#125;;<br><br>    <span class="hljs-keyword">const</span> renderItem = <span class="hljs-function">() =&gt;</span> &#123;<br>        <span class="hljs-keyword">const</span> props = &#123;<br>            placeholder,<br>            ...other,<br>        &#125;;<br>        <span class="hljs-keyword">if</span> (isNumber) &#123;<br>            rules.push(&#123; <span class="hljs-attr">validator</span>: validateNumber &#125;);<br>        &#125;<br>        <span class="hljs-keyword">let</span> type = renderType.split(<span class="hljs-string">&#x27;_&#x27;</span>)[<span class="hljs-number">0</span>];<br>        <span class="hljs-keyword">switch</span> (type) &#123;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;input&#x27;</span>: <span class="hljs-comment">//输入框,</span><br>                <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Input</span> &#123;<span class="hljs-attr">...props</span>&#125; /&gt;</span></span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;phone&#x27;</span>: <span class="hljs-comment">//手机号</span><br>                rules.push(&#123; <span class="hljs-attr">validator</span>: validatePhone &#125;);<br>                <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Phone</span> &#123;<span class="hljs-attr">...props</span>&#125; /&gt;</span></span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;select&#x27;</span>: <span class="hljs-comment">//下拉</span><br>                <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Select</span> &#123;<span class="hljs-attr">...props</span>&#125; /&gt;</span></span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;datepicker&#x27;</span>: <span class="hljs-comment">//日期</span><br>                <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">DatePicker</span> &#123;<span class="hljs-attr">...props</span>&#125; /&gt;</span></span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;rangepicker&#x27;</span>: <span class="hljs-comment">//日期区间</span><br>                <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">RangePicker</span> &#123;<span class="hljs-attr">...props</span>&#125; /&gt;</span></span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;radio&#x27;</span>:<br>                <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">RadioInput</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;small&quot;</span> <span class="hljs-attr">optionType</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">buttonStyle</span>=<span class="hljs-string">&quot;solid&quot;</span> &#123;<span class="hljs-attr">...props</span>&#125; /&gt;</span></span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;organization&#x27;</span>: <span class="hljs-comment">//组织架构</span><br>                <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Organization</span> &#123;<span class="hljs-attr">...props</span>&#125; /&gt;</span></span>;<br>            <span class="hljs-keyword">default</span>:<br>                <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Input</span> &#123;<span class="hljs-attr">...props</span>&#125; /&gt;</span></span>;<br>        &#125;<br>    &#125;;<br><br>    <span class="hljs-keyword">return</span> (<br>        &lt;Form.Item label=&#123;label&#125; name=&#123;name&#125; rules=&#123;rules&#125; &#123;...itemProps&#125; className=&#123;<span class="hljs-string">`form-<span class="hljs-subst">$&#123;renderType&#125;</span>`</span>&#125;&gt;<br>            &#123;renderItem()&#125;<br>        &lt;/Form.Item&gt;<br>    );<br>&#125;;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> FormRender;<br></code></pre></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/react/">react</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/antd/">antd</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%BB%84%E4%BB%B6/">组件</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/04/14/%E7%AE%97%E6%B3%95-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/">
+                        <span class="hidden-mobile">算法-快速排序</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
