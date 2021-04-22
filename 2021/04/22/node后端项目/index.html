@@ -1,0 +1,499 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpg">
+  <link rel="icon" href="/img/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="lucian">
+  <meta name="keywords" content="">
+  
+  <title>node后端项目 - lucian blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"liushaozhen.gitee.io","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>lucian的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://liushaozhen.gitee.io/img/bg.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="node后端项目">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-04-22 14:29" pubdate>
+        2021年4月22日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      31
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">node后端项目</h1>
+            
+            <div class="markdown-body">
+              <blockquote>
+<p>记录去年手撸的一个node后端项目心得，比较渣，只能作为demo使用，但毕竟是个好的开始。</p>
+</blockquote>
+<p>先放项目链接<a target="_blank" rel="noopener" href="https://gitee.com/liushaozhen/node-server">这里</a> 🐶🐶🐶</p>
+<h2 id="项目概况"><a href="#项目概况" class="headerlink" title="项目概况"></a>项目概况</h2><ul>
+<li>一个后台管理项目，前端使用<a target="_blank" rel="noopener" href="https://umijs.org/">umi</a>+<a target="_blank" rel="noopener" href="https://ant-design.gitee.io/components/overview-cn/">antd</a></li>
+<li>后端使用node</li>
+<li>数据库使用 mongodb</li>
+</ul>
+<h2 id="后端问题以及解决方案"><a href="#后端问题以及解决方案" class="headerlink" title="后端问题以及解决方案"></a>后端问题以及解决方案</h2><h3 id="1、如何定义目录结构"><a href="#1、如何定义目录结构" class="headerlink" title="1、如何定义目录结构"></a>1、如何定义目录结构</h3><p>如何做一个清晰的项目结构，结合以前java的开发经历，大概做成了以下目录结构</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">.<br>├── controller							        <span class="hljs-comment"># 应用层</span><br>├── dao							                <span class="hljs-comment"># 数据访问层</span><br>├── doc							                <span class="hljs-comment"># 文档</span><br>├── keys							            <span class="hljs-comment"># token校验相关的key</span><br>├── logs							            <span class="hljs-comment"># 日志文件夹</span><br>├── middleware							        <span class="hljs-comment"># 中间件</span><br>├── tasks						                <span class="hljs-comment"># 定时任务</span><br>├── service							            <span class="hljs-comment"># 服务层</span><br>├── utils							            <span class="hljs-comment"># 工具类</span><br>├── app.js							            <span class="hljs-comment"># 入口</span><br>└── router							            <span class="hljs-comment"># 路由</span><br><br></code></pre></td></tr></table></figure>
+
+<h3 id="2、如何链接数据库以及数据库的持久化"><a href="#2、如何链接数据库以及数据库的持久化" class="headerlink" title="2、如何链接数据库以及数据库的持久化"></a>2、如何链接数据库以及数据库的持久化</h3><p>这里使用了 <a target="_blank" rel="noopener" href="https://mongoosejs.com/">mongoose</a>插件。还是挺简单的，链接代码如下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;mongoose&#x27;</span>);<br><span class="hljs-keyword">const</span> mongoUrl =<span class="hljs-string">&#x27;数据库地址&#x27;</span>;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">connectMongoDB</span>(<span class="hljs-params">address</span>) </span>&#123;<br>  <span class="hljs-keyword">try</span> &#123;<br>    mongoose.connect(address, &#123;<br>      useNewUrlParser: <span class="hljs-literal">true</span>,<br>      bufferMaxEntries: <span class="hljs-number">0</span> <span class="hljs-comment">/* B */</span>,<br>      user: <span class="hljs-string">&#x27;developer&#x27;</span>,<br>      pass: <span class="hljs-string">&#x27;developer&#x27;</span>,<br>    &#125;);<br><br>    <span class="hljs-keyword">const</span> db = mongoose.connection;<br>    db.on(<span class="hljs-string">&#x27;error&#x27;</span>, <span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> &#123;<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`MongoDB connecting failed: <span class="hljs-subst">$&#123;error&#125;</span>`</span>);<br>    &#125;);<br>    db.once(<span class="hljs-string">&#x27;open&#x27;</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;MongoDB connecting succeeded&#x27;</span>);<br>    &#125;);<br>    <span class="hljs-keyword">return</span> db;<br>  &#125; <span class="hljs-keyword">catch</span> (error) &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`MongoDB connecting failed: <span class="hljs-subst">$&#123;error&#125;</span>`</span>);<br>  &#125;<br>&#125;<br><br><span class="hljs-built_in">module</span>.exports = &#123;<br>  db: connectMongoDB(mongoUrl),<br>  mongoose,<br>&#125;;<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="3、如何使代码更清晰易懂"><a href="#3、如何使代码更清晰易懂" class="headerlink" title="3、如何使代码更清晰易懂"></a>3、如何使代码更清晰易懂</h3><p>奉行【约定优于配置】的原则，虽然开发只有我一个人。。。写的标准化一点总是好的。下边贴出 dao、controller、service层的代码规范</p>
+<ul>
+<li>dao</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> &#123; mongoose &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../utils/connect&#x27;</span>);<br><span class="hljs-keyword">const</span> aggregatePaginate = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;mongoose-aggregate-paginate-v2&#x27;</span>);<br><br><span class="hljs-keyword">const</span> moment = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;moment&#x27;</span>);<br><br><span class="hljs-keyword">const</span> Schema = mongoose.Schema;<br><br><span class="hljs-keyword">const</span> EquipmentInventorySchema = <span class="hljs-keyword">new</span> Schema(&#123;<br>    id: &#123;<br>        type: <span class="hljs-built_in">String</span>,<br>        required: <span class="hljs-literal">true</span>,<br>        unique: <span class="hljs-literal">true</span>,<br>    &#125;,<br>    equipment_roster_id: &#123;<br>        type: <span class="hljs-built_in">String</span>,<br>        required: <span class="hljs-literal">true</span>,<br>    &#125;,<br>    owner_id: &#123;<br>        <span class="hljs-comment">//所属人id</span><br>        type: <span class="hljs-built_in">String</span>,<br>        required: <span class="hljs-literal">true</span>,<br>    &#125;,<br>    manager_id: &#123;<br>        <span class="hljs-comment">//管理员id</span><br>        type: <span class="hljs-built_in">String</span>,<br>        required: <span class="hljs-literal">true</span>,<br>    &#125;,<br>    name: &#123;<br>        <span class="hljs-comment">//仪器名称</span><br>        type: <span class="hljs-built_in">String</span>,<br>        required: <span class="hljs-literal">true</span>,<br>    &#125;,<br>    mark: &#123;<br>        <span class="hljs-comment">//仪器标识</span><br>        type: <span class="hljs-built_in">String</span>,<br>    &#125;,<br>    location: &#123;<br>        <span class="hljs-comment">//仪器所在地邮编</span><br>        type: <span class="hljs-built_in">String</span>,<br>        required: <span class="hljs-literal">true</span>,<br>    &#125;,<br>    price: &#123;<br>        <span class="hljs-comment">//单价</span><br>        type: <span class="hljs-built_in">Number</span>,<br>        required: <span class="hljs-literal">true</span>,<br>    &#125;,<br>    price_unit: &#123;<br>        <span class="hljs-comment">//计费方式</span><br>        type: <span class="hljs-built_in">String</span>,<br>        enum: [<span class="hljs-string">&#x27;count&#x27;</span>, <span class="hljs-string">&#x27;hour&#x27;</span>], <span class="hljs-comment">// count 每次，hour 每小时</span><br>        required: <span class="hljs-literal">true</span>,<br>    &#125;,<br>    status: &#123;<br>        <span class="hljs-comment">//状态</span><br>        type: <span class="hljs-built_in">String</span>,<br>        enum: [<span class="hljs-string">&#x27;working&#x27;</span>, <span class="hljs-string">&#x27;malfunction&#x27;</span>, <span class="hljs-string">&#x27;offline&#x27;</span>], <span class="hljs-comment">// working 正常  malfunction 部分正常  offline 停用</span><br>        required: <span class="hljs-literal">true</span>,<br>        <span class="hljs-keyword">default</span>: <span class="hljs-string">&#x27;normal&#x27;</span>,<br>    &#125;,<br>    start_at: &#123;<br>        <span class="hljs-comment">//启用时间</span><br>        type: <span class="hljs-built_in">Date</span>,<br>    &#125;,<br>    note: &#123;<br>        <span class="hljs-comment">//备注</span><br>        type: <span class="hljs-built_in">String</span>,<br>    &#125;,<br>&#125;);<br>EquipmentInventorySchema.plugin(aggregatePaginate);<br><br><span class="hljs-keyword">let</span> equipmentInventory = mongoose.model(<br>    <span class="hljs-string">&#x27;equipmentInventory&#x27;</span>,<br>    EquipmentInventorySchema,<br>    <span class="hljs-string">&#x27;equipment_inventory&#x27;</span>,<br>);<br><br><span class="hljs-built_in">module</span>.exports = equipmentInventory;<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>controller </li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> EquipmentInventoryService = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../service/equipmentInventory&#x27;</span>);<br><span class="hljs-keyword">const</span> &#123; Base64 &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;js-base64&#x27;</span>);<br><span class="hljs-keyword">const</span> &#123; <span class="hljs-attr">v4</span>: uuidv4 &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;uuid&#x27;</span>);<br><span class="hljs-keyword">const</span> moment = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;moment&#x27;</span>);<br><span class="hljs-keyword">const</span> &#123; getUrlParam &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../utils/index&#x27;</span>);<br><br><span class="hljs-built_in">module</span>.exports = &#123;<br><span class="hljs-comment">//查询</span><br>list: <span class="hljs-keyword">async</span> ctx =&gt; &#123;<br>    <span class="hljs-comment">//1、处理传入的参数</span><br>    <span class="hljs-keyword">let</span> owner_id = ctx.cookies.get(<span class="hljs-string">&#x27;user&#x27;</span>);<br>    <span class="hljs-keyword">let</span> params = <span class="hljs-built_in">JSON</span>.parse(Base64.decode(ctx.request.body.data));<br>    <span class="hljs-comment">//2、调用service层获得数据</span><br>    <span class="hljs-keyword">let</span> data = <span class="hljs-keyword">await</span> EquipmentInventoryService.list(&#123; ...params, owner_id &#125;);<br>    <span class="hljs-comment">//3、对返回数据处理</span><br>    <span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-comment">//。。。省略。。。。</span><br>    ctx.response.body = &#123;<br>        code: <span class="hljs-number">0</span>,<br>        msg: <span class="hljs-string">&#x27;操作成功&#x27;</span>, <span class="hljs-comment">//提示信息</span><br>        data: data.data,<br>    &#125;;<br>    &#125; <span class="hljs-keyword">catch</span> (error) &#123;<br>    ctx.response.body = data;<br>    &#125;<br>&#125;,<br><span class="hljs-comment">//详情</span><br>info: <span class="hljs-keyword">async</span> ctx =&gt; &#123;<br>    <span class="hljs-keyword">let</span> &#123; id &#125; = getUrlParam(ctx.request.url);<br>    <span class="hljs-keyword">let</span> data = <span class="hljs-keyword">await</span> EquipmentInventoryService.list(&#123; id &#125;);<br>    <span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-comment">//。。。省略。。。。</span><br>    ctx.response.body = &#123;<br>        code: <span class="hljs-number">0</span>,<br>        msg: <span class="hljs-string">&#x27;操作成功&#x27;</span>, <span class="hljs-comment">//提示信息</span><br>        data: res,<br>    &#125;;<br>    &#125; <span class="hljs-keyword">catch</span> (error) &#123;<br>    <span class="hljs-built_in">console</span>.info(error);<br>    ctx.response.body = data;<br>    &#125;<br>&#125;,<br><span class="hljs-comment">//修改</span><br>update: <span class="hljs-keyword">async</span> ctx =&gt; &#123;<br>    <span class="hljs-keyword">let</span> params = <span class="hljs-built_in">JSON</span>.parse(Base64.decode(ctx.request.body.data));<br>    <span class="hljs-keyword">let</span> data = <span class="hljs-keyword">await</span> EquipmentInventoryService.update(params);<br>    ctx.response.body = data;<br>&#125;,<br><span class="hljs-comment">//删除</span><br><span class="hljs-keyword">delete</span>: <span class="hljs-keyword">async</span> ctx =&gt; &#123;<br>    <span class="hljs-keyword">let</span> &#123; id &#125; = getUrlParam(ctx.request.url);<br>    <span class="hljs-keyword">let</span> data = <span class="hljs-keyword">await</span> EquipmentInventoryService.delete(&#123; id &#125;);<br>    ctx.response.body = data;<br>&#125;,<br><span class="hljs-comment">//插入</span><br>insert: <span class="hljs-keyword">async</span> ctx =&gt; &#123;<br>    <span class="hljs-keyword">let</span> owner_id = ctx.cookies.get(<span class="hljs-string">&#x27;user&#x27;</span>);<br>    <span class="hljs-keyword">let</span> params = <span class="hljs-built_in">JSON</span>.parse(Base64.decode(ctx.request.body.data));<br>    params.id = uuidv4();<br>    params.owner_id = owner_id;<br>    params.created_at = moment().format();<br>    params.start_at = moment(params.start_at).format();<br>    <span class="hljs-keyword">let</span> data = <span class="hljs-keyword">await</span> EquipmentInventoryService.insert(params);<br>    ctx.response.body = data;<br>&#125;,<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>service </li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> &#123; formatResponse, customLabels &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../utils/index&#x27;</span>);<br><span class="hljs-keyword">const</span> EquipmentInventory = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../dao/equipmentInventory&#x27;</span>);<br><span class="hljs-keyword">const</span> &#123; max &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;moment&#x27;</span>);<br><br><span class="hljs-built_in">module</span>.exports = &#123;<br>    <span class="hljs-comment">//查询（列表、详情合并为一个，通过是否传入id判断）</span><br>    list: <span class="hljs-keyword">async</span> (&#123;<br>        owner_id,<br>        equipment_roster_id,<br>        location = <span class="hljs-string">&#x27;&#x27;</span>,<br>        pageIndex = <span class="hljs-number">1</span>,<br>        pageSize = <span class="hljs-number">10</span>,<br>        id,<br>        level,<br>    &#125;) =&gt; &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">res, rej</span>) =&gt;</span> &#123;<br>            <span class="hljs-keyword">if</span> (id) &#123;<br>                <span class="hljs-comment">//有id是详情</span><br>                EquipmentInventory.aggregate([<br>                    &#123;<br>                        $match: &#123; id &#125;,<br>                    &#125;,<br>                    &#123;<br>                        $project: &#123; <span class="hljs-attr">_id</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">__v</span>: <span class="hljs-number">0</span> &#125;,<br>                    &#125;,<br>                    &#123;<br>                        $lookup: &#123;<br>                            <span class="hljs-keyword">from</span>: <span class="hljs-string">&#x27;user_roster&#x27;</span>,<br>                            localField: <span class="hljs-string">&#x27;manager_id&#x27;</span>,<br>                            foreignField: <span class="hljs-string">&#x27;id&#x27;</span>,<br>                            <span class="hljs-keyword">as</span>: <span class="hljs-string">&#x27;user&#x27;</span>,<br>                        &#125;,<br>                    &#125;,<br>                    &#123;<br>                        $lookup: &#123;<br>                            <span class="hljs-keyword">from</span>: <span class="hljs-string">&#x27;area&#x27;</span>,<br>                            localField: <span class="hljs-string">&#x27;location&#x27;</span>,<br>                            foreignField: <span class="hljs-string">&#x27;shortCode&#x27;</span>,<br>                            <span class="hljs-keyword">as</span>: <span class="hljs-string">&#x27;local&#x27;</span>,<br>                        &#125;,<br>                    &#125;,<br>                ]).exec(<span class="hljs-function">(<span class="hljs-params">err, data</span>) =&gt;</span> &#123;<br>                    <span class="hljs-keyword">if</span> (err) &#123;<br>                        res(formatResponse(<span class="hljs-string">&#x27;&#x27;</span>, err));<br>                    &#125; <span class="hljs-keyword">else</span> &#123;<br>                        res(formatResponse(data));<br>                    &#125;<br>                &#125;);<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-keyword">let</span> match = &#123;&#125;;<br>                <span class="hljs-keyword">if</span> (equipment_roster_id)<br>                    match.equipment_roster_id = equipment_roster_id;<br>                <span class="hljs-keyword">if</span> (location) match.location = &#123; <span class="hljs-attr">$regex</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">&#x27;^&#x27;</span> + location) &#125;;<br>                <span class="hljs-keyword">const</span> aggregate = EquipmentInventory.aggregate([<br>                    &#123;<br>                        $project: &#123; <span class="hljs-attr">_id</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">__v</span>: <span class="hljs-number">0</span> &#125;,<br>                    &#125;,<br>                    &#123;<br>                        $match: match,<br>                    &#125;,<br>                    &#123;<br>                        $lookup: &#123;<br>                            <span class="hljs-keyword">from</span>: <span class="hljs-string">&#x27;user_roster&#x27;</span>,<br>                            localField: <span class="hljs-string">&#x27;owner_id&#x27;</span>,<br>                            foreignField: <span class="hljs-string">&#x27;id&#x27;</span>,<br>                            <span class="hljs-keyword">as</span>: <span class="hljs-string">&#x27;user_roster&#x27;</span>,<br>                        &#125;,<br>                    &#125;,<br>                    &#123;<br>                        $lookup: &#123;<br>                            <span class="hljs-keyword">from</span>: <span class="hljs-string">&#x27;equipment_roster&#x27;</span>,<br>                            localField: <span class="hljs-string">&#x27;equipment_roster_id&#x27;</span>,<br>                            foreignField: <span class="hljs-string">&#x27;id&#x27;</span>,<br>                            <span class="hljs-keyword">as</span>: <span class="hljs-string">&#x27;equipment_roster&#x27;</span>,<br>                        &#125;,<br>                    &#125;,<br>                    &#123;<br>                        $lookup: &#123;<br>                            <span class="hljs-keyword">from</span>: <span class="hljs-string">&#x27;area&#x27;</span>,<br>                            localField: <span class="hljs-string">&#x27;location&#x27;</span>,<br>                            foreignField: <span class="hljs-string">&#x27;shortCode&#x27;</span>,<br>                            <span class="hljs-keyword">as</span>: <span class="hljs-string">&#x27;local&#x27;</span>,<br>                        &#125;,<br>                    &#125;,<br>                ]);<br>                EquipmentInventory.aggregatePaginate(<br>                    aggregate,<br>                    &#123;<br>                        page: pageIndex,<br>                        limit: pageSize,<br>                        customLabels,<br>                    &#125;,<br>                    (err, data) =&gt; &#123;<br>                        <span class="hljs-keyword">if</span> (err) &#123;<br>                            res(formatResponse(<span class="hljs-string">&#x27;&#x27;</span>, err));<br>                        &#125; <span class="hljs-keyword">else</span> &#123;<br>                            res(formatResponse(data));<br>                        &#125;<br>                    &#125;,<br>                );<br>            &#125;<br>        &#125;);<br>    &#125;,<br>    <span class="hljs-comment">// 插入</span><br>    insert: <span class="hljs-function"><span class="hljs-params">params</span> =&gt;</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">res, rej</span>) =&gt;</span> &#123;<br>            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;——————————————插入——————————&#x27;</span>);<br>            <span class="hljs-keyword">let</span> equipmentInventory = <span class="hljs-keyword">new</span> EquipmentInventory(params);<br>            <span class="hljs-keyword">let</span> error = equipmentInventory.validateSync();<br>            <span class="hljs-keyword">if</span> (error) &#123;<br>                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;——————————————数据校验失败——————————&#x27;</span>, error);<br>                res(formatResponse(&#123;&#125;, <span class="hljs-string">&#x27;数据校验失败&#x27;</span>));<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                equipmentInventory.save(<span class="hljs-function">(<span class="hljs-params">err, result</span>) =&gt;</span> &#123;<br>                    <span class="hljs-keyword">if</span> (err) &#123;<br>                        <span class="hljs-built_in">console</span>.error(err);<br>                        res(formatResponse(<span class="hljs-string">&#x27;&#x27;</span>, err));<br>                    &#125; <span class="hljs-keyword">else</span> &#123;<br>                        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;——————————————成功——————————&#x27;</span>);<br>                        res(formatResponse(&#123;&#125;));<br>                    &#125;<br>                &#125;);<br>            &#125;<br>        &#125;);<br>    &#125;,<br>    <span class="hljs-comment">// 更新</span><br>    update: <span class="hljs-function">(<span class="hljs-params">&#123; id, ...params &#125;</span>) =&gt;</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">res, rej</span>) =&gt;</span> &#123;<br>            <span class="hljs-keyword">let</span> equipmentInventory = <span class="hljs-keyword">new</span> EquipmentInventory(&#123;<br>                id,<br>                ...params,<br>            &#125;);<br>            <span class="hljs-keyword">let</span> error = equipmentInventory.validateSync();<br>            <span class="hljs-keyword">if</span> (error) &#123;<br>                <span class="hljs-built_in">console</span>.error(error);<br>                res(formatResponse(&#123;&#125;, <span class="hljs-string">&#x27;数据校验失败&#x27;</span>));<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                EquipmentInventory.updateOne(&#123; id &#125;, &#123; ...params &#125;, <span class="hljs-function">(<span class="hljs-params">err, result</span>) =&gt;</span> &#123;<br>                    <span class="hljs-keyword">if</span> (err) &#123;<br>                        <span class="hljs-built_in">console</span>.error(err);<br>                        res(formatResponse(<span class="hljs-string">&#x27;&#x27;</span>, err));<br>                    &#125; <span class="hljs-keyword">else</span> &#123;<br>                        res(formatResponse(&#123;&#125;));<br>                    &#125;<br>                &#125;);<br>            &#125;<br>        &#125;);<br>    &#125;,<br>    <span class="hljs-comment">// 删除</span><br>    <span class="hljs-keyword">delete</span>: <span class="hljs-function">(<span class="hljs-params">&#123; id &#125;</span>) =&gt;</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">res, rej</span>) =&gt;</span> &#123;<br>            EquipmentInventory.deleteOne(&#123; id &#125;, <span class="hljs-function">(<span class="hljs-params">err, data</span>) =&gt;</span> &#123;<br>                <span class="hljs-keyword">if</span> (err) &#123;<br>                    res(formatResponse(<span class="hljs-string">&#x27;&#x27;</span>, err));<br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    res(formatResponse(&#123;&#125;));<br>                &#125;<br>            &#125;);<br>        &#125;);<br>    &#125;,<br>&#125;;<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="4、处理分页"><a href="#4、处理分页" class="headerlink" title="4、处理分页"></a>4、处理分页</h3><p>使用 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/mongoose-aggregate-paginate-v2">mongoose-aggregate-paginate-v2</a>。支持多表关联的分页插件</p>
+<h3 id="5、用户权限校验"><a href="#5、用户权限校验" class="headerlink" title="5、用户权限校验"></a>5、用户权限校验</h3><p>在入口处校验用户的token</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 1、验证token方法</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> <span class="hljs-variable">token</span></span></span><br><span class="hljs-comment"> */</span><br>verifyToken: <span class="hljs-function"><span class="hljs-params">token</span> =&gt;</span> &#123;<br>    <span class="hljs-keyword">let</span> cert = fs.readFileSync(<br>        path.join(__dirname, <span class="hljs-string">&#x27;../keys/rsa_public_key.pem&#x27;</span>),<br>    ); <span class="hljs-comment">//公钥</span><br>    <span class="hljs-keyword">let</span> res = &#123;&#125;;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">let</span> result = jwt.verify(token, cert, &#123; <span class="hljs-attr">algorithm</span>: [<span class="hljs-string">&#x27;RS256&#x27;</span>] &#125;) || &#123;&#125;;<br>        <span class="hljs-keyword">let</span> &#123; exp = <span class="hljs-number">0</span> &#125; = result,<br>            current = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Date</span>.now() / <span class="hljs-number">1000</span>);<br>        <span class="hljs-keyword">if</span> (current &lt;= exp) &#123;<br>            res.id = result.data;<br>        &#125;<br>    &#125; <span class="hljs-keyword">catch</span> (e) &#123;<br>        res.error = e;<br>    &#125;<br>    <span class="hljs-keyword">return</span> res;<br>&#125;,<br><br><span class="hljs-comment">//2、在入口处使用</span><br><span class="hljs-keyword">const</span> &#123; verifyToken &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../utils/index&#x27;</span>);<br><br>app.use(<span class="hljs-keyword">async</span> (ctx, next) =&gt; &#123;<br>    <span class="hljs-keyword">if</span> (<br>        ctx.request.url.indexOf(<span class="hljs-string">&#x27;/user/login&#x27;</span>) != -<span class="hljs-number">1</span> ||<br>        ctx.request.url.indexOf(<span class="hljs-string">&#x27;/user/register&#x27;</span>) != -<span class="hljs-number">1</span><br>    ) &#123;<br>        <span class="hljs-comment">//登陆接口不校验</span><br>        <span class="hljs-keyword">await</span> next();<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">let</span> token = ctx.request.header.token;<br>        <span class="hljs-keyword">let</span> result = verifyToken(token);<br>        <span class="hljs-keyword">if</span> (result.error) &#123;<br>            ctx.response.body = &#123;<br>                code: <span class="hljs-number">3006</span>,<br>                msg: <span class="hljs-string">&#x27;登陆过期，请重新登陆！&#x27;</span>,<br>            &#125;;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">await</span> next();<br>        &#125;<br>    &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h3 id="6、关于数据传输安全问题"><a href="#6、关于数据传输安全问题" class="headerlink" title="6、关于数据传输安全问题"></a>6、关于数据传输安全问题</h3><p>前端接口所有数据使用base64加密传给接口，后端接到数据后先解密再使用。 每次接口请求都做用户权限校验。这里还有很多不足，比如csrf、xss等问题未处理</p>
+<h3 id="7、规范化接口返回数据"><a href="#7、规范化接口返回数据" class="headerlink" title="7、规范化接口返回数据"></a>7、规范化接口返回数据</h3><p>作为前端，深知这个问题的重要性。所以在写后端项目的时候也处理了这个问题</p>
+<ul>
+<li>返回数据格式<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//表格带分页</span><br>&#123;   <br>    code:<span class="hljs-number">0</span>,<span class="hljs-comment">// 0:成功   </span><br>    msg:<span class="hljs-string">&quot;操作成功&quot;</span>,<span class="hljs-comment">//提示信息</span><br>    data:&#123;<br>        list:[],<span class="hljs-comment">//数据</span><br>        pageIndex: <span class="hljs-number">1</span>,<span class="hljs-comment">//第几页，从1开始</span><br>        pageSize: <span class="hljs-number">10</span>,<span class="hljs-comment">//每页多少条</span><br>        total: <span class="hljs-number">33</span>,<span class="hljs-comment">//总条数</span><br>        totalPages: <span class="hljs-number">4</span> <span class="hljs-comment">//总页数</span><br>    &#125;<br>&#125;<br><span class="hljs-comment">//非表格</span><br>&#123;   <br>    code:<span class="hljs-number">0</span>,<br>    msg:<span class="hljs-string">&quot;操作成功&quot;</span>,<span class="hljs-comment">//提示信息</span><br>    data:&#123;<br>        name:<span class="hljs-number">1</span>,<br>        age:<span class="hljs-number">2</span><br>    &#125;,<span class="hljs-comment">//数据</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>接口code规范</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">值</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0</td>
+<td align="left">成功</td>
+</tr>
+<tr>
+<td align="left">3006</td>
+<td align="left">token校验失败</td>
+</tr>
+<tr>
+<td align="left">4001</td>
+<td align="left">一般数据错误</td>
+</tr>
+<tr>
+<td align="left">5001</td>
+<td align="left">数据库错误</td>
+</tr>
+</tbody></table>
+<h3 id="8、项目涉及到定时任务"><a href="#8、项目涉及到定时任务" class="headerlink" title="8、项目涉及到定时任务"></a>8、项目涉及到定时任务</h3><p>这里没做太多的规范，在服务启动时执行一次，然后设置了定时器：每过24小时执行一次。这里可以使用 <a target="_blank" rel="noopener" href="https://github.com/node-schedule/node-schedule">node-schedule</a> 插件优化</p>
+<h3 id="9、进程守护"><a href="#9、进程守护" class="headerlink" title="9、进程守护"></a>9、进程守护</h3><p>由于nodejs的单线程的脆弱性，一旦遇到运行错误等问题很有可能会严重到退出node进程导致系统或应用瘫痪。所以这一个是很有必要的。可以使用 <a target="_blank" rel="noopener" href="https://pm2.keymetrics.io/">pm2</a>做node进程管理</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/node/">node</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/node/">node</a>
+                    
+                      <a class="hover-with-bg" href="/tags/koa/">koa</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/04/21/gitee%20page%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0/">
+                        <span class="hidden-mobile">gitee page自动更新</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
