@@ -18,7 +18,7 @@
   <meta name="author" content="lucian">
   <meta name="keywords" content="">
   
-  <title>hexo基本使用 - lucian blog</title>
+  <title>koa文档展示服务 - lucian blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -158,7 +158,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="hexo基本使用">
+            <span class="h2" id="subtitle" title="koa文档展示服务">
               
             </span>
 
@@ -168,8 +168,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2016-08-14 19:23" pubdate>
-        2016年8月14日 晚上
+      <time datetime="2021-04-27 20:29" pubdate>
+        2021年4月27日 晚上
       </time>
     </span>
   
@@ -180,7 +180,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      836 字
+      596 字
     </span>
   
 
@@ -190,7 +190,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      6
        分钟
     </span>
   
@@ -220,120 +220,48 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">hexo基本使用</h1>
+            <h1 style="display: none">koa文档展示服务</h1>
             
             <div class="markdown-body">
-              <blockquote>
-<p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
-</blockquote>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
-<li>1.安装node.js和git</li>
-<li>2.使用npm安装hexo <code>$ npm install -g hexo-cli</code>  </li>
-</ul>
-<h2 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h2><p>安装 Hexo 完成后，请执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>hexo init      <br>   <span class="hljs-variable">$ </span>npm install  <br></code></pre></td></tr></table></figure>
-
-<p>新建完成后，指定文件夹的目录如下：</p>
-<figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sqf">├── <span class="hljs-variable">_config</span>.yml<br>├── package.json<br>├── scaffolds<br>├── scripts<br>├── source<br>|   ├── <span class="hljs-variable">_drafts</span><br>|   └── <span class="hljs-variable">_posts</span><br>└── themes  <br></code></pre></td></tr></table></figure>
-
-<p>文件说明：</p>
+              <p>最近考虑到项目内组件复用的问题：将项目上的react组件、vue组件放到一个仓库，然后每个组件一个README文件，做一个node服务用来展示文档，如果要使用直接复制对应组件到项目里。  考虑过发组件包，但是维护成本过高，所以不如直接复制源码。当然要保证组件文档清晰</p>
+<h2 id="开始干吧"><a href="#开始干吧" class="headerlink" title="开始干吧"></a>开始干吧</h2><p>之前搞过一个组件官网的展示，详情见<a target="_blank" rel="noopener" href="http://bee.tinper.org/">tinper组件库</a>。概述如下：</p>
 <ul>
-<li>_config.yml 网站的配置信息，可以在此配置大部分的参数。</li>
-<li>package.json 应用程序的信息</li>
+<li>使用koa启动服务</li>
+<li>页面用ejs模板展示</li>
+<li>组件效果渲染在组件层打包产出了示例文件，在官网直接展示即可</li>
+<li>markdown文件使用mark插件解析</li>
 </ul>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123;  <br>  <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;hexo-site&quot;</span>,  <br>  <span class="hljs-attr">&quot;version&quot;</span>: <span class="hljs-string">&quot;&quot;</span>,  <br>  <span class="hljs-attr">&quot;private&quot;</span>: <span class="hljs-literal">true</span>,  <br>  <span class="hljs-attr">&quot;hexo&quot;</span>: &#123;  <br>    <span class="hljs-attr">&quot;version&quot;</span>: <span class="hljs-string">&quot;&quot;</span>  <br>  &#125;,  <br>  <span class="hljs-attr">&quot;dependencies&quot;</span>: &#123;  <br>    <span class="hljs-attr">&quot;hexo-renderer-ejs&quot;</span>: <span class="hljs-string">&quot;*&quot;</span>,  <br>    <span class="hljs-attr">&quot;hexo-renderer-stylus&quot;</span>: <span class="hljs-string">&quot;*&quot;</span>,  <br>    <span class="hljs-attr">&quot;hexo-renderer-marked&quot;</span>: <span class="hljs-string">&quot;*&quot;</span>  <br>  &#125;  <br>&#125;  <br></code></pre></td></tr></table></figure>
+<p>这个方案有些问题：</p>
+<ul>
+<li>页面布局使用了原生的js+html+css，样式及效果全部手写，想改为react。</li>
+<li>本次工作不需要展示组件效果</li>
+</ul>
+<p>所以想重新搞一把。</p>
+<h2 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h2><ul>
+<li>继续使用koa启动服务。考虑过egg，但是不想被束缚，放弃了egg</li>
+<li>页面布局使用react写(这是主要矛盾)</li>
+<li>复用markdown文档解析方式</li>
+<li>node读取components文件夹，并生成左侧菜单json文件，在react中使用改文件生成左侧菜单</li>
+</ul>
+<h2 id="页面使用react布局历程"><a href="#页面使用react布局历程" class="headerlink" title="页面使用react布局历程"></a>页面使用react布局历程</h2><h3 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h3><ul>
+<li>view层直接使用react写</li>
+<li>使用babel让node支持jsx语法。参考<a target="_blank" rel="noopener" href="https://www.babeljs.cn/docs/babel-register">@babel/register</a></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//用@babel/register，在node服务启动之前注册</span><br><span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;@babel/register&#x27;</span>)(&#123;<br>    presets: [<br>        <span class="hljs-string">&#x27;@babel/preset-react&#x27;</span>,<br>        <span class="hljs-string">&#x27;@babel/preset-env&#x27;</span><br>    ],<br>&#125;);<br></code></pre></td></tr></table></figure>
 
 <ul>
-<li>scaffolds 模版文件夹,新建文章时，Hexo会根据scaffold来建立文件。</li>
-<li>scripts 脚本文件夹。脚本是扩展 Hexo 最简易的方式，在此文件夹内的 JavaScript 文件会被自动执行。</li>
-<li>source 资源文件夹是存放用户资源的地方</li>
-<li>themes 主题文件夹。Hexo 会根据主题来生成静态页面。</li>
+<li>使用<code>ReactDOMServer.renderToString()</code>将jsx编译为html字符串。<a target="_blank" rel="noopener" href="https://react.docschina.org/docs/react-dom-server.html">参考</a></li>
 </ul>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>可以在 _config.yml 中修改大部份的配置。</p>
-<h3 id="网站"><a href="#网站" class="headerlink" title="网站"></a>网站</h3><ul>
-<li>title 网站标题</li>
-<li>subtitle 网站副标题</li>
-<li>description    网站描述</li>
-<li>author     名字</li>
-<li>language    网站使用的语言</li>
-<li>timezone    网站时区。Hexo 预设使用您电脑的时区</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span>;<br><span class="hljs-keyword">import</span> &#123; renderToString &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react-dom/server&#x27;</span>;<br><br><span class="hljs-keyword">const</span> App = <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-keyword">return</span> (<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>我是react JSX<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>);<br>&#125;;<br><br><span class="hljs-built_in">module</span>.exports = renderToStaticMarkup(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">App</span>/&gt;</span></span>);<br><br></code></pre></td></tr></table></figure>
+
+<p>结论：虽然页面能正常渲染出来了。但是没有交互。<code>ReactDOMServer.renderToString()</code>的文档显示如此。也不能换成 <code>ReactDOM.render</code>因为第二个参数需要传入容器，容器在页面上，拿不到。宣告破产</p>
+<h3 id="方案二"><a href="#方案二" class="headerlink" title="方案二"></a>方案二</h3><ul>
+<li>view层直接使用react写</li>
+<li>使用<code>koa-ejs</code>模板语法。</li>
+<li>配置webpack打包，将react打包，打包后的文件引入到<code>koa-ejs</code>模板中。</li>
+<li>在启动服务之前先打包react源文件。</li>
 </ul>
-<h3 id="网址"><a href="#网址" class="headerlink" title="网址"></a>网址</h3><ul>
-<li>url    网址    </li>
-<li>root    网站根目录    </li>
-<li>permalink    文章的永久链接</li>
-<li>permalink_default    永久链接中各部分的默认值</li>
-</ul>
-<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><ul>
-<li>source_dir    资源文件夹，这个文件夹用来存放内容。    </li>
-<li>public_dir    公共文件夹，这个文件夹用于存放生成的站点文件。    </li>
-<li>tag_dir    标签文件夹    </li>
-<li>archive_dir    归档文件夹    </li>
-<li>category_dir    分类文件夹    </li>
-<li>code_dir    Include code 文件夹    </li>
-<li>i18n_dir    国际化（i18n）文件夹    :</li>
-<li>skip_render    跳过指定文件的渲染，可使用 glob 来配置路径。    </li>
-</ul>
-<h3 id="文章"><a href="#文章" class="headerlink" title="文章"></a>文章</h3><ul>
-<li>new_post_name    新文章的文件名称     </li>
-<li>default_layout    预设布局     </li>
-<li>auto_spacing    在中文和英文之间加入空格    </li>
-<li>titlecase    把标题转换为 title case    </li>
-<li>external_link    在新标签中打开链接     </li>
-<li>filename_case    把文件名称转换为 (1) 小写或 (2) 大写    </li>
-<li>render_drafts    显示草稿     </li>
-<li>post_asset_folder    启动 Asset 文件夹     </li>
-<li>relative_link    把链接改为与根目录的相对位址     </li>
-<li>future    显示未来的文章     </li>
-<li>highlight    代码块的设置</li>
-</ul>
-<h3 id="分类-amp-标签"><a href="#分类-amp-标签" class="headerlink" title="分类 &amp; 标签"></a>分类 &amp; 标签</h3><ul>
-<li>default_category    默认分类     </li>
-<li>category_map    分类别名    </li>
-<li>tag_map    标签别名</li>
-</ul>
-<h3 id="日期-时间格式"><a href="#日期-时间格式" class="headerlink" title="日期 / 时间格式"></a>日期 / 时间格式</h3><ul>
-<li>date_format    日期格式    MMM D YYYY</li>
-<li>time_format    时间格式    H:mm:ss</li>
-</ul>
-<h3 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h3><ul>
-<li>per_page    每页显示的文章量 (0 = 关闭分页功能)     </li>
-<li>pagination_dir     </li>
-</ul>
-<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><ul>
-<li>theme    当前主题名称</li>
-<li>deploy    部署</li>
-</ul>
-<h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><pre><code>$ hexo init [folder]
-</code></pre>
-<p>新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站。</p>
-<pre><code>$ hexo new [layout] &lt;title&gt;
-</code></pre>
-<p>新建一篇文章。如果没有设置 layout 的话，默认使用 _config.yml 中的 default_layout 参数代替。如果标题包含空格的话，请使用引号括起来。</p>
-<pre><code>$ hexo generate
-</code></pre>
-<p>生成静态文件。</p>
-<pre><code>$ hexo publish [layout] &lt;filename&gt;
-</code></pre>
-<p>发表草稿。</p>
-<pre><code>$ hexo server
-</code></pre>
-<p>启动服务器。</p>
-<pre><code>$ hexo deploy
-</code></pre>
-<p>部署网站。</p>
-<pre><code>$ hexo render &lt;file&gt; ...
-</code></pre>
-<p>渲染文件。</p>
-<pre><code>$ hexo clean
-</code></pre>
-<p>清除缓存文件 (db.json) 和已生成的静态文件 </p>
-<pre><code>$ hexo list &lt;type&gt;
-</code></pre>
-<p>列出网站资料。</p>
-<pre><code>$ hexo version
-</code></pre>
-<p>显示 Hexo 版本。</p>
+<p>结论：虽然最开始觉得这个办法有点没创意，想解决在node层使用react的问题，目前没有其它更好的办法了</p>
 
             </div>
             <hr>
@@ -343,7 +271,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+                      <a class="hover-with-bg" href="/categories/node/">node</a>
                     
                   </div>
                 
@@ -351,7 +279,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/hexo/">hexo</a>
+                      <a class="hover-with-bg" href="/tags/node/">node</a>
+                    
+                      <a class="hover-with-bg" href="/tags/koa/">koa</a>
                     
                   </div>
                 
@@ -368,18 +298,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2016/08/21/hexo%E5%90%8C%E6%AD%A5%E5%88%B0git/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">hexo同步到git</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2016/08/06/cookie/">
-                        <span class="hidden-mobile">cookie</span>
+                      <a href="/2021/04/22/node%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/">
+                        <span class="hidden-mobile">node后端项目</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
