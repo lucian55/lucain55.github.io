@@ -18,7 +18,7 @@
   <meta name="author" content="lucian">
   <meta name="keywords" content="">
   
-  <title>nodejs之process模块 - lucian blog</title>
+  <title>博客升级-增加评论系统 - lucian blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -158,7 +158,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="nodejs之process模块">
+            <span class="h2" id="subtitle" title="博客升级-增加评论系统">
               
             </span>
 
@@ -168,8 +168,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2017-02-25 15:13" pubdate>
-        2017年2月25日 下午
+      <time datetime="2021-04-28 20:29" pubdate>
+        2021年4月28日 晚上
       </time>
     </span>
   
@@ -180,7 +180,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1k 字
+      146 字
     </span>
   
 
@@ -190,7 +190,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      12
+      1
        分钟
     </span>
   
@@ -220,97 +220,15 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">nodejs之process模块</h1>
+            <h1 style="display: none">博客升级-增加评论系统</h1>
             
             <div class="markdown-body">
-              <h1 id="nodejs之process模块"><a href="#nodejs之process模块" class="headerlink" title="nodejs之process模块"></a>nodejs之process模块</h1><blockquote>
-<p>process可以用于node和系统中已经存在的进程进行交互，创建工作子进程等。process模块是一个全局对象，允许你获得或者修改当前node进程的设置。</p>
+              <h1 id="博客升级-增加评论系统"><a href="#博客升级-增加评论系统" class="headerlink" title="博客升级-增加评论系统"></a>博客升级-增加评论系统</h1><blockquote>
+<p>记录一下博客加“评论系统”的过程。</p>
 </blockquote>
-<h2 id="1-process的引入"><a href="#1-process的引入" class="headerlink" title="1.process的引入"></a>1.process的引入</h2><p>process模块用来与当前进程互动，可以通过全局变量process访问，不必使用require命令加载。它是一个EventEmitter对象的实例。</p>
-<h2 id="2-process事件"><a href="#2-process事件" class="headerlink" title="2.process事件"></a>2.process事件</h2><h3 id="1）exit事件"><a href="#1）exit事件" class="headerlink" title="1）exit事件"></a>1）exit事件</h3><p>当前进程退出时（即按”ctre+c”时）会触发exit事件，可以对该事件指定回调函数。这是一个用来定时检测模块状态的钩子。当主事件循环在执行完exit的回调函数后将不再执行，所以在exit事件中定义的定时器不会被加入到事件列表</p>
-<pre><code>process.on(&#39;exit&#39;, function() &#123;
-  // 设置一个延迟执行
-  setTimeout(function() &#123;
-console.log(&#39;主事件循环已停止，所以不会执行&#39;);
-  &#125;, 0);
-  console.log(&#39;退出前执行&#39;);
-&#125;);
-</code></pre>
-<p>###2）uncaughtException事件###<br>这是process的异常事件，uncaughtException译为：未捕获的异常，可以利用这个函数来捕获整个进程运行时的异常，这里可以理解为“使本node.js进程中断的异常”</p>
-<pre><code>process.on(&#39;uncaughtException&#39;, function (err) &#123;
-　　console.log(&#39;Caught exception: &#39; + err);
-&#125;);
-nonexistentFunc();
-console.log(&#39;This will not run.&#39;);
-</code></pre>
-<p>说明：以上的例子注册了uncaughtException事件来捕获系统异常，执行到nonexistentFunc()时，因为改函数没有定义所以会抛出异常。因为javascript是解释性语言，nonexistentFunc()方法上面的语句不会被影响到，他下面的语句不会执行。所以他执行的结果如下：</p>
-<pre><code>Caught exception: ReferenceError: nonexistentFunc is not defined
-This will still run.
-</code></pre>
-<h2 id="2-process属性"><a href="#2-process属性" class="headerlink" title="2.process属性"></a>2.process属性</h2><ul>
-<li>process.pid：当前进程的进程号。</li>
-<li>process.version：Node的版本，比如v0.10.18。</li>
-<li>process.platform：当前系统平台，比如Linux。</li>
-<li>process.title：默认值为“node”，可以自定义该值。</li>
-<li>process.argv：当前进程的命令行参数数组。</li>
-<li>process.env：指向当前shell的环境变量。</li>
-<li>process.execPath：运行当前进程的可执行文件的绝对路径。</li>
-<li>process.stdout：指向标准输出。</li>
-<li>process.stdin：指向标准输入。</li>
-<li>process.stderr：指向标准错误。</li>
-</ul>
-<p>以下是主要属性的介绍：</p>
-<h3 id="1）stdout"><a href="#1）stdout" class="headerlink" title="1）stdout"></a>1）stdout</h3><p>process.stdout用来控制标准输出，也就是在命令行窗口向用户显示内容。它的write方法等同于console.log。</p>
-<pre><code>process.stdout.write(&#39;description:&#39;);
-</code></pre>
-<h3 id="2）argv"><a href="#2）argv" class="headerlink" title="2）argv###"></a>2）argv###</h3><p>process.argv返回命令行脚本的各个参数组成的数组。数组第一项是node，第二项是.js文件的名称，接下来依次是命令行传入的参数<br>建立iweb.js</p>
-<pre><code>console.log(process.argv);
-</code></pre>
-<p>在命令行输入：</p>
-<pre><code>node iweb.js 3000 2000
-</code></pre>
-<p>结果如下：</p>
-<pre><code>[ &#39;C:\\Program Files\\nodejs\\node.exe&#39;,&#39;D:\\portal\\iuap_portal_fe\\node_modules\\iweb\\bin\\iweb.js&#39;,&#39;3000&#39;,&#39;2000&#39; ]
-</code></pre>
-<h2 id="3-process方法"><a href="#3-process方法" class="headerlink" title="3.process方法"></a>3.process方法</h2><ul>
-<li>process.abort()：退出node并创建一个核心文件</li>
-<li>process.exit()：退出当前进程。</li>
-<li>process.cwd()：返回运行当前脚本的工作目录的路径。</li>
-<li>process.chdir()：改变工作目录。</li>
-<li>process.nextTick()：将一个回调函数放在下次事件循环的顶部。</li>
-<li>process.kill()：向进程发送一个信号</li>
-<li>process.memoryUsage()：返回内存使用情况单位是bytes。</li>
-<li>process.uptime()：返回 Node 程序已运行的秒数。</li>
-<li>process.hrtime()：</li>
-</ul>
-<p>以下是部分方法的介绍：</p>
-<h3 id="1）process-chdir"><a href="#1）process-chdir" class="headerlink" title="1）process.chdir()"></a>1）process.chdir()</h3><p>改变进程的当前进程的工作目录，若操作失败则抛出异常。</p>
-<pre><code>console.log(&#39;当前目录：&#39; + process.cwd());
-try &#123;
-  process.chdir(&#39;/tmp&#39;);
-  console.log(&#39;新目录：&#39; + process.cwd());
-&#125;
-catch (err) &#123;
-  console.log(&#39;chdir: &#39; + err);
-&#125;
-</code></pre>
-<h3 id="2）process-nextTick-callback"><a href="#2）process-nextTick-callback" class="headerlink" title="2）process.nextTick(callback)"></a>2）process.nextTick(callback)</h3><p>在事件循环的下一次循环中调用 callback 回调函数。</p>
-<pre><code>console.log(&#39;开始&#39;);
-process.nextTick(function() &#123;
-  console.log(&#39;nextTick 回调&#39;);
-&#125;);
-console.log(&#39;已设定&#39;);
-</code></pre>
-<p>结果如下：</p>
-<pre><code> 输出:
- 开始
- 已设定
- nextTick 回调
-</code></pre>
-<h3 id="3）process-kill-pid-signal"><a href="#3）process-kill-pid-signal" class="headerlink" title="3）process.kill(pid, [signal])"></a>3）process.kill(pid, [signal])</h3><p>向进程发送一个信号。 pid 是进程的 id 而 signal 则是描述信号的字符串名称。信号的名称都形似 ‘SIGINT’ 或者 ‘SIGUSR1’。如果没有指定参数则会默认发送 ‘SIGTERM’ 信号 。</p>
-<pre><code>process.kill(process.pid, &#39;SIGHUP&#39;); 
-</code></pre>
-
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>这个博客用的是 <a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/">fluid</a> 主题。这个主题的文档配置特别全。</p>
+<p>1、根据 <a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/guide/#%E8%AF%84%E8%AE%BA">文档</a>先配置好 评论 功能。<br>2、我是用的 <a target="_blank" rel="noopener" href="https://twikoo.js.org/">twikoo</a>。国内访问快速，简单快捷<br>3、按照 twikoo 的文档，先部署到云开发。部署一个静态的应用，记录 <code>envId</code> 这个id就是应用的id<br>4、将 <code>envId</code> 配置到 fluid 的配置文件里即可</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">twikoo:<br>  envId: <span class="hljs-comment">//应用id</span><br>  region: <span class="hljs-comment">// 环境地址 要和应用的相同</span><br>  path: <span class="hljs-built_in">window</span>.location.pathname<br></code></pre></td></tr></table></figure>
             </div>
             <hr>
             <div>
@@ -319,7 +237,7 @@ console.log(&#39;已设定&#39;);
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/node/">node</a>
+                      <a class="hover-with-bg" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
                     
                   </div>
                 
@@ -328,6 +246,8 @@ console.log(&#39;已设定&#39;);
                     <i class="iconfont icon-tags"></i>
                     
                       <a class="hover-with-bg" href="/tags/node/">node</a>
+                    
+                      <a class="hover-with-bg" href="/tags/twikoo/">twikoo</a>
                     
                   </div>
                 
@@ -338,18 +258,12 @@ console.log(&#39;已设定&#39;);
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2017/02/25/knockout/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Knockout</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2017/02/20/fiddler%E6%89%8B%E6%9C%BA%E6%8A%93%E5%8C%85/">
-                        <span class="hidden-mobile">fiddler手机抓包</span>
+                      <a href="/2021/04/28/%E7%94%B5%E5%BD%B1-%E7%86%94%E7%82%89/">
+                        <span class="hidden-mobile">电影重温：《熔炉》</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

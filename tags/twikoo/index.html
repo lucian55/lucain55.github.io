@@ -18,25 +18,9 @@
   <meta name="author" content="lucian">
   <meta name="keywords" content="">
   
-  <title>fiddler拦截 - lucian blog</title>
+  <title>标签 - twikoo - lucian blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
-
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
-
-  
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
-    
-  
-
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-  
 
 
 
@@ -64,7 +48,7 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 80vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -158,50 +142,17 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="fiddler拦截">
+            <span class="h2" id="subtitle" title="标签 - twikoo">
               
             </span>
 
             
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2017-02-20 21:10" pubdate>
-        2017年2月20日 晚上
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      264 字
-    </span>
-  
-
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      2
-       分钟
-    </span>
-  
-
-  
-  
-</div>
-
-            
           </div>
 
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
           
         </div>
       </div>
@@ -210,121 +161,40 @@
 
   <main>
     
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<div class="list-group">
+  <p class="h4">共计 1 篇文章</p>
+  <hr>
+  
+  
+    
       
+      <p class="h5">2021</p>
+    
+    <a href="/2021/04/28/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">博客升级-增加评论系统</span>
+      <time style="float: right;">04-28</time>
+    </a>
+  
+</div>
 
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">fiddler拦截</h1>
-            
-            <div class="markdown-body">
-              <h1 id="用fiddler拦截指定网站数据包并修改数据包教程"><a href="#用fiddler拦截指定网站数据包并修改数据包教程" class="headerlink" title="用fiddler拦截指定网站数据包并修改数据包教程"></a>用fiddler拦截指定网站数据包并修改数据包教程</h1><ol>
-<li>打开fiddler抓包工具，在左下底部，输入bpu+你要拦截的网址域名，比如，我要拦截打开百度时发送的数据包，那么我输入：bpu baidu.com或者bpu  <a href="http://www.baidu.com都可以，然后回车，这个时候就会拦截百度相关网址的数据包了，如下图：">www.baidu.com都可以，然后回车，这个时候就会拦截百度相关网址的数据包了，如下图：</a><br><img src="http://i.imgur.com/KJGHjeI.jpg" srcset="/img/loading.gif" lazyload></li>
-<li>拦截了以后，你打开百度相关的网址时，可以看到是红色的，数据包实际上没有发送出去的，如图：<img src="http://i.imgur.com/n5cLLiV.jpg" srcset="/img/loading.gif" lazyload></li>
-<li>点开，然后你就可以修改相关的数据：<img src="http://i.imgur.com/dkPjQDB.jpg" srcset="/img/loading.gif" lazyload></li>
-<li>修改了数据以后，点击下面的“run to completion”就可以发送出去数据包了：<img src="http://i.imgur.com/hfBjD4T.jpg" srcset="/img/loading.gif" lazyload></li>
-<li>至此，你就完成了拦截数据包，修改数据包，并发送数据包的全过程，如果要取消掉相应的拦截，可以在左下角之前输入命令的地方，输入：bpu，回车，这样就取消掉了所有的拦截设置，数据就会自动发送出去：<img src="http://i.imgur.com/7NzDKAd.jpg" srcset="/img/loading.gif" lazyload></li>
-</ol>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
-                    
-                      <a class="hover-with-bg" href="/tags/fiddler/">fiddler</a>
-                    
-                  </div>
-                
+
+
+
               </div>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2017/02/20/fiddler%E6%89%8B%E6%9C%BA%E6%8A%93%E5%8C%85/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">fiddler手机抓包</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2017/02/20/chrome%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%80%E9%94%AE%E6%B8%85%E6%A5%9A%E7%BC%93%E5%AD%98%E6%8F%92%E4%BB%B6/">
-                        <span class="hidden-mobile">chrome谷歌浏览器一键清楚缓存插件</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
             </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="twikoo"></div>
-  <script type="text/javascript">
-    Fluid.utils.lazyComments('comments', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1.3.0/dist/twikoo.all.min.js', function() {
-        twikoo.init({
-          el: '#twikoo',
-          envId: 'lucainblog-0g3glckef43b9bae',
-          region: 'ap-guangzhou',
-          path: 'window.location.pathname',
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
-          </article>
+          </div>
         </div>
       </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-
     
 
     
@@ -407,15 +277,9 @@
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
 
 
 

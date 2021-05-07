@@ -177,6 +177,55 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2017/07/05/JavaScript%E5%86%99%E7%9A%84XSS%E6%94%BB%E5%87%BB%E4%BB%A3%E7%A0%81%E8%BF%87%E6%BB%A4%E6%A8%A1%E5%9D%97/">JavaScript写的XSS攻击代码过滤模块</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2017/07/05/JavaScript%E5%86%99%E7%9A%84XSS%E6%94%BB%E5%87%BB%E4%BB%A3%E7%A0%81%E8%BF%87%E6%BB%A4%E6%A8%A1%E5%9D%97/">
+          
+          
+            
+          
+          
+前端安全方面一直存在HTTP劫持和XSS跨站脚本，CSRF跨站请求伪造的问题。在一次表单保存的操作中，我试着在input输入框中写了  &lt;script&gt;alert(1);&lt;/script&gt;,发现在提交的时候报错。各种百度发现是因为XSS安全问题的原因，被后台过滤掉了。虽然安全问题被后台解决了，但是总是给人不好的体验。 然后找到了 xss.js  用来过滤XSS攻击，将指定
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2017-07-05 15:53" pubdate>
+              2017-07-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/javascript/">javascript</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2017/07/03/js%20%E7%9B%91%E5%90%AC%E6%B5%8F%E8%A7%88%E5%99%A8%E5%90%8E%E9%80%80%E4%BA%8B%E4%BB%B6/">js监听浏览器后退事件</a>
       </h1>
 
@@ -622,58 +671,6 @@ classnames模块在ract组件开发中，如果给标签添加class，直接获�
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
             <time datetime="2017-03-20 13:37" pubdate>
-              2017-03-20
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/react/">react</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/react/">react</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2017/03/20/react-propTypes%E6%A0%A1%E9%AA%8C/">react-propTypes校验</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2017/03/20/react-propTypes%E6%A0%A1%E9%AA%8C/">
-          
-          
-            
-          
-          React.PropTypes
-组件的属性可以接受任意值，字符串、对象、函数等等。有时候需要一种机制，来验证使用组件的时候，提供的组件属性值是否符合要求。这时就要使用propTypes属性来校验。React.PropTypes提供很多的验证器来验证传入数据的有效性，当向props传入无效数据是，js控制台就会抛出警告。
-
-写在前面：
-随着应用不断变大，保证组件被正确使用变得非常有用。React.P
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2017-03-20 10:17" pubdate>
               2017-03-20
             </time>
           </div>
