@@ -1,0 +1,502 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpg">
+  <link rel="icon" href="/img/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="lucian">
+  <meta name="keywords" content="">
+  
+  <title>sentry的使用及原理 - lucian blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"liushaozhen.github.io","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>lucian的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://liushaozhen.gitee.io/img/bg.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="sentry的使用及原理">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-05-14 10:29" pubdate>
+        2021年5月14日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      34
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">sentry的使用及原理</h1>
+            
+            <div class="markdown-body">
+              <h1 id="前端sentry的使用及原理"><a href="#前端sentry的使用及原理" class="headerlink" title="前端sentry的使用及原理"></a>前端sentry的使用及原理</h1><p>先挂官网链接 <a target="_blank" rel="noopener" href="https://docs.sentry.io/">sentry</a></p>
+<p>本文只介绍前端接入的方式</p>
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>首先 sentry是什么？是干什么的？ </p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs maxima">Sentry&#x27;s application monitoring platform helps <span class="hljs-built_in">every</span> developer<br>diagnose, <span class="hljs-built_in">fix</span>, <span class="hljs-keyword">and</span> <span class="hljs-built_in">optimize</span> the performance of their code.<br></code></pre></td></tr></table></figure>
+<p>翻译过来就是：Sentry的应用程序监视平台可帮助每个开发人员诊断，修复和优化其代码的性能。<br>说白了，他能实施监控应用程序，对应用程序出现的问题以及性能情况及时反应给开发者。</p>
+<p>产品上线之后，如果有问题是被用户发现的并写了工单提到公司这里，那肯定很不友好。 为了解决这个问题，sentry就来了。</p>
+<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment"># Using yarn</span><br>yarn add @sentry/browser @sentry/tracing<br><span class="hljs-comment"># Using npm</span><br>npm install --save @sentry/browser @sentry/tracing<br><span class="hljs-comment"># Use in react</span><br>npm install --save @sentry/react<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-初始化"><a href="#2-初始化" class="headerlink" title="2. 初始化"></a>2. 初始化</h3><p>Sentry.init想起配置点击<a target="_blank" rel="noopener" href="https://docs.sentry.io/platforms/javascript/configuration/options/">这里</a></p>
+<p>1、普通JavaScript项目</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> Sentry <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@sentry/browser&quot;</span>;<br><span class="hljs-keyword">import</span> &#123; Integrations &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@sentry/tracing&quot;</span>;<br><br>Sentry.init(&#123;<br>  dsn: <span class="hljs-string">&quot;https://examplePublicKey@o0.ingest.sentry.io/0&quot;</span>,<span class="hljs-comment">//该DSN（数据源名称）告诉SDK何处发送事件。可以在官网注册使用</span><br><br>  <span class="hljs-comment">// Alternatively, use `process.env.npm_package_version` for a dynamic release version</span><br>  <span class="hljs-comment">// if your build tool supports it.</span><br>  release: <span class="hljs-string">&quot;my-project-name@2.3.12&quot;</span>,<br>  integrations: [<span class="hljs-keyword">new</span> Integrations.BrowserTracing()],<br><br>  <span class="hljs-comment">// Set tracesSampleRate to 1.0 to capture 100%</span><br>  <span class="hljs-comment">// of transactions for performance monitoring.</span><br>  <span class="hljs-comment">// We recommend adjusting this value in production</span><br>  tracesSampleRate: <span class="hljs-number">1.0</span>,<br><br>&#125;);<br><br></code></pre></td></tr></table></figure>
+
+<p>2、react中初始化</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//1、在项目入口处初始化sentry</span><br><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;<br><span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-dom&quot;</span>;<br><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> Sentry <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@sentry/react&quot;</span>;<br><span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./App&quot;</span>;<br><br>Sentry.init(&#123; <span class="hljs-attr">dsn</span>: <span class="hljs-string">&quot;https://examplePublicKey@o0.ingest.sentry.io/0&quot;</span> &#125;);<br><br>ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span></span>, <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;root&quot;</span>));<br><br><span class="hljs-comment">//2、将项目用 Sentry.ErrorBoundary 包裹</span><br><br><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;<br><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> Sentry <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@sentry/react&quot;</span>;<br><br>&lt;Sentry.ErrorBoundary fallback=&#123;<span class="hljs-string">&quot;An error has occurred&quot;</span>&#125;&gt;<br>  &lt;Example /&gt;<br>&lt;/Sentry.ErrorBoundary&gt;;<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="3-手动上报"><a href="#3-手动上报" class="headerlink" title="3. 手动上报"></a>3. 手动上报</h3><p>完成上面两步配置以后，sentry会自动上报语法错误。但是一些接口请求失败这样的错误，还需要在项目层单独处理。<br>大部分项目都会使用 axios，fetch两个xhr请求工具</p>
+<p>1、首先定义一个手动上报的方法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 手动上报sentry的信息</span><br><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">captureMessageToSentry</span>(<span class="hljs-params">type, response</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (!response) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-keyword">const</span> data = &#123;<br>            <span class="hljs-comment">// 接口url</span><br>            url: response.config.url,<br>            <span class="hljs-comment">// 接口参数</span><br>            params: response.config.data,<br>            <span class="hljs-comment">// 接口返回的数据</span><br>            data: <span class="hljs-built_in">JSON</span>.stringify(response.data),<br>            <span class="hljs-comment">// 接口方法</span><br>            method: response.config.method,<br>            <span class="hljs-comment">// 接口状态</span><br>            status: response.status,<br>            <span class="hljs-comment">//所有信息</span><br>            response,<br>        &#125;;<br>        Sentry.setTag(<span class="hljs-string">&#x27;api&#x27;</span>, response.config.url);<br>        Sentry.setTag(<span class="hljs-string">&#x27;username&#x27;</span>, getUserName());<br>        Sentry.setTag(<span class="hljs-string">&#x27;userid&#x27;</span>, getUserId());<br>        Sentry.setExtra(<span class="hljs-string">&#x27;request&#x27;</span>, &#123;<br>            ...data,<br>        &#125;);<br>        <span class="hljs-keyword">if</span> (type === <span class="hljs-string">&#x27;error&#x27;</span>) &#123;<br>            Sentry.captureException(<br>                <span class="hljs-string">`手动上报api:`</span> + response.config.url,<br>            );<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            Sentry.captureMessage(<span class="hljs-string">`手动上报api:`</span> + response.config.url);<br>        &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>2、在xhr全局配置中使用这个方法。已 axios为例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><span class="hljs-comment">// 响应拦截器</span><br>axios.interceptors.response.use(<br>    (response) =&gt; &#123;<br>        <span class="hljs-keyword">const</span> &#123; ret, msg = <span class="hljs-string">&#x27;接口请求失败&#x27;</span> &#125; = response.data;<br>        <span class="hljs-keyword">if</span> (ret !== <span class="hljs-number">1</span>) &#123;<span class="hljs-comment">//项目中规定接口失败的错误码</span><br>            captureMessageToSentry(<span class="hljs-string">&#x27;message&#x27;</span>, response);<br>        &#125;<br>        <span class="hljs-keyword">switch</span> (ret) &#123;<br>            <span class="hljs-keyword">case</span> -<span class="hljs-number">1</span>:<br>                message.error(msg);<br>                <span class="hljs-keyword">return</span> &#123; <span class="hljs-attr">result</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">data</span>: response.data.data &#125;;<br>            <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:<br>                <span class="hljs-keyword">return</span> &#123; <span class="hljs-attr">result</span>: response.data.data &#125;;<br>            <span class="hljs-keyword">case</span> -<span class="hljs-number">11</span>:<br>                message.error(<span class="hljs-string">&#x27;登陆过期，请重新登陆！&#x27;</span>);<br>                <span class="hljs-built_in">window</span>.location.hash = <span class="hljs-string">&#x27;#/login&#x27;</span>;<br>                <span class="hljs-keyword">return</span> &#123; <span class="hljs-attr">result</span>: <span class="hljs-literal">false</span> &#125;;<br>            <span class="hljs-keyword">default</span>:<br>                <span class="hljs-keyword">return</span> message.error(<span class="hljs-string">`<span class="hljs-subst">$&#123;msg&#125;</span>:<span class="hljs-subst">$&#123;response.config.url&#125;</span>`</span>);<br>        &#125;<br>    &#125;,<br>    (error) =&gt; &#123;<br>        captureMessageToSentry(<span class="hljs-string">&#x27;error&#x27;</span>, error.response);<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.resolve(error);<br>    &#125;,<br>);<br><br></code></pre></td></tr></table></figure>
+
+<p>至此，就完成了接口失败的错误上报</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h3 id="异常捕获"><a href="#异常捕获" class="headerlink" title="异常捕获"></a>异常捕获</h3><p>前端捕获异常分为全局捕获和单点捕获。</p>
+<ul>
+<li><p>全局捕获代码集中，易于管理。通过全局的接口，将捕获代码集中写在一个地方，可以利用的接口有：</p>
+<ul>
+<li>window.addEventListener(‘error’) 或 window.addEventListener(“unhandledrejection”) 或 document.addEventListener(‘click’) 等</li>
+<li>框架级别的全局监听。例如aixos中使用interceptor进行拦截、react的错误边界拦截<a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/error-boundaries.html">ErrorBoundary</a>。vue的<a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/api/#errorHandler">Vue.config.errorHandler</a></li>
+<li>通过对全局函数的包装，实现在调用该函数的时候实现拦截</li>
+<li>对实例方法重写（Patch），在原有功能基础上包裹一层。 例如对 setTimeout重写</li>
+</ul>
+</li>
+<li><p>单点捕获作为补充，对某些特殊情况进行捕获，但分散，不利于管理。在业务代码中对单个代码块进行包裹，或在逻辑流程中打点，实现有针对性的异常捕获。例如 try…catch</p>
+</li>
+</ul>
+<p>sentry对以上N多方法进行了重写。下边查看部分代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 统一包装的方法</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fill</span>(<span class="hljs-params">source, name, replacementFactory</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> original = source[name];<br>  <span class="hljs-keyword">var</span> wrapped = replacementFactory(original);<br>  source[name] = wrapped;<br>&#125;<br><span class="hljs-comment">// 拦截的方法</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">instrument</span>(<span class="hljs-params">type</span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (instrumented[type]) &#123;<br>    <span class="hljs-keyword">return</span>;<br>  &#125;<br>  instrumented[type] = <span class="hljs-literal">true</span>;<br>  <span class="hljs-keyword">switch</span> (type) &#123;<br>    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;console&#x27;</span>:<br>      instrumentConsole();<br>      <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;dom&#x27;</span>:<br>      instrumentDOM();<br>      <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;xhr&#x27;</span>:<br>      instrumentXHR();<br>      <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;fetch&#x27;</span>:<br>      instrumentFetch();<br>      <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;history&#x27;</span>:<br>      instrumentHistory();<br>      <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;error&#x27;</span>:<br>      instrumentError();<br>      <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;unhandledrejection&#x27;</span>:<br>      instrumentUnhandledRejection();<br>      <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">default</span>:<br>      logger.warn(<span class="hljs-string">&#x27;unknown instrumentation type:&#x27;</span>, type);<br>  &#125;<br>&#125;<br> <br><span class="hljs-comment">// 拦截console</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">instrumentConsole</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (!(<span class="hljs-string">&#x27;console&#x27;</span> <span class="hljs-keyword">in</span> global$<span class="hljs-number">2</span>)) &#123;<br>    <span class="hljs-keyword">return</span>;<br>  &#125;<br>  [<span class="hljs-string">&#x27;debug&#x27;</span>, <span class="hljs-string">&#x27;info&#x27;</span>, <span class="hljs-string">&#x27;warn&#x27;</span>, <span class="hljs-string">&#x27;error&#x27;</span>, <span class="hljs-string">&#x27;log&#x27;</span>, <span class="hljs-string">&#x27;assert&#x27;</span>].forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">level</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (!(level <span class="hljs-keyword">in</span> global$<span class="hljs-number">2.</span><span class="hljs-built_in">console</span>)) &#123;<br>      <span class="hljs-keyword">return</span>;<br>    &#125;<br>    fill(global$<span class="hljs-number">2.</span><span class="hljs-built_in">console</span>, level, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">originalConsoleLevel</span>) </span>&#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-keyword">var</span> args = [];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> _i = <span class="hljs-number">0</span>; _i &lt; <span class="hljs-built_in">arguments</span>.length; _i++) &#123;<br>          args[_i] = <span class="hljs-built_in">arguments</span>[_i];<br>        &#125;<br>        triggerHandlers(<span class="hljs-string">&#x27;console&#x27;</span>, &#123; <span class="hljs-attr">args</span>: args, <span class="hljs-attr">level</span>: level &#125;);<br>        <span class="hljs-comment">// this fails for some browsers. :(</span><br>        <span class="hljs-keyword">if</span> (originalConsoleLevel) &#123;<br>          <span class="hljs-built_in">Function</span>.prototype.apply.call(originalConsoleLevel, global$<span class="hljs-number">2.</span><span class="hljs-built_in">console</span>, args);<br>        &#125;<br>      &#125;;<br>    &#125;);<br>  &#125;);<br>&#125;<br><span class="hljs-comment">// 重写fetch</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">instrumentFetch</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (!supportsNativeFetch()) &#123;<br>    <span class="hljs-keyword">return</span>;<br>  &#125;<br>  fill(global$<span class="hljs-number">2</span>, <span class="hljs-string">&#x27;fetch&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">originalFetch</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>      <span class="hljs-keyword">var</span> args = [];<br>      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> _i = <span class="hljs-number">0</span>; _i &lt; <span class="hljs-built_in">arguments</span>.length; _i++) &#123;<br>        args[_i] = <span class="hljs-built_in">arguments</span>[_i];<br>      &#125;<br>      <span class="hljs-keyword">var</span> handlerData = &#123;<br>        args: args,<br>        fetchData: &#123;<br>          method: getFetchMethod(args),<br>          url: getFetchUrl(args),<br>        &#125;,<br>        startTimestamp: <span class="hljs-built_in">Date</span>.now(),<br>      &#125;;<br>      triggerHandlers(<span class="hljs-string">&#x27;fetch&#x27;</span>, __assign(&#123;&#125;, handlerData));<br>      <span class="hljs-comment">// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access</span><br>      <span class="hljs-keyword">return</span> originalFetch.apply(global$<span class="hljs-number">2</span>, args).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>&#123;<br>        triggerHandlers(<span class="hljs-string">&#x27;fetch&#x27;</span>, __assign(__assign(&#123;&#125;, handlerData), &#123; <span class="hljs-attr">endTimestamp</span>: <span class="hljs-built_in">Date</span>.now(), <span class="hljs-attr">response</span>: response &#125;));<br>        <span class="hljs-keyword">return</span> response;<br>      &#125;, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">error</span>) </span>&#123;<br>        triggerHandlers(<span class="hljs-string">&#x27;fetch&#x27;</span>, __assign(__assign(&#123;&#125;, handlerData), &#123; <span class="hljs-attr">endTimestamp</span>: <span class="hljs-built_in">Date</span>.now(), <span class="hljs-attr">error</span>: error &#125;));<br>        <span class="hljs-keyword">throw</span> error;<br>      &#125;);<br>    &#125;;<br>  &#125;);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="性能监控"><a href="#性能监控" class="headerlink" title="性能监控"></a>性能监控</h3><p>sentry的性能监控其实主要依靠<a target="_blank" rel="noopener" href="https://github.com/GoogleChrome/web-vitals">web-vitals</a>这个包，主要依靠<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/PerformanceObserver/PerformanceObserver">PerformanceObserver</a>实现</p>
+<p>阅读<a target="_blank" rel="noopener" href="https://web.dev/">Web Vitals</a>； 先立个flag，之后补充一篇他的详细文档</p>
+<p>这里简要概述一下：</p>
+<p>什么是 Web Vitals ，Google 给的定义是一个良好网站的基本指标 (Essential metrics for a healthy site)，为什么还要再定义一个新的指标集，原因是过去要衡量一个好的网站，需要使用的指标太多，推出 Web Vitals 是简化这个学习的曲线，站主只要观注 Web Vitals 指标表现即可。<br>而在 Web Vitals 指标中，Core Web Vitals 是其中最重要的核心，目前包含三个指标：</p>
+<ul>
+<li>LCP 显示最大内容元素所需时间 (衡量网站初次载入速度)</li>
+<li>FID 首次输入延迟时间 (衡量网站互动顺畅程度)</li>
+<li>CLS 累计版面配置移转 (衡量网页元件视觉稳定性)</li>
+</ul>
+<p><img src="https://pic4.zhimg.com/80/v2-22e5ae143cedbf7151cf485732bed947_1440w.jpg" srcset="/img/loading.gif" lazyload alt="指标"></p>
+<h3 id="上报方式"><a href="#上报方式" class="headerlink" title="上报方式"></a>上报方式</h3><p>sentry采用xhr的方式上报</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><code class="hljs js">BrowserBackend.prototype._setupTransport = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">this</span>._options.dsn) &#123;<br>            <span class="hljs-comment">// We return the noop transport here in case there is no Dsn.</span><br>            <span class="hljs-comment">// 没有设置dsn，调用BaseBackend.prototype._setupTransport 返回空函数</span><br>            <span class="hljs-keyword">return</span> _super.prototype._setupTransport.call(<span class="hljs-built_in">this</span>);<br>        &#125;<br>        <span class="hljs-keyword">var</span> transportOptions = __assign(&#123;&#125;, <span class="hljs-built_in">this</span>._options.transportOptions, &#123; <span class="hljs-attr">dsn</span>: <span class="hljs-built_in">this</span>._options.dsn &#125;);<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>._options.transport) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">this</span>._options.transport(transportOptions);<br>        &#125;<br>        <span class="hljs-comment">// 支持Fetch则返回 FetchTransport 实例，否则返回 XHRTransport实例，</span><br>        <span class="hljs-comment">// 这两个构造函数具体代码在开头已有提到。</span><br>        <span class="hljs-keyword">if</span> (supportsFetch()) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> FetchTransport(transportOptions);<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> XHRTransport(transportOptions);<br>    &#125;;<br> <br><span class="hljs-comment">// fetch 发送请求</span><br>FetchTransport.prototype.sendEvent = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">event</span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> defaultOptions = &#123;<br>        body: <span class="hljs-built_in">JSON</span>.stringify(event),<br>        method: <span class="hljs-string">&#x27;POST&#x27;</span>,<br>        referrerPolicy: (supportsReferrerPolicy() ? <span class="hljs-string">&#x27;origin&#x27;</span> : <span class="hljs-string">&#x27;&#x27;</span>),<br>    &#125;;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>._buffer.add(global$<span class="hljs-number">2.</span>fetch(<span class="hljs-built_in">this</span>.url, defaultOptions).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>&#123; <span class="hljs-keyword">return</span> (&#123;<br>        status: <span class="hljs-built_in">exports</span>.Status.fromHttpCode(response.status),<br>    &#125;); &#125;));<br>&#125;;<br> <br><span class="hljs-comment">// xhr 发送请求</span><br>XHRTransport.prototype.sendEvent = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">event</span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> _this = <span class="hljs-built_in">this</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>._buffer.add(<span class="hljs-keyword">new</span> SyncPromise(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve, reject</span>) </span>&#123;<br>        <span class="hljs-comment">// 熟悉的 XMLHttpRequest</span><br>        <span class="hljs-keyword">var</span> request = <span class="hljs-keyword">new</span> XMLHttpRequest();<br>        request.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>            <span class="hljs-keyword">if</span> (request.readyState !== <span class="hljs-number">4</span>) &#123;<br>                <span class="hljs-keyword">return</span>;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (request.status === <span class="hljs-number">200</span>) &#123;<br>                resolve(&#123;<br>                    status: <span class="hljs-built_in">exports</span>.Status.fromHttpCode(request.status),<br>                &#125;);<br>            &#125;<br>            reject(request);<br>        &#125;;<br>        request.open(<span class="hljs-string">&#x27;POST&#x27;</span>, _this.url);<br>        request.send(<span class="hljs-built_in">JSON</span>.stringify(event));<br>    &#125;));<br>&#125;<br> <br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">XHRTransport</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseTransport</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">sendEvent</span>(<span class="hljs-params">event</span>)</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>._sendRequest(eventToSentryRequest(event, <span class="hljs-built_in">this</span>._api), event);<br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">_sendRequest</span>(<span class="hljs-params">sentryRequest, originalPayload</span>)</span> &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>._isRateLimited(sentryRequest.type)) &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.reject(&#123;<br>        event: originalPayload,<br>        type: sentryRequest.type,<br>        reason: <span class="hljs-string">`Transport locked till <span class="hljs-subst">$&#123;<span class="hljs-built_in">this</span>._disabledUntil(sentryRequest.type)&#125;</span> due to too many requests.`</span>,<br>        status: <span class="hljs-number">429</span>,<br>      &#125;);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>._buffer.add(<span class="hljs-keyword">new</span> SyncPromise(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>      <span class="hljs-keyword">const</span> request = <span class="hljs-keyword">new</span> XMLHttpRequest();<br>      request.onreadystatechange = <span class="hljs-function">() =&gt;</span> &#123;<br>        <span class="hljs-keyword">if</span> (request.readyState === <span class="hljs-number">4</span>) &#123;<br>          <span class="hljs-keyword">const</span> headers = &#123;<br>            <span class="hljs-string">&#x27;x-sentry-rate-limits&#x27;</span>: request.getResponseHeader(<span class="hljs-string">&#x27;X-Sentry-Rate-Limits&#x27;</span>),<br>            <span class="hljs-string">&#x27;retry-after&#x27;</span>: request.getResponseHeader(<span class="hljs-string">&#x27;Retry-After&#x27;</span>),<br>          &#125;;<br>          <span class="hljs-built_in">this</span>._handleResponse(&#123; <span class="hljs-attr">requestType</span>: sentryRequest.type, <span class="hljs-attr">response</span>: request, headers, resolve, reject &#125;);<br>        &#125;<br>      &#125;;<br>      request.open(<span class="hljs-string">&#x27;POST&#x27;</span>, sentryRequest.url);<br>      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> header <span class="hljs-keyword">in</span> <span class="hljs-built_in">this</span>.options.headers) &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.options.headers.hasOwnProperty(header)) &#123;<br>          request.setRequestHeader(header, <span class="hljs-built_in">this</span>.options.headers[header]);<br>        &#125;<br>      &#125;<br>      request.send(sentryRequest.body);<br>    &#125;));<br>  &#125;<br>&#125;<br> <br><span class="hljs-built_in">this</span>._buffer.add(task) &#123;<br>  <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">this</span>.isReady()) &#123;<br>    <span class="hljs-keyword">return</span> SyncPromise.reject(<span class="hljs-keyword">new</span> SentryError(<span class="hljs-string">&#x27;Not adding Promise due to buffer limit reached.&#x27;</span>));<br>  &#125;<br>  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>._buffer.indexOf(task) === -<span class="hljs-number">1</span>) &#123;<br>    <span class="hljs-built_in">this</span>._buffer.push(task);<br>  &#125;<br>  task<br>    .then(<span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">this</span>.remove(task))<br>        .then(<span class="hljs-literal">null</span>, <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">this</span>.remove(task).then(<span class="hljs-literal">null</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-comment">// We have to add this catch here otherwise we have an unhandledPromiseReject     </span><br>            <span class="hljs-comment">// because it&#x27;s a new Promise chain     </span><br>        &#125;)<br>        );<br>  <span class="hljs-keyword">return</span> task;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="屏幕录制"><a href="#屏幕录制" class="headerlink" title="屏幕录制"></a>屏幕录制</h3><p>除了报错和性能，其实sentry还可以录制屏幕的信息，来更快的帮助开发者定位错误<a target="_blank" rel="noopener" href="https://docs.sentry.io/platforms/javascript/configuration/integrations/rrweb/">官方文档</a>，sentry的错误录制其实主要依靠 <a target="_blank" rel="noopener" href="https://www.rrweb.io/">rrweb</a> 这个包实现</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/sentry/">sentry</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/04/28/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/">
+                        <span class="hidden-mobile">博客升级-增加评论系统</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1.3.0/dist/twikoo.all.min.js', function() {
+        twikoo.init({
+          el: '#twikoo',
+          envId: 'lucainblog-0g3glckef43b9bae',
+          region: 'ap-guangzhou',
+          path: 'window.location.pathname',
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
