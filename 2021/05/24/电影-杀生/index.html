@@ -18,7 +18,7 @@
   <meta name="author" content="lucian">
   <meta name="keywords" content="">
   
-  <title>clipboard复制到剪贴板 - lucian blog</title>
+  <title>电影重温：《杀生》 - lucian blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -158,7 +158,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="clipboard复制到剪贴板">
+            <span class="h2" id="subtitle" title="电影重温：《杀生》">
               
             </span>
 
@@ -168,8 +168,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2017-03-29 10:30" pubdate>
-        2017年3月29日 上午
+      <time datetime="2021-05-24 19:54" pubdate>
+        2021年5月24日 晚上
       </time>
     </span>
   
@@ -180,7 +180,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      807 字
+      1.6k 字
     </span>
   
 
@@ -190,7 +190,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      15
        分钟
     </span>
   
@@ -220,32 +220,31 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">clipboard复制到剪贴板</h1>
+            <h1 style="display: none">电影重温：《杀生》</h1>
             
             <div class="markdown-body">
-              <blockquote>
-<p>在做项目的过程中，有一个需求是客户需要把浏览器中的一行命令复制到docker中，其实是很简单的功能，但是要处理兼容性并不简单，出于安全原因，大多数现代浏览器都未提供通用的剪贴板复制接口(或即便有，也默认被禁用)</p>
-</blockquote>
-<p>在网络上搜索以后，现有如下两种方法：</p>
-<ol>
-<li>使用原生JavaScript中window.clipboardData实现复制到剪贴板功能；</li>
-<li>使用Zero Clipboard库；</li>
-</ol>
-<p>在尝试了之后发现现有的方案都不能满足需求。<br>方案一仅仅支持ie浏览器，在firefox,chrome浏览器上则不起作用。<br>方案二则是现有绝大多数网站（包括github等）所采取的方ZeroClipboard是国外大神开发的一个用于剪贴板复制的 JS 插件，它是基于 Flash 来实现跨浏览器的复制功能的。当我们使用 ZeroClipboard的时候，它会悄悄隐藏一个小小的 Flash 影片(swf)，不会对我们的用户界面造成影响。我们只需要借助它实现复制功能就行了。==<strong>但是</strong>== 在现代浏览器中，flash逐渐没落，firefox浏览器默认不开启flash，所以Zero Clipboard在<br>兼容方面也表现不佳。</p>
-<h3 id="下边进入正题"><a href="#下边进入正题" class="headerlink" title="下边进入正题"></a>下边进入正题</h3><p>那么，对于复制到剪切板这种简单的操作有没有一种实现简单，兼容性良好的解决方案呢？有的！那就是github上的开源项目clipboard.js<a target="_blank" rel="noopener" href="https://clipboardjs.com/">官网</a> </p>
-<p>如何使用：<br>1.引入clipboard.js文件<br>2.new 一个实例<br>3.给实例绑定success，和 error方法</p>
-<p>实例1</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">&lt;button id=&quot;btn&quot; data-clipboard-action=&quot;copy&quot; data-clipboard-<span class="hljs-type">text</span>=&quot;这是cut出来的内容&quot; &gt; 点击复制&lt;/button&gt; <br><br>var clipboard = <span class="hljs-built_in">new</span> Clipboard(<span class="hljs-string">&#x27;#btn&#x27;</span>);<br><br>clipboard.<span class="hljs-keyword">on</span>(<span class="hljs-string">&#x27;success&#x27;</span>, <span class="hljs-keyword">function</span>(e) &#123;<br>    console.<span class="hljs-keyword">info</span>(<span class="hljs-string">&#x27;Action:&#x27;</span>, e.action);<br>    console.<span class="hljs-keyword">info</span>(<span class="hljs-string">&#x27;Text:&#x27;</span>, e.text);<br>    console.<span class="hljs-keyword">info</span>(<span class="hljs-string">&#x27;Trigger:&#x27;</span>, e.<span class="hljs-keyword">trigger</span>);<br>    e.clearSelection();<br>&#125;);<br><br>clipboard.<span class="hljs-keyword">on</span>(<span class="hljs-string">&#x27;error&#x27;</span>, <span class="hljs-keyword">function</span>(e) &#123;<br>    console.error(<span class="hljs-string">&#x27;Action:&#x27;</span>, e.action);<br>    console.error(<span class="hljs-string">&#x27;Trigger:&#x27;</span>, e.<span class="hljs-keyword">trigger</span>);<br>&#125;);<br>clipboard.destroy();<br></code></pre></td></tr></table></figure>
-
-<p>说明：<br>1.clipboard在实例中提供了三个属性</p>
+              <h1 id="《杀生》"><a href="#《杀生》" class="headerlink" title="《杀生》"></a>《杀生》</h1><p><img src="https://gitee.com/liushaozhen/blog_source/raw/master/source/img/movie/shasheng/1.png" srcset="/img/loading.gif" lazyload alt="杀生"></p>
+<h2 id="前面的废话"><a href="#前面的废话" class="headerlink" title="前面的废话"></a>前面的废话</h2><p>这个电影我看了大概四遍以上。2013年还是2014年的时候第一次看，看了一遍，没明白说了些什么。然后看第二遍大概知道了这个故事的关键是“心由境生”。看这个电影的原因是看了《疯狂的石头》、《疯狂的赛车》、《斗牛》、之后觉得想更多的了解黑色幽默、管虎、黄渤，也正是因为这几部电影，还有电视剧《民工》让我变成了黄渤的粉丝。这次重温看到了很多之前没有关注到的地方，写下来记录一下</p>
+<p><img src="https://gitee.com/liushaozhen/blog_source/raw/master/source/img/movie/shasheng/3.png" srcset="/img/loading.gif" lazyload alt="心由境生"></p>
+<h2 id="故事简介"><a href="#故事简介" class="headerlink" title="故事简介"></a>故事简介</h2><p>故事发生在长寿镇。这个镇有几个特点：“封闭”，“循规蹈矩”。封闭这个不难看出。循规蹈矩这个是有一个镜头，村里有打更的，喊着“寅时打水，洗脸漱嘴”，足以看出这个镇有了严格的规矩，而且大家都很守规矩。唯一一个不守规矩的人就是 牛结实。<br>故事的开头，任达华路过长寿镇，遇到了牛结实，此时的牛结实还是生龙活虎，十三个月后，任达华来到长寿镇调查“瘟疫”的事情，发现牛结实出了大问题。整个故事也已任达华的视角展开叙述。<br>我们先来介绍一下牛结实：</p>
 <ul>
-<li>data-clipboard-action：方法，可选copy(复制)，cut(剪切)</li>
-<li>data-clipboard-text：要复制/剪切的内容</li>
-<li>data-clipboard-target：要复制/剪切的目标dom，如果不写为当前实例的data-clipboard-text。data-clipboard-target还可以写为其它dom元素，使用css选择器,如实例2。 <em>注意</em> 如果data-clipboard-target和data-clipboard-text同时具备，则会使用data-clipboard-text</li>
+<li>首先这个牛结实到底有多结实？被车撞，被铁匠爆锤等等照样生龙活虎</li>
+<li>他有多不守规矩？他在镇上制造一系列闹剧：祸害马寡妇（当然在镇长下葬的时候也救了马寡妇，这也为后来村里所有人想除掉牛结实的时候埋下伏笔）、偷看牛油漆行房、白嫖二叔家的腊肉、将祖坟中的财富挖了出来作为礼物，小时候偷苏有朋家的腊肉间接导致苏有朋父母死亡、将催情粉到在镇里的水源里导致镇上的人彻底释放了兽性等等</li>
 </ul>
-<p>2.如果你是在开发一个单页应用，可能需要更精确地管理DOM的生命周期，clipboard提供了destroy()事件来销毁创建的clipboard实例<br>3.<strong>注：</strong> 如果data-clipboard-text不为空，cut方法无效</p>
-<p>实例2:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;textarea cols=<span class="hljs-string">&quot;20&quot;</span> rows=<span class="hljs-string">&quot;10&quot;</span> id=<span class="hljs-string">&quot;text&quot;</span>&gt;这段文字将会被复制到剪贴板&lt;/textarea&gt;<br>&lt;button id=<span class="hljs-string">&quot;btn&quot;</span> data-clipboard-action=<span class="hljs-string">&quot;cut&quot;</span>  data-clipboard-target=<span class="hljs-string">&quot;#text&quot;</span>&gt;点击复制&lt;/button&gt;<br><span class="hljs-keyword">var</span> clipboard=<span class="hljs-keyword">new</span> Clipboard(<span class="hljs-string">&#x27;#btn&#x27;</span>);<br>clipboard.on(<span class="hljs-string">&#x27;success&#x27;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.info(<span class="hljs-string">&#x27;Action:&#x27;</span>, e.action);<br>    <span class="hljs-built_in">console</span>.info(<span class="hljs-string">&#x27;Text:&#x27;</span>, e.text);<br>    <span class="hljs-built_in">console</span>.info(<span class="hljs-string">&#x27;Trigger:&#x27;</span>, e.trigger);<br>    e.clearSelection();<br>&#125;);<br>clipboard.on(<span class="hljs-string">&#x27;error&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.error(<span class="hljs-string">&#x27;Action:&#x27;</span>, e.action);<br>    <span class="hljs-built_in">console</span>.error(<span class="hljs-string">&#x27;Trigger:&#x27;</span>, e.trigger);<br>&#125;);<br>clipboard.destroy();<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+<p>这样的一个人，让镇上的人叫苦不迭，镇上的人也不止一次想办法让他滚出镇子，但是都没有成功，毕竟不能杀了他，这样长寿镇的名声就毁了。最后没有办法，镇长找来了海归 苏有朋。苏有朋出了一个主意“心由境生”。什么意思呢？就是让牛结实觉得自己有病，活不长了。这个办法做了以下几个事情：</p>
+<ol>
+<li>所有人见到牛结实就说他精神不好，最近一定有一劫难，被牛结实问原因就说不知道。这一下让牛结实有点慌了</li>
+<li>安排小孩子和牛结实掰手腕，在小孩子的胳膊下设置了机关，让牛结实更加确信自己身体不行，连小孩子都掰不过</li>
+<li>在酒席上，使用机关酒壶，大家喝水，牛结实喝酒。让牛结实觉得自己酒量也不行了</li>
+<li>在下雨天，大冷天派年轻人在雨中祈福，吸引牛结实一起在雨中祈福。牛结实这次真的生病了，至少是感冒风寒会虚弱。此时牛结实的已经彻底相信自己不行了，精神已经崩溃。</li>
+</ol>
+<p>这里插一句，马寡妇被牛结实救了以后，马寡妇就跟了牛结实，并怀了牛结实的孩子。</p>
+<p>计划很完美，牛结实已经准备去死了。这时候从马寡妇和小男孩嘴里知道了真相，他并没有生病，只是镇上的想让他生病，让他离开镇子。 也得到消息 牛结实和他的孩子只能有一个在镇上活着。 牛结实的父爱选择了去死，吃了堕胎药。离开镇子之前，对曾经捉弄过的村民道歉，还回偷过抢过的东西，千叮万嘱“娃儿无罪”，希望村民放过娃儿。然后拉着自己的蓝色棺材在山腰等死。任达华来调查“瘟疫”的时候，牛结实的精神已经死了。他没有被毒死，因为任达华解剖之后发现身体里没有毒，他也没被苏有朋的计谋害死，因为他知道了这个计谋。</p>
+<p>故事的最后：任达华将马寡妇及孩子送出了长寿镇。 镇长去世了，没有达到100岁，镇上的人们在给镇长举行葬礼的时候，齐声的呼喊引发了山上巨石的崩塌。苏有朋应该是患有重症或者错吃了给牛结实准备的毒腊肉。</p>
+<p><img src="https://gitee.com/liushaozhen/blog_source/raw/master/source/img/movie/shasheng/2.png" srcset="/img/loading.gif" lazyload alt="杀生"></p>
+<h2 id="简评"><a href="#简评" class="headerlink" title="简评"></a>简评</h2><p>故事有很多地方值得去细细品味，比如 牛结实住在庙里，庙里有佛，而庙的钥匙只有牛结实有；片中的纯真孩子并没有和村民一样对付牛结实，孩子会告诉牛结实事实真相； 村里的人穿着黑袍，这是宗教还是风俗；山顶的大石头在最后的时候坍塌了，仔细看片尾顶着大石头的木桩好像是被人刚刚砍过；</p>
+<p>谈一下个人的理解：<br>长寿镇代表着封闭、压抑、循规蹈矩的世界，也正是因为这个世界的人们性格原因，虽然对牛结实恨之入骨，但不敢直接杀了牛结实，只能请外界高手通过“心由境生”的方式，想让他自己离开、自己死掉。<br>这个世界里，牛结实将传统、规矩、信念、隐私、伦理道德全部冲撞了一个遍，也正是如此牛结实被大众恨之入骨。以牛结实的视角来看，或许他无法理解大众的规矩，或许他想让大众改变，想让这个世界变好。他是爱这个世界的，在故事的最后可以看出他不想离开这个世界，他爱着这个世界。当他识破苏有朋计谋的时候，按照他的性格，他一定会以牙还牙，但是世界抓住了他的把柄（娃儿），他放弃了挣扎不再反抗，他的精神世界彻底崩塌了，失去了活着的希望，他选择了死亡，成全了大众。</p>
+
             </div>
             <hr>
             <div>
@@ -254,7 +253,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/clipboard/">clipboard</a>
+                      <a class="hover-with-bg" href="/categories/%E7%94%B5%E5%BD%B1/">电影</a>
                     
                   </div>
                 
@@ -262,11 +261,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
-                    
-                      <a class="hover-with-bg" href="/tags/clipboard/">clipboard</a>
-                    
-                      <a class="hover-with-bg" href="/tags/javaScript/">javaScript</a>
+                      <a class="hover-with-bg" href="/tags/%E7%94%B5%E5%BD%B1/">电影</a>
                     
                   </div>
                 
@@ -277,18 +272,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2017/04/01/%E6%88%91%E9%81%87%E5%88%B0%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%88%B0%E7%9A%84webpack%E6%8F%92%E4%BB%B6/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">我遇到以及使用到的webpack插件</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2017/03/28/php%E5%85%A8%E6%94%BB%E7%95%A5/">
-                        <span class="hidden-mobile">PHP全攻略</span>
+                      <a href="/2021/05/14/sentry/">
+                        <span class="hidden-mobile">sentry的使用及原理</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
