@@ -1,0 +1,544 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpg">
+  <link rel="icon" href="/img/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="lucian">
+  <meta name="keywords" content="">
+  
+  <title>算法-数组排序 - lucian blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"liushaozhen.github.io","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>lucian的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://liushaozhen.gitee.io/img/bg.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="算法-数组排序">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-07 16:03" pubdate>
+        2021年7月7日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      19
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">算法-数组排序</h1>
+            
+            <div class="markdown-body">
+              <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>数组排序方法有很多种，下边说五种</p>
+<ul>
+<li>快速排序</li>
+</ul>
+<blockquote>
+<p>选择一个目标值target，把比target小的放到左边，比target大的放到右边，测试target位置已确认，然后分别对target左右进行相同处理</p>
+</blockquote>
+<ul>
+<li>归并排序</li>
+</ul>
+<blockquote>
+<p>大事化小小事化了的思路。将大数组分割为小数组，然后对小数组进行排序，最后合并为大数组</p>
+</blockquote>
+<ul>
+<li>选择排序</li>
+</ul>
+<blockquote>
+<p>每次循环选取一个最小的数字放到前边的有序序列中</p>
+</blockquote>
+<ul>
+<li>插入排序</li>
+</ul>
+<blockquote>
+<p>将左侧序列看成一个有序序列，每次循环将一个数字插入到这个有序序列的对应位置</p>
+</blockquote>
+<ul>
+<li>冒泡排序</li>
+</ul>
+<blockquote>
+<p>循环数组，比较target和下一个元素next，如果target&gt;next，target和next交换位置。一次循环之后最后一个数就是本数组最大的数，</p>
+</blockquote>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><blockquote>
+<p>通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据比另一部分的所有数据要小，再按这种方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，使整个数据变成有序序列。</p>
+</blockquote>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0b731216fc404227971efe44ba19d77a~tplv-k3u1fbpfcp-zoom-1.image" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2f22e774a2d941799a775521a9dffc11~tplv-k3u1fbpfcp-zoom-1.image" srcset="/img/loading.gif" lazyload></p>
+<h3 id="解法一：双数组"><a href="#解法一：双数组" class="headerlink" title="解法一：双数组"></a>解法一：双数组</h3><ul>
+<li>新建两个数组 <code>left</code> 和 <code>right</code> 来存储每次递归比 <code>target</code>小和大的序列</li>
+<li>每次递归返回 <code>left</code>+<code>target</code>+<code>right</code></li>
+<li>当array的长度小于2时，终止递归</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><span class="hljs-keyword">const</span> fastSort = <span class="hljs-function">(<span class="hljs-params">array</span>)=&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(array.length&lt;<span class="hljs-number">2</span>)<span class="hljs-keyword">return</span> array;<br>    <span class="hljs-keyword">let</span> target = array[<span class="hljs-number">0</span>],left=[],right=[];<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i=<span class="hljs-number">1</span>;i&lt;array.length;i++)&#123;<br>        <span class="hljs-keyword">let</span> item = array[i];<br>        <span class="hljs-keyword">if</span>(item&lt;target)&#123;<br>            left.push(item);<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            right.push(item);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> fastSort(left).concat([target]).concat(fastSort(right));<br>&#125;;<br><br><br></code></pre></td></tr></table></figure>
+
+<h3 id="解法二：双指针"><a href="#解法二：双指针" class="headerlink" title="解法二：双指针"></a>解法二：双指针</h3><ul>
+<li>记录基准值<code>targrt</code>、索引<code>l</code>从左侧开始遍历、<code>r</code>从右侧开始遍历。</li>
+<li>在 <code>l</code>&lt;<code>r</code>的条件下，找到 <code>array[r]</code>&lt;<code>target</code>的数据，并将其赋值给 <code>array[l]</code></li>
+<li>在 <code>l</code>&lt;<code>r</code>的条件下，找到 <code>array[l]</code>&gt;<code>target</code>的数据，并将其赋值给 <code>array[r]</code></li>
+<li>这样，当 <code>l</code>=<code>r</code>时，左侧的值全部小于 <code>target</code>，右侧的值全部大于 <code>target</code></li>
+<li>最后将 <code>target</code> 放到 <code>l</code>=<code>r</code> 的位置</li>
+<li>递归，当 <code>start</code>&gt;<code>end</code>的时候，终止循环</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> quickSort = <span class="hljs-function">(<span class="hljs-params">array,start,end</span>)=&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(start&gt;=end)<span class="hljs-keyword">return</span>;<br><br>    <span class="hljs-keyword">let</span> target = array[start],l=start,r=end;<br><br>    <span class="hljs-keyword">while</span>(l&lt;r)&#123;<br><br>        <span class="hljs-keyword">while</span>(l&lt;r&amp;&amp;array[r]&gt;=target)r--;<br>        array[l]=array[r];<br><br>        <span class="hljs-keyword">while</span>(l&lt;r&amp;&amp;array[l]&lt;target)l++;<br>        array[r]=array[l];<br><br>    &#125;<br>    array[l]=target;<br>    quickSort(array,start,l-<span class="hljs-number">1</span>);<br>    quickSort(array,l+<span class="hljs-number">1</span>,end);<br>    <span class="hljs-keyword">return</span> array;<br>&#125;;<br><br>quickSort(array, <span class="hljs-number">0</span>, array.length-<span class="hljs-number">1</span>);<br><br></code></pre></td></tr></table></figure>
+
+
+<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p><img src="https://oscimg.oschina.net/oscnet/849589-20171015230557043-37375010.gif" srcset="/img/loading.gif" lazyload></p>
+<p>分割：</p>
+<ul>
+<li>将数组从中点进行分割，分为左、右两个数组</li>
+<li>递归分割左、右数组，直到数组长度小于2</li>
+</ul>
+<p>归并：</p>
+<ul>
+<li>如果需要合并，那么左右两数组已经有序了。</li>
+<li>创建一个临时存储数组temp，比较两数组第一个元素，将较小的元素加入临时数组</li>
+<li>若左右数组有一个为空，那么此时另一个数组一定大于temp中的所有元素，直接将其所有元素加入temp</li>
+</ul>
+<h3 id="解法一："><a href="#解法一：" class="headerlink" title="解法一："></a>解法一：</h3><blockquote>
+<p>分割数组时直接将数组分割为两个数组，合并时直接合并数组。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><span class="hljs-keyword">const</span> mergeSort = <span class="hljs-function">(<span class="hljs-params">array</span>)=&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(array.length&lt;<span class="hljs-number">2</span>)<span class="hljs-keyword">return</span> array;<br><br>    <span class="hljs-keyword">let</span> mid = <span class="hljs-built_in">Math</span>.floor(array.length/<span class="hljs-number">2</span>);<br>    <span class="hljs-keyword">let</span> left = array.slice(<span class="hljs-number">0</span>,mid);<br>    <span class="hljs-keyword">let</span> right = array.slice(mid);<br><br>    <span class="hljs-keyword">let</span> leftTemp = mergeSort(left);<br>    <span class="hljs-keyword">let</span> rightTemp = mergeSort(right);<br><br>    <span class="hljs-keyword">return</span> merge(leftTemp,rightTemp);<br>&#125;<br><br><span class="hljs-keyword">const</span> merge=<span class="hljs-function">(<span class="hljs-params">left,right</span>)=&gt;</span>&#123;<br>    <span class="hljs-keyword">let</span> temp = [];<br><br>    <span class="hljs-keyword">while</span>(left.length&amp;&amp;right.length)&#123;<br>        <span class="hljs-keyword">if</span>(left[<span class="hljs-number">0</span>]&lt;right[<span class="hljs-number">0</span>])&#123;<br>            temp.push(left.shift());<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            temp.push(right.shift())<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">while</span>(left.length)temp.push(left.shift());<br>    <span class="hljs-keyword">while</span>(right.length)temp.push(right.shift());<br><br>    <span class="hljs-keyword">return</span> temp;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="解法二："><a href="#解法二：" class="headerlink" title="解法二："></a>解法二：</h3><blockquote>
+<p>记录数组的索引，使用left、right两个索引来限定当前分割的数组。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mergeSort</span>(<span class="hljs-params">array, left, right, temp</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (left &lt; right) &#123;<br>        <span class="hljs-keyword">const</span> mid = <span class="hljs-built_in">Math</span>.floor((left + right) / <span class="hljs-number">2</span>);<br>        mergeSort(array, left, mid, temp)<br>        mergeSort(array, mid + <span class="hljs-number">1</span>, right, temp)<br>        merge(array, left, right, temp);<br>    &#125;<br>    <span class="hljs-keyword">return</span> array;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">merge</span>(<span class="hljs-params">array, left, right, temp</span>) </span>&#123;<br>    <span class="hljs-keyword">const</span> mid = <span class="hljs-built_in">Math</span>.floor((left + right) / <span class="hljs-number">2</span>);<br>    <span class="hljs-keyword">let</span> leftIndex = left;<br>    <span class="hljs-keyword">let</span> rightIndex = mid + <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">let</span> tempIndex = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (leftIndex &lt;= mid &amp;&amp; rightIndex &lt;= right) &#123;<br>        <span class="hljs-keyword">if</span> (array[leftIndex] &lt; array[rightIndex]) &#123;<br>            temp[tempIndex++] = array[leftIndex++]<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            temp[tempIndex++] = array[rightIndex++]<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">while</span> (leftIndex &lt;= mid) &#123;<br>        temp[tempIndex++] = array[leftIndex++]<br>    &#125;<br>    <span class="hljs-keyword">while</span> (rightIndex &lt;= right) &#123;<br>        temp[tempIndex++] = array[rightIndex++]<br>    &#125;<br>    tempIndex = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = left; i &lt;= right; i++) &#123;<br>        array[i] = temp[tempIndex++];<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><blockquote>
+<p>每次循环选取一个最小的数字放到前面的有序序列中。</p>
+</blockquote>
+<p><img src="http://www.conardli.top/docs/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F.gif" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><span class="hljs-keyword">const</span> selectSort = <span class="hljs-function">(<span class="hljs-params">array</span>)=&gt;</span>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;i&lt;array.length;i++)&#123;<br>        <span class="hljs-keyword">let</span> minIndex = i;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j=i+<span class="hljs-number">1</span>;j&lt;array.length;j++)&#123;<br>            <span class="hljs-keyword">if</span>(array[j]&lt;array[minIndex])&#123;<br>                minIndex = j;<br>            &#125;<br>        &#125;<br>        [array[minIndex],array[i]]=[array[i],array[minIndex]];<br>    &#125;<br>    <span class="hljs-keyword">return</span> array;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><blockquote>
+<p>将左侧序列看成一个有序序列，每次将一个数字插入该有序序列。插入时，从有序序列最右侧开始比较，若比较的数较大，后移一位。</p>
+</blockquote>
+<p><img src="http://www.conardli.top/docs/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F.gif" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> insertSort = <span class="hljs-function">(<span class="hljs-params">array</span>)=&gt;</span>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>;i&lt;array.length;i++)&#123;<br>        <span class="hljs-keyword">let</span> minIndex = i;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j=i-<span class="hljs-number">1</span>;j&gt;=<span class="hljs-number">0</span>;j-- )&#123;<br>            <span class="hljs-keyword">if</span>(array[minIndex]&lt;array[j])&#123;<br>                [array[minIndex],array[j]]=[array[j],array[minIndex]];<br>                minIndex = j;<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> array;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><blockquote>
+<p>循环数组，比较当前元素和下一个元素，如果当前元素比下一个元素大，向上冒泡。这样一次循环之后最后一个数就是本数组最大的数。下一次循环继续上面的操作，不循环已经排序好的数。当一次循环没有发生冒泡，说明已经排序完成，停止循环。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><span class="hljs-keyword">const</span> buddleSort = <span class="hljs-function">(<span class="hljs-params">array</span>)=&gt;</span>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;i&lt;array.length;i++)&#123;<br>        <span class="hljs-keyword">let</span> complete = <span class="hljs-literal">true</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j=<span class="hljs-number">0</span>;j&lt;array.length-i;j++)&#123;<br>            <span class="hljs-keyword">if</span>(array[j]&gt;array[j+<span class="hljs-number">1</span>])&#123;<br>                [array[j],array[j+<span class="hljs-number">1</span>]]=[array[j+<span class="hljs-number">1</span>],array[j]];<br>                complete = <span class="hljs-literal">false</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(complete)<span class="hljs-keyword">break</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> array;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%8E%92%E5%BA%8F/">排序</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/05/24/%E7%94%B5%E5%BD%B1-%E6%9D%80%E7%94%9F/">
+                        <span class="hidden-mobile">电影重温：《杀生》</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1.3.1/dist/twikoo.all.min.js', function() {
+        twikoo.init({
+          el: '#twikoo',
+          envId: 'lucian-blog-5ge52upy423c6d34',
+          region: 'ap-guangzhou',
+          path: 'window.location.pathname',
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -177,19 +177,71 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2017/02/20/fiddler%E6%89%8B%E6%9C%BA%E6%8A%93%E5%8C%85/">fiddler手机抓包</a>
+        <a href="/2017/02/25/node%E4%B9%8Bprocess/">nodejs之process模块</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2017/02/20/fiddler%E6%89%8B%E6%9C%BA%E6%8A%93%E5%8C%85/">
+        <a href="/2017/02/25/node%E4%B9%8Bprocess/">
           
           
             
           
-          fiddler手机抓包
-启动fiddler，打开菜单栏中的 Tools &gt; Fiddler Options，打开“Fiddler Options”对话框。
-在Fiddler Options”对话框切换到“Connections”选项卡，然后勾选“Allow romote computers to connect”后面的复选框，然后点击“OK”按钮
-在本机命令行输入：ipconfig，找到本机
+          nodejs之process模块
+process可以用于node和系统中已经存在的进程进行交互，创建工作子进程等。process模块是一个全局对象，允许你获得或者修改当前node进程的设置。
+
+1.process的引入process模块用来与当前进程互动，可以通过全局变量process访问，不必使用require命令加载。它是一个EventEmitter对象的实例。
+2.process事件1）ex
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2017-02-25 15:13" pubdate>
+              2017-02-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/node/">node</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/node/">node</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2017/02/20/fiddler%E6%8B%A6%E6%88%AA/">fiddler拦截</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2017/02/20/fiddler%E6%8B%A6%E6%88%AA/">
+          
+          
+            
+          
+          用fiddler拦截指定网站数据包并修改数据包教程
+打开fiddler抓包工具，在左下底部，输入bpu+你要拦截的网址域名，比如，我要拦截打开百度时发送的数据包，那么我输入：bpu baidu.com或者bpu  www.baidu.com都可以，然后回车，这个时候就会拦截百度相关网址的数据包了，如下图：
+拦截了以后，你打开百度相关的网址时，可以看到是红色的，数据包实际上没有发送出去的，如图：
+点
         </a>
       </p>
 
@@ -230,19 +282,19 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2017/02/20/fiddler%E6%8B%A6%E6%88%AA/">fiddler拦截</a>
+        <a href="/2017/02/20/fiddler%E6%89%8B%E6%9C%BA%E6%8A%93%E5%8C%85/">fiddler手机抓包</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2017/02/20/fiddler%E6%8B%A6%E6%88%AA/">
+        <a href="/2017/02/20/fiddler%E6%89%8B%E6%9C%BA%E6%8A%93%E5%8C%85/">
           
           
             
           
-          用fiddler拦截指定网站数据包并修改数据包教程
-打开fiddler抓包工具，在左下底部，输入bpu+你要拦截的网址域名，比如，我要拦截打开百度时发送的数据包，那么我输入：bpu baidu.com或者bpu  www.baidu.com都可以，然后回车，这个时候就会拦截百度相关网址的数据包了，如下图：
-拦截了以后，你打开百度相关的网址时，可以看到是红色的，数据包实际上没有发送出去的，如图：
-点
+          fiddler手机抓包
+启动fiddler，打开菜单栏中的 Tools &gt; Fiddler Options，打开“Fiddler Options”对话框。
+在Fiddler Options”对话框切换到“Connections”选项卡，然后勾选“Allow romote computers to connect”后面的复选框，然后点击“OK”按钮
+在本机命令行输入：ipconfig，找到本机
         </a>
       </p>
 
@@ -638,59 +690,6 @@ word-break:break-all  这个是不管三七二十一把单词弄断，影响单�
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/js%E6%8A%80%E5%B7%A7/">js技巧</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2017/02/16/react-echarts/">react-使用echarts，以及使用echats的地图</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2017/02/16/react-echarts/">
-          
-          
-            
-          
-          
-百度的echart是一个很好用的图标工具，在js中的简单使用很容易上手，不再多说，这里说一下在react组件中使用echarts
-
-使用echarts首先下载echart是资源，项目中一般在package.json中加入echarts包，然后执行 npm install 即可。也可以执行 npm install echarts --save，然后在组件中引入 echarts, import ec
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2017-02-16 15:58" pubdate>
-              2017-02-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/react/">react</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/react/">react</a>
-            
-              <a href="/tags/echarts/">echarts</a>
             
           </div>
         
