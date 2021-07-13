@@ -190,7 +190,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      51
+      52
        分钟
     </span>
   
@@ -229,7 +229,7 @@
 <li>Promise 链式调用，return问题</li>
 <li>Promise 的then、catch方法参数如果不是函数，会发生值穿透</li>
 <li>Promise 异常处理</li>
-<li>Promise rance,all,any,resolve,reject,then,catch,finally</li>
+<li>Promise all,allSettled,race</li>
 </ol>
 <h2 id="1、立即执行"><a href="#1、立即执行" class="headerlink" title="1、立即执行"></a>1、立即执行</h2><p>Promise 构造函数是同步执行的，promise.then 中的函数是异步执行的。promise是微任务</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> promise = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>)<br>  resolve()<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>)<br>&#125;)<br>promise.then(<span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-number">3</span>)<br>&#125;)<br><span class="hljs-built_in">console</span>.log(<span class="hljs-number">4</span>)<br><br><br><span class="hljs-comment">// 运行结果： </span><br><span class="hljs-number">1</span>    <span class="hljs-number">2</span>   <span class="hljs-number">3</span>   <span class="hljs-number">4</span><br></code></pre></td></tr></table></figure>
@@ -266,6 +266,19 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">Promise</span>.resolve().then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;then&#x27;</span>, res);<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&#x27;错误&#x27;</span>)<br>&#125;).then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;then2&#x27;</span>, res)<br>&#125;).catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;catch&#x27;</span>)<br>&#125;);<br><br><br><span class="hljs-comment">// 运行结果：</span><br><br>then <span class="hljs-literal">undefined</span><br>then2 <span class="hljs-built_in">Error</span>: 错误<br>    at /Users/lucian/Projects/lucian/a.js:<span class="hljs-number">4</span>:<span class="hljs-number">12</span><br><br><br></code></pre></td></tr></table></figure>
 
 
+<h2 id="6、其它方法"><a href="#6、其它方法" class="headerlink" title="6、其它方法"></a>6、其它方法</h2><h2 id="Promise-all"><a href="#Promise-all" class="headerlink" title="Promise.all()"></a>Promise.all()</h2><ul>
+<li>参数为Promise数组</li>
+<li>当所有Promise成功后，执行then</li>
+<li>当有一个Promise失败，则立即失败</li>
+</ul>
+<h2 id="Promise-allSettled"><a href="#Promise-allSettled" class="headerlink" title="Promise.allSettled()"></a>Promise.allSettled()</h2><ul>
+<li>参数为Promise数组</li>
+<li>返回所有Promise的执行结果，无论成功或失败，都执行then</li>
+</ul>
+<h2 id="Promise-race"><a href="#Promise-race" class="headerlink" title="Promise.race()"></a>Promise.race()</h2><ul>
+<li>参数为Promise数组</li>
+<li>当有任何一个Promise成功或失败，就返回这个Promise的结果</li>
+</ul>
 <h1 id="手写promise"><a href="#手写promise" class="headerlink" title="手写promise"></a>手写promise</h1><h2 id="1、简单的promise"><a href="#1、简单的promise" class="headerlink" title="1、简单的promise"></a>1、简单的promise</h2><ul>
 <li>构造函数立即执行</li>
 <li>promise有三种状态 pending,fulfilled,rejected，默认是 pending</li>
