@@ -1,0 +1,557 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpg">
+  <link rel="icon" href="/img/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="lucian">
+  <meta name="keywords" content="">
+  
+  <title>React 知识点梳理 - lucian blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"liushaozhen.github.io","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>lucian的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://liushaozhen.gitee.io/img/bg.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="React 知识点梳理">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-14 10:36" pubdate>
+        2021年7月14日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      14
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">React 知识点梳理</h1>
+            
+            <div class="markdown-body">
+              <ul>
+<li>react hooks</li>
+<li>react state更新步骤</li>
+<li>react diff算法 </li>
+<li>Fiber</li>
+<li>react 性能优化</li>
+</ul>
+<h1 id="react-hooks"><a href="#react-hooks" class="headerlink" title="react hooks"></a>react hooks</h1><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<li>难以理解的class,class写法出现的重要原因就是为了解决this绑定的问题</li>
+<li>React Hooks 是函数式组件有了自己的state，在有react hooks之前是函数组件只能通过props和context来渲染组件</li>
+<li>复杂组件在业务开发中会越来越复杂，不符合一个函数只做一件事的原则</li>
+</ul>
+<h2 id="hoos使用规则"><a href="#hoos使用规则" class="headerlink" title="hoos使用规则"></a>hoos使用规则</h2><ul>
+<li>只在最顶层使用hooks，不能在循环、条件或嵌套函数中调用hooks。</li>
+<li>只在react函数中调用hooks，不在普通的js函数中调用hook</li>
+</ul>
+<p>出现这两条的原因是：我们可以在单个组件中使用多个 useState或useEffect，react是依赖hook调用顺序来知道哪个state对应哪个useState</p>
+<h1 id="react-state-更新步骤"><a href="#react-state-更新步骤" class="headerlink" title="react state 更新步骤"></a>react state 更新步骤</h1><p><img src="https://user-gold-cdn.xitu.io/2018/8/30/1658a8a62d6bb975?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" srcset="/img/loading.gif" lazyload></p>
+<h1 id="react-diff"><a href="#react-diff" class="headerlink" title="react diff"></a>react diff</h1><ul>
+<li>关键点 key，react在第一次渲染的时候给每个dom加上一个key，通过这个key来对比是否渲染过</li>
+</ul>
+<h1 id="react-Fiber"><a href="#react-Fiber" class="headerlink" title="react Fiber"></a>react Fiber</h1><p>参考<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903975112671239#heading-3">链接</a></p>
+<p>Fiber是一种流程控制思路</p>
+<p>核心：<strong>react渲染过程可以被中断，可以将控制器交回给浏览器，让位给高优先级的任务，浏览器空闲后在恢复渲染</strong></p>
+<ul>
+<li>任务出让机制使用 <code>window.requestIdleCallback</code>，浏览器分配给react时间片</li>
+</ul>
+<p><img src="https://user-gold-cdn.xitu.io/2019/10/21/16deecc37fdd60d7?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>如何判断高优先级的任务？ <strong>超时检查的机制来让出控制权</strong>，确定一个合理的运行时长，让时长结束时，控制器交给浏览器。 让浏览器在’有空’的时候就执行我们的回调，这个回调会传入一个期限，表示浏览器有多少时间供我们执行, 为了不耽误事，我们最好在这个时间范围内执行完毕。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">window</span>.requestIdleCallback(<br>    callback:<span class="hljs-function">()=&gt;</span>&#123;&#125;,<br>    options:&#123;<span class="hljs-attr">timeout</span>:number&#125;<br>)<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>Fiber执行单元：Fiber的另一种解读是一个执行单元，每次执行完一个执行单元，就检查还剩多少时间，是否足够执行下一个执行单元，如果没有时间，就停止执行，并将控制权让出去</li>
+</ul>
+<p>fiber之前是边diff边提交，fiber之后拆为两个阶段：协调阶段、提交阶段</p>
+<ul>
+<li>协调阶段：可以认为是diff阶段，这个阶段会找出所有节点变更，这些变更被称为副作用(Effect)，以下生命周期在此阶段被调用。在协调阶段使用时间片的方式计算<ul>
+<li>constructor</li>
+<li>getDerivedStateFromProps</li>
+<li>shouldComponentUpdate</li>
+<li>render</li>
+</ul>
+</li>
+<li>提交阶段：将上一个阶段计算出来的需要处理的副作用一次性执行，这个阶段不能被中断，以下生命周期在此阶段被调用<ul>
+<li>getSnapshotBeforeUpdate</li>
+<li>componentDidMount</li>
+<li>componentDidUpdate</li>
+<li>componentWillUnmount</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>在协调阶段时间片用完，react就将控制器交出去，并中断执行，等待下一次时间片。</li>
+<li>因为这个阶段不会有用户可见的变化，所以fiber后看起来更流畅。</li>
+<li>注意：协调阶段可能被中断、恢复、甚至重做，所以react协调阶段的生命周期可能会执行多次，所以react移除了 componentWillMount、componentWillUpdate</li>
+</ul>
+<ul>
+<li>Reconcilation</li>
+</ul>
+<p>diff是边计算，边更新。Fiber是在时间片计算，一次更新</p>
+<ul>
+<li>双缓冲</li>
+</ul>
+<p>通过双缓冲技术，一次性提交给浏览器进行渲染，dom并不是全新的，如果某些内容不变，会复用原来的dom</p>
+<h2 id="react-Fiber-总结"><a href="#react-Fiber-总结" class="headerlink" title="react Fiber 总结"></a>react Fiber 总结</h2><ul>
+<li>在使用fiber之前，react的渲染是边计算边渲染，有时候会感觉到屏幕的卡顿。</li>
+<li>fiber将渲染过程分为两个阶段：协调阶段、提交阶段。在协调阶段使用了时间片的方式，通过<code>window.requestIdeCallback</code>在浏览器空闲时间执行计算。</li>
+<li>协调阶段可以中断。提交阶段是不可以中断的</li>
+<li>react fiber在虚拟dom生成阶段会维护一个 <code>workInProgressTree</code>，用他做一个缓存的作用，当所有计算完成，更新完成<code>workInProgressTree</code>后，一次性提交给浏览器渲染，防止屏幕抖动，优化渲染性能，当然不是<code>workInProgressTree</code>里不是所有的dom都是新的，如果某些dom不需要变动，react会复用旧的dom</li>
+<li></li>
+</ul>
+<h1 id="react-性能优化"><a href="#react-性能优化" class="headerlink" title="react 性能优化"></a>react 性能优化</h1><p>通过减少不必要的渲染方式优化</p>
+<ul>
+<li>通过 shouldComponentUpdate 判断，减少渲染次数</li>
+<li>class类型组件，extent React.PureComponent 默认做了 shouldComponentUpdate</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">pureComponent</span></span>&#123;<br>    <br>    <br>&#125;<br><br></code></pre></td></tr></table></figure>
+<ul>
+<li>纯函数使用 React.memo，默认做了 shouldComponentUpdate</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><span class="hljs-keyword">let</span> App = <span class="hljs-function">(<span class="hljs-params">props</span>)=&gt;</span>&#123;<br>    <br>&#125;<br><br>App = React.memo(App)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>useEffect 增加依赖项，控制是否更新组件</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><br>useEffect(<span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-built_in">document</span>.title = <span class="hljs-string">`You clicked <span class="hljs-subst">$&#123;count&#125;</span> times`</span>;<br>&#125;, [count]); <span class="hljs-comment">// 仅在 count 更改时更新</span><br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>使用 useMemo 缓存大量的计算</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><span class="hljs-comment">// 避免这样做</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Component</span>(<span class="hljs-params">props</span>) </span>&#123;<br>    <span class="hljs-keyword">const</span> someProp = heavyCalculation(props.item);<br>    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">AnotherComponent</span> <span class="hljs-attr">someProp</span>=<span class="hljs-string">&#123;someProp&#125;</span> /&gt;</span></span><br>&#125;<br><br><span class="hljs-comment">// 只有 `props.item` 改变时someProp的值才会被重新计算</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Component</span>(<span class="hljs-params">props</span>) </span>&#123;<br>    <span class="hljs-keyword">const</span> someProp = useMemo(<span class="hljs-function">() =&gt;</span> heavyCalculation(props.item), [props.item]);<br>    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">AnotherComponent</span> <span class="hljs-attr">someProp</span>=<span class="hljs-string">&#123;someProp&#125;</span> /&gt;</span></span><br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>设置 key </li>
+</ul>
+<p>对一些循环生成的组件，每一条设置key，例如 select的options等，减少react对比的难度</p>
+<ul>
+<li>使用 React.Fragment 避免添加额外的dom</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;&gt;<br>    &lt;h1&gt;<span class="hljs-number">1</span>&lt;/h1&gt;<br>    &lt;h1&gt;<span class="hljs-number">2</span>&lt;/h1&gt;<br>&lt;&gt;<br></code></pre></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/React/">React</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/React/">React</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/07/15/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%9F%BA%E7%A1%80%E5%92%8C%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">浏览器基础和安全问题</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/07/13/%E5%90%83%E9%80%8FPromise/">
+                        <span class="hidden-mobile">吃透Promise</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1.3.1/dist/twikoo.all.min.js', function() {
+        twikoo.init({
+          el: '#twikoo',
+          envId: 'lucian-blog-5ge52upy423c6d34',
+          region: 'ap-guangzhou',
+          path: 'window.location.pathname',
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

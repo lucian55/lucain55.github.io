@@ -1,0 +1,756 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpg">
+  <link rel="icon" href="/img/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="lucian">
+  <meta name="keywords" content="">
+  
+  <title>浏览器基础和安全问题 - lucian blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"liushaozhen.github.io","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>lucian的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://liushaozhen.gitee.io/img/bg.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="浏览器基础和安全问题">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-15 10:17" pubdate>
+        2021年7月15日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      39
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">浏览器基础和安全问题</h1>
+            
+            <div class="markdown-body">
+              <h1 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h1><ul>
+<li>http基础知识(状态码、方法等)</li>
+<li>浏览器缓存策略</li>
+<li>跨域，cookie</li>
+<li>输入url到页面展示全过程</li>
+<li>前端安全问题 csrf,xss</li>
+<li>https</li>
+<li>http/2</li>
+<li>前端性能优化</li>
+</ul>
+<h1 id="http基础知识"><a href="#http基础知识" class="headerlink" title="http基础知识"></a>http基础知识</h1><h2 id="http常见状态码"><a href="#http常见状态码" class="headerlink" title="http常见状态码"></a>http常见状态码</h2><ul>
+<li>1xx<ul>
+<li>101：在http升级为websocket的时候，如果服务器同意变更，就会发送状态码101</li>
+</ul>
+</li>
+<li>2xx<ul>
+<li>200：成功</li>
+<li>204：成功，与200类似，但是没有body数据</li>
+<li>204：部分内容，通常在分块下载和断点续传中使用</li>
+</ul>
+</li>
+<li>3xx<ul>
+<li>301：永久重定向，例如jd之前的网址为360buy，有一段时间是永久重定向。浏览器会缓存</li>
+<li>302：临时重定向，例如登陆超时，重定向到登陆页</li>
+<li>304：当写上缓存命中时会返回这个状态码</li>
+</ul>
+</li>
+<li>4xx<ul>
+<li>400：一般为参数错误</li>
+<li>403：服务器禁止访问</li>
+<li>404：资源未找到</li>
+<li>405：方法不允许</li>
+</ul>
+</li>
+<li>5xx<ul>
+<li>500：服务器错误，没有具体错误信息</li>
+<li>502：服务器正常，但是访问出错，例如后端代码出问题</li>
+<li>503：服务器繁忙无</li>
+</ul>
+</li>
+</ul>
+<h2 id="常见的请求方法"><a href="#常见的请求方法" class="headerlink" title="常见的请求方法"></a>常见的请求方法</h2><ul>
+<li>get：通常用来获取资源</li>
+<li>head：获取资源的原信息</li>
+<li>post：提交数据</li>
+<li>put：修改数据</li>
+<li>delete：删除数据</li>
+<li>connect：建立连接隧道</li>
+<li>options：列出可对资源实行的请求方法</li>
+<li>trace：追踪请求</li>
+</ul>
+<h3 id="get和post有什么区别？"><a href="#get和post有什么区别？" class="headerlink" title="get和post有什么区别？"></a>get和post有什么区别？</h3><ul>
+<li>参数角度：get参数在url中，post在请求体中，post相对安全</li>
+<li>缓存角度：get请求会被浏览器主动缓存，post默认不会</li>
+<li>TCP角度：get会吧http、header、data一并发出去。post会先发送header，服务器响应100 continue，再发送data。（火狐浏览器除外，火狐的post只发送一个tcp包）</li>
+</ul>
+<h1 id="浏览器缓存策略"><a href="#浏览器缓存策略" class="headerlink" title="浏览器缓存策略"></a>浏览器缓存策略</h1><p>强缓存和协商缓存可以同时存在，强缓存优先级要搞</p>
+<h2 id="强缓存"><a href="#强缓存" class="headerlink" title="强缓存"></a>强缓存</h2><p><img src="https://user-gold-cdn.xitu.io/2017/11/29/16007be6f64ff7f7?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" srcset="/img/loading.gif" lazyload></p>
+<h3 id="规则："><a href="#规则：" class="headerlink" title="规则："></a>规则：</h3><ul>
+<li>客户端——浏览器缓存——有缓存——直接返回</li>
+<li>客户端——浏览器缓存——没有缓存——服务器返回——客户端接收——缓存到浏览器</li>
+</ul>
+<p>一旦资源命中强缓存, 浏览器便不会向服务器发送请求, 而是直接读取缓存. Chrome下的现象是 200 OK (from disk cache)；</p>
+<ul>
+<li>cache-control 优先级最高。<ul>
+<li>public 资源被客户端和代理服务器缓存</li>
+<li>private 资源仅被客户端缓存，代理服务器不缓存</li>
+<li>no-store 请求和响应都不缓存</li>
+<li>no-cache 使用协商缓存来验证</li>
+<li>max-age 设置缓存时间，在指定时间后缓存过期，单位秒</li>
+</ul>
+</li>
+<li>Expires 缓存数据到期时间。当再次请求时的时间小于此时间，则直接使用缓存</li>
+</ul>
+<h2 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h2><p><img src="https://user-gold-cdn.xitu.io/2017/11/29/16007d1c835d5461?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" srcset="/img/loading.gif" lazyload></p>
+<h3 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h3><ul>
+<li>客户端——浏览器缓存获得缓存标识——服务器验证是否失效——未失效——浏览器缓存获得数据</li>
+<li>客户端——浏览器缓存获得缓存标识——服务器验证是否失效——已失效——服务器返回——客户端接收——缓存到浏览器</li>
+</ul>
+<ul>
+<li>ETag：服务器响应时，通过此字段告诉浏览器当前资源的唯一标识，优先级高于Last—Modified<ul>
+<li>If-None-Match：再次请求服务器时，包含此字段，使用此字段和Etag比较。不同说明资源改动过，重新响应整个资源200，相同直接走浏览器缓存304</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">ETag:<span class="hljs-string">&quot;fcb82312d92970bdf0d18a4eca08ebc7efede4fe&quot;</span><br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>Last-Modified：用于标记请求资源的最后一次修改时间<ul>
+<li>If-Modified-Since：缓存校验字段，和Last-Modified比较，相同走缓存304，不同走服务器200</li>
+<li>If-Unmodified-Since：从某个时间算起，资源是否没有被修改，没有修改则走服务器200，修改了返回412预处理错误</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><br>Last-Modified: Tue, <span class="hljs-number">04</span> Apr <span class="hljs-number">2017</span> <span class="hljs-number">10</span>:<span class="hljs-number">01</span>:<span class="hljs-number">15</span> GMT<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="主动缓存"><a href="#主动缓存" class="headerlink" title="主动缓存"></a>主动缓存</h2><p>通过 Cookie、sessionStorage，localStorage主动缓存</p>
+<h1 id="跨域、cooike"><a href="#跨域、cooike" class="headerlink" title="跨域、cooike"></a>跨域、cooike</h1><h2 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h2><h3 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h3><p><img src="https://user-gold-cdn.xitu.io/2018/5/23/1638b3579d9eeb32?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" srcset="/img/loading.gif" lazyload></p>
+<p>浏览器的同源策略。 当协议、主域名、子域名、端口号中任意一个不同，都算跨域</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
+<li>jsonp </li>
+</ul>
+<p>利用 <script> 标签没有跨域限制的漏洞</p>
+<p>原理解析</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;script&gt;  <br><span class="hljs-built_in">window</span>.jsonpCallback = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) </span>&#123; <br>    <span class="hljs-built_in">console</span>.log(res); <br>&#125;;<br>&lt;/script&gt;<br>&lt;script&gt;  <br>    jsonpCallback(&#123; <span class="hljs-attr">a</span>: <span class="hljs-number">123</span> &#125;)；<br>&lt;/script&gt;<br><br></code></pre></td></tr></table></figure>
+<p>把上边的 <code>jsonpCallback(&#123; a: 1 &#125;)</code> 提取到其它文件，并通过script src的方式引入即可实现跨域</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;script&gt;  <br><span class="hljs-built_in">window</span>.jsonpCallback = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) </span>&#123; <br>    <span class="hljs-built_in">console</span>.log(res); <br>&#125;;<br>&lt;/script&gt;<br>&lt;script src=<span class="hljs-string">&quot;http://localhost:8080/api/a.js?a=123&amp;cb=sonpCallback&quot;</span>&gt;&lt;/script&gt;<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>CORS</li>
+</ul>
+<p>服务端设置<code>Access-Control-Allow-Origin</code>即可</p>
+<ul>
+<li>window.postMessage</li>
+</ul>
+<p>实现当前页面和内嵌的iframe页面通讯</p>
+<ul>
+<li>window.name</li>
+</ul>
+<p>window对象有个name属性，该属性有个特征：即在一个窗口(window)的生命周期内,窗口载入的所有的页面都是共享一个window.name的。实现当前页面和iframe内嵌页面的通讯</p>
+<ul>
+<li>location.hash + iframe</li>
+</ul>
+<p>通过在iframe的url上拼接参数，实现当前页面和iframe内嵌页面的通讯</p>
+<ul>
+<li>document.domain + iframe</li>
+</ul>
+<p>该方式只能用于二级域名相同的情况下，即 <code>a.main.com</code> 和 <code>b.main.com</code> 将两个页面都是设置 <code>document.domain=&#39;main.com&#39;</code> 即可实现跨域</p>
+<ul>
+<li><p>nginx代理、node代理等<br>犹豫跨域是浏览器的同源策略，所以只要不在浏览器中就不会有跨域问题</p>
+</li>
+<li><p>websocket</p>
+</li>
+</ul>
+<p>通过websocket实现页面之间的通讯</p>
+<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><ul>
+<li>cookie是在第一次请求时，服务端对客户端返回的一些key value。</li>
+<li>cookie不可跨域</li>
+<li>单点登录时候，可以通过设置cookie的domain进行。即：<code>a.main.com</code>和<code>b.main.com</code>的cookie setDomain(‘main.com’)</li>
+<li>通过设置 Expries、Max-Age设置有效性</li>
+<li>cookie设置HttpOnly，说明只能通过http协议传输，不能通过js读取，这也是预防xss公鸡的重要手段</li>
+</ul>
+<h3 id="cookie、localStorage、sessionStorage区别"><a href="#cookie、localStorage、sessionStorage区别" class="headerlink" title="cookie、localStorage、sessionStorage区别"></a>cookie、localStorage、sessionStorage区别</h3><ul>
+<li>生命周期<ul>
+<li>cookie可设置生效时间，如果不设置，浏览器关闭后失效</li>
+<li>localStorage 除非手动清除，否则永久保存</li>
+<li>sessionStorage 在当前网页会话下有小，关闭页面或浏览器后被清除</li>
+</ul>
+</li>
+<li>存放数据大小<ul>
+<li>cookie 4kb左右</li>
+<li>localStorage和sessionStorage  5MB左右</li>
+</ul>
+</li>
+</ul>
+<h1 id="输入url到页面展示全过程"><a href="#输入url到页面展示全过程" class="headerlink" title="输入url到页面展示全过程"></a>输入url到页面展示全过程</h1><ul>
+<li>dns解析，找到对应的ip</li>
+<li>发起TCP链接。三次握手<ul>
+<li>客户端发送syn</li>
+<li>服务器接收syn，再发送一个syn+ack</li>
+<li>客户端接收syn+ack，再发送ack。完成三次握手，客户端和服务器建立链接</li>
+</ul>
+</li>
+<li>发起http请求</li>
+<li>服务器响应</li>
+<li>客户端渲染</li>
+</ul>
+<h2 id="TCP四次挥手拆除链接"><a href="#TCP四次挥手拆除链接" class="headerlink" title="TCP四次挥手拆除链接"></a>TCP四次挥手拆除链接</h2><ul>
+<li>客户端发送 FIN=1的报文</li>
+<li>服务的返回确认报文</li>
+<li>服务端发送FIN=1的报文</li>
+<li>客户端发送确认报文</li>
+</ul>
+<h2 id="客户端渲染过程"><a href="#客户端渲染过程" class="headerlink" title="客户端渲染过程"></a>客户端渲染过程</h2><ul>
+<li>处理html生成DOM树</li>
+<li>处理css生成CSSOM树</li>
+<li>解析js脚本</li>
+<li>将DOM树和CSSOM树结合成渲染树（渲染树只包含可见的节点，script，meta，link，display:node都属于不可见节点，display:visible,opacity:0属于可见节点）</li>
+<li>遍历渲染树，开始布局，计算每一个节点的位置和大小（回流）</li>
+<li>将渲染树渲染到页面上（重绘）</li>
+</ul>
+<h3 id="js和css阻塞"><a href="#js和css阻塞" class="headerlink" title="js和css阻塞"></a>js和css阻塞</h3><ul>
+<li>js：会先下载执行，再继续渲染。下载和执行都会阻塞DOM渲染，因为js中可能存在dom操作</li>
+<li>css：正常不会阻塞dom解析</li>
+</ul>
+<h3 id="回流"><a href="#回流" class="headerlink" title="回流"></a>回流</h3><p>生成渲染树后，计算每一个节点的位置和大小信息，这个计算过程就是回流。<br>以下情况会发生回流</p>
+<ul>
+<li>添加或删除dom元素</li>
+<li>元素位置发生变化</li>
+<li>元素尺寸发生变化（内外边距，宽高）</li>
+<li>内容发送变化</li>
+<li>浏览器尺寸发生变化</li>
+<li>第一次渲染的时候</li>
+</ul>
+<h3 id="重绘"><a href="#重绘" class="headerlink" title="重绘"></a>重绘</h3><p>渲染树计算完成后，将每个节点转换为屏幕上的像素点，这个阶段叫做重绘</p>
+<p><strong>回流一定会发送重绘，重绘不一定会发送回流</strong></p>
+<h3 id="如何减少回流重绘"><a href="#如何减少回流重绘" class="headerlink" title="如何减少回流重绘"></a>如何减少回流重绘</h3><ul>
+<li>尽量不使用获取布局信息的操作，例如 offsetxxx,clientxxx,scroll,getComputeStyle,getBoundingClickeRect。这些方法会刷新渲染队列，引起重排</li>
+<li>是要修改dom样式的时候，通过修改class和cssText实现</li>
+<li>如需对dom进行一系列修改的时候，可以通过以下办法<ul>
+<li>先让元素隐藏起来(脱离渲染树)，操作完成后再一次性放到渲染树上</li>
+<li>使用文档片段,document.createDocumentFragement创建完元素，再插入到文档中</li>
+</ul>
+</li>
+<li>避免触发同步布局事件：例如B元素的宽度要等于A元素的宽度，犹豫获得A元素的offsetWidth需要强制刷新渲染队列，可以用变量将A元素的offsetWidth先用变量存储，在把A元素的宽度设置为变量的值</li>
+<li>使用css硬件加速：transform，opacity，filters，Will-change</li>
+</ul>
+<h1 id="前端安全问题"><a href="#前端安全问题" class="headerlink" title="前端安全问题"></a>前端安全问题</h1><p>参考<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903502968258574">链接</a></p>
+<p>*** XSS是代码注入问题，没有过滤浏览器输入导致。CSRF是浏览器在发生http请求的时候自动带上cookie***</p>
+<h2 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h2><p>Cross-Site Scripting 跨站脚本攻击。攻击者通过在目标网站注入恶意脚本，使之运行，利用这些恶意脚本，获取用户数据信息等</p>
+<ul>
+<li>DOM xss</li>
+</ul>
+<p>通过脚本修改页面DOM结构，纯客户端攻击</p>
+<ul>
+<li>反射型 xss</li>
+</ul>
+<p>诱导用户点击恶意链接，进入攻击者构造的网站，然后执行恶意脚本，获取用户信息等</p>
+<ul>
+<li>存储型 xss</li>
+</ul>
+<p>把用户输入存储到服务器数据库中，当浏览器请求时，拿到这段用户输入并执行。例如留言板、评论等</p>
+<h3 id="预防"><a href="#预防" class="headerlink" title="预防"></a>预防</h3><ul>
+<li>httpOnly：cookie设置httpOnly，防止js读取cookie</li>
+<li>输入过滤：前端和后端对用户输入的内容进行过滤</li>
+<li>转义HTML：对特殊字符进行转义</li>
+<li>使用工具检测xss攻击</li>
+<li>避免html拼接，使用比较成熟的框架例如 vue/react的虚拟dom</li>
+</ul>
+<h2 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h2><p>Cross-Site Request Forgeries 跨站点请求伪造。冒充用户发起请求</p>
+<ul>
+<li>get类型的CSRF：当用户访问以下图片时，浏览器会自动向 <code>http://bank.example/withdraw?amount=10000&amp;for=hacker</code>发送请求，带上用户信息</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;img src=<span class="hljs-string">&quot;http://bank.example/withdraw?amount=10000&amp;for=hacker&quot;</span> &gt; <br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>post类型的CSRF：构建一个自动提交的表单，模拟用的提交操作</p>
+</li>
+<li><p>链接类型的CSRF：构造一个链接，用户点击后发请求</p>
+</li>
+</ul>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>攻击一般发生在第三方网站</li>
+<li>利用受害者在被攻击网站的登陆凭证，冒充受害者操作</li>
+</ul>
+<h3 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h3><ul>
+<li>验证码：强制用户与浏览器进行交互，才可以提交</li>
+<li>同源检测：通过http头信息里的Origin，Refer来验证请求来源</li>
+<li>token：token验证。服务器返回token——请求带上token——服务器验证token</li>
+<li>分布式校验：很多大型网站需要分布式集群，这样随机生成的token并不合适，规定token生成规则即可</li>
+<li>cookie的Samesite属性：用来标明cookie是同站cookie，不能用于第三方cookie<ul>
+<li>Samesite=strict：严格模式，任何情况下都不能作为第三方cookie。无法单点登录</li>
+<li>Samesite=lax：宽松模式，允许第三方使用。也不安全</li>
+</ul>
+</li>
+<li>csrf测试、监控</li>
+</ul>
+<h1 id="https"><a href="#https" class="headerlink" title="https"></a>https</h1><p>http的协议从上到下为： 应用层——传输层——网络层——数据链路层<br>htts的协议从上到下为： 应用层——安全处——传输层——网络层——数据链路层</p>
+<h2 id="http对比https"><a href="#http对比https" class="headerlink" title="http对比https"></a>http对比https</h2><p>https = http + SSL/TLS 增加了http的安全性。https在所有http请求和想要发送之前都进行了加密，加密方式即为 SSL/TLS</p>
+<p>http的缺点如下：</p>
+<ul>
+<li>安全性：使用明文传输，内容可能被窃听</li>
+<li>可靠性：不严重身份，容易伪造请求</li>
+<li>完整性：无法保证报文完整性</li>
+</ul>
+<h2 id="对称加密（共享秘钥加密）"><a href="#对称加密（共享秘钥加密）" class="headerlink" title="对称加密（共享秘钥加密）"></a>对称加密（共享秘钥加密）</h2><p>客户端和服务端有相同的秘钥，加密解密</p>
+<p>问题：因为客户端和服务器共享秘钥，容易泄露</p>
+<h2 id="非对称加密（公开秘钥加密）"><a href="#非对称加密（公开秘钥加密）" class="headerlink" title="非对称加密（公开秘钥加密）"></a>非对称加密（公开秘钥加密）</h2><p>客户端使用公钥加密传输，服务端使用私钥解密</p>
+<p>问题：公钥容易泄露，性能降低</p>
+<h2 id="数字证书与数字签名"><a href="#数字证书与数字签名" class="headerlink" title="数字证书与数字签名"></a>数字证书与数字签名</h2><p>为了解决非对称加密公钥的不安全性，可以使用数字证书和数字签名来解决</p>
+<ul>
+<li>CA机构发数字证书</li>
+<li>服务器将CA证书发给客户端</li>
+<li>客户端验证CA证书的合法性、完整性</li>
+<li>客户端从CA中拿到公钥</li>
+<li>客户端和服务端进行非对称加密传输</li>
+</ul>
+<h2 id="https加密方式"><a href="#https加密方式" class="headerlink" title="https加密方式"></a>https加密方式</h2><ol>
+<li>客户端申请https通信</li>
+<li>服务端将数字证书发给客户端</li>
+<li>客户端验证CA证书合法、完整性。生成对称加密秘钥，用公钥把对称秘钥加密后发给服务端</li>
+<li>服务端用私钥解密，拿到对称秘钥。通知客户端，ssl通道建立完成</li>
+<li>对称加密秘钥交换成功，客户端和服务端用此秘钥加密通信</li>
+<li>客户端断开链接</li>
+</ol>
+<h1 id="http-2"><a href="#http-2" class="headerlink" title="http/2"></a>http/2</h1><h2 id="http-1-1问题"><a href="#http-1-1问题" class="headerlink" title="http/1.1问题"></a>http/1.1问题</h2><ul>
+<li>使用文本格式传输</li>
+<li>队头阻塞：在http请求应答过程中，如果出现了某种情况，导致响应一直未完成，那后边所有的请求都会一直阻塞</li>
+<li>低效的TCP利用：请求并发依赖于多个TCP链接，TCP建立链接成本较高，切存在慢启动问题</li>
+<li>臃肿的header：http的head无法压缩，而且加上cookie等，经常会有header比请求体还大的情况</li>
+<li>需要客户端主动请求</li>
+</ul>
+<h2 id="http-2新特性"><a href="#http-2新特性" class="headerlink" title="http/2新特性"></a>http/2新特性</h2><ul>
+<li>二进制分帧层：使用二进制传输数据，而不是1.x的文本格式。并将信息分为 Headers和Data两部分传输</li>
+<li>多路复用：解决1.1的队头阻塞和对个tcp连接问题。http2让所有的通信都在一个tcp连接上完成</li>
+<li>头部压缩：对header内容进行压缩，并且维护静态字典和动态字典，通过静态huffman编码对header进行编码</li>
+<li>服务器端推送：服务端推送可以使服务器预测客户端需要的资源，主动推送到客户端</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%8E%9F%E7%90%86/">原理</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a>
+                    
+                      <a class="hover-with-bg" href="/tags/HTTP/">HTTP</a>
+                    
+                      <a class="hover-with-bg" href="/tags/HTTPS/">HTTPS</a>
+                    
+                      <a class="hover-with-bg" href="/tags/HTTP2/">HTTP2</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%B7%A8%E5%9F%9F/">跨域</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/07/14/React/">
+                        <span class="hidden-mobile">React 知识点梳理</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1.3.1/dist/twikoo.all.min.js', function() {
+        twikoo.init({
+          el: '#twikoo',
+          envId: 'lucian-blog-5ge52upy423c6d34',
+          region: 'ap-guangzhou',
+          path: 'window.location.pathname',
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
