@@ -180,7 +180,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.3k 字
+      1.7k 字
     </span>
   
 
@@ -190,7 +190,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      14
+      19
        分钟
     </span>
   
@@ -229,6 +229,7 @@
 <li>react diff算法 </li>
 <li>Fiber</li>
 <li>react 性能优化</li>
+<li>react事件机制 </li>
 </ul>
 <h1 id="react-hooks"><a href="#react-hooks" class="headerlink" title="react hooks"></a>react hooks</h1><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
 <li>难以理解的class,class写法出现的重要原因就是为了解决this绑定的问题</li>
@@ -321,10 +322,46 @@
 <li>设置 key </li>
 </ul>
 <p>对一些循环生成的组件，每一条设置key，例如 select的options等，减少react对比的难度</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;&gt;<br>    &lt;h1&gt;<span class="hljs-number">1</span>&lt;/h1&gt;<br>    &lt;h1&gt;<span class="hljs-number">2</span>&lt;/h1&gt;<br>&lt;&gt;<br></code></pre></td></tr></table></figure>
+
 <ul>
 <li>使用 React.Fragment 避免添加额外的dom</li>
+<li>React.lazy 按需import组件</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;&gt;<br>    &lt;h1&gt;<span class="hljs-number">1</span>&lt;/h1&gt;<br>    &lt;h1&gt;<span class="hljs-number">2</span>&lt;/h1&gt;<br>&lt;&gt;<br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><span class="hljs-keyword">import</span> React, &#123;lazy, Suspense&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span>;<br><span class="hljs-keyword">const</span> OtherComponent = lazy(<span class="hljs-function">() =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;./OtherComponent&#x27;</span>));<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">MyComponent</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> (<br>    &lt;Suspense fallback=&#123;<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Loading...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>&#125;&gt;<br>      &lt;OtherComponent /&gt;<br>    &lt;/Suspense&gt;<br>  );<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+<h1 id="react事件机制"><a href="#react事件机制" class="headerlink" title="react事件机制"></a>react事件机制</h1><p>参考<a target="_blank" rel="noopener" href="https://juejin.cn/post/6955636911214067720">链接</a>、<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903939092348936">链接</a></p>
+<h2 id="原生dom事件机制"><a href="#原生dom事件机制" class="headerlink" title="原生dom事件机制"></a>原生dom事件机制</h2><h3 id="三个阶段"><a href="#三个阶段" class="headerlink" title="三个阶段"></a>三个阶段</h3><p>document &gt; div &gt; button</p>
+<ul>
+<li>捕获阶段：当点击button的时候，事件先从外到内 document-&gt;div-&gt;button</li>
+<li>目标节点：触发点击</li>
+<li>冒泡阶段：点击button由内向外。 button-&gt;div-&gt;document</li>
+</ul>
+<h3 id="事件代理"><a href="#事件代理" class="headerlink" title="事件代理"></a>事件代理</h3><ul>
+<li>addEventListener(()={},false)：第二个参数true为捕获阶段执行，false为冒泡阶段执行</li>
+</ul>
+<p>略</p>
+<h2 id="react事件机制-1"><a href="#react事件机制-1" class="headerlink" title="react事件机制"></a>react事件机制</h2><h3 id="react合成事件"><a href="#react合成事件" class="headerlink" title="react合成事件"></a>react合成事件</h3><p>为了保证浏览器的一致性，react围绕原生事件做了合成事件</p>
+<h2 id="react事件注册"><a href="#react事件注册" class="headerlink" title="react事件注册"></a>react事件注册</h2><ul>
+<li>组件挂载阶段，遇到事件类型，就给document(17是container)加上事件，给document上绑定dispatchEvent事件，进行统一处理</li>
+<li>将事件和组件的对应关系存储到map里，为了以后的查找</li>
+</ul>
+<h2 id="react事件执行"><a href="#react事件执行" class="headerlink" title="react事件执行"></a>react事件执行</h2><p>当点击组件的时候</p>
+<ul>
+<li>事件冒泡到ducument上，然后调用dispatchEvent处理</li>
+<li>找到e.target</li>
+<li>向上遍历父元素，模拟事件冒泡</li>
+<li>将每一级的事件存储到事件队列中</li>
+<li>将事件队列保存到e.target上，等待执行</li>
+<li>遍历事件队列，如果遇到stopPropagation就break，否则继续向上冒泡执行合成事件</li>
+</ul>
+<h2 id="react-17事件的变动"><a href="#react-17事件的变动" class="headerlink" title="react 17事件的变动"></a>react 17事件的变动</h2><ul>
+<li>事件统一绑定到 container上，而不是document上</li>
+<li>对齐原生事件，</li>
+<li>取消事件池</li>
+</ul>
+
             </div>
             <hr>
             <div>
