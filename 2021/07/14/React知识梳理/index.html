@@ -180,7 +180,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.7k 字
+      2.1k 字
     </span>
   
 
@@ -190,7 +190,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      19
+      24
        分钟
     </span>
   
@@ -223,7 +223,7 @@
             <h1 style="display: none">React 知识点梳理</h1>
             
             <div class="markdown-body">
-              <ul>
+              <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
 <li>react hooks</li>
 <li>react state更新步骤</li>
 <li>react diff算法 </li>
@@ -243,7 +243,21 @@
 <p>出现这两条的原因是：我们可以在单个组件中使用多个 useState或useEffect，react是依赖hook调用顺序来知道哪个state对应哪个useState</p>
 <h1 id="react-state-更新步骤"><a href="#react-state-更新步骤" class="headerlink" title="react state 更新步骤"></a>react state 更新步骤</h1><p><img src="https://user-gold-cdn.xitu.io/2018/8/30/1658a8a62d6bb975?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" srcset="/img/loading.gif" lazyload></p>
 <h1 id="react-diff"><a href="#react-diff" class="headerlink" title="react diff"></a>react diff</h1><ul>
-<li>关键点 key，react在第一次渲染的时候给每个dom加上一个key，通过这个key来对比是否渲染过</li>
+<li>初始化虚拟dom阶段，生成fiber树，fiber上记录key、index、props、type等</li>
+<li>给节点打标示<ul>
+<li>新增：找到没有key的新元素，打更新标示</li>
+<li>删除：找到旧元素出现，新元素没有出现的key，打删除标示</li>
+<li>更新：key相同，对比props是否相同，递归对比children</li>
+<li>移动：在新元素遍历的时候，记录可服用节点的lastPlacedIndex，对比旧元素中的index，看是否相同</li>
+</ul>
+</li>
+<li>生成新的 workInProgress 树</li>
+<li>将 workInProgress渲染到页面上</li>
+</ul>
+<h3 id="diff的三个原则"><a href="#diff的三个原则" class="headerlink" title="diff的三个原则"></a>diff的三个原则</h3><ul>
+<li>同级元素diff。如果新旧元素跨越了层级，不会复用</li>
+<li>两个不同type的会产生不同的树，type不同，不复用</li>
+<li>通过key和prop来判断元素是否相同</li>
 </ul>
 <h1 id="react-Fiber"><a href="#react-Fiber" class="headerlink" title="react Fiber"></a>react Fiber</h1><p>参考<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903975112671239#heading-3">链接</a></p>
 <p>Fiber是一种流程控制思路</p>
@@ -295,7 +309,6 @@
 <li>fiber将渲染过程分为两个阶段：协调阶段、提交阶段。在协调阶段使用了时间片的方式，通过<code>window.requestIdeCallback</code>在浏览器空闲时间执行计算。</li>
 <li>协调阶段可以中断。提交阶段是不可以中断的</li>
 <li>react fiber在虚拟dom生成阶段会维护一个 <code>workInProgressTree</code>，用他做一个缓存的作用，当所有计算完成，更新完成<code>workInProgressTree</code>后，一次性提交给浏览器渲染，防止屏幕抖动，优化渲染性能，当然不是<code>workInProgressTree</code>里不是所有的dom都是新的，如果某些dom不需要变动，react会复用旧的dom</li>
-<li></li>
 </ul>
 <h1 id="react-性能优化"><a href="#react-性能优化" class="headerlink" title="react 性能优化"></a>react 性能优化</h1><p>通过减少不必要的渲染方式优化</p>
 <ul>
@@ -331,7 +344,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><span class="hljs-keyword">import</span> React, &#123;lazy, Suspense&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span>;<br><span class="hljs-keyword">const</span> OtherComponent = lazy(<span class="hljs-function">() =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;./OtherComponent&#x27;</span>));<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">MyComponent</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> (<br>    &lt;Suspense fallback=&#123;<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Loading...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>&#125;&gt;<br>      &lt;OtherComponent /&gt;<br>    &lt;/Suspense&gt;<br>  );<br>&#125;<br><br></code></pre></td></tr></table></figure>
 
 
-<h1 id="react事件机制"><a href="#react事件机制" class="headerlink" title="react事件机制"></a>react事件机制</h1><p>参考<a target="_blank" rel="noopener" href="https://juejin.cn/post/6955636911214067720">链接</a>、<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903939092348936">链接</a></p>
+<h1 id="react事件机制"><a href="#react事件机制" class="headerlink" title="react事件机制"></a>react事件机制</h1><p>参考视频B站收藏夹</p>
 <h2 id="原生dom事件机制"><a href="#原生dom事件机制" class="headerlink" title="原生dom事件机制"></a>原生dom事件机制</h2><h3 id="三个阶段"><a href="#三个阶段" class="headerlink" title="三个阶段"></a>三个阶段</h3><p>document &gt; div &gt; button</p>
 <ul>
 <li>捕获阶段：当点击button的时候，事件先从外到内 document-&gt;div-&gt;button</li>
@@ -340,26 +353,51 @@
 </ul>
 <h3 id="事件代理"><a href="#事件代理" class="headerlink" title="事件代理"></a>事件代理</h3><ul>
 <li>addEventListener(()={},false)：第二个参数true为捕获阶段执行，false为冒泡阶段执行</li>
+<li>不管是在捕获阶段还是冒泡阶段，先注册先执行</li>
 </ul>
 <p>略</p>
-<h2 id="react事件机制-1"><a href="#react事件机制-1" class="headerlink" title="react事件机制"></a>react事件机制</h2><h3 id="react合成事件"><a href="#react合成事件" class="headerlink" title="react合成事件"></a>react合成事件</h3><p>为了保证浏览器的一致性，react围绕原生事件做了合成事件</p>
-<h2 id="react事件注册"><a href="#react事件注册" class="headerlink" title="react事件注册"></a>react事件注册</h2><ul>
-<li>组件挂载阶段，遇到事件类型，就给document(17是container)加上事件，给document上绑定dispatchEvent事件，进行统一处理</li>
-<li>将事件和组件的对应关系存储到map里，为了以后的查找</li>
-</ul>
-<h2 id="react事件执行"><a href="#react事件执行" class="headerlink" title="react事件执行"></a>react事件执行</h2><p>当点击组件的时候</p>
+<h2 id="react事件机制-1"><a href="#react事件机制-1" class="headerlink" title="react事件机制"></a>react事件机制</h2><h3 id="react合成事件"><a href="#react合成事件" class="headerlink" title="react合成事件"></a>react合成事件</h3><p>为了保证浏览器的一致性，react围绕原生事件做了合成事件。比如把 keydown,input,change合并为 onChange 事件</p>
 <ul>
-<li>事件冒泡到ducument上，然后调用dispatchEvent处理</li>
-<li>找到e.target</li>
-<li>向上遍历父元素，模拟事件冒泡</li>
-<li>将每一级的事件存储到事件队列中</li>
-<li>将事件队列保存到e.target上，等待执行</li>
-<li>遍历事件队列，如果遇到stopPropagation就break，否则继续向上冒泡执行合成事件</li>
+<li>事件注册</li>
+<li>事件绑定</li>
+<li>事件触发</li>
 </ul>
+<h2 id="事件注册"><a href="#事件注册" class="headerlink" title="事件注册"></a>事件注册</h2><ul>
+<li>在组件挂在阶段，通过事件插件将支持的事件全部保存在<code>allEventNative</code>事件数组上</li>
+</ul>
+<h3 id="事件插件系统"><a href="#事件插件系统" class="headerlink" title="事件插件系统"></a>事件插件系统</h3><p>react维护了五个事件插件（每个插件系统包含注册和执行两个方法）、维护了一套原生事件和合成事件的映射关系</p>
+<h2 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h2><ul>
+<li>循环 <code>allEventNative</code>，将所有事件分别在捕获阶段和冒泡阶段绑定到 <code>container</code> 上。并统一交给 <code>dispatchEvent</code> 函数处理</li>
+</ul>
+<h2 id="事件触发"><a href="#事件触发" class="headerlink" title="事件触发"></a>事件触发</h2><ul>
+<li>在<code>dispatchEvent</code>中，构建事件队列<code>dispatchQueue</code>。</li>
+<li>先找到事件源，根据事件源找到fiber实例、属性，派发给事件插件</li>
+<li>事件插件处理事件源的事件<ul>
+<li>事件插件提取事件处理函数，将原生事件转化为合成事件（阻止默认事件和冒泡做了兼容处理）</li>
+<li>将事件源的合成事件插入到事件队列中<code>dispatchQueue</code></li>
+</ul>
+</li>
+<li>根据fiber示例，找到事件源的父级，递归查找所有事件。放到事件队列中<code>dispatchQueue</code>。<code>dispathQueue</code>里存的顺序是 子——&gt;父 即 button–&gt;div</li>
+<li>处理事件队列 <code>dispatchQueue</code>，遍历<code>dispatchQueue</code>,根据是捕获阶段还是冒泡阶段，确定正序还是倒序遍历。捕获阶段倒序，从父向子触发。冒泡阶段正序，从子往父触发</li>
+</ul>
+<h3 id="fiber树"><a href="#fiber树" class="headerlink" title="fiber树"></a>fiber树</h3><p>存放真实dom，虚拟dom的关系</p>
+<ul>
+<li>fiber树包含以下属性<ul>
+<li>stateNode：存储真实dom节点</li>
+<li>return：父节点。根节点#root为null</li>
+<li>props：存放属性</li>
+</ul>
+</li>
+</ul>
+<h3 id="批量更新"><a href="#批量更新" class="headerlink" title="批量更新"></a>批量更新</h3><ul>
+<li>isBatchingEventUpdates </li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">let</span> isBatchingEventUpdates = <span class="hljs-literal">false</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">batchedEventUpdates</span>(<span class="hljs-params">fn,a,b</span>)</span>&#123;<br>    isBatchingEventUpdates = <span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">return</span> fn(a,b);<br>    &#125; <span class="hljs-keyword">catch</span> (error) &#123;<br>        isBatchingEventUpdates = <span class="hljs-literal">false</span>;   <br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
 <h2 id="react-17事件的变动"><a href="#react-17事件的变动" class="headerlink" title="react 17事件的变动"></a>react 17事件的变动</h2><ul>
 <li>事件统一绑定到 container上，而不是document上</li>
-<li>对齐原生事件，</li>
-<li>取消事件池</li>
+<li>禁止<code>onScroll</code>事件的冒泡<br>。。。</li>
 </ul>
 
             </div>

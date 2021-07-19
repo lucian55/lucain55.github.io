@@ -18,7 +18,7 @@
   <meta name="author" content="lucian">
   <meta name="keywords" content="">
   
-  <title>chrome谷歌浏览器一键清楚缓存插件 - lucian blog</title>
+  <title>es5&amp;es6面试问题 - lucian blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -158,7 +158,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="chrome谷歌浏览器一键清楚缓存插件">
+            <span class="h2" id="subtitle" title="es5&es6面试问题">
               
             </span>
 
@@ -168,8 +168,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2017-02-20 20:51" pubdate>
-        2017年2月20日 晚上
+      <time datetime="2021-07-16 15:08" pubdate>
+        2021年7月16日 下午
       </time>
     </span>
   
@@ -180,7 +180,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      85 字
+      807 字
     </span>
   
 
@@ -190,7 +190,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      9
        分钟
     </span>
   
@@ -220,10 +220,90 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">chrome谷歌浏览器一键清楚缓存插件</h1>
+            <h1 style="display: none">es5&amp;es6面试问题</h1>
             
             <div class="markdown-body">
-              <p>在前端开发中，浏览器缓存一直是一个很友好又很不友好的朋友。<br>在测试的时候每次都要 ctrl+shift+N  清楚chrome浏览器的缓存是一件很麻烦的事情，不过我找到了一个插件，可以一键清楚chrome浏览器的缓存。<br><a target="_blank" rel="noopener" href="http://pan.baidu.com/s/1gf1IJrd">点击下载</a></p>
+              <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><ul>
+<li>原型链</li>
+<li>数据类型</li>
+<li>let const var区别</li>
+<li>普通函数和箭头函数区别</li>
+<li>变量提升，块级作用域，暂时性死区</li>
+<li>this指向问题 </li>
+</ul>
+<h1 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Foo</span> (<span class="hljs-params"></span>)</span>&#123;<br>    <br>&#125;<br><br><span class="hljs-keyword">let</span> f = <span class="hljs-keyword">new</span> <span class="hljs-function"><span class="hljs-title">Foo</span>(<span class="hljs-params"></span>)</span>&#123;&#125;<br><br></code></pre></td></tr></table></figure>
+<p><img src="https://note.youdao.com/yws/public/resource/c423d855b11af1899499ac1fc6651391/xmlnote/0B010E944D704608B386A58461D6E93F/3299" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><code>f.__proto__ = Foo.prototype</code></li>
+<li><code>Foo.__proto__ = Function.prototype</code></li>
+<li><code>Object.__proto__ = Function.prototype</code></li>
+<li><code>Function.prototype.__proto__=Object.prototype</code></li>
+</ul>
+<ul>
+<li><code>f.prototype.constructor = f</code></li>
+<li><code>Foo.prototype.constructor = Foo</code></li>
+<li><code>Function.prototype.constructor = Function</code></li>
+<li><code>Object.prototype = null</code></li>
+</ul>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><ul>
+<li>基本数据类型：Number，String，Boolean，undefined，null，Symbol，bigInt，Object</li>
+<li>指针类型：Date，Function，Array，RegExp，Set，Map</li>
+</ul>
+<h2 id="类型判断"><a href="#类型判断" class="headerlink" title="类型判断"></a>类型判断</h2><ul>
+<li>typeof<ul>
+<li>不能判断null，object，date，array，这些判断出来都是Object</li>
+</ul>
+</li>
+<li>constructor<ul>
+<li>主要利用原型上的 <code>prototype.constructor</code>中心实例进行判断</li>
+<li><code>null</code>和<code>undefined</code>是无效对象，不会有<code>constructor</code></li>
+<li>函数的<code>constroctor</code> 是不准确的，可以重写</li>
+</ul>
+</li>
+<li>instanceof<ul>
+<li>判断当前实例的原型与构造函数的原型是否为同一个对象</li>
+<li>实例的<code>__proto__</code> 等于 构造函数的 <code>prototype</code> 则为true</li>
+<li>不够准确，可以通过<code>__proto__</code>一直往上找，例如 <code>[] instanceof Array</code> 和 <code>[] instanceof Object</code> 都为true，因为 <code>Array</code>也是<code>Object</code></li>
+</ul>
+</li>
+<li>Object.prototype.toString.call<ul>
+<li>返回值是 <code>[object 类型]</code> 例如 <code>[object String]</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="let-const-var区别"><a href="#let-const-var区别" class="headerlink" title="let,const,var区别"></a>let,const,var区别</h1><ul>
+<li>var的作用域是整个封闭函数。let,const作用域在块级中</li>
+<li>var有变量提升（不论var声明在第一行，都会提升到作用域最顶部），let不会。</li>
+<li>var 允许重复声明，let不允许</li>
+<li>只要块级作用域内存在let，它所声明的变量就会绑定在这个块级作用域内</li>
+<li>const用来声明常量，和let的区别就是不可变，声明时必须初始化</li>
+<li><code>const obj = &#123; a:1 &#125;; obj.a = 2</code>,不会报错，因为obj是指针类型，const存储的是obj的地址</li>
+</ul>
+<h1 id="普通函数和箭头函数的区别"><a href="#普通函数和箭头函数的区别" class="headerlink" title="普通函数和箭头函数的区别"></a>普通函数和箭头函数的区别</h1><ul>
+<li>箭头函数没有原型链</li>
+<li>箭头函数是匿名函数，没有constructor，不能用new</li>
+<li>箭头函数没有<code>arguments</code>，可以用解构赋值代替</li>
+<li>箭头函数的this是定义的时候确认的，普通函数的this是执行的时候确定的</li>
+</ul>
+<h1 id="变量提升，块级作用域，暂时性死区"><a href="#变量提升，块级作用域，暂时性死区" class="headerlink" title="变量提升，块级作用域，暂时性死区"></a>变量提升，块级作用域，暂时性死区</h1><p>参考<a target="_blank" rel="noopener" href="https://juejin.cn/post/6968399560162951204">链接</a></p>
+<h2 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h2><p>var会存在变量提升，不管变量声明写在当前作用域哪个位置，都会被提示到顶端去</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><span class="hljs-built_in">console</span>.log(num);<span class="hljs-comment">//undefined</span><br><br><span class="hljs-keyword">var</span> num = <span class="hljs-number">2</span>;<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="块级作用域"><a href="#块级作用域" class="headerlink" title="块级作用域"></a>块级作用域</h2><p>把一堆花括号括起来的代码成为一个代码块，被代码块圈起来的内容区域就是块级作用域</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js">&#123;<br>    <span class="hljs-keyword">let</span> me =<span class="hljs-string">&#x27;lucian&#x27;</span>;<br>    conseo.log(me);<span class="hljs-comment">//lucian</span><br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+<h2 id="暂时性死区"><a href="#暂时性死区" class="headerlink" title="暂时性死区"></a>暂时性死区</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><span class="hljs-keyword">var</span> me = <span class="hljs-string">&#x27;lucian&#x27;</span>;<br>&#123;<br>    me = <span class="hljs-string">&#x27;tom&#x27;</span>;<br>    <span class="hljs-keyword">let</span> me;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>以上代码会报错，me为定义。</p>
+<p>如果块级作用域中存在let和const命令，如果在之前用到了let和const声明的变量就会报错。当我们进入这个块级作用域的时候，let或者const声明以及存在，必须等到执行到声明处才可以</p>
+<h1 id="this指向问题"><a href="#this指向问题" class="headerlink" title="this指向问题"></a>this指向问题</h1><ul>
+<li>匿名函数的this永远指向window</li>
+<li>es5中，this执行最后调用它的那个对象。如果setTimeout，没有改变this，而且不是箭头函数，那么this指向window</li>
+<li>箭头函数this指向定义时的this，并不能通过call,apply,bind改变</li>
+<li>new实例化后this指向实例</li>
+<li><code>.</code>前面是谁，this就指向谁</li>
+</ul>
 
             </div>
             <hr>
@@ -233,7 +313,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+                      <a class="hover-with-bg" href="/categories/js/">js</a>
                     
                   </div>
                 
@@ -241,9 +321,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/chrome/">chrome</a>
+                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+                      <a class="hover-with-bg" href="/tags/js/">js</a>
                     
                   </div>
                 
@@ -254,18 +334,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2017/02/20/fiddler%E6%8B%A6%E6%88%AA/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">fiddler拦截</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2017/02/20/axios%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">
-                        <span class="hidden-mobile">axios使用教程</span>
+                      <a href="/2021/07/16/webpack/">
+                        <span class="hidden-mobile">webpack知识梳理</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

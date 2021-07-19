@@ -180,7 +180,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.6k 字
+      3.8k 字
     </span>
   
 
@@ -190,7 +190,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      40
+      42
        分钟
     </span>
   
@@ -411,6 +411,7 @@
 <li>服务器响应</li>
 <li>客户端渲染</li>
 </ul>
+<h2 id="dns解析"><a href="#dns解析" class="headerlink" title="dns解析"></a>dns解析</h2><p>浏览器缓存–&gt;host文件–&gt;本地DNS服务器——&gt;递归解析</p>
 <h2 id="TCP四次挥手拆除链接"><a href="#TCP四次挥手拆除链接" class="headerlink" title="TCP四次挥手拆除链接"></a>TCP四次挥手拆除链接</h2><ul>
 <li>客户端发送 FIN=1的报文</li>
 <li>服务的返回确认报文</li>
@@ -506,7 +507,7 @@
 <p>http的缺点如下：</p>
 <ul>
 <li>安全性：使用明文传输，内容可能被窃听</li>
-<li>可靠性：不严重身份，容易伪造请求</li>
+<li>可靠性：不验证身份，容易伪造请求</li>
 <li>完整性：无法保证报文完整性</li>
 </ul>
 <h2 id="对称加密（共享秘钥加密）"><a href="#对称加密（共享秘钥加密）" class="headerlink" title="对称加密（共享秘钥加密）"></a>对称加密（共享秘钥加密）</h2><p>客户端和服务端有相同的秘钥，加密解密</p>
@@ -542,6 +543,29 @@
 <li>头部压缩：对header内容进行压缩，并且维护静态字典和动态字典，通过静态huffman编码对header进行编码</li>
 <li>服务器端推送：服务端推送可以使服务器预测客户端需要的资源，主动推送到客户端</li>
 </ul>
+<h1 id="前端性能优化"><a href="#前端性能优化" class="headerlink" title="前端性能优化"></a>前端性能优化</h1><p>参考<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904195707895816">链接</a></p>
+<p>性能指标</p>
+<ul>
+<li>LCP：页面速度指标</li>
+<li>FID：页面交互体验指标</li>
+<li>CLS：页面稳定指标</li>
+</ul>
+<h2 id="网络资源优化"><a href="#网络资源优化" class="headerlink" title="网络资源优化"></a>网络资源优化</h2><ul>
+<li>gzip压缩</li>
+<li>减少http请求数量（打包split，css雪碧，base64编码）</li>
+<li>缓存ajax请求</li>
+<li>延迟加载，预加载</li>
+<li>基础类库使用cdn</li>
+<li>合理使用浏览器缓存</li>
+</ul>
+<h2 id="减少回流重绘"><a href="#减少回流重绘" class="headerlink" title="减少回流重绘"></a>减少回流重绘</h2><ul>
+<li>尽量减少dom操作</li>
+<li>避免使用offset、clientxxx等操作</li>
+<li>修改样式使用class，或者cssText</li>
+<li>使用 createDocumentFragment 文档片段</li>
+<li>js文件放到html底部，无法放到底部的考虑defer、async</li>
+</ul>
+<h2 id="开发体验优化"><a href="#开发体验优化" class="headerlink" title="开发体验优化"></a>开发体验优化</h2><p>webpack打包优化。见webpack章节</p>
 
             </div>
             <hr>
@@ -579,6 +603,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2021/07/16/%E5%90%84%E7%A7%8D%E6%89%8B%E5%86%99/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">各种手写</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
