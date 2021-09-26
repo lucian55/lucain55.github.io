@@ -1,0 +1,496 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpg">
+  <link rel="icon" href="/img/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="lucian">
+  <meta name="keywords" content="">
+  
+  <title>React ref详解 - lucian blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"liushaozhen.github.io","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>lucian的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://liushaozhen.gitee.io/img/bg.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="React ref详解">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-26 15:35" pubdate>
+        2021年9月26日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      14
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">React ref详解</h1>
+            
+            <div class="markdown-body">
+              <p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6993185678481686535">参考</a></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><code>ref</code> 这个属性，在react 16之前大部分是用来访问真实dom的，项目中也很少使用，但是新公司大批量的用了 <code>ref</code>，个人觉得并不合适，但是也需要知道他的用法，这里整理一下关于 <code>ref</code>相关的知识。</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>首先 <code>ref</code> 是什么？ 参考<a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/refs-and-the-dom.html">官网</a>解释：Refs 提供了一种方式，允许我们访问 DOM 节点或在 render 方法中创建的 React 元素。</p>
+<h2 id="何时使用"><a href="#何时使用" class="headerlink" title="何时使用"></a>何时使用</h2><p>官网推荐有以下三种情况的时候使用 <code>ref</code> </p>
+<ul>
+<li>管理焦点，文本选择或媒体播放。</li>
+<li>触发强制动画。</li>
+<li>集成第三方 DOM 库。</li>
+</ul>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
+<li>避免使用 ref 来做任何可以通过声明式实现来完成的事情：举个例子，避免在 <code>Dialog</code> 组件里暴露 <code>open()</code> 和 <code>close()</code> 方法，最好传递 <code>isOpen</code> 属性。</li>
+<li>不要过度使用 <code>ref</code>，如果可以将状态提示到更高级，尽量不要使用 <code>ref</code></li>
+</ul>
+<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><h3 id="创建-ref"><a href="#创建-ref" class="headerlink" title="创建 ref"></a>创建 ref</h3><h4 id="class组件"><a href="#class组件" class="headerlink" title="class组件"></a>class组件</h4><p>通过 <code>React.createRef()</code> 创建</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">props</span>)</span> &#123;<br>    <span class="hljs-built_in">super</span>(props);<br>    <span class="hljs-built_in">this</span>.myRef = React.createRef();<br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">render</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&#123;this.myRef&#125;</span> /&gt;</span></span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="函数式组件"><a href="#函数式组件" class="headerlink" title="函数式组件"></a>函数式组件</h4><p>通过 <code>React.useRef()</code> 创建，<a target="_blank" rel="noopener" href="https://react.docschina.org/docs/hooks-reference.html#useref">参考官网</a><br><code>useRef</code> 返回一个可变的 <code>ref</code> 对象，其 <code>.current</code> 属性被初始化为传入的参数<code>（initialValue）</code>。返回的 <code>ref</code> 对象在组件的整个生命周期内保持不变。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">TextInputWithFocusButton</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> inputEl = useRef(<span class="hljs-literal">null</span>);<br>  <span class="hljs-keyword">const</span> onButtonClick = <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-comment">// `current` 指向已挂载到 DOM 上的文本输入元素</span><br>    inputEl.current.focus();<br>  &#125;;<br>  <span class="hljs-keyword">return</span> (<br>    &lt;&gt;<br>      &lt;input ref=&#123;inputEl&#125; type=<span class="hljs-string">&quot;text&quot;</span> /&gt;<br>      &lt;button onClick=&#123;onButtonClick&#125;&gt;Focus the input&lt;/button&gt;<br>    &lt;/&gt;<br>  );<br>&#125;<br><br><span class="hljs-comment">//回调式：如果想要在 React 绑定或解绑 DOM 节点的 ref 时运行某些代码，需要使用回调式</span><br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 在这个案例中，我们没有选择使用 useRef，因为当 ref 是一个对象时它并不会把当前 ref 的值的 变化 通知到我们。使用 callback ref 可以确保 即便子组件延迟显示被测量的节点 (比如为了响应一次点击)，我们依然能够在父组件接收到相关的信息，以便更新测量结果。</span><br><span class="hljs-comment">  注意到我们传递了 [] 作为 useCallback 的依赖列表。这确保了 ref callback 不会在再次渲染时改变，因此 React 不会在非必要的时候调用它。</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">MeasureExample</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> [height, setHeight] = useState(<span class="hljs-number">0</span>);<br><br>  <span class="hljs-keyword">const</span> measuredRef = useCallback(<span class="hljs-function"><span class="hljs-params">node</span> =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (node !== <span class="hljs-literal">null</span>) &#123;<br>      setHeight(node.getBoundingClientRect().height);<br>    &#125;<br>  &#125;, []);<br><br>  <span class="hljs-keyword">return</span> (<br>    &lt;&gt;<br>      &lt;h1 ref=&#123;measuredRef&#125;&gt;Hello, world&lt;/h1&gt;<br>      &lt;h2&gt;The above header is &#123;<span class="hljs-built_in">Math</span>.round(height)&#125;px tall&lt;/h2&gt;<br>    &lt;/&gt;<br>  );<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="访问-ref"><a href="#访问-ref" class="headerlink" title="访问 ref"></a>访问 ref</h3><h4 id="class组件-1"><a href="#class组件-1" class="headerlink" title="class组件"></a>class组件</h4><p>当 ref 被传递给 render 中的元素时，对该节点的引用可以在 ref 的 current 属性中被访问。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> node = <span class="hljs-built_in">this</span>.myRef.current;<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="函数式组件-1"><a href="#函数式组件-1" class="headerlink" title="函数式组件"></a>函数式组件</h4><p>函数式组件不能使用 <code>.current</code>，因为函数式组件没有示例。 函数式组件需要 <code>forwardRef</code> 和 <code>useImperativeHandle</code>结合使用</p>
+<ul>
+<li>forwardRef</li>
+</ul>
+<p><code>forwardRef</code> <a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/forwarding-refs.html">参考ref转发</a>。其允许某些组件接收 ref，并将其向下传递（换句话说，“转发”它）给子组件。<br>在下面的示例中，FancyButton 使用 React.forwardRef 来获取传递给它的 ref，然后转发到它渲染的 DOM button：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> FancyButton = React.forwardRef(<span class="hljs-function">(<span class="hljs-params">props, ref</span>) =&gt;</span> (<br>  &lt;button ref=&#123;ref&#125; className=<span class="hljs-string">&quot;FancyButton&quot;</span>&gt;<br>    &#123;props.children&#125;<br>  &lt;/button&gt;<br>));<br><br><span class="hljs-comment">// 你可以直接获取 DOM button 的 ref：</span><br><span class="hljs-keyword">const</span> ref = React.createRef();<br><br>&lt;FancyButton ref=&#123;ref&#125;&gt;Click me!&lt;/FancyButton&gt;;<br><br></code></pre></td></tr></table></figure>
+
+<p>步骤：</p>
+<ol>
+<li>我们通过调用 <code>React.createRef</code> 创建了一个 <code>React ref</code> 并将其赋值给 <code>ref</code> 变量。</li>
+<li>我们通过指定 <code>ref</code> 为 JSX 属性，将其向下传递给 <code>&lt;FancyButton ref=&#123;ref&#125;&gt;</code>。</li>
+<li>React 传递 <code>ref</code> 给 <code>forwardRef</code> 内函数 <code>(props, ref) =&gt; ...</code>，作为其第二个参数。</li>
+<li>我们向下转发该 <code>ref</code> 参数到 <code>&lt;button ref=&#123;ref&#125;&gt;</code>，将其指定为 JSX 属性。</li>
+<li>当 <code>ref</code> 挂载完成，<code>ref.current</code> 将指向 <code>&lt;button&gt;</code> DOM 节点。</li>
+</ol>
+<p>看一个简单的示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> Parent = <span class="hljs-function">() =&gt;</span> &#123;<br>	<span class="hljs-keyword">const</span> childRef = useRef(<span class="hljs-literal">null</span>)<br>  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Child</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&#123;childRef&#125;/</span>&gt;</span></span><br>&#125;<br><br><span class="hljs-keyword">const</span> Child = forWardRef(<span class="hljs-function">(<span class="hljs-params">props,ref</span>) =&gt;</span> &#123;<br>	<span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Child<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>useImperativeHandle</li>
+</ul>
+<p>react为我们提供了这个hook来帮助函数组件向外部暴露属性 先看下效果</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><span class="hljs-keyword">const</span> Parent = <span class="hljs-function">() =&gt;</span> &#123;	<br>  <span class="hljs-keyword">const</span> childRef = useRef(<span class="hljs-literal">null</span>)<br>  useEffect(<span class="hljs-function">()=&gt;</span>&#123;<br>  	chilRef.current.sayName();<span class="hljs-comment">// child</span><br>  &#125;)<br>  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Child</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&#123;childRef&#125;/</span>&gt;</span></span><br>&#125;<br><br><span class="hljs-keyword">const</span> Child = forwardRef(<span class="hljs-function">(<span class="hljs-params">props,ref</span>) =&gt;</span> &#123;<br>  useImperativeHandle(ref,<span class="hljs-function">()=&gt;</span>(&#123;<br>  	sayName:<span class="hljs-function">()=&gt;</span>&#123;<br>    	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;child&#x27;</span>)<br>    &#125;<br>  &#125;))<br>	<span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Child<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&#125;<br><br></code></pre></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/react/">react</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/react/">react</a>
+                    
+                      <a class="hover-with-bg" href="/tags/ref/">ref</a>
+                    
+                      <a class="hover-with-bg" href="/tags/forWardRef/">forWardRef</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/22/%E6%8A%80%E6%9C%AF%E4%B8%93%E5%AE%B6%E5%85%BB%E6%88%90%E8%AE%B0/">
+                        <span class="hidden-mobile">type vs interface</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1.3.1/dist/twikoo.all.min.js', function() {
+        twikoo.init({
+          el: '#twikoo',
+          envId: 'lucian-blog-5ge52upy423c6d34',
+          region: 'ap-guangzhou',
+          path: 'window.location.pathname',
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
