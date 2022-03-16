@@ -1,0 +1,598 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpg">
+  <link rel="icon" href="/img/avatar.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="lucian">
+  <meta name="keywords" content="">
+  
+  <title>微前端 - lucian blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"liushaozhen.github.io","root":"/","version":"1.8.9a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>lucian的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://liushaozhen.gitee.io/img/bg.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="微前端">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-03-14 16:49" pubdate>
+        2022年3月14日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      42
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">微前端</h1>
+            
+            <div class="markdown-body">
+              <h1 id="什么是微前端"><a href="#什么是微前端" class="headerlink" title="什么是微前端"></a>什么是微前端</h1><h2 id="先看一个场景"><a href="#先看一个场景" class="headerlink" title="先看一个场景"></a>先看一个场景</h2><p>某公司 Y 有多个业务，ABCDEF 等等。这些业务分别有一个 CRM 系统。<br>销售每天上班的第一件事就是，先登陆 A 系统，再新开网页登陆 B 系统，然后 CDEF。 然后在给客户打电话的时候，需要根据客户所属系统，切换网页。由于业务系统的用户画像页面都类似，销售有几次切换错误，导致信息填错。此时销售就找到了产品。<br>产品又萌生了一个需求：能不能把所有的业务集合到同一个网页上，销售在面对不同客户的时候，切换不同的菜单，不用再切网页，容易混淆。<br>那么现在压力来到了开发的头上，然后程序猿搞了“微前端”</p>
+<h2 id="什么是微前端-1"><a href="#什么是微前端-1" class="headerlink" title="什么是微前端"></a>什么是微前端</h2><p>微前端提供了一种技术：可以将多个独立的 Web 应用聚合到一起，提供统一的访问入口。</p>
+<p><img src="https://liushaozhen.gitee.io/img/spa1.png" srcset="/img/loading.gif" lazyload alt="spa"></p>
+<p>如上图所示，将系统分为主应用和子应用。 主应用包含导航栏、侧边栏、footer。 主应用通过侧边栏的切换，加载对应子应用。 这里的子应用并没有集成再主应用中，通过微前端的方式内嵌到主应用中。</p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
+<li>技术栈无关：主应用不限制子应用的技术栈</li>
+<li>独立性：主应用和子应用都是独立的，独立开发，独立部署，独立仓库</li>
+<li>状态隔离：子应用之间状态隔离</li>
+</ul>
+<h2 id="微前端发展史"><a href="#微前端发展史" class="headerlink" title="微前端发展史"></a>微前端发展史</h2><ul>
+<li>2014 年：Martin Fowler 和 James Lewis 共同提出了微服务的概念。微服务将应用化繁为简，每个服务负责自己特定的功能，互不影响。 把微服务的概念应用于前端，微前端就诞生了</li>
+<li>2018 年: 第一个微前端工具<a target="_blank" rel="noopener" href="https://github.com/single-spa/single-spa">single-spa</a>在 github 上开源。</li>
+<li>基于 single-spa 的<a target="_blank" rel="noopener" href="https://github.com/umijs/qiankun">qiankun</a>,<a target="_blank" rel="noopener" href="https://micro-frontends.ice.work/">icestark</a> 等等框架产生</li>
+<li>2020 年 webpack5 联邦模块 <a target="_blank" rel="noopener" href="https://webpack.docschina.org/concepts/module-federation/">Module Federation</a> 的方式，实现微应用。但是 Module Federation 不止于微应用</li>
+</ul>
+<h1 id="微前端的实现方式"><a href="#微前端的实现方式" class="headerlink" title="微前端的实现方式"></a>微前端的实现方式</h1><h2 id="1、服务端集成"><a href="#1、服务端集成" class="headerlink" title="1、服务端集成"></a>1、服务端集成</h2><p>通过 Nginx 配置反向代理来实现不同路径映射到不同应用。</p>
+<p><img src="https://liushaozhen.gitee.io/img/spa1.png" srcset="/img/loading.gif" lazyload alt="spa"></p>
+<p>这种实现方式，在每次命中路由时，都会重新请求资源，不能局部更新当前页面。</p>
+<h2 id="2、iframe-集成"><a href="#2、iframe-集成" class="headerlink" title="2、iframe 集成"></a>2、iframe 集成</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;iframe src=<span class="hljs-string">&quot;https://baidu.com/a/index.html&quot;</span>&gt;&lt;/iframe&gt;<br></code></pre></td></tr></table></figure>
+
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>iframe 有天热的沙盒机制，子应用之间的样式、代码不会相互影响</li>
+<li>嵌入子应用比较简单</li>
+</ul>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>iframe 之间的跳转是无效的，刷新页面无法保存状态</li>
+<li>url 的记录无效，刷新返回首页</li>
+<li>主应用劫持快捷键操作，事件冒泡不穿透到主文档树上</li>
+<li>模态框等背景无法覆盖整个应用</li>
+<li>iframe 内的子应用加载失败，或者内容错误时，主应用无法感知。也可以说主应用和子应用通信麻烦</li>
+</ul>
+<h2 id="3、微前端框架"><a href="#3、微前端框架" class="headerlink" title="3、微前端框架"></a>3、微前端框架</h2><h3 id="（1）single-spa"><a href="#（1）single-spa" class="headerlink" title="（1）single-spa"></a>（1）single-spa</h3><p><a target="_blank" rel="noopener" href="https://zh-hans.single-spa.js.org/">single-spa</a>是一个用于前端微服务化的 JavaScript 前端解决方案。 他的核心是定义了一套**<em>协议</em>**。这套协议包含主应用的配置信息和子应用的生命周期，通过这套协议，主应用可以方便的知道再什么情况下激活哪个子应用</p>
+<ul>
+<li>实现方式</li>
+</ul>
+<ol>
+<li>在主应用通过配置信息注册子应用。主应用运行时根据配置信息去请求子应用的配置文件<code>manifest.json</code>(这个文件里包含子应用打包出的 js 文件等)。主应用动态构造<code>script</code>标签去加载这些 js 文件。这样就完成了子应用注册过程</li>
+<li>主应用检测路由命中子应用的规则之后就会触发其渲染函数，把子应用挂载到相应的 dom 下</li>
+</ol>
+<ul>
+<li>配置信息<br><code>single-spa</code>主应用的配置信息<code>Root config</code>。 在配置信息中心，需要配置子应用的名称，加载方式以及加载时机</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js">&#123;<br>  name:<span class="hljs-string">&#x27;sub1&#x27;</span>,<span class="hljs-comment">//子应用名称</span><br>  app:<span class="hljs-function">()=&gt;</span>System.import(<span class="hljs-string">&#x27;subPages/index.js&#x27;</span>),<span class="hljs-comment">//子应用加载方式</span><br>  activeWhen:<span class="hljs-string">&#x27;sub1&#x27;</span>,<span class="hljs-comment">//加载时机</span><br>&#125;,<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>System.import</li>
+</ul>
+<p>这个问题要从主应用如何加载子应用说起，在 single-spa 中子应用要实现生命周期函数，然后导出给主应用使用。关键就是这个“导出”的实现，这涉及到 JavaScript 的模块化问题，即需要把子应用打包成一个包含生命周期的模块，让主应用引入。参考<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/systemjs">systemjs</a></p>
+<ul>
+<li>生命周期<br><code>single-spa</code>的另一个关键点就是生命周期，子应用生命周期包含<code>bootstrap</code>，<code>mount</code>，<code>unmount</code>三个回调函数。主应用在管理子应用的时候，通过子应用暴露的生命周期函数来实现子应用的启动和卸载</li>
+</ul>
+<ol>
+<li>load 下载：当应用匹配路由时就会加载脚本（非函数，只是一种状态）。</li>
+<li>bootstrap 初始化：应用内容首次挂载到页面前调用。</li>
+<li>mount 挂载：当主应用判定需要激活这个子应用时会调用, 实现子应用的挂载、页面渲染等逻辑。</li>
+<li>unmount 卸载：当主应用判定需要卸载这个子应用时会调用, 实现组件卸载、清理事件监听等逻辑。</li>
+<li>unload 移除：非必要函数，一般不使用。unload 之后会重新启动 bootstrap 流程。</li>
+</ol>
+<ul>
+<li>缺点</li>
+<li><code>single-spa</code>是通过 js 文件去加载子应用，当文件名是乱码名时，每次子应用更新，父应用要更新引入配置文件，更新多项目时比较麻烦。</li>
+<li><code>single-spa</code>本身缺少 js 隔离和 css 隔离，虽然现在已经可以引入其他的包去解决，但是并没有做到开箱即用的程度。</li>
+</ul>
+<h3 id="（2）qiankun"><a href="#（2）qiankun" class="headerlink" title="（2）qiankun"></a>（2）qiankun</h3><p><a target="_blank" rel="noopener" href="https://qiankun.umijs.org/zh">qiankun</a> 是基于 <code>single-spa</code> 提出的微前端框架, 提供了更加开箱即用的 API（single-spa+sandbox+import-html-entry）</p>
+<ul>
+<li>HTML Entry 加载子应用<br>首先是子应用的加载方式与 <code>single-spa</code> 有明显的不同，<code>single-spa</code> 注册子应用本质上是 JS Entry，即通过从某一地址引入 js 文件来加载整个子应用。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><br>singleSpa.registerApplication(&#123;<br> <span class="hljs-string">&#x27;appName&#x27;</span>,<br>  () =&gt; System.import(<span class="hljs-string">&#x27;appName&#x27;</span>),<br>  location =&gt; location.pathname.startsWith(<span class="hljs-string">&#x27;appName&#x27;</span>),<br>&#125;);<br><br></code></pre></td></tr></table></figure>
+
+<p>但是 qiankun 注册子应用的方式是通过一个 url，像使用 iframe 一样简单，即使用 HTML Entry 的方式来引入子应用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js">registerMicroApps([<br>  &#123;<br>    name: <span class="hljs-string">&quot;react app&quot;</span>,<br>    entry: <span class="hljs-string">&quot;//localhost:7100&quot;</span>,<br>    container: <span class="hljs-string">&quot;#yourContainer&quot;</span>,<br>    activeRule: <span class="hljs-string">&quot;/yourActiveRule&quot;</span>,<br>  &#125;,<br>]);<br>start();<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>子应用加载方式</li>
+</ul>
+<p>Html Entry 方法的主要步骤如下：首先通过 url 获取到整个 Html 文件，从 html 中解析出 html，js 和 css 文本，在主应用中创建容器，把 html 更新到容器中，然后动态创建 style 和 script 标签，把子应用的 css 和 js 赋值在其中，最后把容器放置在主应用中。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 解析 HTML，获取 html，js，css 文本</span><br><span class="hljs-keyword">const</span> &#123; htmlText, jsText, cssText &#125; = importHTMLEntry(<span class="hljs-string">&quot;https://xxxx.com&quot;</span>);<br><span class="hljs-comment">// 创建容器</span><br><span class="hljs-keyword">const</span> $ = <span class="hljs-built_in">document</span>.querySelector(container);<br>$container.innerHTML = htmlText;<br><span class="hljs-comment">// 创建 style 和 js 标签</span><br><span class="hljs-keyword">const</span> $style = createElement(<span class="hljs-string">&quot;style&quot;</span>, cssText);<br><span class="hljs-keyword">const</span> $script = createElement(<span class="hljs-string">&quot;script&quot;</span>, jsText);<br>$container.appendChild([$style, $script]);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>css 隔离</li>
+</ul>
+<p>css 隔离主要分为两种，一种是父子之间的隔离，另一种是子子之间的隔离。子应用之间的隔离，本质上就是在子应用加载时把其相应的样式加载进来，在卸载时进行移除即可。而父子之间的隔离在 qiankun 种有两种实现方法。</p>
+<ol>
+<li>strictStyleIsolation: <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_shadow_DOM">Shadow DOM</a>。 他可以让一个 dom 拥有自己的“影子”DOM 树。这个 DOM 树不能在主文档中被任意访问，可以拥有局部样式规则，从而实现样式隔离。<br>chrome 控制台打开 shadow dom 方式（settings——Show user agent shadow DOM）</li>
+</ol>
+<p>如何使用 shadow dom。 假设有如下代码，app1 内为子应用。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">h5</span>&gt;</span>父元素<span class="hljs-tag">&lt;/<span class="hljs-name">h5</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app1&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><br>    * &#123;<br><span class="css">      <span class="hljs-attribute">color</span>: red;</span><br>    &#125;<br>  <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">h5</span>&gt;</span>子元素<span class="hljs-tag">&lt;/<span class="hljs-name">h5</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;title&quot;</span>&gt;</span>一行文字<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>这样的结果就是子样式污染了父样式。导致父元素也变成了红色<br>接下来使用 shadow dom 解决问题：获取到子应用的根节点，然后打开影子模式，把原来的 dom 结构赋值到代理的影子根节点中，然后清空原来的 dom 结构</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> bodyNode = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;app1&quot;</span>);<br><span class="hljs-keyword">let</span> shadow = bodyNode.attachShadow(&#123; <span class="hljs-attr">mode</span>: <span class="hljs-string">&quot;open&quot;</span> &#125;);<br>shadow.innerHTML = bodyNode.innerHTML;<br>bodyNode.innerHTML = <span class="hljs-string">&quot;&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://liushaozhen.gitee.io/img/spa4.png" srcset="/img/loading.gif" lazyload alt="spa"></p>
+<ol start="2">
+<li>experimentalStyleIsolation</li>
+</ol>
+<p>通过运行时修改 CSS 选择器来实现子应用间的样式隔离。给每个 css 的标签加上前缀</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs css">* &#123;<br>  <span class="hljs-attribute">color</span>: red;<br>&#125;<br><br>//改为<br><span class="hljs-selector-id">#app1</span> * &#123;<br>  <span class="hljs-attribute">color</span>: red;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>js 隔离</li>
+</ul>
+<p>js 隔离是另一个在微前端中需要关注的问题，qiankun 中有三种 js 隔离的做法。</p>
+<ol>
+<li>SnapshotSandbox 沙箱快照</li>
+</ol>
+<p>沙箱快照的核心思想如下：在子应用挂在前对当前主应用的全局变量保存，然后恢复之前的子应用环境，在子应用运行期间则正常 get 和 set，在卸载时保存当前变量恢复主应用变量，整个过程类似于中断和中断恢复。</p>
+<p><img src="https://liushaozhen.gitee.io/img/spa5.png" srcset="/img/loading.gif" lazyload alt="spa"></p>
+<p>这里有一个比较明显的缺点就是每次切换时需要去遍历 window，这种做法会有较大的时间消耗</p>
+<ol start="2">
+<li>legacySandBox</li>
+</ol>
+<p>legacy 沙箱的主要原理是使用了 ES6 中的 Proxy，把原来的 window 代理到<code>fakeWindow</code>上，这样就不用遍历整个 window 去应用和恢复环境了。除此之外，它还在沙箱内部设置了三个变量池：<br><code>addedPropsMapinSandbox</code>用于存放子应用运行期间新增的全局变量，用于在卸载子应用的时候删除；<br><code>modifiedPropsOrginalMapInSandbox</code>用于存放子应用运行期间修改的全局变量，用于卸载时进行恢复；<br><code>currentUpdatedPropsValueMap</code>用于存放子应用运行期间所有变化的变量，这样可以在加载子应用时恢复其上一次的环境。</p>
+<p><img src="https://liushaozhen.gitee.io/img/spa6.png" srcset="/img/loading.gif" lazyload alt="spa"></p>
+<ol start="3">
+<li>ProxySandbox</li>
+</ol>
+<p>第二种沙箱的实现对于单例模式来说已经比较完善了，但是不适用于多例模式，即同时有多个子应用在运行期间的时候，<code>qiankun</code>针对这个问题提出来<code>proxySandbox</code>。<br><code>proxySandbox</code>依然是使用 proxy 代理 window，但不同的是对于每个子应用都代理了一个<code>fakeWindow</code>，这样在查找变量的时候在本地的<code>fakeWindow</code>上查找，如果没有找到就到主应用的 window 上查找，而修改时只修改本地的<code>fakeWindow</code>，不会影响到其他的应用，在最终卸载时把<code>fakeWindow</code>删除即可。</p>
+<p><img src="https://liushaozhen.gitee.io/img/spa7.png" srcset="/img/loading.gif" lazyload alt="spa"></p>
+<ul>
+<li><p>生命周期<br>在主应用增加了 5 个生命周期 <code>beforeLoad</code>、<code>beforeMount</code>、<code>afterMount</code> 、<code>beforeUnmount</code>和<code>afterUnmount</code>。<br>和 <code>single-spa</code>一样的是，子应用接入必须暴露三个生命周期：<code>bootstrap</code>、<code>mount</code>、<code>unmount</code></p>
+</li>
+<li><p>全局状态管理</p>
+</li>
+</ul>
+<p>在微前端中各个子应用需要和主应用进行通信，以获得必要的信息，子应用之间也可能会有少量的通信需要，在 qiankun 中使用的是一种订阅发布模式的通信方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 主应用</span><br><span class="hljs-keyword">import</span> &#123; initGlobalState, MicroAppStateActions &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;qiankun&quot;</span>;<br><span class="hljs-comment">// 初始化 state</span><br><span class="hljs-keyword">const</span> actions: MicroAppStateActions = initGlobalState(state);<br><br>actions.onGlobalStateChange(<span class="hljs-function">(<span class="hljs-params">state, prev</span>) =&gt;</span> &#123;<br>  <span class="hljs-comment">// state: 变更后的状态; prev 变更前的状态</span><br>  <span class="hljs-built_in">console</span>.log(state, prev);<br>&#125;);<br>actions.setGlobalState(state);<br>actions.offGlobalStateChange();<br><br><span class="hljs-comment">//子应用</span><br><br><span class="hljs-comment">// 从生命周期 mount 中获取通信方法，使用方式和 master 一致</span><br><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mount</span>(<span class="hljs-params">props</span>) </span>&#123;<br>  props.onGlobalStateChange(<span class="hljs-function">(<span class="hljs-params">state, prev</span>) =&gt;</span> &#123;<br>    <span class="hljs-comment">// state: 变更后的状态; prev 变更前的状态</span><br>    <span class="hljs-built_in">console</span>.log(state, prev);<br>  &#125;);<br><br>  props.setGlobalState(state);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="4、Module-Federation"><a href="#4、Module-Federation" class="headerlink" title="4、Module Federation"></a>4、Module Federation</h2><p>Module Federation 是 webpack5 中的新特性，主要是用来解决多个应用之间代码共享的问题，可以更加优雅的实现跨应用的代码共享，使用这个方法也可以实现微前端。</p>
+<p>这个方案中有两个主体：<code>Remote</code>和<code>Host</code>，可以把<code>Remote</code>理解为想要引入的子应用，把<code>Host</code>理解为主应用（但是一个应用既可以是<code>Remote</code>也可以是<code>Host</code>，并不矛盾）。</p>
+<p>Module Federation 的核心在于 ModuleFederationPlugin 这个插件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">new</span> ModuleFederationPlugin(&#123;<br>  name: <span class="hljs-string">&quot;App1&quot;</span>,<br>  library: &#123; <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;var&quot;</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;App1&quot;</span> &#125;,<br>  filename: <span class="hljs-string">&quot;remoteEntry.js&quot;</span>,<br>  remotes: &#123;<br>    app_02: <span class="hljs-string">&quot;App2&quot;</span>,<br>    app_03: <span class="hljs-string">&quot;App3&quot;</span>,<br>  &#125;,<br>  exposes: &#123;<br>    antd: <span class="hljs-string">&quot;./src/antd&quot;</span>,<br>    button: <span class="hljs-string">&quot;./src/button&quot;</span>,<br>  &#125;,<br>  shared: [<span class="hljs-string">&quot;react&quot;</span>, <span class="hljs-string">&quot;react-dom&quot;</span>],<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>name，必须，唯一ID，作为输出的模块名，使用的时通过name/{expose}的方式使用；</li>
+<li>library，必须，其中这里的name为作为umd的name。</li>
+<li>remotes，可选，表示作为Host时，去消费哪些Remote。</li>
+<li>exposes，可选，表示作为Remote时，export哪些属性被消费。</li>
+<li>shared，可选，优先用Host的依赖，如果Host没有，再用自己的。</li>
+</ul>
+<p>通过以上设置打包之后会生成三种文件：应用主文件:main.js、作为remote时被引用的文件remoteEntry.js和其他的异步加载文件。</p>
+<p>这里通过一个例子简单概括一下其原理：下图是三个项目，在App1中它的remotes是App2和App3，没有exposes，shared是React和ReactDom，它作为host使用了remote的dialog组件和button组件；App2作为host使用了App3的button组件，作为remote导出来dialog组件，在App1中运行时如果需要使用React则会优先把App1中的React导入，这就复用了公共库；App3向外导出了dialog组件，只作为其他项目的remote。</p>
+<p><img src="https://liushaozhen.gitee.io/img/spa8.png" srcset="/img/loading.gif" lazyload alt="spa"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>化整为零</li>
+</ul>
+<p>当下前端领域，单页面应已经成为流行的的项目形态之一，但是随着时间和技术的发展，原本单一的应用具备的功能愈加丰富起来，功能的丰富意味着越来越难以维护，从而变成一个巨石项目。以至于之后改一处而动全身，带来的发版成本也更高。微前端的意义就是将巨石应用进行拆分，化整为零把功能随之解耦，每个部分可以单独进行维护和部署，从而提升团队开发和维护效率。</p>
+<ul>
+<li>化零为整</li>
+</ul>
+<p>在业务中或多或少会存在一些历史项目，这些项目也会使用不同的框架进行构建，在日常运营中，这些系统已经有固有的用户，但是诸多的应用对于用户来说也是一种成本，为了让旧项目焕发新生，这要求我们在不能抛弃原有项目的同时开发新的功能，把诸多较为零散的入口统一整合起来，从而提高系统的使用率，而微前端就是目前实现这一需求的较好方法。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/12/24/%E7%94%B5%E5%BD%B1-2021%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/">
+                        <span class="hidden-mobile">电影-2021年度总结.md</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1.3.1/dist/twikoo.all.min.js', function() {
+        twikoo.init({
+          el: '#twikoo',
+          envId: 'lucian-blog-5ge52upy423c6d34',
+          region: 'ap-guangzhou',
+          path: 'window.location.pathname',
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
