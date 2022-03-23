@@ -225,7 +225,7 @@
             <div class="markdown-body">
               <h1 id="什么是微前端"><a href="#什么是微前端" class="headerlink" title="什么是微前端"></a>什么是微前端</h1><h2 id="先看一个场景"><a href="#先看一个场景" class="headerlink" title="先看一个场景"></a>先看一个场景</h2><p>某公司 Y 有多个业务，ABCDEF 等等。这些业务分别有一个 CRM 系统。<br>销售每天上班的第一件事就是，先登陆 A 系统，再新开网页登陆 B 系统，然后 CDEF。 然后在给客户打电话的时候，需要根据客户所属系统，切换网页。由于业务系统的用户画像页面都类似，销售有几次切换错误，导致信息填错。此时销售就找到了产品。<br>产品又萌生了一个需求：能不能把所有的业务集合到同一个网页上，销售在面对不同客户的时候，切换不同的菜单，不用再切网页，容易混淆。<br>那么现在压力来到了开发的头上，然后程序猿搞了“微前端”</p>
 <h2 id="什么是微前端-1"><a href="#什么是微前端-1" class="headerlink" title="什么是微前端"></a>什么是微前端</h2><p>微前端提供了一种技术：可以将多个独立的 Web 应用聚合到一起，提供统一的访问入口。</p>
-<p><img src="https://liushaozhen.gitee.io/img/spa1.png" srcset="/img/loading.gif" lazyload alt="spa"></p>
+<p><img src="https://liushaozhen.gitee.io/img/spa/spa1.png" srcset="/img/loading.gif" lazyload alt="spa"></p>
 <p>如上图所示，将系统分为主应用和子应用。 主应用包含导航栏、侧边栏、footer。 主应用通过侧边栏的切换，加载对应子应用。 这里的子应用并没有集成再主应用中，通过微前端的方式内嵌到主应用中。</p>
 <h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
 <li>技术栈无关：主应用不限制子应用的技术栈</li>
@@ -239,7 +239,7 @@
 <li>2020 年 webpack5 联邦模块 <a target="_blank" rel="noopener" href="https://webpack.docschina.org/concepts/module-federation/">Module Federation</a> 的方式，实现微应用。但是 Module Federation 不止于微应用</li>
 </ul>
 <h1 id="微前端的实现方式"><a href="#微前端的实现方式" class="headerlink" title="微前端的实现方式"></a>微前端的实现方式</h1><h2 id="1、服务端集成"><a href="#1、服务端集成" class="headerlink" title="1、服务端集成"></a>1、服务端集成</h2><p>通过 Nginx 配置反向代理来实现不同路径映射到不同应用。</p>
-<p><img src="https://liushaozhen.gitee.io/img/spa1.png" srcset="/img/loading.gif" lazyload alt="spa"></p>
+<p><img src="https://liushaozhen.gitee.io/img/spa/spa2.png" srcset="/img/loading.gif" lazyload alt="spa"></p>
 <p>这种实现方式，在每次命中路由时，都会重新请求资源，不能局部更新当前页面。</p>
 <h2 id="2、iframe-集成"><a href="#2、iframe-集成" class="headerlink" title="2、iframe 集成"></a>2、iframe 集成</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;iframe src=<span class="hljs-string">&quot;https://baidu.com/a/index.html&quot;</span>&gt;&lt;/iframe&gt;<br></code></pre></td></tr></table></figure>
 
@@ -314,7 +314,7 @@
 <p>这样的结果就是子样式污染了父样式。导致父元素也变成了红色<br>接下来使用 shadow dom 解决问题：获取到子应用的根节点，然后打开影子模式，把原来的 dom 结构赋值到代理的影子根节点中，然后清空原来的 dom 结构</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> bodyNode = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;app1&quot;</span>);<br><span class="hljs-keyword">let</span> shadow = bodyNode.attachShadow(&#123; <span class="hljs-attr">mode</span>: <span class="hljs-string">&quot;open&quot;</span> &#125;);<br>shadow.innerHTML = bodyNode.innerHTML;<br>bodyNode.innerHTML = <span class="hljs-string">&quot;&quot;</span>;<br></code></pre></td></tr></table></figure>
 
-<p><img src="https://liushaozhen.gitee.io/img/spa4.png" srcset="/img/loading.gif" lazyload alt="spa"></p>
+<p><img src="https://liushaozhen.gitee.io/img/spa/spa3.png" srcset="/img/loading.gif" lazyload alt="spa"></p>
 <ol start="2">
 <li>experimentalStyleIsolation</li>
 </ol>
@@ -329,18 +329,18 @@
 <li>SnapshotSandbox 沙箱快照</li>
 </ol>
 <p>沙箱快照的核心思想如下：在子应用挂在前对当前主应用的全局变量保存，然后恢复之前的子应用环境，在子应用运行期间则正常 get 和 set，在卸载时保存当前变量恢复主应用变量，整个过程类似于中断和中断恢复。</p>
-<p><img src="https://liushaozhen.gitee.io/img/spa5.png" srcset="/img/loading.gif" lazyload alt="spa"></p>
+<p><img src="https://liushaozhen.gitee.io/img/spa/spa5.png" srcset="/img/loading.gif" lazyload alt="spa"></p>
 <p>这里有一个比较明显的缺点就是每次切换时需要去遍历 window，这种做法会有较大的时间消耗</p>
 <ol start="2">
 <li>legacySandBox</li>
 </ol>
 <p>legacy 沙箱的主要原理是使用了 ES6 中的 Proxy，把原来的 window 代理到<code>fakeWindow</code>上，这样就不用遍历整个 window 去应用和恢复环境了。除此之外，它还在沙箱内部设置了三个变量池：<br><code>addedPropsMapinSandbox</code>用于存放子应用运行期间新增的全局变量，用于在卸载子应用的时候删除；<br><code>modifiedPropsOrginalMapInSandbox</code>用于存放子应用运行期间修改的全局变量，用于卸载时进行恢复；<br><code>currentUpdatedPropsValueMap</code>用于存放子应用运行期间所有变化的变量，这样可以在加载子应用时恢复其上一次的环境。</p>
-<p><img src="https://liushaozhen.gitee.io/img/spa6.png" srcset="/img/loading.gif" lazyload alt="spa"></p>
+<p><img src="https://liushaozhen.gitee.io/img/spa/spa6.png" srcset="/img/loading.gif" lazyload alt="spa"></p>
 <ol start="3">
 <li>ProxySandbox</li>
 </ol>
 <p>第二种沙箱的实现对于单例模式来说已经比较完善了，但是不适用于多例模式，即同时有多个子应用在运行期间的时候，<code>qiankun</code>针对这个问题提出来<code>proxySandbox</code>。<br><code>proxySandbox</code>依然是使用 proxy 代理 window，但不同的是对于每个子应用都代理了一个<code>fakeWindow</code>，这样在查找变量的时候在本地的<code>fakeWindow</code>上查找，如果没有找到就到主应用的 window 上查找，而修改时只修改本地的<code>fakeWindow</code>，不会影响到其他的应用，在最终卸载时把<code>fakeWindow</code>删除即可。</p>
-<p><img src="https://liushaozhen.gitee.io/img/spa7.png" srcset="/img/loading.gif" lazyload alt="spa"></p>
+<p><img src="https://liushaozhen.gitee.io/img/spa/spa7.png" srcset="/img/loading.gif" lazyload alt="spa"></p>
 <ul>
 <li><p>生命周期<br>在主应用增加了 5 个生命周期 <code>beforeLoad</code>、<code>beforeMount</code>、<code>afterMount</code> 、<code>beforeUnmount</code>和<code>afterUnmount</code>。<br>和 <code>single-spa</code>一样的是，子应用接入必须暴露三个生命周期：<code>bootstrap</code>、<code>mount</code>、<code>unmount</code></p>
 </li>
@@ -364,7 +364,7 @@
 </ul>
 <p>通过以上设置打包之后会生成三种文件：应用主文件:main.js、作为remote时被引用的文件remoteEntry.js和其他的异步加载文件。</p>
 <p>这里通过一个例子简单概括一下其原理：下图是三个项目，在App1中它的remotes是App2和App3，没有exposes，shared是React和ReactDom，它作为host使用了remote的dialog组件和button组件；App2作为host使用了App3的button组件，作为remote导出来dialog组件，在App1中运行时如果需要使用React则会优先把App1中的React导入，这就复用了公共库；App3向外导出了dialog组件，只作为其他项目的remote。</p>
-<p><img src="https://liushaozhen.gitee.io/img/spa8.png" srcset="/img/loading.gif" lazyload alt="spa"></p>
+<p><img src="https://liushaozhen.gitee.io/img/spa/spa8.png" srcset="/img/loading.gif" lazyload alt="spa"></p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
 <li>化整为零</li>
 </ul>
