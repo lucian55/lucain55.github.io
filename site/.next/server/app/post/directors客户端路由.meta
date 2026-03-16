@@ -1,0 +1,7 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "4294967294",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/post/layout,_N_T_/post/[slug]/layout,_N_T_/post/[slug]/page,_N_T_/post/directors%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%B7%AF%E7%94%B1"
+  }
+}

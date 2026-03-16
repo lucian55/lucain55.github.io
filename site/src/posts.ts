@@ -27,6 +27,7 @@ export function postUrl(file: string): string {
 }
 
 export function fileToSlug(file: string): string {
-  return encodeURIComponent(file.replace(/\.md$/i, ''))
+  // 使用原始标题作为路由参数，让 React Router 负责 URL 编码 / 解码
+  return file.replace(/\.md$/i, '')
 }
 

@@ -1,11 +1,14 @@
+ 'use client'
+
 import { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
-import { Spin, Result, Button } from 'antd'
+import Link from 'next/link'
+import { useParams } from 'next/navigation'
 import ReactMarkdown from 'react-markdown'
 import { postUrl, POST_FILES, fileToSlug } from '../posts'
 
 export default function Post() {
-  const { slug } = useParams<{ slug: string }>()
+  const params = useParams<{ slug: string }>()
+  const slug = params?.slug
   const [content, setContent] = useState<string>('')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -33,34 +36,43 @@ export default function Post() {
 
   if (!slug) {
     return (
-      <Result status="404" title="缺少文章 ID" extra={<Link to="/"><Button type="primary">返回首页</Button></Link>} />
+      <div className="py-8 text-center">
+        <p className="text-lg mb-4">缺少文章 ID</p>
+        <Link href="/" className="text-blue-600 hover:underline">返回首页</Link>
+      </div>
     )
   }
 
   if (!exists) {
     return (
-      <Result status="404" title="文章不存在" extra={<Link to="/"><Button type="primary">返回首页</Button></Link>} />
+      <div className="py-8 text-center">
+        <p className="text-lg mb-4">文章不存在</p>
+        <Link href="/" className="text-blue-600 hover:underline">返回首页</Link>
+      </div>
     )
   }
 
   if (loading) {
     return (
       <div className="flex justify-center py-12">
-        <Spin size="large" />
+        <span className="text-gray-600">加载中...</span>
       </div>
     )
   }
 
   if (error) {
     return (
-      <Result status="error" title={error} extra={<Link to="/"><Button type="primary">返回首页</Button></Link>} />
+      <div className="py-8 text-center">
+        <p className="text-lg mb-4">{error}</p>
+        <Link href="/" className="text-blue-600 hover:underline">返回首页</Link>
+      </div>
     )
   }
 
   const title = file.replace(/\.md$/i, '')
   return (
     <article className="py-4">
-      <Link to="/" className="text-blue-600 hover:underline mb-4 inline-block">← 返回首页</Link>
+      <Link href="/" className="text-blue-600 hover:underline mb-4 inline-block">← 返回首页</Link>
       <h1 className="text-2xl font-bold mb-4">{title}</h1>
       <div className="markdown-body">
         <ReactMarkdown>{content}</ReactMarkdown>

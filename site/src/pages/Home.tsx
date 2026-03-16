@@ -1,5 +1,4 @@
-import { List, Card } from 'antd'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { POST_FILES, fileToSlug } from '../posts'
 
 function titleFromFile(file: string): string {
@@ -10,23 +9,21 @@ export default function Home() {
   return (
     <div>
       <h1 className="text-2xl font-bold mb-4">文章列表</h1>
-      <List
-        grid={{ gutter: 12, xs: 1, sm: 1, md: 2 }}
-        dataSource={POST_FILES}
-        renderItem={(file) => {
+      <div className="grid gap-3 sm:grid-cols-1 md:grid-cols-2">
+        {POST_FILES.map((file) => {
           const slug = fileToSlug(file)
           const title = titleFromFile(file)
           return (
-            <List.Item>
-              <Link to={`/post/${slug}`} className="block">
-                <Card hoverable className="h-full">
-                  <span className="text-gray-900">{title}</span>
-                </Card>
-              </Link>
-            </List.Item>
+            <Link
+              key={file}
+              href={`/post/${slug}`}
+              className="block rounded border border-slate-200 bg-white px-4 py-3 hover:border-slate-400 hover:shadow-sm transition"
+            >
+              <span className="text-gray-900">{title}</span>
+            </Link>
           )
-        }}
-      />
+        })}
+      </div>
     </div>
   )
 }

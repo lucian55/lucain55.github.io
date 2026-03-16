@@ -1,0 +1,7 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "4294967294",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/post/layout,_N_T_/post/[slug]/layout,_N_T_/post/[slug]/page,_N_T_/post/css%20%E9%81%87%E8%A7%81%E5%8D%95%E8%AF%8D%E7%A9%BA%E6%A0%BC%E8%87%AA%E5%8A%A8%E6%8D%A2%E8%A1%8C%E7%9A%84%E6%96%B9%E6%B3%95"
+  }
+}
