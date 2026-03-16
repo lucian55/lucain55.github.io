@@ -1,20 +1,32 @@
 # lucain55.github.io
 
-个人主页 / 博客，通过 GitHub Pages 部署。
+个人博客 / 主页，使用 GitHub Pages 部署。
 
-- **访问地址**：https://lucain55.github.io
+- **访问地址**：https://lucain55.github.io  
+- **关于 / 赞助**：https://lucain55.github.io/about/
 
-## 本地配置说明
+---
 
-1. 仓库名必须为 `lucain55.github.io`（与 GitHub 用户名一致）。
-2. 在 GitHub 仓库 **Settings → Pages** 中：
-   - **Source**：Deploy from a branch
-   - **Branch**：`master`（或 `main`），目录选 **/ (root)**
-3. 保存后等待几分钟，即可通过 https://lucain55.github.io 访问。
+## 赞助 / 打赏
 
-## 更新站点
+如果博文或小工具对你有帮助，欢迎请我喝杯咖啡 ☕
 
-修改后推送到 `master` 分支即可自动重新部署：
+| 微信 | 支付宝 |
+|------|--------|
+| ![微信收款码](img/wechat.jpg) | ![支付宝收款码](img/alipay.jpg) |
+
+打开微信 / 支付宝扫一扫即可，感谢支持。
+
+---
+
+## 本地与部署说明
+
+1. **仓库名**：须为 `lucain55.github.io`（与 GitHub 用户名一致）。
+2. **GitHub Pages**：仓库 **Settings → Pages**  
+   - Source：**Deploy from a branch**  
+   - Branch：**master**，Folder：**/ (root)**  
+   - 保存后等待 1～2 分钟即可访问。
+3. **更新站点**：改完推送到 `master` 即自动部署。
 
 ```bash
 git add .
