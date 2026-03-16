@@ -13,7 +13,7 @@
 
 | 微信 | 支付宝 |
 |------|--------|
-| ![微信收款码](img/wechat.jpg) | ![支付宝收款码](img/alipay.jpg) |
+| <img src="img/wechat.jpg" alt="微信收款码" height="240" /> | <img src="img/alipay.jpg" alt="支付宝收款码" height="240" /> |
 
 打开微信 / 支付宝扫一扫即可，感谢支持。
 
